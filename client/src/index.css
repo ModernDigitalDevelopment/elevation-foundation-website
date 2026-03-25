@@ -1,9 +1,9 @@
 /* 
- * ELEVATION RISING DESIGN SYSTEM
- * Design Movement: Afrofuturism meets Sacred Geometry
- * Color: Midnight Navy (#0A0F2C) + Gold (#C9A84C) + Crimson (#8B1A1A) + Teal (#00C9B1)
- * Typography: Playfair Display (display) + DM Sans (body) + Courier Prime (data)
- * Layout: Diagonal cuts, asymmetric, upward momentum
+ * ELEVATION FOUNDATION — ORGANIC CODEX DESIGN SYSTEM
+ * Design Movement: Vintage Botanical Illustration meets Art Nouveau Folk Art
+ * Color: Warm Parchment (#F5EDD8) + Forest Green + Terracotta + Dusty Teal + Ochre Gold
+ * Typography: Playfair Display (display) + Lora (body) + IM Fell English (accent)
+ * Layout: Organic, layered, manuscript-inspired
  */
 
 @import "tailwindcss";
@@ -49,53 +49,66 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   
-  /* Elevation Foundation Brand Colors */
-  --color-navy: oklch(0.12 0.05 265);
-  --color-navy-light: oklch(0.18 0.05 265);
-  --color-navy-mid: oklch(0.22 0.06 265);
-  --color-gold: oklch(0.72 0.12 75);
-  --color-gold-light: oklch(0.82 0.10 75);
-  --color-gold-dark: oklch(0.58 0.12 75);
-  --color-crimson: oklch(0.38 0.12 25);
-  --color-crimson-light: oklch(0.50 0.14 25);
-  --color-teal: oklch(0.78 0.14 180);
-  --color-teal-dark: oklch(0.60 0.14 180);
+  /* Elevation Foundation — Organic Codex Palette */
+  /* Parchment tones */
+  --color-parchment:       oklch(0.95 0.025 80);   /* warm cream #F5EDD8 */
+  --color-parchment-dark:  oklch(0.88 0.030 75);   /* aged parchment */
+  --color-parchment-deep:  oklch(0.82 0.035 70);   /* deeper aged tone */
+  /* Ink / text */
+  --color-ink:             oklch(0.20 0.025 60);   /* dark warm charcoal */
+  --color-ink-light:       oklch(0.35 0.025 60);   /* medium ink */
+  --color-ink-faint:       oklch(0.55 0.020 65);   /* faint ink */
+  /* Forest green */
+  --color-forest:          oklch(0.38 0.10 145);   /* deep forest green */
+  --color-forest-mid:      oklch(0.50 0.10 145);   /* medium forest */
+  --color-forest-light:    oklch(0.65 0.09 145);   /* sage green */
+  /* Terracotta / rust */
+  --color-terra:           oklch(0.52 0.12 40);    /* warm terracotta */
+  --color-terra-light:     oklch(0.65 0.10 40);    /* lighter rust */
+  /* Dusty teal */
+  --color-teal:            oklch(0.55 0.09 195);   /* dusty teal */
+  --color-teal-light:      oklch(0.68 0.08 195);   /* lighter teal */
+  /* Ochre gold */
+  --color-ochre:           oklch(0.68 0.12 75);    /* warm ochre gold */
+  --color-ochre-light:     oklch(0.78 0.10 75);    /* lighter ochre */
+  /* Burgundy */
+  --color-burgundy:        oklch(0.38 0.10 15);    /* deep burgundy */
 }
 
 :root {
-  --radius: 0.25rem;
-  --background: oklch(0.12 0.05 265);
-  --foreground: oklch(0.95 0.005 65);
-  --card: oklch(0.16 0.05 265);
-  --card-foreground: oklch(0.95 0.005 65);
-  --popover: oklch(0.16 0.05 265);
-  --popover-foreground: oklch(0.95 0.005 65);
-  --primary: oklch(0.72 0.12 75);
-  --primary-foreground: oklch(0.12 0.05 265);
-  --secondary: oklch(0.18 0.05 265);
-  --secondary-foreground: oklch(0.85 0.005 65);
-  --muted: oklch(0.20 0.04 265);
-  --muted-foreground: oklch(0.65 0.01 65);
-  --accent: oklch(0.38 0.12 25);
-  --accent-foreground: oklch(0.95 0.005 65);
+  --radius: 0.125rem;
+  --background: oklch(0.95 0.025 80);
+  --foreground: oklch(0.20 0.025 60);
+  --card: oklch(0.92 0.028 78);
+  --card-foreground: oklch(0.20 0.025 60);
+  --popover: oklch(0.93 0.028 78);
+  --popover-foreground: oklch(0.20 0.025 60);
+  --primary: oklch(0.38 0.10 145);
+  --primary-foreground: oklch(0.95 0.025 80);
+  --secondary: oklch(0.88 0.030 75);
+  --secondary-foreground: oklch(0.20 0.025 60);
+  --muted: oklch(0.90 0.025 78);
+  --muted-foreground: oklch(0.50 0.020 65);
+  --accent: oklch(0.52 0.12 40);
+  --accent-foreground: oklch(0.95 0.025 80);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.72 0.12 75);
-  --chart-1: oklch(0.72 0.12 75);
-  --chart-2: oklch(0.78 0.14 180);
-  --chart-3: oklch(0.38 0.12 25);
-  --chart-4: oklch(0.50 0.14 25);
-  --chart-5: oklch(0.82 0.10 75);
-  --sidebar: oklch(0.14 0.05 265);
-  --sidebar-foreground: oklch(0.95 0.005 65);
-  --sidebar-primary: oklch(0.72 0.12 75);
-  --sidebar-primary-foreground: oklch(0.12 0.05 265);
-  --sidebar-accent: oklch(0.18 0.05 265);
-  --sidebar-accent-foreground: oklch(0.85 0.005 65);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.72 0.12 75);
+  --border: oklch(0.20 0.025 60 / 15%);
+  --input: oklch(0.20 0.025 60 / 10%);
+  --ring: oklch(0.38 0.10 145);
+  --chart-1: oklch(0.38 0.10 145);
+  --chart-2: oklch(0.52 0.12 40);
+  --chart-3: oklch(0.55 0.09 195);
+  --chart-4: oklch(0.68 0.12 75);
+  --chart-5: oklch(0.38 0.10 15);
+  --sidebar: oklch(0.90 0.028 78);
+  --sidebar-foreground: oklch(0.20 0.025 60);
+  --sidebar-primary: oklch(0.38 0.10 145);
+  --sidebar-primary-foreground: oklch(0.95 0.025 80);
+  --sidebar-accent: oklch(0.88 0.030 75);
+  --sidebar-accent-foreground: oklch(0.20 0.025 60);
+  --sidebar-border: oklch(0.20 0.025 60 / 12%);
+  --sidebar-ring: oklch(0.38 0.10 145);
 }
 
 @layer base {
@@ -104,10 +117,15 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Lora', serif;
+    background-color: oklch(0.95 0.025 80);
+    /* Subtle paper texture via repeating gradient */
+    background-image: 
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+    color: oklch(0.20 0.025 60);
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -148,132 +166,102 @@
     }
   }
 
-  /* Elevation Rising Utilities */
+  /* ── Typography Utilities ─────────────────────────────────── */
   .font-display {
     font-family: 'Playfair Display', serif;
   }
   .font-body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Lora', serif;
+  }
+  .font-script {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
   }
   .font-mono-data {
     font-family: 'Courier Prime', monospace;
   }
-  .text-gold {
-    color: oklch(0.72 0.12 75);
-  }
-  .text-gold-light {
-    color: oklch(0.82 0.10 75);
-  }
-  .text-crimson {
-    color: oklch(0.50 0.14 25);
-  }
-  .text-teal {
-    color: oklch(0.78 0.14 180);
-  }
-  .bg-navy {
-    background-color: oklch(0.12 0.05 265);
-  }
-  .bg-navy-light {
-    background-color: oklch(0.18 0.05 265);
-  }
-  .bg-navy-mid {
-    background-color: oklch(0.22 0.06 265);
-  }
-  .bg-gold {
-    background-color: oklch(0.72 0.12 75);
-  }
-  .bg-crimson {
-    background-color: oklch(0.38 0.12 25);
-  }
-  .border-gold {
-    border-color: oklch(0.72 0.12 75 / 0.4);
-  }
-  .border-gold-bright {
-    border-color: oklch(0.72 0.12 75 / 0.8);
+
+  /* ── Color Utilities ──────────────────────────────────────── */
+  .text-ink         { color: oklch(0.20 0.025 60); }
+  .text-ink-light   { color: oklch(0.35 0.025 60); }
+  .text-ink-faint   { color: oklch(0.55 0.020 65); }
+  .text-forest      { color: oklch(0.38 0.10 145); }
+  .text-forest-mid  { color: oklch(0.50 0.10 145); }
+  .text-terra       { color: oklch(0.52 0.12 40); }
+  .text-teal        { color: oklch(0.55 0.09 195); }
+  .text-ochre       { color: oklch(0.68 0.12 75); }
+  .text-burgundy    { color: oklch(0.38 0.10 15); }
+  .text-parchment   { color: oklch(0.95 0.025 80); }
+
+  .bg-parchment      { background-color: oklch(0.95 0.025 80); }
+  .bg-parchment-dark { background-color: oklch(0.88 0.030 75); }
+  .bg-parchment-deep { background-color: oklch(0.82 0.035 70); }
+  .bg-forest         { background-color: oklch(0.38 0.10 145); }
+  .bg-forest-mid     { background-color: oklch(0.50 0.10 145); }
+  .bg-terra          { background-color: oklch(0.52 0.12 40); }
+  .bg-teal           { background-color: oklch(0.55 0.09 195); }
+  .bg-ochre          { background-color: oklch(0.68 0.12 75); }
+  .bg-burgundy       { background-color: oklch(0.38 0.10 15); }
+
+  .border-ink        { border-color: oklch(0.20 0.025 60 / 20%); }
+  .border-forest     { border-color: oklch(0.38 0.10 145 / 40%); }
+  .border-terra      { border-color: oklch(0.52 0.12 40 / 40%); }
+  .border-ochre      { border-color: oklch(0.68 0.12 75 / 50%); }
+
+  /* ── Section Label ────────────────────────────────────────── */
+  .section-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.70rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: oklch(0.50 0.10 145);
+    display: block;
   }
 
-  /* Diagonal section divider — upward angle */
-  .diagonal-up {
-    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
-    margin-top: -3rem;
-    padding-top: 5rem;
+  /* ── Ornamental Divider ───────────────────────────────────── */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: oklch(0.68 0.12 75);
+    opacity: 0.5;
   }
-  .diagonal-down {
-    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-    padding-bottom: 5rem;
-    margin-bottom: -3rem;
-  }
-
-  /* Gold shimmer animation */
-  @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  .gold-shimmer {
-    background: linear-gradient(
-      90deg,
-      oklch(0.72 0.12 75) 0%,
-      oklch(0.90 0.08 75) 30%,
-      oklch(0.72 0.12 75) 50%,
-      oklch(0.58 0.12 75) 70%,
-      oklch(0.72 0.12 75) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s linear infinite;
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, oklch(0.68 0.12 75 / 0.4), transparent);
   }
 
-  /* Rising particle animation */
-  @keyframes rise {
-    0% { transform: translateY(0) scale(1); opacity: 0.6; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+  /* ── Ink border style ─────────────────────────────────────── */
+  .ink-border {
+    border: 1px solid oklch(0.20 0.025 60 / 18%);
+    box-shadow: inset 0 0 0 3px oklch(0.20 0.025 60 / 5%);
+  }
+  .ink-border-strong {
+    border: 2px solid oklch(0.20 0.025 60 / 25%);
   }
 
-  /* Fade up entrance */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* ── Card styles ──────────────────────────────────────────── */
+  .codex-card {
+    background-color: oklch(0.92 0.028 78);
+    border: 1px solid oklch(0.20 0.025 60 / 15%);
+    box-shadow: 2px 3px 12px oklch(0.20 0.025 60 / 8%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .animate-fade-up {
-    animation: fadeUp 0.7s ease-out forwards;
-  }
-  .animate-fade-up-delay-1 {
-    animation: fadeUp 0.7s ease-out 0.15s forwards;
-    opacity: 0;
-  }
-  .animate-fade-up-delay-2 {
-    animation: fadeUp 0.7s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-  .animate-fade-up-delay-3 {
-    animation: fadeUp 0.7s ease-out 0.45s forwards;
-    opacity: 0;
+  .codex-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 4px 8px 24px oklch(0.20 0.025 60 / 14%);
   }
 
-  /* Hex badge shape */
-  .hex-badge {
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  }
-
-  /* Glow effect */
-  .glow-gold {
-    box-shadow: 0 0 20px oklch(0.72 0.12 75 / 0.3), 0 0 60px oklch(0.72 0.12 75 / 0.1);
-  }
-  .glow-teal {
-    box-shadow: 0 0 20px oklch(0.78 0.14 180 / 0.3), 0 0 60px oklch(0.78 0.14 180 / 0.1);
-  }
-  .glow-crimson {
-    box-shadow: 0 0 20px oklch(0.50 0.14 25 / 0.3), 0 0 60px oklch(0.50 0.14 25 / 0.1);
-  }
-
-  /* Nav link hover */
+  /* ── Nav link ─────────────────────────────────────────────── */
   .nav-link {
     position: relative;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Lora', serif;
     font-weight: 500;
-    color: oklch(0.80 0.005 65);
+    font-size: 0.9rem;
+    color: oklch(0.30 0.025 60);
     transition: color 0.2s ease;
     text-decoration: none;
   }
@@ -284,31 +272,108 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: oklch(0.72 0.12 75);
+    background: oklch(0.38 0.10 145);
     transition: width 0.3s ease;
   }
   .nav-link:hover {
-    color: oklch(0.72 0.12 75);
+    color: oklch(0.38 0.10 145);
   }
   .nav-link:hover::after {
     width: 100%;
   }
 
-  /* Section label */
-  .section-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: oklch(0.72 0.12 75);
+  /* ── Animations ───────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+  .animate-fade-up-delay-1 {
+    animation: fadeUp 0.8s ease-out 0.15s forwards;
+    opacity: 0;
+  }
+  .animate-fade-up-delay-2 {
+    animation: fadeUp 0.8s ease-out 0.30s forwards;
+    opacity: 0;
+  }
+  .animate-fade-up-delay-3 {
+    animation: fadeUp 0.8s ease-out 0.45s forwards;
+    opacity: 0;
   }
 
-  /* Card hover lift */
-  .card-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Ochre shimmer for headings */
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
   }
-  .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px oklch(0 0 0 / 0.4), 0 0 30px oklch(0.72 0.12 75 / 0.1);
+  .ochre-shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.68 0.12 75) 0%,
+      oklch(0.80 0.09 75) 35%,
+      oklch(0.68 0.12 75) 55%,
+      oklch(0.55 0.12 75) 75%,
+      oklch(0.68 0.12 75) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 5s linear infinite;
+  }
+
+  /* ── Button styles ────────────────────────────────────────── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background-color: oklch(0.38 0.10 145);
+    color: oklch(0.95 0.025 80);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 0.125rem;
+    border: 1px solid oklch(0.38 0.10 145);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    background-color: oklch(0.32 0.10 145);
+    box-shadow: 0 4px 16px oklch(0.38 0.10 145 / 0.3);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background-color: transparent;
+    color: oklch(0.38 0.10 145);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 0.125rem;
+    border: 1.5px solid oklch(0.38 0.10 145 / 0.6);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .btn-secondary:hover {
+    border-color: oklch(0.38 0.10 145);
+    background-color: oklch(0.38 0.10 145 / 0.06);
+  }
+
+  /* ── Decorative corner ornament ──────────────────────────── */
+  .corner-ornament {
+    position: relative;
+  }
+  .corner-ornament::before {
+    content: '✦';
+    position: absolute;
+    top: -0.75rem;
+    left: -0.75rem;
+    color: oklch(0.68 0.12 75 / 0.5);
+    font-size: 1rem;
   }
 }

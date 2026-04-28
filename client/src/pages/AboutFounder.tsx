@@ -1,6 +1,6 @@
 /*
  * ELEVATION FOUNDATION — About the Founder
- * A clever, witty, deeply human bio for C.J. Sinclair
+ * A clever, witty, deeply human bio for Cornelius Lawrence
  */
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
@@ -72,9 +72,9 @@ export default function AboutFounder() {
   return (
     <div className="min-h-screen bg-navy text-white">
       <SEOHead
-        title="C.J. Sinclair — Founder | Elevation Foundation"
-        description="Meet C.J. Sinclair — quantitative systems engineer, fintech architect, and founder of the Elevation Foundation. 20+ years building systems that remove bias, gatekeepers, and middlemen."
-        keywords="CJ Sinclair, Elevation Foundation founder, Sotilitarianism, capitalism 2.0, social capitalism, transparent economics, trust tech, blockchain governance, quantitative investing, Vetta Investments, fintech, utilitarian capitalism"
+        title="Cornelius Lawrence — Founder | Elevation Foundation"
+        description="Meet Cornelius Lawrence — quantitative systems engineer, fintech architect, and founder of the Elevation Foundation. 20+ years building systems that remove bias, gatekeepers, and middlemen."
+        keywords="Cornelius Lawrence, Elevation Foundation founder, Sotilitarianism, capitalism 2.0, social capitalism, transparent economics, trust tech, blockchain governance, quantitative investing, Vetta Investments, fintech, utilitarian capitalism"
         ogImage="https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-card_0ac91696.webp"
       />
       <Navigation />
@@ -97,7 +97,7 @@ export default function AboutFounder() {
                 <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-gold/30 shadow-[0_0_60px_oklch(0.72_0.12_75/0.15)]">
                   <img
                     src={PROFILE_IMG}
-                    alt="C.J. Sinclair — Founder, Elevation Foundation"
+                    alt="Cornelius Lawrence — Founder, Elevation Foundation"
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
@@ -113,7 +113,7 @@ export default function AboutFounder() {
             <div>
               <div className="section-label mb-4">The Human Behind the Code</div>
               <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-4">
-                C.J. <span className="gold-shimmer">Sinclair</span>
+                Cornelius <span className="gold-shimmer">Lawrence</span>
               </h1>
               <p className="font-body text-gold/80 text-lg font-medium mb-6 italic">
                 "I build systems that work without asking permission."
@@ -172,7 +172,7 @@ export default function AboutFounder() {
           </h2>
           <div className="font-body text-white/70 text-lg leading-relaxed space-y-5 text-center max-w-3xl mx-auto">
             <p>
-              In 2005, C.J. built an algorithm that would go on to outperform the S&P 500 for two decades — not by being smarter than the market, but by being more disciplined than the humans trading in it. The insight was simple and radical: <em className="text-white">remove the emotion, trust the system.</em>
+              In 2005, Cornelius built an algorithm that would go on to outperform the S&P 500 for two decades — not by being smarter than the market, but by being more disciplined than the humans trading in it. The insight was simple and radical: <em className="text-white">remove the emotion, trust the system.</em>
             </p>
             <p>
               Twenty years later, he applied the same logic to a different problem. Not "how do we beat the market?" but "how do we build financial systems that don't exclude entire communities by design?" The answer, again, was systematic: remove the gatekeepers, encode the rules on-chain, and make transparency the default rather than the exception.
@@ -252,7 +252,7 @@ export default function AboutFounder() {
             What He's Reading <span className="text-gold">Right Now</span>
           </h2>
           <p className="font-body text-white/60 text-center max-w-2xl mx-auto mb-14 text-lg">
-            C.J. publishes research at the intersection of technology, biology, energy, and markets. These are the themes keeping him up at night — in the best possible way.
+            Cornelius publishes research at the intersection of technology, biology, energy, and markets. These are the themes keeping him up at night — in the best possible way.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
@@ -295,7 +295,7 @@ export default function AboutFounder() {
             <span className="gold-shimmer">Are You In?</span>
           </h2>
           <p className="font-body text-white/65 text-xl mb-10 leading-relaxed">
-            C.J. is always looking for engineers, economists, community organizers, and fellow obsessives who believe the financial system can be rebuilt from first principles.
+            Cornelius is always looking for engineers, economists, community organizers, and fellow obsessives who believe the financial system can be rebuilt from first principles.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -41,7 +41,7 @@ for (const item of essays.results) {
       category: category || "Philosophy",
       tags: JSON.stringify(["Sotilitarianism", "Philosophy", "Blockchain Governance"]),
       published: true,
-      author: "C.J. Sinclair",
+      author: "Cornelius Lawrence",
       readTime: String(Math.max(3, Math.ceil(body_markdown.split(/\s+/).length / 200))) + " min read",
     });
     console.log(`✅ Inserted: ${title}`);

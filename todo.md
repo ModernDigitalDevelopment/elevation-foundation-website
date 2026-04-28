@@ -35,3 +35,12 @@
 - [x] SEO keywords: capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech across meta tags and JSON-LD
 - [x] Update index.html global meta keywords tag with full keyword set
 - [x] Update SEOHead per-page descriptions to weave in keyword variations
+
+## Sotilitarianism GitHub Repo & Website Integration
+- [x] Deep-read all 49 Sotility/Sotilitarianism documents from Google Drive
+- [x] Create comprehensive organizational taxonomy (book, manifestos, whitepapers, smart-contracts, economics)
+- [x] Restructure sotilitarianism GitHub repo with proper directory structure
+- [x] Write comprehensive README with glossary, reading order, architecture diagrams
+- [x] Add AUTHOR.md, GLOSSARY.md, LICENSE (CC BY-SA 4.0), section READMEs
+- [x] Make repo public with SEO topics and description
+- [x] Add "Read the Complete Work" section to Philosophy page linking to GitHub

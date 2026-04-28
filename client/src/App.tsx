@@ -12,8 +12,9 @@ import Transparency from "./pages/Transparency";
 import Donate from "./pages/Donate";
 import GetInvolved from "./pages/GetInvolved";
 import Blog from "./pages/Blog";
-
+import DonateSuccess from "./pages/DonateSuccess";
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/our-work" component={OurWork} />
       <Route path="/transparency" component={Transparency} />
       <Route path="/donate" component={Donate} />
+      <Route path="/donate/success" component={DonateSuccess} />
       <Route path="/get-involved" component={GetInvolved} />
       <Route path="/blog" component={Blog} />
       <Route path="/404" component={NotFound} />

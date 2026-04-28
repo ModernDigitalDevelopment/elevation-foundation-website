@@ -1,24 +1,24 @@
 /*
- * ELEVATION RISING — Donate Page
- * Tax-deductible donations, crypto donations, recurring giving
+ * ELEVATION FOUNDATION — Donate Page
+ * Live Stripe checkout: one-time and monthly recurring donations
  */
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Link } from "wouter";
-import { ArrowRight, Copy, CheckCircle } from "lucide-react";
+import { ArrowRight, Copy, CheckCircle, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
 
 const donationAmounts = [25, 50, 100, 250, 500, 1000];
 
 const impactItems = [
-  { amount: "$25", impact: "Funds one hour of smart contract development" },
-  { amount: "$50", impact: "Covers gas fees for 10 governance transactions" },
-  { amount: "$100", impact: "Sponsors one community governance workshop" },
-  { amount: "$250", impact: "Funds one week of WeSolar pilot research" },
-  { amount: "$500", impact: "Covers one month of server infrastructure" },
+  { amount: "$25",    impact: "Funds one hour of smart contract development" },
+  { amount: "$50",    impact: "Covers gas fees for 10 governance transactions" },
+  { amount: "$100",   impact: "Sponsors one community governance workshop" },
+  { amount: "$250",   impact: "Funds one week of WeSolar pilot research" },
+  { amount: "$500",   impact: "Covers one month of server infrastructure" },
   { amount: "$1,000", impact: "Sponsors a full smart contract security audit" },
 ];
 
@@ -30,7 +30,23 @@ const cryptoAddresses = [
 export default function Donate() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(100);
   const [customAmount, setCustomAmount] = useState("");
+  const [isRecurring, setIsRecurring] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
+
+  const createSession = trpc.stripe.createDonationSession.useMutation({
+    onSuccess: (data) => {
+      if (data.url) {
+        toast.success("Redirecting to secure checkout…");
+        window.open(data.url, "_blank");
+      }
+    },
+    onError: (err) => {
+      toast.error(err.message || "Something went wrong. Please try again.");
+    },
+  });
 
   const handleCopy = (address: string) => {
     navigator.clipboard.writeText(address);
@@ -39,10 +55,30 @@ export default function Donate() {
     setTimeout(() => setCopiedAddress(null), 2000);
   };
 
-  const handleStripeCheckout = () => {
+  const handleDonate = () => {
     const amount = customAmount ? parseFloat(customAmount) : selectedAmount;
-    toast.info("Stripe integration coming soon — thank you for your support!");
+    if (!amount || amount < 1) {
+      toast.error("Please select or enter a donation amount.");
+      return;
+    }
+    if (amount < 0.5) {
+      toast.error("Minimum donation is $0.50.");
+      return;
+    }
+
+    createSession.mutate({
+      amountDollars: amount,
+      mode: isRecurring ? "subscription" : "payment",
+      donorName: [firstName, lastName].filter(Boolean).join(" ") || undefined,
+      donorEmail: email || undefined,
+    });
   };
+
+  const displayAmount = customAmount
+    ? `$${customAmount}`
+    : selectedAmount
+    ? `$${selectedAmount}`
+    : "";
 
   return (
     <div className="min-h-screen bg-navy text-white">
@@ -76,12 +112,33 @@ export default function Donate() {
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16">
-            {/* Form */}
+
+            {/* ── Form ── */}
             <div>
               <div className="section-label mb-4">Make a Donation</div>
               <h2 className="font-display text-3xl font-bold text-white mb-8">
                 Choose Your Impact
               </h2>
+
+              {/* Frequency toggle */}
+              <div className="flex gap-2 mb-6 p-1 bg-[oklch(0.16_0.05_265)] rounded-sm border border-white/10 w-fit">
+                <button
+                  onClick={() => setIsRecurring(false)}
+                  className={`px-5 py-2 text-sm font-body font-semibold rounded-sm transition-all ${
+                    !isRecurring ? "bg-gold text-[oklch(0.12_0.05_265)]" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  One-Time
+                </button>
+                <button
+                  onClick={() => setIsRecurring(true)}
+                  className={`px-5 py-2 text-sm font-body font-semibold rounded-sm transition-all ${
+                    isRecurring ? "bg-gold text-[oklch(0.12_0.05_265)]" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  Monthly
+                </button>
+              </div>
 
               {/* Amount Selection */}
               <div className="mb-6">
@@ -113,58 +170,68 @@ export default function Donate() {
                 </div>
               </div>
 
-              {/* Donor Info */}
-              <div className="space-y-4 mb-6">
+              {/* Donor Info (optional — prefills Stripe checkout) */}
+              <div className="space-y-4 mb-8">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="font-body text-sm text-white/60 mb-1.5 block">First Name</label>
+                    <label className="font-body text-sm text-white/60 mb-1.5 block">First Name <span className="text-white/30">(optional)</span></label>
                     <input
                       type="text"
                       placeholder="First name"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       className="w-full px-4 py-3 bg-[oklch(0.16_0.05_265)] border border-white/20 rounded-sm text-white font-body placeholder:text-white/30 focus:border-gold/50 focus:outline-none transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="font-body text-sm text-white/60 mb-1.5 block">Last Name</label>
+                    <label className="font-body text-sm text-white/60 mb-1.5 block">Last Name <span className="text-white/30">(optional)</span></label>
                     <input
                       type="text"
                       placeholder="Last name"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       className="w-full px-4 py-3 bg-[oklch(0.16_0.05_265)] border border-white/20 rounded-sm text-white font-body placeholder:text-white/30 focus:border-gold/50 focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="font-body text-sm text-white/60 mb-1.5 block">Email Address</label>
+                  <label className="font-body text-sm text-white/60 mb-1.5 block">Email Address <span className="text-white/30">(for receipt)</span></label>
                   <input
                     type="email"
                     placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-4 py-3 bg-[oklch(0.16_0.05_265)] border border-white/20 rounded-sm text-white font-body placeholder:text-white/30 focus:border-gold/50 focus:outline-none transition-colors"
                   />
                 </div>
               </div>
 
-              {/* Recurring Option */}
-              <div className="flex items-center gap-3 mb-8 p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm">
-                <input type="checkbox" id="recurring" className="w-4 h-4 accent-gold" />
-                <label htmlFor="recurring" className="font-body text-sm text-white/70 cursor-pointer">
-                  Make this a monthly recurring donation
-                </label>
-              </div>
-
               {/* Submit */}
               <button
-                onClick={handleStripeCheckout}
-                className="w-full py-4 bg-gold text-[oklch(0.12_0.05_265)] font-bold font-body text-lg rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.4)]"
+                onClick={handleDonate}
+                disabled={createSession.isPending}
+                className="w-full py-4 bg-gold text-[oklch(0.12_0.05_265)] font-bold font-body text-lg rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.4)] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Donate {customAmount ? `$${customAmount}` : selectedAmount ? `$${selectedAmount}` : ""} Now
+                {createSession.isPending ? (
+                  <><Loader2 size={18} className="animate-spin" /> Processing…</>
+                ) : (
+                  `Donate ${displayAmount}${isRecurring ? "/month" : ""} Now`
+                )}
               </button>
 
               <p className="font-body text-xs text-white/35 mt-3 text-center">
                 Secure payment via Stripe. Tax receipt provided by email. EIN: 88-XXXXXXX
               </p>
+
+              {/* Test card hint */}
+              <div className="mt-4 p-3 bg-teal/10 border border-teal/20 rounded-sm">
+                <p className="font-mono-data text-xs text-teal/70">
+                  🧪 Test mode: use card <strong>4242 4242 4242 4242</strong>, any future expiry, any CVC.
+                </p>
+              </div>
             </div>
 
-            {/* Impact Info */}
+            {/* ── Impact Info ── */}
             <div>
               <div className="section-label mb-4">Your Impact</div>
               <h2 className="font-display text-3xl font-bold text-white mb-8">
@@ -179,7 +246,6 @@ export default function Donate() {
                 ))}
               </div>
 
-              {/* Tax Info */}
               <div className="p-6 border border-gold/20 bg-gold/5 rounded-sm">
                 <h3 className="font-display text-lg font-bold text-white mb-3">Tax Deductibility</h3>
                 <p className="font-body text-sm text-white/65 leading-relaxed mb-3">
@@ -201,7 +267,7 @@ export default function Donate() {
               Donate with Cryptocurrency
             </h2>
             <p className="font-body text-white/65 leading-relaxed mb-8">
-              We accept ETH, MATIC, and ERC-20 tokens. Crypto donations are processed on-chain and recorded transparently in our treasury. Send to the addresses below.
+              We accept ETH, MATIC, and ERC-20 tokens. Crypto donations are processed on-chain and recorded transparently in our treasury.
             </p>
             <div className="space-y-4">
               {cryptoAddresses.map(({ chain, symbol, address, note }) => (
@@ -215,19 +281,13 @@ export default function Donate() {
                   </div>
                   <div className="flex items-center gap-3">
                     <code className="font-mono-data text-xs text-white/60 flex-1 break-all">{address}</code>
-                    <button
-                      onClick={() => handleCopy(address)}
-                      className="flex-shrink-0 text-white/40 hover:text-gold transition-colors"
-                    >
+                    <button onClick={() => handleCopy(address)} className="flex-shrink-0 text-white/40 hover:text-gold transition-colors">
                       {copiedAddress === address ? <CheckCircle size={16} className="text-teal" /> : <Copy size={16} />}
                     </button>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="font-body text-xs text-white/35 mt-4">
-              Note: Crypto donation tax receipts require additional documentation. Contact us at donations@elevationfoundation.org for assistance.
-            </p>
           </div>
         </div>
       </section>
@@ -236,9 +296,7 @@ export default function Donate() {
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="section-label mb-4">Other Ways to Give</div>
-          <h2 className="font-display text-3xl font-bold text-white mb-10">
-            More Than Money
-          </h2>
+          <h2 className="font-display text-3xl font-bold text-white mb-10">More Than Money</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { title: "Contribute Code", desc: "Every merged pull request earns SOT governance tokens. Developers are the backbone of this movement.", cta: "View Open Issues", href: "https://github.com/ModernDigitalDevelopment" },

@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, desc, eq, like, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { BlogPost, InsertBlogPost, InsertUser, blogPosts, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,111 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// ─── BLOG POST QUERIES ─────────────────────────────────────────────────────
+
+/** List published posts, newest first. Optionally filter by category. */
+export async function listPublishedPosts(opts?: { category?: string; limit?: number; offset?: number }) {
+  const db = await getDb();
+  if (!db) return { posts: [], total: 0 };
+
+  const { category, limit = 20, offset = 0 } = opts ?? {};
+
+  const conditions = [eq(blogPosts.published, true)];
+  if (category && category !== "All") {
+    conditions.push(eq(blogPosts.category, category));
+  }
+
+  const where = and(...conditions);
+
+  const [posts, countResult] = await Promise.all([
+    db.select().from(blogPosts).where(where).orderBy(desc(blogPosts.publishedAt)).limit(limit).offset(offset),
+    db.select({ count: sql<number>`count(*)` }).from(blogPosts).where(where),
+  ]);
+
+  return { posts, total: Number(countResult[0]?.count ?? 0) };
+}
+
+/** List ALL posts (published + drafts) for the admin editor. */
+export async function listAllPosts(opts?: { limit?: number; offset?: number }) {
+  const db = await getDb();
+  if (!db) return { posts: [], total: 0 };
+
+  const { limit = 50, offset = 0 } = opts ?? {};
+
+  const [posts, countResult] = await Promise.all([
+    db.select().from(blogPosts).orderBy(desc(blogPosts.updatedAt)).limit(limit).offset(offset),
+    db.select({ count: sql<number>`count(*)` }).from(blogPosts),
+  ]);
+
+  return { posts, total: Number(countResult[0]?.count ?? 0) };
+}
+
+/** Get a single published post by slug. */
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db
+    .select()
+    .from(blogPosts)
+    .where(and(eq(blogPosts.slug, slug), eq(blogPosts.published, true)))
+    .limit(1);
+
+  return result[0];
+}
+
+/** Get any post by ID (admin use). */
+export async function getPostById(id: number): Promise<BlogPost | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
+  return result[0];
+}
+
+/** Create a new blog post. Returns the inserted ID. */
+export async function createPost(data: InsertBlogPost): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(blogPosts).values(data);
+  return (result as any)[0]?.insertId ?? 0;
+}
+
+/** Update an existing blog post by ID. */
+export async function updatePost(id: number, data: Partial<InsertBlogPost>): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  // If publishing for the first time, set publishedAt
+  const updates: Partial<InsertBlogPost> = { ...data };
+  if (data.published === true) {
+    const existing = await getPostById(id);
+    if (existing && !existing.publishedAt) {
+      updates.publishedAt = new Date();
+    }
+  }
+
+  await db.update(blogPosts).set(updates).where(eq(blogPosts.id, id));
+}
+
+/** Delete a blog post by ID. */
+export async function deletePost(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.delete(blogPosts).where(eq(blogPosts.id, id));
+}
+
+/** Get distinct categories from published posts. */
+export async function getCategories(): Promise<string[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const result = await db
+    .selectDistinct({ category: blogPosts.category })
+    .from(blogPosts)
+    .where(eq(blogPosts.published, true));
+
+  return result.map(r => r.category).filter(Boolean);
+}

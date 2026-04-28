@@ -13,6 +13,9 @@ import Donate from "./pages/Donate";
 import GetInvolved from "./pages/GetInvolved";
 import Blog from "./pages/Blog";
 import DonateSuccess from "./pages/DonateSuccess";
+import WhitePapers from "./pages/WhitePapers";
+import BlogPost from "./pages/BlogPost";
+import AdminBlog from "./pages/AdminBlog";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -26,6 +29,9 @@ function Router() {
       <Route path="/donate/success" component={DonateSuccess} />
       <Route path="/get-involved" component={GetInvolved} />
       <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/admin/blog" component={AdminBlog} />
+      <Route path="/white-papers" component={WhitePapers} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

@@ -4,6 +4,7 @@
  */
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { ArrowRight, Github, Code, Users, Megaphone, BookOpen } from "lucide-react";
 import { toast } from "sonner";
@@ -58,12 +59,14 @@ const roles = [
 ];
 
 const openIssues = [
-  { repo: "transparently-dapp", title: "Implement governance proposal voting UI", difficulty: "Intermediate", tokens: "500 SOT", label: "Frontend" },
-  { repo: "elevation-engine", title: "Add Uniswap V3 arbitrage strategy", difficulty: "Advanced", tokens: "2,000 SOT", label: "DeFi" },
-  { repo: "wesolar", title: "Design tokenized energy credit system", difficulty: "Intermediate", tokens: "800 SOT", label: "Architecture" },
-  { repo: "elevation-foundation", title: "Write Sotilitarianism white paper v2", difficulty: "Beginner", tokens: "300 SOT", label: "Writing" },
-  { repo: "transparently-dapp", title: "Smart contract audit preparation", difficulty: "Advanced", tokens: "1,500 SOT", label: "Security" },
-  { repo: "elevation-intelligence", title: "Build community sentiment analysis tool", difficulty: "Intermediate", tokens: "600 SOT", label: "AI/ML" },
+  { repo: "transparently-dapp", title: "Build SoGoodDAOFactory governance deployment UI", difficulty: "Intermediate", tokens: "500 SOT", label: "Frontend" },
+  { repo: "elevation-engine", title: "Implement SotilityTreasuryRouter 40/40/20 distribution logic", difficulty: "Advanced", tokens: "2,000 SOT", label: "DeFi" },
+  { repo: "wesolar", title: "WeSolarCrowdfund: fractional NFT ownership contract", difficulty: "Advanced", tokens: "1,500 SOT", label: "Solidity" },
+  { repo: "wesolar", title: "IOTA Tangle integration for feeless energy microtransactions", difficulty: "Intermediate", tokens: "800 SOT", label: "Architecture" },
+  { repo: "elevation-foundation", title: "Expanded Sotilitarianism white paper — academic citations", difficulty: "Beginner", tokens: "300 SOT", label: "Writing" },
+  { repo: "transparently-dapp", title: "Transparency Score algorithm design and smart contract audit", difficulty: "Advanced", tokens: "1,800 SOT", label: "Security" },
+  { repo: "sogood-platform", title: "Community attestation system for contribution verification", difficulty: "Intermediate", tokens: "600 SOT", label: "Architecture" },
+  { repo: "elevation-intelligence", title: "AI arbitrage strategy optimizer for Elevation Engine", difficulty: "Advanced", tokens: "2,500 SOT", label: "AI/ML" },
 ];
 
 export default function GetInvolved() {
@@ -78,6 +81,12 @@ export default function GetInvolved() {
 
   return (
     <div className="min-h-screen bg-navy text-white">
+      <SEOHead
+        title="Get Involved | The Elevation Foundation"
+        description="Join the Elevation Foundation as a developer, community organizer, ambassador, or researcher. Contribute code, community, or content and earn SOT governance tokens. The revolution will be tokenized."
+        canonical="/get-involved"
+        keywords="get involved blockchain nonprofit, SOT token rewards, open source blockchain, community organizer, developer contributions, Sotilitarianism ambassador"
+      />
       <Navigation />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}

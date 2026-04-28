@@ -1,12 +1,13 @@
 /*
  * ELEVATION RISING — Home Page
- * Hero: Full-bleed Afrofuturist image, diagonal cut, gold headline
- * Sections: Mission stats, Philosophy teaser, Projects grid, Token economy, CTA
+ * Fully populated with real content from Elevation Foundation documents
+ * SEO: title, description, Open Graph via Helmet
  */
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ArrowRight, Shield, Zap, Globe, ChevronDown } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
+import { ArrowRight, Shield, Zap, Globe, ChevronDown, Sun, Vote, TrendingUp } from "lucide-react";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/hero-main-v2-niPfcfa8NM8m2LqLA4PvmB.webp";
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
@@ -22,48 +23,101 @@ const stats = [
 const projects = [
   {
     id: "transparently",
-    label: "Governance",
-    title: "Transparently DApp",
-    desc: "An on-chain governance platform where every vote, every decision, and every dollar is recorded immutably on the blockchain. No more black boxes.",
+    label: "Governance DApp",
+    icon: Vote,
+    title: "Transparently",
+    desc: "An on-chain governance platform where every vote, every decision, and every dollar is recorded immutably on the blockchain. Organizations earn transparency scores. Communities earn rewards for participation. No more black boxes.",
     color: "text-gold",
     border: "border-gold/30",
     href: "/our-work#transparently",
   },
   {
     id: "wesolar",
-    label: "Energy",
+    label: "Renewable Energy",
+    icon: Sun,
     title: "WeSolar",
-    desc: "Tokenized community solar energy. Residents co-own solar infrastructure, earn energy credits, and vote on expansion — all governed by smart contracts.",
+    desc: "A decentralized peer-to-peer solar financing platform. Residents co-own solar infrastructure, earn tokenized energy credits, and vote on expansion — all governed by smart contracts on the IOTA Tangle. Putting the We in Web3 Energy.",
     color: "text-teal",
     border: "border-teal/30",
     href: "/our-work#wesolar",
   },
   {
     id: "elevation-engine",
-    label: "DeFi",
+    label: "DeFi Protocol",
+    icon: TrendingUp,
     title: "Elevation Engine",
-    desc: "An autonomous DeFi protocol generating yield through flash loans and arbitrage. Profits flow directly back to community treasury — no middlemen.",
+    desc: "An autonomous DeFi protocol generating yield through AI-managed flash loans and arbitrage strategies. Profits flow directly back to the community treasury via the SotilityTreasuryRouter — no middlemen, no opacity.",
     color: "text-crimson",
     border: "border-crimson/30",
     href: "/our-work#elevation-engine",
   },
 ];
 
+const tokens = [
+  {
+    symbol: "SOT",
+    name: "SotilityOwnershipToken",
+    desc: "Equity stake in the ecosystem. Dividend-eligible from protocol revenue. Vote on proposals, elect stewards, and shape the Foundation's direction. 1 billion total supply.",
+    color: "text-gold",
+    bg: "bg-gold/10 border-gold/30",
+  },
+  {
+    symbol: "SUG",
+    name: "SoGoodUtilityGovernance",
+    desc: "Earned through verified contributions on the SoGood social platform. Used for proposal weighting, content curation, and community tipping. Time-locked to reward long-term participation.",
+    color: "text-teal",
+    bg: "bg-teal/10 border-teal/30",
+  },
+  {
+    symbol: "SST",
+    name: "SotilityStableToken",
+    desc: "USD-pegged stablecoin minted 1:1 against verified business revenue. Every mint is backed by an IPFS receipt audit trail. Stability without traditional collateral.",
+    color: "text-white/80",
+    bg: "bg-white/5 border-white/20",
+  },
+];
+
+const principles = [
+  {
+    icon: Shield,
+    title: "Radical Transparency",
+    desc: "Every financial transaction, governance vote, and operational decision is recorded on-chain and publicly verifiable. Transparency is not a feature — it is the foundation.",
+    color: "text-gold",
+  },
+  {
+    icon: Globe,
+    title: "Community Sovereignty",
+    desc: "Token holders govern the Foundation. No single person, board, or entity controls the direction. Power is distributed by design through the SoGoodDAOFactory governance framework.",
+    color: "text-teal",
+  },
+  {
+    icon: Zap,
+    title: "Autonomous Finance",
+    desc: "Smart contracts execute without human intermediaries. The Elevation Engine generates yield autonomously 24/7, funding the mission through AI-managed DeFi strategies.",
+    color: "text-crimson",
+  },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-navy text-white">
+      <SEOHead
+        title="The Elevation Foundation | Sotilitarianism · Blockchain Governance · Community Finance"
+        description="The Elevation Foundation is a 501(c)(3) nonprofit building transparent, community-governed financial systems through blockchain technology. Guided by Sotilitarianism — where social action generates economic yield. Transparently DApp, WeSolar, and the Elevation Engine."
+        canonical="/"
+        keywords="Elevation Foundation, Sotilitarianism, blockchain governance, community finance, Transparently DApp, WeSolar, Elevation Engine, DAO, DeFi, nonprofit blockchain, SOT token"
+      />
       <Navigation />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background image */}
+      <section className="relative min-h-screen flex items-center overflow-hidden" aria-label="Hero">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${HERO_IMG})` }}
+          role="img"
+          aria-label="Abstract sacred geometry representing the Elevation Foundation's vision"
         />
-        {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.10_0.05_265/0.92)] via-[oklch(0.10_0.05_265/0.70)] to-[oklch(0.10_0.05_265/0.30)]" />
-        {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[oklch(0.12_0.05_265)] to-transparent" />
 
         <div className="container relative z-10 pt-24 pb-20">
@@ -79,7 +133,7 @@ export default function Home() {
               <span className="text-white/70 italic">It Is Built.</span>
             </h1>
             <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-xl animate-fade-up-delay-2">
-              The Elevation Foundation builds transparent, community-governed financial systems using blockchain technology — putting economic power where it belongs: in the hands of the people.
+              The Elevation Foundation builds transparent, community-governed financial systems using blockchain technology — putting economic power where it belongs: in the hands of the people. Profit for the People.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-delay-3">
               <Link
@@ -99,14 +153,13 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
           <ChevronDown size={20} className="text-gold/60" />
         </div>
       </section>
 
       {/* ─── STATS BAR ────────────────────────────────────────── */}
-      <section className="bg-[oklch(0.16_0.05_265)] border-y border-white/10 py-8">
+      <section className="bg-[oklch(0.16_0.05_265)] border-y border-white/10 py-8" aria-label="Foundation stats">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
@@ -124,12 +177,12 @@ export default function Home() {
       </section>
 
       {/* ─── MISSION STATEMENT ────────────────────────────────── */}
-      <section className="py-24 bg-navy">
+      <section className="py-24 bg-navy" aria-labelledby="mission-heading">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <div className="section-label mb-4">Our Mission</div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+              <h2 id="mission-heading" className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
                 The System Was Not Built For Us.
                 <br />
                 <span className="text-gold italic">So We Are Building Our Own.</span>
@@ -137,8 +190,11 @@ export default function Home() {
               <p className="font-body text-white/70 text-lg leading-relaxed mb-6">
                 For generations, communities have been excluded from the financial systems that govern their lives. Banks deny loans. Governments lack accountability. Nonprofits operate in opacity. The Elevation Foundation exists to dismantle these barriers — not through protest, but through code.
               </p>
+              <p className="font-body text-white/70 text-lg leading-relaxed mb-6">
+                We build open-source blockchain infrastructure grounded in <strong className="text-white">Sotilitarianism</strong> — a new economic philosophy that redirects capitalist incentives toward verified social good. Where merit equals profit. Where utility is currency. Where social action generates economic yield.
+              </p>
               <p className="font-body text-white/70 text-lg leading-relaxed mb-8">
-                We build open-source blockchain infrastructure that makes financial transparency the default, community governance the standard, and economic empowerment the outcome.
+                Our three flagship projects — Transparently, WeSolar, and the Elevation Engine — are the living proof that transparent, autonomous, community-governed finance is not a dream. It is deployable code.
               </p>
               <Link
                 href="/our-story"
@@ -152,16 +208,15 @@ export default function Home() {
               <div className="relative rounded-sm overflow-hidden aspect-[4/3]">
                 <img
                   src={COMMUNITY_IMG}
-                  alt="Community gathering around a shared governance table"
+                  alt="Community members collaborating around a shared governance platform"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
               </div>
-              {/* Floating stat card */}
               <div className="absolute -bottom-6 -left-6 bg-[oklch(0.16_0.05_265)] border border-gold/30 p-4 rounded-sm glow-gold">
-                <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Philosophy</div>
+                <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Core Philosophy</div>
                 <div className="font-display text-xl font-bold text-white">Sotilitarianism</div>
-                <div className="font-body text-sm text-white/60 mt-1">Governance through transparency</div>
+                <div className="font-body text-sm text-white/60 mt-1">Make blockchain invisible. Make impact inevitable.</div>
               </div>
             </div>
           </div>
@@ -169,12 +224,12 @@ export default function Home() {
       </section>
 
       {/* ─── PROJECTS ─────────────────────────────────────────── */}
-      <section className="py-24 bg-[oklch(0.14_0.05_265)]">
+      <section className="py-24 bg-[oklch(0.14_0.05_265)]" aria-labelledby="projects-heading">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
             <div>
               <div className="section-label mb-3">Our Work</div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white">
+              <h2 id="projects-heading" className="font-display text-4xl md:text-5xl font-bold text-white">
                 Tools for the <span className="text-gold">Next Economy</span>
               </h2>
             </div>
@@ -188,58 +243,65 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <Link
-                key={project.id}
-                href={project.href}
-                className={`block bg-[oklch(0.16_0.05_265)] border ${project.border} p-7 rounded-sm card-lift group`}
-              >
-                <div className={`section-label ${project.color} mb-4`}>{project.label}</div>
-                <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-gold transition-colors">
-                  {project.title}
-                </h3>
-                <p className="font-body text-white/60 text-sm leading-relaxed mb-6">
-                  {project.desc}
-                </p>
-                <span className={`inline-flex items-center gap-1 ${project.color} text-sm font-body font-medium`}>
-                  Learn more <ArrowRight size={13} />
-                </span>
-              </Link>
-            ))}
+            {projects.map((project) => {
+              const Icon = project.icon;
+              return (
+                <Link
+                  key={project.id}
+                  href={project.href}
+                  className={`block bg-[oklch(0.16_0.05_265)] border ${project.border} p-7 rounded-sm card-lift group`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon size={18} className={project.color} />
+                    <div className={`section-label ${project.color}`}>{project.label}</div>
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-gold transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="font-body text-white/60 text-sm leading-relaxed mb-6">
+                    {project.desc}
+                  </p>
+                  <span className={`inline-flex items-center gap-1 ${project.color} text-sm font-body font-medium`}>
+                    Learn more <ArrowRight size={13} />
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ─── TOKEN ECONOMY ────────────────────────────────────── */}
-      <section className="py-24 bg-navy relative overflow-hidden">
+      <section className="py-24 bg-navy relative overflow-hidden" aria-labelledby="token-heading">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img
                 src={TOKEN_IMG}
-                alt="Three-token economy: SOT, SUG, SST"
+                alt="Three-token economy diagram: SOT ownership token, SUG utility token, SST stablecoin"
                 className="w-full rounded-sm"
               />
             </div>
             <div>
               <div className="section-label mb-4">Token Economy</div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+              <h2 id="token-heading" className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
                 Three Tokens.
                 <br />
                 <span className="text-gold">One Ecosystem.</span>
               </h2>
-              <p className="font-body text-white/70 text-lg leading-relaxed mb-8">
-                Our three-token economy creates a self-sustaining governance and financial system. Each token serves a distinct purpose — together they form the backbone of transparent autonomous finance.
+              <p className="font-body text-white/70 text-lg leading-relaxed mb-4">
+                Our three-token economy creates a self-sustaining governance and financial system rooted in Sotilitarian Economics. Protocol revenue is distributed autonomously: <strong className="text-white">40% to SOT dividends</strong>, <strong className="text-white">40% to SST reserves</strong>, and <strong className="text-white">20% to SUG community campaigns</strong>.
+              </p>
+              <p className="font-body text-white/70 text-base leading-relaxed mb-8">
+                Each token serves a distinct purpose — together they form the backbone of transparent autonomous finance where merit equals profit and social action generates economic yield.
               </p>
               <div className="space-y-4 mb-8">
-                {[
-                  { symbol: "SOT", name: "Sotility Governance Token", desc: "Vote on proposals, elect stewards, shape the Foundation's direction", color: "text-gold", bg: "bg-gold/10 border-gold/30" },
-                  { symbol: "SUG", name: "Sotility Utility Token", desc: "Access platform features, pay for services, earn through participation", color: "text-teal", bg: "bg-teal/10 border-teal/30" },
-                  { symbol: "SST", name: "Sotility Stable Token", desc: "USD-pegged stability for everyday transactions and treasury reserves", color: "text-white/80", bg: "bg-white/5 border-white/20" },
-                ].map((token) => (
+                {tokens.map((token) => (
                   <div key={token.symbol} className={`flex items-start gap-4 p-4 border rounded-sm ${token.bg}`}>
-                    <div className={`hex-badge w-10 h-10 flex-shrink-0 flex items-center justify-center font-mono-data text-xs font-bold ${token.color} bg-current/10`}
-                      style={{ background: "oklch(0.16 0.05 265)" }}>
+                    <div
+                      className="w-12 h-12 flex-shrink-0 flex items-center justify-center font-mono-data text-xs font-bold rounded-sm"
+                      style={{ background: "oklch(0.16 0.05 265)" }}
+                    >
                       <span className={token.color}>{token.symbol}</span>
                     </div>
                     <div>
@@ -253,7 +315,7 @@ export default function Home() {
                 href="/philosophy#token-economy"
                 className="inline-flex items-center gap-2 text-gold font-body font-medium hover:gap-3 transition-all duration-200 group"
               >
-                Explore the Token Economy
+                Explore the Full Token Economy
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -261,24 +323,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── SOTILITARIANISM TEASER ───────────────────────────── */}
+      <section className="py-20 bg-[oklch(0.14_0.05_265)]" aria-labelledby="sotility-heading">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="section-label mb-4">The Philosophy</div>
+            <h2 id="sotility-heading" className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+              Sotilitarianism: <span className="text-gold">A New Economic Operating System</span>
+            </h2>
+            <p className="font-body text-white/70 text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
+              Sotilitarianism is a synthesis of social utility, tokenized participation, and programmable fairness. It integrates capitalist opportunism, socialist humanism, and the idealism of collective ownership into a single coherent framework — rendered in code, enforced by smart contracts, and governed by the community.
+            </p>
+            <div className="grid md:grid-cols-4 gap-6 mb-10">
+              {[
+                { principle: "Merit-Based = Profit-Based", desc: "Economic rewards tied to verified social impact" },
+                { principle: "Utility = Currency", desc: "Useful contributions form the basis for value" },
+                { principle: "Social Action = Economic Yield", desc: "Positive actions generate financial returns" },
+                { principle: "Redirected Incentives", desc: "Self-interest channeled toward collective good" },
+              ].map((item) => (
+                <div key={item.principle} className="bg-[oklch(0.16_0.05_265)] border border-gold/20 p-5 rounded-sm text-left">
+                  <div className="font-body font-semibold text-gold text-sm mb-2">{item.principle}</div>
+                  <div className="font-body text-white/55 text-xs leading-relaxed">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/philosophy"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-gold/40 text-gold font-body font-semibold rounded-sm hover:bg-gold/10 transition-all duration-200 group"
+            >
+              Read the Full Philosophy
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ─── PRINCIPLES ───────────────────────────────────────── */}
-      <section className="py-24 bg-[oklch(0.14_0.05_265)]">
+      <section className="py-24 bg-navy" aria-labelledby="principles-heading">
         <div className="container">
           <div className="text-center mb-14">
             <div className="section-label mb-3">Core Principles</div>
-            <h2 className="font-display text-4xl font-bold text-white">
+            <h2 id="principles-heading" className="font-display text-4xl font-bold text-white">
               How We <span className="text-gold">Operate</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Shield, title: "Radical Transparency", desc: "Every financial transaction, governance vote, and operational decision is recorded on-chain and publicly verifiable. No exceptions.", color: "text-gold" },
-              { icon: Globe, title: "Community Sovereignty", desc: "Token holders govern the Foundation. No single person, board, or entity controls the direction. Power is distributed by design.", color: "text-teal" },
-              { icon: Zap, title: "Autonomous Finance", desc: "Smart contracts execute without human intermediaries. The Elevation Engine generates yield autonomously, funding the mission 24/7.", color: "text-crimson" },
-            ].map(({ icon: Icon, title, desc, color }) => (
+            {principles.map(({ icon: Icon, title, desc, color }) => (
               <div key={title} className="text-center p-8 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm card-lift">
-                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-sm border border-current/30 mb-6 ${color}`}
-                  style={{ background: "oklch(0.18 0.05 265)" }}>
+                <div
+                  className={`inline-flex items-center justify-center w-14 h-14 rounded-sm border border-current/30 mb-6 ${color}`}
+                  style={{ background: "oklch(0.18 0.05 265)" }}
+                >
                   <Icon size={24} />
                 </div>
                 <h3 className="font-display text-xl font-bold text-white mb-3">{title}</h3>
@@ -290,19 +385,18 @@ export default function Home() {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────── */}
-      <section className="py-24 bg-navy relative overflow-hidden">
-        {/* Background geometric pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-full h-full"
-            style={{
-              backgroundImage: "radial-gradient(circle at 2px 2px, oklch(0.72 0.12 75) 1px, transparent 0)",
-              backgroundSize: "40px 40px"
-            }}
-          />
-        </div>
+      <section className="py-24 bg-[oklch(0.14_0.05_265)] relative overflow-hidden" aria-labelledby="cta-heading">
+        <div
+          className="absolute inset-0 opacity-5"
+          aria-hidden="true"
+          style={{
+            backgroundImage: "radial-gradient(circle at 2px 2px, oklch(0.72 0.12 75) 1px, transparent 0)",
+            backgroundSize: "40px 40px",
+          }}
+        />
         <div className="container relative z-10 text-center">
           <div className="section-label mb-4">Join the Movement</div>
-          <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+          <h2 id="cta-heading" className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
             The Future of Finance
             <br />
             <span className="gold-shimmer">Belongs to Everyone.</span>

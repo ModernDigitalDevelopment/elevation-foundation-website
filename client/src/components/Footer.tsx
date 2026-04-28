@@ -49,7 +49,7 @@ export default function Footer() {
                 { href: "/our-work#transparently", label: "Transparently DApp" },
                 { href: "/our-work#wesolar", label: "WeSolar" },
                 { href: "/our-work#elevation-engine", label: "Elevation Engine" },
-                { href: "/our-work#purus", label: "Purus Project" },
+                { href: "/our-work#sogood", label: "SoGood Platform" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-white/60 hover:text-gold text-sm font-body transition-colors">

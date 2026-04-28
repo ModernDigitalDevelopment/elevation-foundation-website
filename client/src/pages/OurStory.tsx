@@ -3,6 +3,7 @@
  * Timeline narrative, founder vision, organizational history
  */
 import Navigation from "@/components/Navigation";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
@@ -11,45 +12,51 @@ const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA
 
 const timeline = [
   {
-    year: "2018",
-    title: "The Question",
-    desc: "Lawrence Cornelius begins asking a fundamental question: why do the communities that need financial infrastructure the most have the least access to it? The answer leads to years of research into blockchain, DeFi, and community governance.",
+    year: "The Question",
+    title: "Why Do the People Who Need Finance Most Have the Least Access?",
+    desc: "Lawrence D. Cornelius begins asking a fundamental question after witnessing firsthand how communities — particularly Black and underserved communities — are systematically excluded from the financial systems that govern their lives. Banks deny loans. Governments lack accountability. Nonprofits accept donations but rarely show where the money goes. The answer to this question leads to years of deep research into blockchain, decentralized finance, and community governance models.",
   },
   {
-    year: "2020",
-    title: "The Philosophy Emerges",
-    desc: "Sotilitarianism takes shape — a governance philosophy rooted in the belief that transparency is not a feature, it is a foundation. The first white papers are drafted, outlining a three-token economy and community-first governance model.",
+    year: "The Philosophy",
+    title: "Sotilitarianism Emerges",
+    desc: "After studying Jeremy Bentham's utilitarianism, Elinor Ostrom's commons governance, and Leonid Hurwicz's mechanism design theory, a new synthesis takes shape: Sotilitarianism. A governance philosophy rooted in the belief that transparency is not a feature — it is a foundation. That merit equals profit. That utility is currency. That social action generates economic yield. The first white papers are drafted, outlining a three-token economy and community-first governance model.",
   },
   {
-    year: "2021",
-    title: "First Smart Contracts",
-    desc: "The technical work begins in earnest. Over 20 Solidity smart contracts are written, tested, and refined. The Transparently DApp prototype demonstrates on-chain governance for the first time. The Elevation Engine begins generating yield on testnets.",
+    year: "The Build",
+    title: "First Smart Contracts Written",
+    desc: "The technical work begins in earnest. Over 20 Solidity smart contracts are written, tested, and refined. The Transparently DApp prototype demonstrates on-chain governance for the first time — organizations earn transparency scores, communities earn rewards for participation. The Elevation Engine begins generating yield on testnets through AI-managed flash loan and arbitrage strategies. The SotilityTreasuryRouter is architected to distribute protocol revenue autonomously.",
   },
   {
-    year: "2022",
-    title: "WeSolar Vision",
-    desc: "The WeSolar project is conceived — a tokenized community solar energy cooperative where residents co-own infrastructure, earn credits, and govern expansion through smart contracts. Pilot planning begins in underserved communities.",
+    year: "WeSolar",
+    title: "Decentralized Solar Energy for the People",
+    desc: "The WeSolar project is conceived — a decentralized peer-to-peer solar financing platform built on the IOTA Tangle. Residents co-own solar infrastructure, earn tokenized energy credits (WeSolarCredits), and vote on expansion through smart contracts. The platform enables fractional ownership of solar panels, automated energy trading, and community governance of shared infrastructure. Pilot planning begins in underserved communities with the goal of making clean energy accessible to everyone.",
   },
   {
-    year: "2023",
-    title: "Foundation Formalized",
-    desc: "The Elevation Foundation is formally incorporated as a 501(c)(3) nonprofit. The legal framework for a hybrid nonprofit/DAO structure is developed, leveraging Wyoming's DUNA (Decentralized Unincorporated Nonprofit Association) law.",
+    year: "Foundation",
+    title: "501(c)(3) Incorporation",
+    desc: "The Elevation Foundation is formally incorporated as a 501(c)(3) tax-exempt nonprofit organization. The legal framework for a hybrid nonprofit/DAO structure is developed, leveraging Wyoming's DUNA (Decentralized Unincorporated Nonprofit Association) law — the first state in the US to legally recognize DAOs. The Foundation's mission is formalized: to acquire and operate small businesses for revenue, purchase housing for rent-to-equity programs, and redistribute profits through the token economy.",
   },
   {
-    year: "2024",
-    title: "Ecosystem Expansion",
-    desc: "The GitHub organization ModernDigitalDevelopment is established with 8 core repositories. The Purus Project — focused on environmental justice and clean water access — joins the ecosystem. Community building accelerates.",
+    year: "Ecosystem",
+    title: "GitHub Organization & Ecosystem Expansion",
+    desc: "The GitHub organization ModernDigitalDevelopment is established with 8 core repositories covering the full Sotility ecosystem: SotilityToken, SotilityGovernance, SotilityTreasuryRouter, TransparentlyDApp, WeSolarContracts, ElevationEngine, SoGoodPlatform, and PurusProject. The Purus Project — focused on environmental justice and clean water access — joins the ecosystem. Community building accelerates across developer, donor, and community member channels.",
   },
   {
-    year: "2025–",
-    title: "The Launch",
-    desc: "Phase 1 of the tokenization roadmap begins. The Elevation Foundation goes public, inviting developers, donors, and community members to participate in building the infrastructure for the next economy. The revolution will be tokenized.",
+    year: "2025 →",
+    title: "Phase 1: The Launch",
+    desc: "Phase 1 of the tokenization roadmap begins. The Elevation Foundation goes public, inviting developers, donors, and community members to participate in building the infrastructure for the next economy. The three-token economy launches with SOT governance token, SUG utility token, and SST stablecoin. The SoGood social platform opens for beta participation. The revolution will be tokenized.",
   },
 ];
 
 export default function OurStory() {
   return (
     <div className="min-h-screen bg-navy text-white">
+      <SEOHead
+        title="Our Story | The Elevation Foundation"
+        description="The Elevation Foundation was built from the ground up by Lawrence D. Cornelius after witnessing how communities are systematically excluded from financial systems. From the question to Sotilitarianism, WeSolar, Transparently, and the Elevation Engine."
+        canonical="/our-story"
+        keywords="Elevation Foundation story, Lawrence Cornelius, Sotilitarianism history, blockchain nonprofit founding, community finance origin"
+      />
       <Navigation />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}

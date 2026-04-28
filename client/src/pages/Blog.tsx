@@ -3,6 +3,7 @@
  * Updates, thought leadership, community news
  */
 import Navigation from "@/components/Navigation";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
@@ -16,9 +17,9 @@ const posts = [
     id: 1,
     category: "Philosophy",
     categoryColor: "text-gold",
-    title: "Sotilitarianism: Why Transparency Is Not a Feature — It Is a Foundation",
-    excerpt: "In traditional governance, transparency is a concession — something granted reluctantly when demanded. We argue that any system of governance that cannot withstand full public scrutiny is, by definition, illegitimate.",
-    date: "March 2025",
+    title: "Sotilitarianism: A New Economic Operating System for the 21st Century",
+    excerpt: "Sotilitarianism is not a protest movement. It is a construction project. It integrates capitalist opportunism, socialist humanism, and collective ownership into a single coherent framework rendered in code, enforced by smart contracts, and governed by the community. Make blockchain invisible. Make impact inevitable.",
+    date: "April 2025",
     readTime: "8 min read",
     featured: true,
   },
@@ -26,9 +27,9 @@ const posts = [
     id: 2,
     category: "Technology",
     categoryColor: "text-teal",
-    title: "How the Elevation Engine Generates Autonomous Yield Through DeFi Flash Loans",
-    excerpt: "A technical deep-dive into how our Python-based DeFi protocol identifies arbitrage opportunities, executes flash loans across multiple protocols, and deposits profits directly into the community treasury.",
-    date: "February 2025",
+    title: "Inside the Elevation Engine: AI-Managed DeFi Yield for Community Treasuries",
+    excerpt: "A technical deep-dive into how our Python-based AI agents scan for arbitrage opportunities across Aave, Uniswap, and Compound, execute flash loans, and route profits through the SotilityTreasuryRouter — distributing 40% to SOT holders, 40% to SST reserves, and 20% to SUG community campaigns.",
+    date: "March 2025",
     readTime: "12 min read",
     featured: false,
   },
@@ -36,9 +37,9 @@ const posts = [
     id: 3,
     category: "Governance",
     categoryColor: "text-gold",
-    title: "Wyoming DUNA Law: The Legal Framework for Hybrid 501(c)(3)/DAO Organizations",
-    excerpt: "Wyoming became the first US state to legally recognize Decentralized Unincorporated Nonprofit Associations. Here is how the Elevation Foundation is using this framework to build the first hybrid nonprofit DAO.",
-    date: "January 2025",
+    title: "Wyoming DUNA Law: The Legal Framework for the World's First Hybrid 501(c)(3)/DAO",
+    excerpt: "Wyoming became the first US state to legally recognize Decentralized Unincorporated Nonprofit Associations. Here is how the Elevation Foundation is using this framework to build a nonprofit that is simultaneously tax-exempt and community-governed on-chain — with no board of directors required.",
+    date: "February 2025",
     readTime: "10 min read",
     featured: false,
   },
@@ -46,9 +47,9 @@ const posts = [
     id: 4,
     category: "Community",
     categoryColor: "text-teal",
-    title: "WeSolar: How Tokenized Community Solar Can End Energy Poverty",
-    excerpt: "Energy poverty is not an accident. It is the result of systems designed to extract wealth from communities rather than build it. WeSolar proposes a different model — one where residents co-own the infrastructure they depend on.",
-    date: "December 2024",
+    title: "WeSolar: Putting the \"We\" in Web3 Energy — IOTA Tangle and Fractional Solar Ownership",
+    excerpt: "Energy poverty is not an accident. WeSolar uses the IOTA Tangle's feeless microtransactions and the WeSolarCrowdfund contract to enable fractional NFT ownership of solar panels. Residents earn WeSolarCredits for energy generated and vote on expansion through WeSolarGovernance — no utility company intermediary.",
+    date: "January 2025",
     readTime: "7 min read",
     featured: false,
   },
@@ -56,9 +57,9 @@ const posts = [
     id: 5,
     category: "DeFi",
     categoryColor: "text-crimson",
-    title: "The Three-Token Economy: SOT, SUG, and SST Explained",
-    excerpt: "Our three-token architecture creates a self-sustaining governance and financial system. Each token serves a distinct purpose — together they form the backbone of transparent autonomous finance.",
-    date: "November 2024",
+    title: "SOT, SUG, SST: The Three-Token Architecture of Sotilitarian Economics",
+    excerpt: "SOT is ownership and dividends. SUG is earned social utility — not purchased. SST is a revenue-backed stablecoin, not an algorithmic gamble. Together they form a self-reinforcing economic flywheel where social good generates financial yield, and financial yield funds more social good.",
+    date: "December 2024",
     readTime: "9 min read",
     featured: false,
   },
@@ -66,10 +67,30 @@ const posts = [
     id: 6,
     category: "Philosophy",
     categoryColor: "text-gold",
-    title: "Ubuntu, Cypherpunk, and Cooperative Economics: The Intellectual Roots of Sotilitarianism",
-    excerpt: "Sotilitarianism draws on three intellectual traditions: the African communal governance model of Ubuntu, the cypherpunk tradition of cryptographic sovereignty, and the cooperative economics movement of W.E.B. Du Bois.",
-    date: "October 2024",
+    title: "Bentham, Ostrom, Hurwicz, Ubuntu: The Intellectual DNA of Sotilitarianism",
+    excerpt: "Sotilitarianism synthesizes Jeremy Bentham's utilitarianism, Elinor Ostrom's commons governance theory, Leonid Hurwicz's mechanism design, and the African philosophy of Ubuntu into a blockchain-native governance framework. Here is how each tradition shapes the Elevation ecosystem.",
+    date: "November 2024",
     readTime: "11 min read",
+    featured: false,
+  },
+  {
+    id: 7,
+    category: "Governance",
+    categoryColor: "text-gold",
+    title: "Transparently: How the SoGoodDAOFactory Deploys On-Chain Governance for Any Organization",
+    excerpt: "The Transparently DApp is not just for the Elevation Foundation. The SoGoodDAOFactory allows any nonprofit, cooperative, or community organization to deploy its own governance structure on-chain in minutes. Organizations earn Transparency Scores based on verified disclosures — creating a new standard of accountability.",
+    date: "October 2024",
+    readTime: "8 min read",
+    featured: false,
+  },
+  {
+    id: 8,
+    category: "Community",
+    categoryColor: "text-teal",
+    title: "The American Transparency Revolution: Why Blockchain Governance Is a Civil Rights Issue",
+    excerpt: "For generations, communities have been excluded from the financial systems that govern their lives. Banks deny loans. Governments lack accountability. Nonprofits operate in opacity. The Elevation Foundation's American Transparency Revolution Manifesto argues that radical financial transparency is not just good policy — it is a moral imperative.",
+    date: "September 2024",
+    readTime: "13 min read",
     featured: false,
   },
 ];
@@ -95,6 +116,12 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-navy text-white">
+      <SEOHead
+        title="Blog and Updates | The Elevation Foundation"
+        description="Thought leadership on Sotilitarianism, blockchain governance, DeFi, community solar, and economic empowerment. Articles, white papers, and community updates from the Elevation Foundation."
+        canonical="/blog"
+        keywords="Sotilitarianism blog, blockchain governance articles, DeFi community finance, WeSolar news, Transparently updates, nonprofit blockchain news"
+      />
       <Navigation />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}

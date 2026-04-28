@@ -3,6 +3,7 @@
  * Financial dashboard, on-chain data, governance activity
  */
 import Navigation from "@/components/Navigation";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { ExternalLink, ArrowRight } from "lucide-react";
@@ -18,10 +19,12 @@ const treasuryData = [
 ];
 
 const governanceActivity = [
-  { id: "EIP-001", title: "Foundation Charter Ratification", status: "Passed", votes: "Pending", date: "2025-Q3" },
-  { id: "EIP-002", title: "Elevation Engine Mainnet Deployment", status: "Pending", votes: "—", date: "2025-Q3" },
-  { id: "EIP-003", title: "WeSolar Pilot Community Selection", status: "Pending", votes: "—", date: "2025-Q4" },
-  { id: "EIP-004", title: "SOT Token Initial Distribution", status: "Pending", votes: "—", date: "2025-Q4" },
+  { id: "EIP-001", title: "Foundation Charter Ratification & 501(c)(3) Filing", status: "Passed", votes: "Founding Team", date: "2024-Q4" },
+  { id: "EIP-002", title: "Transparently DApp Architecture & Smart Contract Spec", status: "Passed", votes: "Founding Team", date: "2025-Q1" },
+  { id: "EIP-003", title: "WeSolar IOTA Tangle Integration Approval", status: "Passed", votes: "Founding Team", date: "2025-Q1" },
+  { id: "EIP-004", title: "Elevation Engine Mainnet Deployment Authorization", status: "Pending", votes: "—", date: "2025-Q3" },
+  { id: "EIP-005", title: "SOT Token Initial Distribution (1B supply)", status: "Pending", votes: "—", date: "2025-Q4" },
+  { id: "EIP-006", title: "WeSolar Pilot Community Selection (Phase 1)", status: "Pending", votes: "—", date: "2025-Q4" },
 ];
 
 const financialCategories = [
@@ -35,6 +38,12 @@ const financialCategories = [
 export default function Transparency() {
   return (
     <div className="min-h-screen bg-navy text-white">
+      <SEOHead
+        title="Transparency | The Elevation Foundation"
+        description="The Elevation Foundation publishes all financial data, governance votes, and operational decisions on-chain. Full transparency is not a feature - it is our foundation. View our on-chain records, governance proposals, and financial allocations."
+        canonical="/transparency"
+        keywords="nonprofit transparency, on-chain governance, blockchain accountability, EIP governance proposals, community treasury, financial transparency"
+      />
       <Navigation />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}

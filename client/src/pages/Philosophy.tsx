@@ -3,6 +3,7 @@
  * Sotilitarianism, three-token economy, governance model
  */
 import Navigation from "@/components/Navigation";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
@@ -41,53 +42,56 @@ const principles = [
 const tokens = [
   {
     symbol: "SOT",
-    name: "Sotility Governance Token",
+    name: "SotilityOwnershipToken",
     color: "text-gold",
     borderColor: "border-gold/40",
     bgColor: "bg-gold/10",
     glowClass: "glow-gold",
-    supply: "100,000,000",
-    purpose: "Governance & Voting",
-    desc: "The SOT token represents ownership and governance rights in the Elevation ecosystem. Holders vote on proposals, elect stewards, allocate treasury funds, and shape the strategic direction of the Foundation. SOT is earned through contribution, not purchased through privilege.",
+    supply: "1,000,000,000",
+    purpose: "Ownership, Governance & Dividends",
+    desc: "The SOT token represents equity ownership in the Elevation ecosystem. It is dividend-eligible from protocol revenue — 40% of all Elevation Engine yield flows to SOT holders. Holders vote on proposals, elect stewards, allocate treasury funds, and shape the Foundation's strategic direction. SOT is the ownership layer of Sotilitarian Economics.",
     mechanics: [
-      "1 SOT = 1 vote on governance proposals",
-      "Staking SOT earns yield from Elevation Engine",
-      "Earned through code contributions, community work, and donations",
+      "Dividend-eligible: 40% of protocol revenue distributed to holders",
+      "1 SOT = 1 vote on governance proposals via SotilityGovernance contract",
+      "Staking SOT earns additional yield from Elevation Engine strategies",
       "Vesting schedules prevent concentration of power",
+      "Minted against verified business revenue with IPFS audit trail",
     ],
   },
   {
     symbol: "SUG",
-    name: "Sotility Utility Token",
+    name: "SoGoodUtilityGovernance Token",
     color: "text-teal",
     borderColor: "border-teal/40",
     bgColor: "bg-teal/10",
     glowClass: "glow-teal",
-    supply: "1,000,000,000",
-    purpose: "Platform Access & Rewards",
-    desc: "The SUG token powers the day-to-day operations of the Elevation ecosystem. It is used to access platform features, pay for services, reward contributors, and incentivize participation. SUG is the fuel that keeps the engine running.",
+    supply: "Earned, Not Purchased",
+    purpose: "Social Utility & Community Participation",
+    desc: "The SUG token is earned through verified contributions on the SoGood social platform — not purchased. It powers community governance, content curation, and proposal weighting. SUG is time-locked to reward long-term participation over speculation. This is the utility layer: social action generates economic yield.",
     mechanics: [
-      "Pay for Transparently DApp governance services",
-      "Earn SUG by participating in community activities",
-      "SUG holders receive fee discounts across all platforms",
-      "Burned on use to maintain deflationary pressure",
+      "Earned through verified social contributions on SoGood platform",
+      "Time-locked tokens reward long-term community participation",
+      "Used for proposal weighting, content curation, and community tipping",
+      "20% of protocol revenue allocated to SUG community campaigns",
+      "Cannot be purchased — must be earned through genuine contribution",
     ],
   },
   {
     symbol: "SST",
-    name: "Sotility Stable Token",
+    name: "SotilityStableToken",
     color: "text-white/80",
     borderColor: "border-white/30",
     bgColor: "bg-white/5",
     glowClass: "",
-    supply: "Algorithmic",
-    purpose: "Stability & Treasury",
-    desc: "The SST token provides USD-pegged stability for everyday transactions, treasury reserves, and cross-border payments. It is the bridge between the crypto economy and the real-world financial needs of the communities we serve.",
+    supply: "Minted 1:1 Against Revenue",
+    purpose: "Stability, Treasury & Cross-Border Payments",
+    desc: "The SST token is a USD-pegged stablecoin minted 1:1 against verified business revenue. Every mint is backed by an IPFS receipt audit trail — not algorithmic speculation. SST provides stability for treasury reserves, grant disbursements, and cross-border payments. 40% of protocol revenue flows to SST reserves.",
     mechanics: [
-      "1:1 USD peg maintained algorithmically",
-      "Used for treasury reserves and grant disbursements",
-      "Enables cross-border payments without bank intermediaries",
-      "Backed by diversified reserve portfolio",
+      "1:1 USD peg backed by verified business revenue (not algorithmic)",
+      "Every mint backed by IPFS receipt audit trail for full transparency",
+      "40% of protocol revenue allocated to SST reserve maintenance",
+      "Used for treasury reserves, grant disbursements, and payroll",
+      "Enables cross-border payments without traditional bank intermediaries",
     ],
   },
 ];
@@ -95,6 +99,12 @@ const tokens = [
 export default function Philosophy() {
   return (
     <div className="min-h-screen bg-navy text-white">
+      <SEOHead
+        title="Sotilitarianism Philosophy | The Elevation Foundation"
+        description="Sotilitarianism is a governance philosophy that synthesizes social utility, tokenized participation, and programmable fairness. Where social action generates economic yield. The intellectual foundation of the Elevation Foundation."
+        canonical="/philosophy"
+        keywords="Sotilitarianism, blockchain governance philosophy, SOT token, SUG utility token, SST stablecoin, social utility, community governance, DeFi philosophy"
+      />
       <Navigation />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}
@@ -129,14 +139,33 @@ export default function Philosophy() {
             </div>
             <div className="space-y-6 font-body text-white/70 text-lg leading-relaxed">
               <p>
-                The word "Sotility" derives from a synthesis of "sovereignty" and "utility" — the idea that true sovereignty is only meaningful when it is useful to the people who hold it. Abstract rights without practical tools are not rights at all.
+                Sotilitarianism is a new economic operating system — a synthesis of social utility, tokenized participation, and programmable fairness. It integrates capitalist opportunism, socialist humanism, and the idealism of collective ownership into a single coherent framework rendered in code, enforced by smart contracts, and governed by the community.
               </p>
               <p>
-                Sotilitarianism is not an ideology of protest. It is an ideology of construction. We do not ask the existing system to reform itself. We build a parallel system — one that is transparent by default, governed by those it serves, and financially autonomous through smart contract automation.
+                The word "Sotility" derives from a synthesis of "sovereignty" and "utility" — the idea that true sovereignty is only meaningful when it is useful to the people who hold it. Abstract rights without practical tools are not rights at all. Sotilitarianism asks: what if we designed economic systems where <strong className="text-white">profit naturally flows toward verified social good?</strong>
               </p>
               <p>
-                The philosophy draws on three intellectual traditions: the African communal governance model of Ubuntu ("I am because we are"), the cypherpunk tradition of cryptographic privacy and financial sovereignty, and the cooperative economics movement pioneered by W.E.B. Du Bois and the Black cooperative movement of the early 20th century.
+                Drawing from Jeremy Bentham's utilitarianism (greatest good for the greatest number), Elinor Ostrom's commons governance (communities can self-govern shared resources), and Leonid Hurwicz's mechanism design theory (systems can be architected to align individual incentives with collective outcomes), Sotilitarianism synthesizes these insights into a blockchain-native governance framework.
               </p>
+              <p>
+                The philosophy also draws from the African communal governance model of Ubuntu ("I am because we are"), the cypherpunk tradition of cryptographic privacy and financial sovereignty, and the cooperative economics movement pioneered by W.E.B. Du Bois and the Black cooperative movement of the early 20th century.
+              </p>
+              <p>
+                Sotilitarianism is not an ideology of protest. It is an ideology of construction. We do not ask the existing system to reform itself. We build a parallel system — one that is transparent by default, governed by those it serves, and financially autonomous through smart contract automation. <strong className="text-white">Make blockchain invisible. Make impact inevitable.</strong>
+              </p>
+              <div className="grid sm:grid-cols-2 gap-6 my-8">
+                {[
+                  { label: "Merit-Based = Profit-Based", desc: "Economic rewards are tied to verified social impact, not speculation" },
+                  { label: "Utility = Currency", desc: "Useful contributions form the basis for economic value in the ecosystem" },
+                  { label: "Social Action = Economic Yield", desc: "Positive community actions generate measurable financial returns" },
+                  { label: "Redirected Incentives", desc: "Self-interest is channeled toward collective good through mechanism design" },
+                ].map((item) => (
+                  <div key={item.label} className="bg-[oklch(0.16_0.05_265)] border border-gold/20 p-5 rounded-sm">
+                    <div className="font-body font-semibold text-gold text-sm mb-2">{item.label}</div>
+                    <div className="font-body text-white/55 text-sm leading-relaxed">{item.desc}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@
  */
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { ArrowRight, Copy, CheckCircle, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -14,12 +15,12 @@ const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA
 const donationAmounts = [25, 50, 100, 250, 500, 1000];
 
 const impactItems = [
-  { amount: "$25",    impact: "Funds one hour of smart contract development" },
-  { amount: "$50",    impact: "Covers gas fees for 10 governance transactions" },
-  { amount: "$100",   impact: "Sponsors one community governance workshop" },
-  { amount: "$250",   impact: "Funds one week of WeSolar pilot research" },
-  { amount: "$500",   impact: "Covers one month of server infrastructure" },
-  { amount: "$1,000", impact: "Sponsors a full smart contract security audit" },
+  { amount: "$25",    impact: "Funds one hour of Solidity smart contract development for Transparently or WeSolar" },
+  { amount: "$50",    impact: "Covers gas fees for 10 on-chain governance transactions on the Transparently DApp" },
+  { amount: "$100",   impact: "Sponsors one Sotilitarianism community education workshop" },
+  { amount: "$250",   impact: "Funds one week of WeSolar IOTA Tangle integration research and development" },
+  { amount: "$500",   impact: "Covers one month of infrastructure for the Elevation Engine DeFi protocol" },
+  { amount: "$1,000", impact: "Sponsors a full Solidity smart contract security audit for Transparently or the Elevation Engine" },
 ];
 
 const cryptoAddresses = [
@@ -82,6 +83,12 @@ export default function Donate() {
 
   return (
     <div className="min-h-screen bg-navy text-white">
+      <SEOHead
+        title="Donate | Support the Elevation Foundation"
+        description="Support the Elevation Foundation with a tax-deductible donation. Your contribution funds smart contract development, community governance workshops, WeSolar pilot research, and the Transparently DApp. 501(c)(3) nonprofit."
+        canonical="/donate"
+        keywords="donate blockchain nonprofit, tax deductible donation, support community finance, Elevation Foundation donate, 501c3 donation"
+      />
       <Navigation />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}

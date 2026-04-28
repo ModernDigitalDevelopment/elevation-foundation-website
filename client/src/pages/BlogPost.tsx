@@ -68,7 +68,7 @@ export default function BlogPost() {
         title={`${post.title} | The Elevation Foundation`}
         description={post.excerpt}
         canonical={`/blog/${post.slug}`}
-        keywords={tags.join(", ")}
+        keywords={[...tags, "capitalism 2.0", "social capitalism", "utilitarian capitalism", "transparent economics", "trust tech", "transparency tech", "Sotilitarianism", "blockchain governance", "community finance"].join(", ")}
       />
       <Navigation />
 

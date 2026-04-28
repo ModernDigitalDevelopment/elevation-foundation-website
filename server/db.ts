@@ -1,6 +1,6 @@
 import { and, desc, eq, like, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { BlogPost, InsertBlogPost, InsertUser, blogPosts, users } from "../drizzle/schema";
+import { BlogPost, InsertBlogPost, InsertUser, NewsletterSubscriber, blogPosts, newsletterSubscribers, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -183,6 +183,51 @@ export async function deletePost(id: number): Promise<void> {
   if (!db) throw new Error("Database not available");
 
   await db.delete(blogPosts).where(eq(blogPosts.id, id));
+}
+
+// ─── NEWSLETTER SUBSCRIBER QUERIES ────────────────────────────────────────────
+
+/** Subscribe an email address. Returns the new subscriber or throws on duplicate. */
+export async function subscribeEmail(email: string, firstName?: string, source?: string): Promise<{ alreadySubscribed: boolean }> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const normalised = email.trim().toLowerCase();
+
+  // Check for existing subscriber
+  const existing = await db
+    .select({ id: newsletterSubscribers.id })
+    .from(newsletterSubscribers)
+    .where(eq(newsletterSubscribers.email, normalised))
+    .limit(1);
+
+  if (existing.length > 0) {
+    return { alreadySubscribed: true };
+  }
+
+  await db.insert(newsletterSubscribers).values({
+    email: normalised,
+    firstName: firstName?.trim() || null,
+    source: source ?? "website",
+    confirmed: true,
+  });
+
+  return { alreadySubscribed: false };
+}
+
+/** List all newsletter subscribers (admin). */
+export async function listSubscribers(opts?: { limit?: number; offset?: number }): Promise<{ subscribers: NewsletterSubscriber[]; total: number }> {
+  const db = await getDb();
+  if (!db) return { subscribers: [], total: 0 };
+
+  const { limit = 100, offset = 0 } = opts ?? {};
+
+  const [subscribers, countResult] = await Promise.all([
+    db.select().from(newsletterSubscribers).orderBy(desc(newsletterSubscribers.createdAt)).limit(limit).offset(offset),
+    db.select({ count: sql<number>`count(*)` }).from(newsletterSubscribers),
+  ]);
+
+  return { subscribers, total: Number(countResult[0]?.count ?? 0) };
 }
 
 /** Get distinct categories from published posts. */

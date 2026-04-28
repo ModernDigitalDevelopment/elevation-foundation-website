@@ -74,7 +74,7 @@ export default function AboutFounder() {
       <SEOHead
         title="C.J. Sinclair — Founder | Elevation Foundation"
         description="Meet C.J. Sinclair — quantitative systems engineer, fintech architect, and founder of the Elevation Foundation. 20+ years building systems that remove bias, gatekeepers, and middlemen."
-        keywords="CJ Sinclair, Elevation Foundation founder, Sotilitarianism, blockchain governance, quantitative investing, Vetta Investments, fintech"
+        keywords="CJ Sinclair, Elevation Foundation founder, Sotilitarianism, capitalism 2.0, social capitalism, transparent economics, trust tech, blockchain governance, quantitative investing, Vetta Investments, fintech, utilitarian capitalism"
         ogImage="https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-card_0ac91696.webp"
       />
       <Navigation />

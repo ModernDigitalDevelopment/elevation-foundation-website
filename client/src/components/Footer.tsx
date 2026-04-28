@@ -4,6 +4,7 @@
  */
 import { Link } from "wouter";
 import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import NewsletterForm from "@/components/NewsletterForm";
 
 export default function Footer() {
   return (
@@ -94,6 +95,21 @@ export default function Footer() {
                   <Icon size={14} />
                 </a>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Newsletter inline strip */}
+        <div className="border-t border-white/10 pt-10 pb-8 mb-2">
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-shrink-0">
+              <div className="font-display text-lg font-bold text-white mb-1">Stay Updated</div>
+              <p className="font-body text-white/50 text-sm max-w-xs">
+                Capitalism 2.0 insights, governance updates, and ecosystem news.
+              </p>
+            </div>
+            <div className="flex-1">
+              <NewsletterForm variant="inline" source="footer" />
             </div>
           </div>
         </div>

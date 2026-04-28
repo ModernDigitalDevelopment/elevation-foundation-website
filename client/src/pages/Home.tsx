@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
+import NewsletterForm from "@/components/NewsletterForm";
 import { ArrowRight, Shield, Zap, Globe, ChevronDown, Sun, Vote, TrendingUp } from "lucide-react";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/hero-main-v2-niPfcfa8NM8m2LqLA4PvmB.webp";
@@ -102,10 +103,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-navy text-white">
       <SEOHead
-        title="The Elevation Foundation | Sotilitarianism · Blockchain Governance · Community Finance"
-        description="The Elevation Foundation is a 501(c)(3) nonprofit building transparent, community-governed financial systems through blockchain technology. Guided by Sotilitarianism — where social action generates economic yield. Transparently DApp, WeSolar, and the Elevation Engine."
+        title="The Elevation Foundation | Capitalism 2.0 · Transparent Economics · Blockchain Governance"
+        description="The Elevation Foundation is a 501(c)(3) nonprofit pioneering Capitalism 2.0 — transparent economics, social capitalism, and utilitarian capitalism powered by blockchain. Sotilitarianism: where social action generates economic yield. Transparently DApp, WeSolar, and the Elevation Engine."
         canonical="/"
-        keywords="Elevation Foundation, Sotilitarianism, blockchain governance, community finance, Transparently DApp, WeSolar, Elevation Engine, DAO, DeFi, nonprofit blockchain, SOT token"
+        keywords="Elevation Foundation, Sotilitarianism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance, community finance, transparent capitalism, participatory economics, Transparently DApp, WeSolar, Elevation Engine, DAO, DeFi, nonprofit blockchain, SOT token, post-capitalist economics, cooperative economics, solidarity economics"
       />
       <Navigation />
 
@@ -126,7 +127,7 @@ export default function Home() {
               501(c)(3) Nonprofit · Blockchain Governance · Community Finance
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-black leading-[1.05] mb-6 animate-fade-up-delay-1">
-              <span className="gold-shimmer">Elevation</span>
+              <span className="gold-shimmer">Transparency</span>
               <br />
               <span className="text-white">Is Not Given.</span>
               <br />
@@ -421,6 +422,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ─── NEWSLETTER ───────────────────────────────────────── */}
+      <NewsletterForm
+        source="home"
+        heading="Join the Transparency Movement"
+        subheading="Get updates on Capitalism 2.0, Sotilitarianism, transparent economics, and the Elevation Foundation's latest work — delivered to your inbox. No spam. Ever."
+      />
 
       <Footer />
     </div>

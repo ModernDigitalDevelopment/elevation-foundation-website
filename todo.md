@@ -24,3 +24,14 @@
 - [ ] Build /admin/blog post editor (create/edit/delete, markdown editor, publish toggle)
 - [ ] Add admin route guard (owner/admin only)
 - [ ] Write vitest tests for blog procedures
+
+## Newsletter Subscription
+- [x] Newsletter DB table (newsletter_subscribers), tRPC subscribe mutation, admin list view
+- [x] Newsletter form UI component with toast feedback and duplicate handling
+- [x] Add newsletter section to Home page, Footer, and Get Involved page
+
+## Hero Title & SEO Keywords
+- [x] Fix hero title: change "Elevation" to "Transparency" in Home page hero
+- [x] SEO keywords: capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech across meta tags and JSON-LD
+- [x] Update index.html global meta keywords tag with full keyword set
+- [x] Update SEOHead per-page descriptions to weave in keyword variations

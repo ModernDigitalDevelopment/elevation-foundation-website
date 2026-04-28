@@ -159,7 +159,7 @@ export default function WhitePapers() {
         title="White Papers & Research Documents | The Elevation Foundation"
         description="Download free research documents, whitepapers, and manifestos from the Elevation Foundation: the Sotilitarianism manifesto, Transparently DApp architecture, WeSolar whitepaper, Sotility tokenomics, and more."
         canonical="/white-papers"
-        keywords="Sotilitarianism whitepaper, Transparently DApp architecture, WeSolar whitepaper, Elevation Foundation documents, blockchain governance research, community solar whitepaper, SOT token whitepaper, free blockchain research"
+        keywords="Sotilitarianism whitepaper, capitalism 2.0 research, social capitalism whitepaper, utilitarian capitalism, transparent economics research, trust tech whitepaper, transparency tech, Transparently DApp architecture, WeSolar whitepaper, Elevation Foundation documents, blockchain governance research, community solar whitepaper, SOT token whitepaper, free blockchain research"
         jsonLd={jsonLd}
       />
       <Navigation />

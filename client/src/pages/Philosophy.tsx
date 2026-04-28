@@ -103,7 +103,7 @@ export default function Philosophy() {
         title="Sotilitarianism Philosophy | The Elevation Foundation"
         description="Sotilitarianism is a governance philosophy that synthesizes social utility, tokenized participation, and programmable fairness. Where social action generates economic yield. The intellectual foundation of the Elevation Foundation."
         canonical="/philosophy"
-        keywords="Sotilitarianism, blockchain governance philosophy, SOT token, SUG utility token, SST stablecoin, social utility, community governance, DeFi philosophy"
+        keywords="Sotilitarianism, sotilitarian capitalism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance philosophy, post-capitalist economics, participatory economics, cooperative economics, solidarity economics, SOT token, SUG utility token, SST stablecoin, social utility, community governance, DeFi philosophy, economic transparency, social good finance, impact investing"
       />
       <Navigation />
 

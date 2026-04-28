@@ -68,7 +68,7 @@ export default function Blog() {
         title="Blog and Updates | The Elevation Foundation"
         description="Thought leadership on Sotilitarianism, blockchain governance, DeFi, community solar, and economic empowerment. Articles, white papers, and community updates from the Elevation Foundation."
         canonical="/blog"
-        keywords="Sotilitarianism blog, blockchain governance articles, DeFi community finance, WeSolar news, Transparently updates, nonprofit blockchain news"
+        keywords="Sotilitarianism blog, capitalism 2.0 articles, social capitalism essays, utilitarian capitalism, transparent economics blog, trust tech, transparency tech, blockchain governance articles, DeFi community finance, WeSolar news, Transparently updates, nonprofit blockchain news, post-capitalist economics"
       />
       <Navigation />
 

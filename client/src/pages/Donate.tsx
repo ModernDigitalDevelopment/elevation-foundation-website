@@ -87,7 +87,7 @@ export default function Donate() {
         title="Donate | Support the Elevation Foundation"
         description="Support the Elevation Foundation with a tax-deductible donation. Your contribution funds smart contract development, community governance workshops, WeSolar pilot research, and the Transparently DApp. 501(c)(3) nonprofit."
         canonical="/donate"
-        keywords="donate blockchain nonprofit, tax deductible donation, support community finance, Elevation Foundation donate, 501c3 donation"
+        keywords="donate blockchain nonprofit, tax deductible donation, support community finance, support capitalism 2.0, transparent economics donation, social capitalism nonprofit, Elevation Foundation donate, 501c3 donation, solidarity economics"
       />
       <Navigation />
 

@@ -50,3 +50,22 @@ export const blogPosts = mysqlTable("blog_posts", {
 
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertBlogPost = typeof blogPosts.$inferInsert;
+
+/**
+ * Newsletter subscribers table.
+ * Stores email addresses of visitors who opt in to updates.
+ */
+export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  /** Optional first name for personalisation */
+  firstName: varchar("firstName", { length: 128 }),
+  /** Source page where they subscribed, e.g. "home", "footer", "get-involved" */
+  source: varchar("source", { length: 64 }).default("website"),
+  /** Whether they confirmed via double opt-in (future use) */
+  confirmed: boolean("confirmed").notNull().default(true),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type InsertNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;

@@ -55,7 +55,7 @@ export default function OurStory() {
         title="Our Story | The Elevation Foundation"
         description="The Elevation Foundation was built from the ground up by Lawrence D. Cornelius after witnessing how communities are systematically excluded from financial systems. From the question to Sotilitarianism, WeSolar, Transparently, and the Elevation Engine."
         canonical="/our-story"
-        keywords="Elevation Foundation story, Lawrence Cornelius, Sotilitarianism history, blockchain nonprofit founding, community finance origin"
+        keywords="Elevation Foundation story, Sotilitarianism history, capitalism 2.0 origin, transparent economics nonprofit, social capitalism founding, utilitarian capitalism, trust tech, transparency tech, blockchain nonprofit founding, community finance origin, post-capitalist economics, cooperative economics"
       />
       <Navigation />
 

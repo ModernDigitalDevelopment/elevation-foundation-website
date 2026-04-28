@@ -125,7 +125,7 @@ export default function OurWork() {
         title="Our Work | Transparently, WeSolar, Elevation Engine | The Elevation Foundation"
         description="The Elevation Foundation builds Transparently (on-chain governance DApp), WeSolar (decentralized community solar), and the Elevation Engine (AI-managed DeFi yield). Tools for the next economy."
         canonical="/our-work"
-        keywords="Transparently DApp, WeSolar, Elevation Engine, SoGood platform, blockchain projects, community solar, DeFi yield, on-chain governance"
+        keywords="Transparently DApp, WeSolar, Elevation Engine, SoGood platform, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain projects, community solar, DeFi yield, on-chain governance, transparent capitalism, community-owned finance"
       />
       <Navigation />
 

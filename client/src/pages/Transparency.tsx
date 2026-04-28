@@ -42,7 +42,7 @@ export default function Transparency() {
         title="Transparency | The Elevation Foundation"
         description="The Elevation Foundation publishes all financial data, governance votes, and operational decisions on-chain. Full transparency is not a feature - it is our foundation. View our on-chain records, governance proposals, and financial allocations."
         canonical="/transparency"
-        keywords="nonprofit transparency, on-chain governance, blockchain accountability, EIP governance proposals, community treasury, financial transparency"
+        keywords="nonprofit transparency, transparent economics, transparency tech, trust tech, on-chain governance, blockchain accountability, capitalism 2.0, social capitalism, EIP governance proposals, community treasury, financial transparency, economic transparency, sotilitarian capitalism"
       />
       <Navigation />
 

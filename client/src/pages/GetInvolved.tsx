@@ -85,7 +85,7 @@ export default function GetInvolved() {
         title="Get Involved | The Elevation Foundation"
         description="Join the Elevation Foundation as a developer, community organizer, ambassador, or researcher. Contribute code, community, or content and earn SOT governance tokens. The revolution will be tokenized."
         canonical="/get-involved"
-        keywords="get involved blockchain nonprofit, SOT token rewards, open source blockchain, community organizer, developer contributions, Sotilitarianism ambassador"
+        keywords="get involved blockchain nonprofit, SOT token rewards, open source blockchain, community organizer, developer contributions, Sotilitarianism ambassador, capitalism 2.0 movement, social capitalism community, transparent economics, trust tech, transparency tech, participatory economics"
       />
       <Navigation />
 

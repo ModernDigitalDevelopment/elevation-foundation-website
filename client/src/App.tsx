@@ -16,6 +16,7 @@ import DonateSuccess from "./pages/DonateSuccess";
 import WhitePapers from "./pages/WhitePapers";
 import BlogPost from "./pages/BlogPost";
 import AdminBlog from "./pages/AdminBlog";
+import AboutFounder from "./pages/AboutFounder";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/admin/blog" component={AdminBlog} />
       <Route path="/white-papers" component={WhitePapers} />
+      <Route path="/about/founder" component={AboutFounder} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

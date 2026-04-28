@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/blog", label: "Blog" },
   { href: "/white-papers", label: "Research" },
   { href: "/get-involved", label: "Get Involved" },
+  { href: "/about/founder", label: "About" },
 ];
 
 export default function Navigation() {

@@ -3,6 +3,7 @@
  * - GET /sitemap.xml  — dynamic XML sitemap including all published blog posts
  * - GET /robots.txt   — served from here so it references the live domain
  * - GET /api/gsc-verify — returns the GSC HTML verification meta tag token (env-based)
+ * - GET /1602e91995472839731dc7eaea85fe40.txt — IndexNow key file (Bing, Yandex, Seznam, Naver)
  *
  * Register BEFORE tRPC and static middleware in server/_core/index.ts
  */
@@ -10,6 +11,7 @@ import { Express, Request, Response } from "express";
 import { listPublishedPosts } from "./db";
 
 const DOMAIN = "https://elevation.foundation";
+const INDEXNOW_KEY = "1602e91995472839731dc7eaea85fe40";
 
 /** Static pages with their change frequency and priority */
 const STATIC_ROUTES: Array<{ path: string; changefreq: string; priority: string; lastmod?: string }> = [
@@ -113,5 +115,56 @@ Sitemap: ${DOMAIN}/sitemap.xml
   app.get("/api/gsc-verify", (_req: Request, res: Response) => {
     const token = process.env.GOOGLE_SITE_VERIFICATION ?? "";
     res.json({ token, metaTag: token ? `<meta name="google-site-verification" content="${token}" />` : null });
+  });
+
+  /** IndexNow key file — required by Bing, Yandex, Seznam, Naver for instant indexing */
+  app.get(`/${INDEXNOW_KEY}.txt`, (_req: Request, res: Response) => {
+    res.set("Content-Type", "text/plain; charset=utf-8");
+    res.send(INDEXNOW_KEY);
+  });
+
+  /** IndexNow submission endpoint — POST /api/indexnow to trigger immediate re-indexing */
+  app.post("/api/indexnow", async (_req: Request, res: Response) => {
+    try {
+      const { posts } = await listPublishedPosts({ limit: 500, offset: 0 });
+      const staticUrls = STATIC_ROUTES.map((r) => `${DOMAIN}${r.path}`);
+      const blogUrls = posts.map((p) => `${DOMAIN}/blog/${p.slug}`);
+      const urlList = [...staticUrls, ...blogUrls];
+
+      const body = JSON.stringify({
+        host: "elevation.foundation",
+        key: INDEXNOW_KEY,
+        keyLocation: `${DOMAIN}/${INDEXNOW_KEY}.txt`,
+        urlList,
+      });
+
+      // Submit to all IndexNow-compatible engines simultaneously
+      const engines = [
+        "https://api.indexnow.org/indexnow",
+        "https://www.bing.com/indexnow",
+        "https://yandex.com/indexnow",
+        "https://search.seznam.cz/indexnow",
+      ];
+
+      const results = await Promise.allSettled(
+        engines.map((url) =>
+          fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            body,
+          }).then((r) => ({ engine: url, status: r.status, ok: r.ok }))
+        )
+      );
+
+      const summary = results.map((r) =>
+        r.status === "fulfilled" ? r.value : { engine: "unknown", status: 0, ok: false, error: r.reason }
+      );
+
+      console.log("[IndexNow] Submission results:", JSON.stringify(summary));
+      res.json({ submitted: urlList.length, engines: summary });
+    } catch (err) {
+      console.error("[IndexNow] Submission error:", err);
+      res.status(500).json({ error: String(err) });
+    }
   });
 }

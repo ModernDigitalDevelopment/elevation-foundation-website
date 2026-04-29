@@ -58,3 +58,10 @@
 - [x] Build /sotilitarianism dedicated landing page
 - [x] Add JSON-LD structured data markup (Book, DefinedTerm, FAQPage schemas)
 - [x] Add /sotilitarianism route to App.tsx and Navigation
+
+## Google Search Console Preparation
+- [x] Generate XML sitemap with all current routes and blog post slugs
+- [x] Add /sitemap.xml server route (dynamic, includes all blog posts)
+- [x] Update robots.txt to reference sitemap URL
+- [x] Add GSC HTML meta tag support (env-based VITE_GOOGLE_SITE_VERIFICATION token)
+- [x] Save checkpoint and deploy

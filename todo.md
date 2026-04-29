@@ -65,3 +65,16 @@
 - [x] Update robots.txt to reference sitemap URL
 - [x] Add GSC HTML meta tag support (env-based VITE_GOOGLE_SITE_VERIFICATION token)
 - [x] Save checkpoint and deploy
+
+## Website GitHub Ecosystem Integration (Comprehensive)
+- [x] Home page: Add GitHub links to projects section cards (Transparently, WeSolar, Elevation Foundation)
+- [x] Our Work page: GitHub repo links on each project + Open Source section with all 4 repos
+- [x] Philosophy page: GitHub repo link to sotilitarianism with reading guide
+- [x] Sotilitarianism landing page: Full GitHub repo integration with JSON-LD
+- [x] White Papers page: "View Source" per category + GitHub CTA in Open Access section
+- [x] Our Story page: GitHub org link + 4 repo cards in timeline section
+- [x] About Founder page: GitHub profile button in social links
+- [x] Footer: "Open Source" section with all 4 repos + GitHub icon in social links
+- [x] Get Involved page: 8 open bounties with correct repo names + GitHub org link
+- [x] Transparency page: GitHub org in public metrics
+- [x] Donate page: "View Open Issues" GitHub link

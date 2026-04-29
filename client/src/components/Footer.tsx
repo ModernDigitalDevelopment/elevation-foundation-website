@@ -29,9 +29,11 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { href: "/our-story", label: "Our Story" },
-                { href: "/philosophy", label: "Sotilitarianism" },
+                { href: "/philosophy", label: "Philosophy" },
+                { href: "/sotilitarianism", label: "Sotilitarianism" },
                 { href: "/our-work", label: "Our Work" },
-                { href: "/transparency", label: "Transparency" },
+                { href: "/white-papers", label: "White Papers" },
+                { href: "/about/founder", label: "Founder" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-white/60 hover:text-gold text-sm font-body transition-colors">
@@ -56,6 +58,27 @@ export default function Footer() {
                   <Link href={link.href} className="text-white/60 hover:text-gold text-sm font-body transition-colors">
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="section-label mt-6 mb-3">Open Source</h4>
+            <ul className="space-y-2">
+              {[
+                { href: "https://github.com/ModernDigitalDevelopment/sotilitarianism", label: "Sotilitarianism" },
+                { href: "https://github.com/ModernDigitalDevelopment/transparently", label: "Transparently" },
+                { href: "https://github.com/ModernDigitalDevelopment/wesolar", label: "WeSolar" },
+                { href: "https://github.com/ModernDigitalDevelopment/elevation-foundation", label: "Elevation Foundation" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-white/60 hover:text-gold text-sm font-body transition-colors"
+                  >
+                    <Github size={11} className="opacity-60" />
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

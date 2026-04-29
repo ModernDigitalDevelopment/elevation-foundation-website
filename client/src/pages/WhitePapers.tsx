@@ -6,13 +6,13 @@
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
-import { Download, FileText, BookOpen, Zap, Sun, Shield, Cpu } from "lucide-react";
+import { Download, FileText, BookOpen, Zap, Sun, Shield, Cpu, Github, ExternalLink } from "lucide-react";
 
 const categories = [
-  { id: "philosophy", label: "Philosophy & Governance", color: "text-gold", border: "border-gold/30", bg: "bg-gold/10" },
-  { id: "transparently", label: "Transparently DApp", color: "text-teal", border: "border-teal/30", bg: "bg-teal/10" },
-  { id: "wesolar", label: "WeSolar", color: "text-crimson", border: "border-crimson/30", bg: "bg-crimson/10" },
-  { id: "token", label: "Token Economy", color: "text-white/80", border: "border-white/20", bg: "bg-white/5" },
+  { id: "philosophy", label: "Philosophy & Governance", color: "text-gold", border: "border-gold/30", bg: "bg-gold/10", repo: "sotilitarianism" },
+  { id: "transparently", label: "Transparently DApp", color: "text-teal", border: "border-teal/30", bg: "bg-teal/10", repo: "transparently" },
+  { id: "wesolar", label: "WeSolar", color: "text-crimson", border: "border-crimson/30", bg: "bg-crimson/10", repo: "wesolar" },
+  { id: "token", label: "Token Economy", color: "text-white/80", border: "border-white/20", bg: "bg-white/5", repo: "elevation-foundation" },
 ];
 
 const documents = [
@@ -288,10 +288,24 @@ export default function WhitePapers() {
       {byCategory.map(cat => (
         <section key={cat.id} className="py-16 bg-navy border-t border-white/10">
           <div className="container">
-            <div className={`section-label ${cat.color} mb-3`}>{cat.label}</div>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-10">
-              {cat.label} Documents
-            </h2>
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <div className={`section-label ${cat.color} mb-3`}>{cat.label}</div>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-white">
+                  {cat.label} Documents
+                </h2>
+              </div>
+              <a
+                href={`https://github.com/ModernDigitalDevelopment/${cat.repo}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`hidden md:inline-flex items-center gap-2 px-4 py-2 border ${cat.border} ${cat.color} font-mono-data text-xs rounded-sm hover:opacity-70 transition-opacity`}
+              >
+                <Github size={14} />
+                View Source
+                <ExternalLink size={10} className="opacity-60" />
+              </a>
+            </div>
             <div className="grid md:grid-cols-3 gap-5">
               {cat.docs.map((doc) => {
                 const Icon = doc.icon;
@@ -341,9 +355,19 @@ export default function WhitePapers() {
             <p className="font-body text-white/65 leading-relaxed mb-6">
               All Elevation Foundation research documents are published under open access principles. You are free to share, cite, and build upon this work — provided you attribute the source and keep derivative works open. Knowledge hoarded is knowledge wasted.
             </p>
-            <p className="font-mono-data text-xs text-white/40">
+            <p className="font-mono-data text-xs text-white/40 mb-8">
               Citation: The Elevation Foundation. (2024). [Document Title]. elevation.foundation/white-papers
             </p>
+            <a
+              href="https://github.com/ModernDigitalDevelopment"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200"
+            >
+              <Github size={16} />
+              View All Repositories on GitHub
+              <ExternalLink size={14} className="opacity-60" />
+            </a>
           </div>
         </div>
       </section>

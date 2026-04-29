@@ -8,7 +8,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import NewsletterForm from "@/components/NewsletterForm";
-import { ArrowRight, Shield, Zap, Globe, ChevronDown, Sun, Vote, TrendingUp } from "lucide-react";
+import { ArrowRight, Shield, Zap, Globe, ChevronDown, Sun, Vote, TrendingUp, Github, ExternalLink } from "lucide-react";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/hero-main-v2-niPfcfa8NM8m2LqLA4PvmB.webp";
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
@@ -31,6 +31,7 @@ const projects = [
     color: "text-gold",
     border: "border-gold/30",
     href: "/our-work#transparently",
+    github: "https://github.com/ModernDigitalDevelopment/transparently",
   },
   {
     id: "wesolar",
@@ -41,6 +42,7 @@ const projects = [
     color: "text-teal",
     border: "border-teal/30",
     href: "/our-work#wesolar",
+    github: "https://github.com/ModernDigitalDevelopment/wesolar",
   },
   {
     id: "elevation-engine",
@@ -51,6 +53,7 @@ const projects = [
     color: "text-crimson",
     border: "border-crimson/30",
     href: "/our-work#elevation-engine",
+    github: "https://github.com/ModernDigitalDevelopment/elevation-foundation",
   },
 ];
 
@@ -262,9 +265,22 @@ export default function Home() {
                   <p className="font-body text-white/60 text-sm leading-relaxed mb-6">
                     {project.desc}
                   </p>
-                  <span className={`inline-flex items-center gap-1 ${project.color} text-sm font-body font-medium`}>
-                    Learn more <ArrowRight size={13} />
-                  </span>
+                  <div className="flex items-center justify-between">
+                    <span className={`inline-flex items-center gap-1 ${project.color} text-sm font-body font-medium`}>
+                      Learn more <ArrowRight size={13} />
+                    </span>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-white/40 hover:text-gold text-xs font-mono-data transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github size={14} /> Source
+                      </a>
+                    )}
+                  </div>
                 </Link>
               );
             })}

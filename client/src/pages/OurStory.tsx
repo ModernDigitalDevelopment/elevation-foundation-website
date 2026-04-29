@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github, ExternalLink } from "lucide-react";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
 
@@ -14,7 +14,7 @@ const timeline = [
   {
     year: "The Question",
     title: "Why Do the People Who Need Finance Most Have the Least Access?",
-    desc: "Lawrence D. Cornelius begins asking a fundamental question after witnessing firsthand how communities — particularly Black and underserved communities — are systematically excluded from the financial systems that govern their lives. Banks deny loans. Governments lack accountability. Nonprofits accept donations but rarely show where the money goes. The answer to this question leads to years of deep research into blockchain, decentralized finance, and community governance models.",
+    desc: "Cornelius Lawrence begins asking a fundamental question after witnessing firsthand how communities — particularly Black and underserved communities — are systematically excluded from the financial systems that govern their lives. Banks deny loans. Governments lack accountability. Nonprofits accept donations but rarely show where the money goes. The answer to this question leads to years of deep research into blockchain, decentralized finance, and community governance models.",
   },
   {
     year: "The Philosophy",
@@ -39,7 +39,7 @@ const timeline = [
   {
     year: "Ecosystem",
     title: "GitHub Organization & Ecosystem Expansion",
-    desc: "The GitHub organization ModernDigitalDevelopment is established with 8 core repositories covering the full Sotility ecosystem: SotilityToken, SotilityGovernance, SotilityTreasuryRouter, TransparentlyDApp, WeSolarContracts, ElevationEngine, SoGoodPlatform, and PurusProject. The Purus Project — focused on environmental justice and clean water access — joins the ecosystem. Community building accelerates across developer, donor, and community member channels.",
+    desc: "The GitHub organization ModernDigitalDevelopment is established with public repositories covering the full Sotility ecosystem. All code is open-source: Sotilitarianism (philosophy, book, manifestos), Transparently (governance DApp, smart contracts), WeSolar (decentralized solar platform), and the Elevation Foundation (501(c)(3) operations, research, DeFi protocols). Community building accelerates across developer, donor, and community member channels.",
   },
   {
     year: "2025 →",
@@ -53,7 +53,7 @@ export default function OurStory() {
     <div className="min-h-screen bg-navy text-white">
       <SEOHead
         title="Our Story | The Elevation Foundation"
-        description="The Elevation Foundation was built from the ground up by Lawrence D. Cornelius after witnessing how communities are systematically excluded from financial systems. From the question to Sotilitarianism, WeSolar, Transparently, and the Elevation Engine."
+        description="The Elevation Foundation was built from the ground up by Cornelius Lawrence after witnessing how communities are systematically excluded from financial systems. From the question to Sotilitarianism, WeSolar, Transparently, and the Elevation Engine."
         canonical="/our-story"
         keywords="Elevation Foundation story, Sotilitarianism history, capitalism 2.0 origin, transparent economics nonprofit, social capitalism founding, utilitarian capitalism, trust tech, transparency tech, blockchain nonprofit founding, community finance origin, post-capitalist economics, cooperative economics"
       />
@@ -192,8 +192,56 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* ─── OPEN SOURCE ECOSYSTEM ─────────────────────────── */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)] border-t border-white/10">
+        <div className="container">
+          <div className="bg-[oklch(0.16_0.05_265)] border border-gold/20 p-10 rounded-sm">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <div className="section-label mb-4">Open Source</div>
+                <h2 className="font-display text-3xl font-bold text-white mb-4">
+                  All Code Is Public
+                </h2>
+                <p className="font-body text-white/70 leading-relaxed mb-6">
+                  Every line of code, every smart contract, every whitepaper — published openly on GitHub. Fork it, audit it, improve it. That is the point of transparent economics.
+                </p>
+                <a
+                  href="https://github.com/ModernDigitalDevelopment"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 group"
+                >
+                  <Github size={16} />
+                  View GitHub Organization
+                  <ExternalLink size={14} className="opacity-60" />
+                </a>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { name: "sotilitarianism", desc: "Philosophy · 4-part book · manifestos" },
+                  { name: "transparently", desc: "On-chain governance DApp · smart contracts" },
+                  { name: "wesolar", desc: "P2P solar energy · IOTA Tangle" },
+                  { name: "elevation-foundation", desc: "501(c)(3) · research · DeFi protocols" },
+                ].map(({ name, desc }) => (
+                  <a
+                    key={name}
+                    href={`https://github.com/ModernDigitalDevelopment/${name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 bg-[oklch(0.12_0.05_265)] border border-white/10 rounded-sm hover:border-gold/30 transition-colors group"
+                  >
+                    <div className="font-mono-data text-xs text-gold/70 group-hover:text-gold transition-colors mb-1">{name}</div>
+                    <div className="font-body text-xs text-white/40">{desc}</div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA ──────────────────────────────────────────────── */}
+      <section className="py-20 bg-navy">
         <div className="container text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
             This Story Is Still Being Written

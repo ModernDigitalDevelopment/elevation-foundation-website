@@ -126,6 +126,15 @@ export default function AboutFounder() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
+                  href="https://github.com/ModernDigitalDevelopment"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-gold/30 text-gold hover:bg-gold/10 font-body text-sm rounded-sm transition-all duration-200"
+                >
+                  <Github size={14} />
+                  GitHub
+                </a>
+                <a
                   href="https://www.linkedin.com/in/cj-sinclair/"
                   target="_blank"
                   rel="noopener noreferrer"

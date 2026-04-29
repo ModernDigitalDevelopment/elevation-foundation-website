@@ -33,7 +33,7 @@ const projects = [
       "Multi-sig treasury management with on-chain audit trail",
     ],
     tech: ["Solidity", "React", "Ethereum", "IPFS", "The Graph", "SoGoodDAOFactory"],
-    github: "https://github.com/ModernDigitalDevelopment/transparently-dapp",
+    github: "https://github.com/ModernDigitalDevelopment/transparently",
     image: TRANSPARENCY_IMG,
     borderColor: "border-gold/30",
     accentColor: "text-gold",
@@ -85,7 +85,7 @@ const projects = [
       "Zero management fees — all yield flows to community",
     ],
     tech: ["Python", "Solidity", "Web3.py", "Aave", "Uniswap", "Compound", "The Graph"],
-    github: "https://github.com/ModernDigitalDevelopment/elevation-engine",
+    github: "https://github.com/ModernDigitalDevelopment/elevation-foundation",
     image: TRANSPARENCY_IMG,
     borderColor: "border-crimson/30",
     accentColor: "text-crimson",
@@ -281,12 +281,10 @@ export default function OurWork() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { name: "elevation-foundation", desc: "Core foundation repo" },
-                  { name: "transparently-dapp", desc: "Governance application" },
-                  { name: "elevation-engine", desc: "DeFi yield protocol" },
-                  { name: "wesolar", desc: "Solar energy cooperative" },
-                  { name: "sotilitarianism", desc: "Philosophy & white papers" },
-                  { name: "elevation-intelligence", desc: "AI/ML tools" },
+                  { name: "elevation-foundation", desc: "501(c)(3) nonprofit · governance · research" },
+                  { name: "transparently", desc: "On-chain governance DApp" },
+                  { name: "wesolar", desc: "P2P solar energy platform" },
+                  { name: "sotilitarianism", desc: "Philosophy · book · manifestos" },
                 ].map(({ name, desc }) => (
                   <a
                     key={name}

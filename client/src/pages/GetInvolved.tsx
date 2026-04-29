@@ -59,14 +59,14 @@ const roles = [
 ];
 
 const openIssues = [
-  { repo: "transparently-dapp", title: "Build SoGoodDAOFactory governance deployment UI", difficulty: "Intermediate", tokens: "500 SOT", label: "Frontend" },
-  { repo: "elevation-engine", title: "Implement SotilityTreasuryRouter 40/40/20 distribution logic", difficulty: "Advanced", tokens: "2,000 SOT", label: "DeFi" },
+  { repo: "transparently", title: "Build SoGoodDAOFactory governance deployment UI", difficulty: "Intermediate", tokens: "500 SOT", label: "Frontend" },
+  { repo: "elevation-foundation", title: "Implement SotilityTreasuryRouter 40/40/20 distribution logic", difficulty: "Advanced", tokens: "2,000 SOT", label: "DeFi" },
   { repo: "wesolar", title: "WeSolarCrowdfund: fractional NFT ownership contract", difficulty: "Advanced", tokens: "1,500 SOT", label: "Solidity" },
   { repo: "wesolar", title: "IOTA Tangle integration for feeless energy microtransactions", difficulty: "Intermediate", tokens: "800 SOT", label: "Architecture" },
-  { repo: "elevation-foundation", title: "Expanded Sotilitarianism white paper — academic citations", difficulty: "Beginner", tokens: "300 SOT", label: "Writing" },
-  { repo: "transparently-dapp", title: "Transparency Score algorithm design and smart contract audit", difficulty: "Advanced", tokens: "1,800 SOT", label: "Security" },
-  { repo: "sogood-platform", title: "Community attestation system for contribution verification", difficulty: "Intermediate", tokens: "600 SOT", label: "Architecture" },
-  { repo: "elevation-intelligence", title: "AI arbitrage strategy optimizer for Elevation Engine", difficulty: "Advanced", tokens: "2,500 SOT", label: "AI/ML" },
+  { repo: "sotilitarianism", title: "Expanded Sotilitarianism white paper — academic citations", difficulty: "Beginner", tokens: "300 SOT", label: "Writing" },
+  { repo: "transparently", title: "Transparency Score algorithm design and smart contract audit", difficulty: "Advanced", tokens: "1,800 SOT", label: "Security" },
+  { repo: "transparently", title: "Community attestation system for contribution verification", difficulty: "Intermediate", tokens: "600 SOT", label: "Architecture" },
+  { repo: "elevation-foundation", title: "AI arbitrage strategy optimizer for Elevation Engine", difficulty: "Advanced", tokens: "2,500 SOT", label: "AI/ML" },
 ];
 
 export default function GetInvolved() {

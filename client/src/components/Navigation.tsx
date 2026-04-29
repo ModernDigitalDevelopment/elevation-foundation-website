@@ -10,6 +10,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { href: "/our-story", label: "Our Story" },
   { href: "/philosophy", label: "Philosophy" },
+  { href: "/sotilitarianism", label: "Sotilitarianism" },
   { href: "/our-work", label: "Our Work" },
   { href: "/transparency", label: "Transparency" },
   { href: "/blog", label: "Blog" },

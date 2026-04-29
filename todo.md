@@ -44,3 +44,17 @@
 - [x] Add AUTHOR.md, GLOSSARY.md, LICENSE (CC BY-SA 4.0), section READMEs
 - [x] Make repo public with SEO topics and description
 - [x] Add "Read the Complete Work" section to Philosophy page linking to GitHub
+
+## White Papers Page
+- [x] Upload whitepaper PDFs to CDN (ecosystem overview + appendices A, B, C)
+- [x] Build /white-papers page with document cards and download links
+- [x] Add /white-papers route to App.tsx and Navigation
+
+## Blog Seeding (Remaining)
+- [x] Seed Sotilitarian Revolt as blog post
+- [x] Seed 5-part Sotilitarian Capitalism manifesto series as blog posts
+
+## Sotilitarianism SEO Landing Page
+- [x] Build /sotilitarianism dedicated landing page
+- [x] Add JSON-LD structured data markup (Book, DefinedTerm, FAQPage schemas)
+- [x] Add /sotilitarianism route to App.tsx and Navigation

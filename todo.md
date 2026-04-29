@@ -78,3 +78,11 @@
 - [x] Get Involved page: 8 open bounties with correct repo names + GitHub org link
 - [x] Transparency page: GitHub org in public metrics
 - [x] Donate page: "View Open Issues" GitHub link
+
+## Blog Post Rewrites (Deep Content)
+- [x] Parallel AI rewrite of all 13 blog posts with full depth from source documents
+- [x] Alter blog_posts.content column from TEXT to LONGTEXT to accommodate long articles
+- [x] Update all 12 existing blog posts (IDs 1-16) with rewritten deep content
+- [x] Insert new WeSolar blog post (ID 17) 
+- [x] Fix empty titles for IDs 3 and 15 (Five-Layer Architecture + Part IV)
+- [x] Author name: all posts attributed to Cornelius Lawrence

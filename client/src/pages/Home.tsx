@@ -10,7 +10,7 @@ import SEOHead from "@/components/SEOHead";
 import NewsletterForm from "@/components/NewsletterForm";
 import { ArrowRight, Shield, Zap, Globe, ChevronDown, Sun, Vote, TrendingUp, Github, ExternalLink } from "lucide-react";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/hero-no-streaks_43eb6fef.png";
+const HERO_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663269003011/GZvjNIQjEGBIFXsV.png";
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
 const TOKEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/token-economy-Lg7aNHvZZDFY3tPRPfZhDn.png";
 

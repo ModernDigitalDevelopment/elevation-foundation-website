@@ -161,7 +161,7 @@ export default function AdminBlog() {
 
   const isSaving = createMutation.isPending || updateMutation.isPending;
 
-  // ─── FORM VIEW ────────────────────────────────────────────────
+  // --- FORM VIEW ------------------------------------------------
   if (view === "create" || view === "edit") {
     return (
       <div className="min-h-screen bg-navy text-white">
@@ -330,7 +330,7 @@ export default function AdminBlog() {
     );
   }
 
-  // ─── LIST VIEW ────────────────────────────────────────────────
+  // --- LIST VIEW ------------------------------------------------
   const posts = postsData?.posts ?? [];
 
   return (

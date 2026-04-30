@@ -59,7 +59,7 @@ export default function OurStory() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -81,7 +81,7 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ─── ORIGIN STORY ─────────────────────────────────────── */}
+      {/* --- ORIGIN STORY --------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="max-w-3xl mx-auto">
@@ -107,7 +107,7 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ─── TIMELINE ─────────────────────────────────────────── */}
+      {/* --- TIMELINE ------------------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-4">Timeline</div>
@@ -139,7 +139,7 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ─── VALUES ───────────────────────────────────────────── */}
+      {/* --- VALUES --------------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -192,7 +192,7 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ─── OPEN SOURCE ECOSYSTEM ─────────────────────────── */}
+      {/* --- OPEN SOURCE ECOSYSTEM --------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)] border-t border-white/10">
         <div className="container">
           <div className="bg-[oklch(0.16_0.05_265)] border border-gold/20 p-10 rounded-sm">
@@ -240,7 +240,7 @@ export default function OurStory() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* --- CTA ------------------------------------------------ */}
       <section className="py-20 bg-navy">
         <div className="container text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">

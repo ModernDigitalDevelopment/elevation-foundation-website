@@ -129,7 +129,7 @@ export default function OurWork() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -151,7 +151,7 @@ export default function OurWork() {
         </div>
       </section>
 
-      {/* ─── PROJECTS ─────────────────────────────────────────── */}
+      {/* --- PROJECTS ------------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="space-y-20">
@@ -227,7 +227,7 @@ export default function OurWork() {
         </div>
       </section>
 
-      {/* ─── $TRNS HACKATHON FEATURE ──────────────────────────── */}
+      {/* --- $TRNS HACKATHON FEATURE ---------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="relative overflow-hidden rounded-sm border border-gold/40 bg-[oklch(0.16_0.05_265)] p-8 md:p-12">
@@ -308,7 +308,7 @@ export default function OurWork() {
         </div>
       </section>
 
-      {/* ─── TECH STACK ───────────────────────────────────────── */}
+      {/* --- TECH STACK ----------------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-4">Technology</div>
@@ -336,7 +336,7 @@ export default function OurWork() {
         </div>
       </section>
 
-      {/* ─── OPEN SOURCE ──────────────────────────────────────── */}
+      {/* --- OPEN SOURCE ---------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="bg-[oklch(0.16_0.05_265)] border border-gold/20 p-10 rounded-sm">
@@ -384,7 +384,7 @@ export default function OurWork() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* --- CTA ------------------------------------------------ */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)] border-t border-white/10">
         <div className="container text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">

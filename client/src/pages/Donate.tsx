@@ -91,7 +91,7 @@ export default function Donate() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -115,12 +115,12 @@ export default function Donate() {
         </div>
       </section>
 
-      {/* ─── DONATION FORM ────────────────────────────────────── */}
+      {/* --- DONATION FORM -------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16">
 
-            {/* ── Form ── */}
+            {/* -- Form -- */}
             <div>
               <div className="section-label mb-4">Make a Donation</div>
               <h2 className="font-display text-3xl font-bold text-white mb-8">
@@ -238,7 +238,7 @@ export default function Donate() {
               </div>
             </div>
 
-            {/* ── Impact Info ── */}
+            {/* -- Impact Info -- */}
             <div>
               <div className="section-label mb-4">Your Impact</div>
               <h2 className="font-display text-3xl font-bold text-white mb-8">
@@ -265,7 +265,7 @@ export default function Donate() {
         </div>
       </section>
 
-      {/* ─── CRYPTO DONATIONS ─────────────────────────────────── */}
+      {/* --- CRYPTO DONATIONS ----------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="max-w-3xl">
@@ -299,7 +299,7 @@ export default function Donate() {
         </div>
       </section>
 
-      {/* ─── OTHER WAYS TO GIVE ───────────────────────────────── */}
+      {/* --- OTHER WAYS TO GIVE --------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="section-label mb-4">Other Ways to Give</div>

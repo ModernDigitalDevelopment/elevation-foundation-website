@@ -46,7 +46,7 @@ export default function Transparency() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -68,7 +68,7 @@ export default function Transparency() {
         </div>
       </section>
 
-      {/* ─── TRANSPARENCY PLEDGE ──────────────────────────────── */}
+      {/* --- TRANSPARENCY PLEDGE -------------------------------- */}
       <section className="py-16 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="max-w-4xl mx-auto">
@@ -96,7 +96,7 @@ export default function Transparency() {
         </div>
       </section>
 
-      {/* ─── TREASURY DASHBOARD ───────────────────────────────── */}
+      {/* --- TREASURY DASHBOARD --------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="flex items-center justify-between mb-10">
@@ -176,7 +176,7 @@ export default function Transparency() {
         </div>
       </section>
 
-      {/* ─── GOVERNANCE ACTIVITY ──────────────────────────────── */}
+      {/* --- GOVERNANCE ACTIVITY -------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-2">Governance</div>
@@ -229,7 +229,7 @@ export default function Transparency() {
         </div>
       </section>
 
-      {/* ─── REPORTING ────────────────────────────────────────── */}
+      {/* --- REPORTING ------------------------------------------ */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="section-label mb-4">Reporting</div>
@@ -253,7 +253,7 @@ export default function Transparency() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* --- CTA ------------------------------------------------ */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)] border-t border-white/10">
         <div className="container text-center">
           <h2 className="font-display text-3xl font-bold text-white mb-4">

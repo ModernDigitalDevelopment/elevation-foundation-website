@@ -212,7 +212,7 @@ export default function WhitePapers() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.10_0.05_265)] to-navy" />
         <div className="container relative z-10">
@@ -230,7 +230,7 @@ export default function WhitePapers() {
         </div>
       </section>
 
-      {/* ─── FEATURED DOCUMENTS ───────────────────────────────── */}
+      {/* --- FEATURED DOCUMENTS --------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-4">Featured Documents</div>
@@ -284,7 +284,7 @@ export default function WhitePapers() {
         </div>
       </section>
 
-      {/* ─── ALL DOCUMENTS BY CATEGORY ────────────────────────── */}
+      {/* --- ALL DOCUMENTS BY CATEGORY -------------------------- */}
       {byCategory.map(cat => (
         <section key={cat.id} className="py-16 bg-navy border-t border-white/10">
           <div className="container">
@@ -344,7 +344,7 @@ export default function WhitePapers() {
         </section>
       ))}
 
-      {/* ─── CITATION / OPEN ACCESS NOTE ──────────────────────── */}
+      {/* --- CITATION / OPEN ACCESS NOTE ------------------------ */}
       <section className="py-16 bg-[oklch(0.14_0.05_265)] border-t border-white/10">
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">

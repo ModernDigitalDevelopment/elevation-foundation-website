@@ -89,7 +89,7 @@ export default function GetInvolved() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -111,7 +111,7 @@ export default function GetInvolved() {
         </div>
       </section>
 
-      {/* ─── ROLES ────────────────────────────────────────────── */}
+      {/* --- ROLES ---------------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="section-label mb-4">How to Contribute</div>
@@ -152,7 +152,7 @@ export default function GetInvolved() {
         </div>
       </section>
 
-      {/* ─── OPEN ISSUES ──────────────────────────────────────── */}
+      {/* --- OPEN ISSUES ---------------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="flex items-center justify-between mb-10">
@@ -209,7 +209,7 @@ export default function GetInvolved() {
         </div>
       </section>
 
-      {/* ─── APPLICATION FORM ─────────────────────────────────── */}
+      {/* --- APPLICATION FORM ----------------------------------- */}
       <section id="apply" className="py-20 bg-navy">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16">

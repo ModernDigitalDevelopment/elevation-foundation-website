@@ -113,7 +113,7 @@ export default function Home() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative min-h-screen flex items-center overflow-hidden" aria-label="Hero">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -125,7 +125,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[oklch(0.12_0.05_265)] to-transparent" />
 
         <div className="container relative z-10 pt-24 pb-20">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl">
             <div className="section-label mb-6 animate-fade-up">
               501(c)(3) Nonprofit · Blockchain Governance · Community Finance
             </div>
@@ -136,10 +136,10 @@ export default function Home() {
               <br />
               <span className="text-white/70 italic">It Is Built.</span>
             </h1>
-            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 mx-auto max-w-2xl animate-fade-up-delay-2">
+            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-2xl animate-fade-up-delay-2">
               The Elevation Foundation builds transparent, community-governed financial systems using blockchain technology — putting economic power where it belongs: in the hands of the people. Profit for the People.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-delay-3">
               <Link
                 href="/our-work"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.5)] group"
@@ -162,7 +162,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── STATS BAR ────────────────────────────────────────── */}
+      {/* --- STATS BAR ------------------------------------------ */}
       <section className="bg-[oklch(0.16_0.05_265)] border-y border-white/10 py-8" aria-label="Foundation stats">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -180,7 +180,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── MISSION STATEMENT ────────────────────────────────── */}
+      {/* --- MISSION STATEMENT ---------------------------------- */}
       <section className="py-24 bg-navy" aria-labelledby="mission-heading">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -227,7 +227,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── PROJECTS ─────────────────────────────────────────── */}
+      {/* --- PROJECTS ------------------------------------------- */}
       <section className="py-24 bg-[oklch(0.14_0.05_265)]" aria-labelledby="projects-heading">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
@@ -288,7 +288,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── TOKEN ECONOMY ────────────────────────────────────── */}
+      {/* --- TOKEN ECONOMY -------------------------------------- */}
       <section className="py-24 bg-navy relative overflow-hidden" aria-labelledby="token-heading">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -340,7 +340,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SOTILITARIANISM TEASER ───────────────────────────── */}
+      {/* --- SOTILITARIANISM TEASER ----------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]" aria-labelledby="sotility-heading">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
@@ -375,7 +375,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── PRINCIPLES ───────────────────────────────────────── */}
+      {/* --- PRINCIPLES ----------------------------------------- */}
       <section className="py-24 bg-navy" aria-labelledby="principles-heading">
         <div className="container">
           <div className="text-center mb-14">
@@ -401,7 +401,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* --- CTA ------------------------------------------------ */}
       <section className="py-24 bg-[oklch(0.14_0.05_265)] relative overflow-hidden" aria-labelledby="cta-heading">
         <div
           className="absolute inset-0 opacity-5"
@@ -439,7 +439,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── NEWSLETTER ───────────────────────────────────────── */}
+      {/* --- NEWSLETTER ----------------------------------------- */}
       <NewsletterForm
         source="home"
         heading="Join the Transparency Movement"

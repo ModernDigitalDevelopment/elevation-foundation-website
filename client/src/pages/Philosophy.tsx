@@ -107,7 +107,7 @@ export default function Philosophy() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
@@ -127,7 +127,7 @@ export default function Philosophy() {
         </div>
       </section>
 
-      {/* ─── DEFINITION ───────────────────────────────────────── */}
+      {/* --- DEFINITION ----------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           <div className="max-w-4xl mx-auto">
@@ -171,7 +171,7 @@ export default function Philosophy() {
         </div>
       </section>
 
-      {/* ─── PRINCIPLES ───────────────────────────────────────── */}
+      {/* --- PRINCIPLES ----------------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-4">Core Principles</div>
@@ -192,7 +192,7 @@ export default function Philosophy() {
         </div>
       </section>
 
-      {/* ─── TOKEN ECONOMY ────────────────────────────────────── */}
+      {/* --- TOKEN ECONOMY -------------------------------------- */}
       <section id="token-economy" className="py-20 bg-navy">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
@@ -249,7 +249,7 @@ export default function Philosophy() {
         </div>
       </section>
 
-      {/* ─── GOVERNANCE MODEL ─────────────────────────────────── */}
+      {/* --- GOVERNANCE MODEL ----------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="max-w-3xl mx-auto">
@@ -283,7 +283,7 @@ export default function Philosophy() {
         </div>
       </section>
 
-      {/* ─── READ THE FULL WORK ─────────────────────────────── */}
+      {/* --- READ THE FULL WORK ------------------------------- */}
       <section className="py-20 bg-[oklch(0.12_0.05_265)] border-t border-white/10">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
@@ -328,7 +328,7 @@ export default function Philosophy() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* --- CTA ------------------------------------------------ */}
       <section className="py-20 bg-navy border-t border-white/10">
         <div className="container text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">

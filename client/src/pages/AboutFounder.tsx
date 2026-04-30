@@ -79,7 +79,7 @@ export default function AboutFounder() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 bg-[oklch(0.12_0.05_265)] overflow-hidden">
         <div className="absolute inset-0 opacity-5"
           style={{
@@ -158,7 +158,7 @@ export default function AboutFounder() {
         </div>
       </section>
 
-      {/* ─── CREDENTIALS BAR ──────────────────────────────────── */}
+      {/* --- CREDENTIALS BAR ------------------------------------ */}
       <section className="bg-[oklch(0.16_0.05_265)] border-y border-white/10 py-8">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -172,7 +172,7 @@ export default function AboutFounder() {
         </div>
       </section>
 
-      {/* ─── THE THROUGHLINE ──────────────────────────────────── */}
+      {/* --- THE THROUGHLINE ------------------------------------ */}
       <section className="py-24 bg-navy">
         <div className="container max-w-4xl">
           <div className="section-label mb-4 text-center">The Throughline</div>
@@ -196,7 +196,7 @@ export default function AboutFounder() {
         </div>
       </section>
 
-      {/* ─── ROLES ────────────────────────────────────────────── */}
+      {/* --- ROLES ---------------------------------------------- */}
       <section className="py-24 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-3 text-center">What He Builds</div>
@@ -233,7 +233,7 @@ export default function AboutFounder() {
         </div>
       </section>
 
-      {/* ─── PHILOSOPHY QUOTES ────────────────────────────────── */}
+      {/* --- PHILOSOPHY QUOTES ---------------------------------- */}
       <section className="py-24 bg-navy">
         <div className="container max-w-4xl">
           <div className="section-label mb-4 text-center">In His Own Words</div>
@@ -253,7 +253,7 @@ export default function AboutFounder() {
         </div>
       </section>
 
-      {/* ─── INTELLECTUAL INTERESTS ───────────────────────────── */}
+      {/* --- INTELLECTUAL INTERESTS ----------------------------- */}
       <section className="py-24 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-4 text-center">Down the Rabbit Hole</div>
@@ -294,7 +294,7 @@ export default function AboutFounder() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* --- CTA ------------------------------------------------ */}
       <section className="py-24 bg-navy">
         <div className="container text-center max-w-3xl">
           <div className="section-label mb-4">Work With the Mission</div>

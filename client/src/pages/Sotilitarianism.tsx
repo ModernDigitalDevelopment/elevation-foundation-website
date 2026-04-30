@@ -104,31 +104,31 @@ const bookParts = [
     part: "Part I",
     title: "Foundation and Vision",
     chapters: ["The Sotilitarian Vision", "Foundational Principles: Towards Utilitarian Consensusism", "The Crisis of Traditional Capitalism", "The Dual-Lever Economic Model"],
-    slug: "sotilitarian-capitalism-part-1-new-economic-operating-system",
+    slug: "sotilitarian-capitalism-part-i-the-new-economic-operating-system",
   },
   {
     part: "Part II",
     title: "The Political Framework",
     chapters: ["Continuous Consent Governance", "Liquid Democracy and Delegated Voting", "Multi-Level Governance Architecture", "The R-Score and Reputation Systems"],
-    slug: "sotilitarian-capitalism-part-2-political-framework",
+    slug: "sotilitarian-capitalism-continuous-consent-political-framework",
   },
   {
     part: "Part III",
     title: "The Five-Layer Technical Architecture",
     chapters: ["Layer 1: The Token Layer", "Layer 2: The Social Layer", "Layer 3: The Financial Layer", "Layer 4: The Governance Layer", "Layer 5: The AI & Verification Layer"],
-    slug: "sotilitarian-capitalism-part-3-technical-architecture",
+    slug: "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture",
   },
   {
     part: "Part IV",
     title: "Implementation Strategy",
     chapters: ["The Trojan Horse Strategy", "Cross-Sector Applications", "The Comprehensive Benefits Analysis", "Beyond the Binary Debate"],
-    slug: "sotilitarian-capitalism-part-4-implementation-strategy",
+    slug: "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect",
   },
   {
     part: "Part V",
     title: "The Future of Economics",
     chapters: ["The End of an Era", "The Sotilitarian Vision for 2030", "The Long Arc", "A Call to Build"],
-    slug: "sotilitarian-capitalism-part-5-future-of-economics",
+    slug: "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate",
   },
 ];
 
@@ -184,7 +184,7 @@ export default function SotilitarianismPage() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.10_0.05_265)] via-navy to-[oklch(0.12_0.08_265)]" />
         {/* Decorative grid */}
@@ -208,7 +208,7 @@ export default function SotilitarianismPage() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="/blog/sotilitarian-capitalism-part-1-new-economic-operating-system"
+                href="/blog/sotilitarian-capitalism-part-i-the-new-economic-operating-system"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.5)] group"
               >
                 Read the Treatise
@@ -235,7 +235,7 @@ export default function SotilitarianismPage() {
         </div>
       </section>
 
-      {/* ─── WHAT IS SOTILITARIANISM ──────────────────────────── */}
+      {/* --- WHAT IS SOTILITARIANISM ---------------------------- */}
       <section className="py-24 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -283,7 +283,7 @@ export default function SotilitarianismPage() {
         </div>
       </section>
 
-      {/* ─── THE FIVE-PART TREATISE ───────────────────────────── */}
+      {/* --- THE FIVE-PART TREATISE ----------------------------- */}
       <section className="py-24 bg-navy">
         <div className="container">
           <div className="text-center mb-14">
@@ -326,7 +326,7 @@ export default function SotilitarianismPage() {
 
             {/* Companion: The Revolt */}
             <Link
-              href="/blog/sotilitarian-revolt-rewriting-value"
+              href="/blog/the-sotilitarian-revolt-why-the-system-isnt-broken-its-working-as-designed"
               className="block bg-[oklch(0.16_0.05_265)] border border-crimson/20 hover:border-crimson/40 p-6 rounded-sm card-lift group transition-all duration-200"
             >
               <div className="flex items-start gap-6">
@@ -357,7 +357,7 @@ export default function SotilitarianismPage() {
         </div>
       </section>
 
-      {/* ─── KEY TERMS GLOSSARY ───────────────────────────────── */}
+      {/* --- KEY TERMS GLOSSARY --------------------------------- */}
       <section className="py-24 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="mb-12">
@@ -389,7 +389,7 @@ export default function SotilitarianismPage() {
         </div>
       </section>
 
-      {/* ─── FAQ ──────────────────────────────────────────────── */}
+      {/* --- FAQ ------------------------------------------------ */}
       <section className="py-24 bg-navy">
         <div className="container max-w-3xl">
           <div className="mb-12">
@@ -410,7 +410,7 @@ export default function SotilitarianismPage() {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────── */}
+      {/* --- CTA ------------------------------------------------ */}
       <section className="py-20 bg-[oklch(0.12_0.05_265)] border-t border-white/10">
         <div className="container text-center">
           <div className="section-label mb-4">Get Involved</div>

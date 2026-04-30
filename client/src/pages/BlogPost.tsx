@@ -1,20 +1,66 @@
 /*
  * ELEVATION RISING — Individual Blog Post Page
  * Reads a single post by slug from the database via tRPC.
- * Renders full markdown content with social share buttons.
+ * Renders full markdown content with social share buttons, reading progress bar,
+ * and related articles.
  */
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link, useParams } from "wouter";
-import { ArrowLeft, Calendar, Clock, User, Loader2, AlertCircle, Copy, Check } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  User,
+  Loader2,
+  AlertCircle,
+  Copy,
+  Check,
+} from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Streamdown } from "streamdown";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function formatDate(d: Date | string | null | undefined) {
   if (!d) return "";
-  return new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  return new Date(d).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function estimateReadTime(content: string): string {
+  const words = content.split(/\s+/).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+}
+
+// Reading progress bar
+function ReadingProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = document.documentElement;
+      const scrollTop = el.scrollTop || document.body.scrollTop;
+      const scrollHeight = el.scrollHeight - el.clientHeight;
+      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      setProgress(Math.min(100, pct));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 right-0 z-50 h-0.5 bg-white/10">
+      <div
+        className="h-full bg-gold transition-all duration-100 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
+  );
 }
 
 // SVG icons for social platforms
@@ -148,9 +194,49 @@ function ShareButtons({ url, title, excerpt }: ShareButtonsProps) {
   );
 }
 
+// Related articles component
+function RelatedArticles({ currentSlug, tags }: { currentSlug: string; tags: string[] }) {
+  const { data } = trpc.blog.list.useQuery({ limit: 20, offset: 0 });
+
+  const related = (data?.posts ?? [])
+    .filter((p) => p.slug !== currentSlug)
+    .filter((p) => {
+      if (!tags.length) return true;
+      const postTags = (p.tags ?? "").split(",").map((t: string) => t.trim().toLowerCase());
+      return tags.some((t) => postTags.includes(t.toLowerCase()));
+    })
+    .slice(0, 3);
+
+  if (!related.length) return null;
+
+  return (
+    <div className="mt-16 pt-12 border-t border-white/10">
+      <div className="section-label text-gold mb-6">Continue Reading</div>
+      <div className="grid md:grid-cols-3 gap-6">
+        {related.map((p) => (
+          <Link
+            key={p.slug}
+            href={`/blog/${p.slug}`}
+            className="block bg-[oklch(0.16_0.05_265)] border border-white/10 p-5 rounded-sm hover:border-gold/30 transition-all duration-200 group card-lift"
+          >
+            <div className="section-label text-gold/70 text-[10px] mb-2">{p.category}</div>
+            <h4 className="font-display text-base font-bold text-white leading-snug group-hover:text-gold transition-colors line-clamp-3">
+              {p.title}
+            </h4>
+            {p.excerpt && (
+              <p className="font-body text-xs text-white/50 mt-2 line-clamp-2">{p.excerpt}</p>
+            )}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function BlogPost() {
   const params = useParams<{ slug: string }>();
   const slug = params.slug ?? "";
+  const articleRef = useRef<HTMLDivElement>(null);
 
   const { data: post, isLoading, error } = trpc.blog.bySlug.useQuery(
     { slug },
@@ -177,7 +263,9 @@ export default function BlogPost() {
           <div className="text-center max-w-md">
             <AlertCircle size={48} className="text-crimson mx-auto mb-4" />
             <h1 className="font-display text-3xl font-bold text-white mb-3">Article Not Found</h1>
-            <p className="font-body text-white/60 mb-8">This article may have been moved or is no longer available.</p>
+            <p className="font-body text-white/60 mb-8">
+              This article may have been moved or is no longer available.
+            </p>
             <Link
               href="/blog"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all"
@@ -192,20 +280,33 @@ export default function BlogPost() {
     );
   }
 
-  const tags = post.tags ? post.tags.split(",").map(t => t.trim()).filter(Boolean) : [];
+  const tags = post.tags ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean) : [];
   const postUrl = `https://elevation.foundation/blog/${post.slug}`;
+  const readTime = post.readTime || estimateReadTime(post.content ?? "");
 
   return (
     <div className="min-h-screen bg-navy text-white">
+      <ReadingProgress />
       <SEOHead
         title={`${post.title} | The Elevation Foundation`}
         description={post.excerpt}
         canonical={`/blog/${post.slug}`}
-        keywords={[...tags, "capitalism 2.0", "social capitalism", "utilitarian capitalism", "transparent economics", "trust tech", "transparency tech", "Sotilitarianism", "blockchain governance", "community finance"].join(", ")}
+        keywords={[
+          ...tags,
+          "capitalism 2.0",
+          "social capitalism",
+          "utilitarian capitalism",
+          "transparent economics",
+          "trust tech",
+          "transparency tech",
+          "Sotilitarianism",
+          "blockchain governance",
+          "community finance",
+        ].join(", ")}
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-16 overflow-hidden">
         {post.coverImage && (
           <>
@@ -242,31 +343,64 @@ export default function BlogPost() {
                 <Calendar size={12} /> {formatDate(post.publishedAt)}
               </span>
             )}
-            {post.readTime && (
-              <span className="flex items-center gap-2 font-mono-data text-xs text-white/40">
-                <Clock size={12} /> {post.readTime}
-              </span>
-            )}
+            <span className="flex items-center gap-2 font-mono-data text-xs text-white/40">
+              <Clock size={12} /> {readTime}
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ─── ARTICLE CONTENT ──────────────────────────────────── */}
+      {/* --- ARTICLE CONTENT ------------------------------------ */}
       <section className="py-16 bg-navy">
-        <div className="container max-w-4xl">
-          <div className="prose prose-invert prose-lg max-w-none
-            prose-headings:font-display prose-headings:text-white
-            prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-4
-            prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-white/70 prose-p:leading-relaxed prose-p:font-body
-            prose-strong:text-gold prose-strong:font-semibold
-            prose-a:text-gold prose-a:no-underline hover:prose-a:underline
-            prose-blockquote:border-l-gold prose-blockquote:border-l-4 prose-blockquote:pl-6 prose-blockquote:text-white/60 prose-blockquote:italic
-            prose-code:text-teal prose-code:bg-[oklch(0.16_0.05_265)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-            prose-pre:bg-[oklch(0.14_0.05_265)] prose-pre:border prose-pre:border-white/10
-            prose-ul:text-white/70 prose-ol:text-white/70
-            prose-li:marker:text-gold
-            prose-hr:border-white/10">
+        <div className="container max-w-4xl" ref={articleRef}>
+          <div
+            className="
+              prose prose-invert prose-lg max-w-none
+
+              /* Headings */
+              prose-headings:font-display prose-headings:text-white prose-headings:scroll-mt-24
+              prose-h1:text-3xl prose-h1:font-black prose-h1:mt-0 prose-h1:mb-6
+              prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-14 prose-h2:mb-5
+              prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-3
+              prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-gold/90
+              prose-h4:text-base prose-h4:font-semibold prose-h4:mt-6 prose-h4:mb-2 prose-h4:text-white/80
+
+              /* Body text */
+              prose-p:text-white/75 prose-p:leading-[1.85] prose-p:font-body prose-p:mb-5
+
+              /* Bold — gold highlight */
+              prose-strong:text-gold prose-strong:font-semibold
+
+              /* Links */
+              prose-a:text-gold prose-a:no-underline hover:prose-a:underline
+
+              /* Blockquotes — styled as callout boxes */
+              prose-blockquote:not-italic
+              prose-blockquote:border-l-4 prose-blockquote:border-gold
+              prose-blockquote:bg-[oklch(0.16_0.05_265)]
+              prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-sm
+              prose-blockquote:text-white/80 prose-blockquote:font-body
+              prose-blockquote:my-8
+
+              /* Code */
+              prose-code:text-teal prose-code:bg-[oklch(0.16_0.05_265)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:not-italic
+              prose-pre:bg-[oklch(0.14_0.05_265)] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-sm
+
+              /* Lists */
+              prose-ul:text-white/75 prose-ol:text-white/75
+              prose-li:marker:text-gold prose-li:my-1.5
+
+              /* Tables — styled with gold headers */
+              prose-table:w-full prose-table:border-collapse
+              prose-thead:bg-[oklch(0.18_0.05_265)]
+              prose-th:text-gold prose-th:font-mono-data prose-th:text-xs prose-th:uppercase prose-th:tracking-wider prose-th:px-4 prose-th:py-3 prose-th:border prose-th:border-white/10
+              prose-td:text-white/70 prose-td:px-4 prose-td:py-3 prose-td:border prose-td:border-white/10 prose-td:font-body prose-td:text-sm
+              prose-tr:even:bg-[oklch(0.15_0.05_265)]
+
+              /* HR */
+              prose-hr:border-white/10 prose-hr:my-12
+            "
+          >
             <Streamdown>{post.content}</Streamdown>
           </div>
 
@@ -281,10 +415,10 @@ export default function BlogPost() {
           {tags.length > 0 && (
             <div className="mt-8 pt-8 border-t border-white/10">
               <div className="flex flex-wrap gap-2">
-                {tags.map(tag => (
+                {tags.map((tag: string) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 font-mono-data text-xs text-white/50 border border-white/15 rounded-sm"
+                    className="px-3 py-1 font-mono-data text-xs text-white/50 border border-white/15 rounded-sm hover:border-gold/30 hover:text-gold/70 transition-colors cursor-default"
                   >
                     #{tag}
                   </span>
@@ -292,6 +426,9 @@ export default function BlogPost() {
               </div>
             </div>
           )}
+
+          {/* Related Articles */}
+          <RelatedArticles currentSlug={slug} tags={tags} />
 
           {/* Back link */}
           <div className="mt-16">

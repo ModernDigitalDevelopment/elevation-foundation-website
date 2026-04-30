@@ -72,7 +72,7 @@ export default function Blog() {
       />
       <Navigation />
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
+      {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -105,7 +105,7 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* ─── FEATURED POST ────────────────────────────────────── */}
+      {/* --- FEATURED POST -------------------------------------- */}
       {activeCategory === "All" && featuredPost && !isLoading && (
         <section className="py-16 bg-navy">
           <div className="container">
@@ -145,7 +145,7 @@ export default function Blog() {
         </section>
       )}
 
-      {/* ─── CATEGORY FILTER ──────────────────────────────────── */}
+      {/* --- CATEGORY FILTER ------------------------------------ */}
       <section className="py-8 bg-[oklch(0.14_0.05_265)] border-y border-white/10 sticky top-16 md:top-20 z-30">
         <div className="container">
           <div className="flex gap-2 overflow-x-auto pb-1">
@@ -166,7 +166,7 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* ─── POSTS GRID ───────────────────────────────────────── */}
+      {/* --- POSTS GRID ----------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
           {isLoading ? (
@@ -222,7 +222,7 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* ─── NEWSLETTER ───────────────────────────────────────── */}
+      {/* --- NEWSLETTER ----------------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">

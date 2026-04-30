@@ -125,7 +125,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[oklch(0.12_0.05_265)] to-transparent" />
 
         <div className="container relative z-10 pt-24 pb-20">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <div className="section-label mb-6 animate-fade-up">
               501(c)(3) Nonprofit · Blockchain Governance · Community Finance
             </div>
@@ -136,10 +136,10 @@ export default function Home() {
               <br />
               <span className="text-white/70 italic">It Is Built.</span>
             </h1>
-            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-xl animate-fade-up-delay-2">
+            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-xl mx-auto animate-fade-up-delay-2">
               The Elevation Foundation builds transparent, community-governed financial systems using blockchain technology — putting economic power where it belongs: in the hands of the people. Profit for the People.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-delay-3">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
               <Link
                 href="/our-work"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.5)] group"

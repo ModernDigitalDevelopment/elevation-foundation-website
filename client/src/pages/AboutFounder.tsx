@@ -98,7 +98,7 @@ export default function AboutFounder() {
                   <img
                     src={PROFILE_IMG}
                     alt="Cornelius Lawrence — Founder, Elevation Foundation"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
                 {/* Floating badge */}

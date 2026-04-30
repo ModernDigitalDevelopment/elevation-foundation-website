@@ -75,7 +75,7 @@ export default function AboutFounder() {
         title="Cornelius Lawrence — Founder | Elevation Foundation"
         description="Meet Cornelius Lawrence — quantitative systems engineer, fintech architect, and founder of the Elevation Foundation. 20+ years building systems that remove bias, gatekeepers, and middlemen."
         keywords="Cornelius Lawrence, Elevation Foundation founder, Sotilitarianism, capitalism 2.0, social capitalism, transparent economics, trust tech, blockchain governance, quantitative investing, Vetta Investments, fintech, utilitarian capitalism"
-        ogImage="https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-card_0ac91696.webp"
+        ogImage="https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-card-v2-TEXKDEWMfEu3SM7dBodn79.png"
       />
       <Navigation />
 

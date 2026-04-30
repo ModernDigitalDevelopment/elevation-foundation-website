@@ -136,7 +136,7 @@ export default function Home() {
               <br />
               <span className="text-white/70 italic">It Is Built.</span>
             </h1>
-            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-xl animate-fade-up-delay-2">
+            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 mx-auto max-w-2xl animate-fade-up-delay-2">
               The Elevation Foundation builds transparent, community-governed financial systems using blockchain technology — putting economic power where it belongs: in the hands of the people. Profit for the People.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">

@@ -88,7 +88,7 @@ export default function Blog() {
                 <br />
                 <span className="gold-shimmer">the Movement</span>
               </h1>
-              <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+              <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
                 Philosophy, technology, governance, and community updates from the Elevation Foundation. We write in public because we think in public.
               </p>
             </div>

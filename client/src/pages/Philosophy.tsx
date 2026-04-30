@@ -120,7 +120,7 @@ export default function Philosophy() {
             <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-6">
               Sotilitarianism
             </h1>
-            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
               A governance philosophy for the digital age. Rooted in the belief that transparency is not a feature — it is the foundation of legitimate governance.
             </p>
           </div>

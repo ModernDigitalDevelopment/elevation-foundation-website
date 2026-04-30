@@ -203,7 +203,7 @@ export default function SotilitarianismPage() {
               A New Economic Operating System.<br />
               <span className="text-gold">Capitalism 2.0.</span>
             </p>
-            <p className="font-body text-lg text-white/70 leading-relaxed max-w-2xl mb-10">
+            <p className="font-body text-lg text-white/70 leading-relaxed max-w-2xl mx-auto mb-10">
               Sotilitarianism is an economic philosophy that aligns capitalist incentives with social good through tokenized transparency, AI-powered verification, and participatory governance. It is the framework behind the Elevation Foundation's work — and a proposal for what comes after extractive capitalism.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

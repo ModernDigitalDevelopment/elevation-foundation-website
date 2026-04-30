@@ -61,7 +61,7 @@ export default function Transparency() {
               <br />
               <span className="gold-shimmer">Everything on Chain.</span>
             </h1>
-            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
               We do not ask you to trust us. We build systems that make trust unnecessary. Every financial transaction, governance vote, and operational decision is permanently recorded on the blockchain.
             </p>
           </div>

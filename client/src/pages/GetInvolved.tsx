@@ -104,7 +104,7 @@ export default function GetInvolved() {
               <br />
               <span className="gold-shimmer">Will Be Tokenized</span>
             </h1>
-            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
               Every contribution to the Elevation Foundation — code, community, content, or capital — earns you a stake in the ecosystem you are helping to build. This is not volunteering. This is ownership.
             </p>
           </div>

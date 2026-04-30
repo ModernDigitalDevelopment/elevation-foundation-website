@@ -108,7 +108,7 @@ export default function Donate() {
               <br />
               of Liberation
             </h1>
-            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
               The Elevation Foundation is a 501(c)(3) nonprofit. Your donation is tax-deductible and goes directly to building the transparent, community-governed financial systems that underserved communities deserve.
             </p>
           </div>

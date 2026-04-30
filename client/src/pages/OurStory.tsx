@@ -74,7 +74,7 @@ export default function OurStory() {
               <br />
               <span className="gold-shimmer">Ground Up</span>
             </h1>
-            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
               The Elevation Foundation did not begin in a boardroom or a venture capital office. It began with a question — and a refusal to accept the answer that the system had always given.
             </p>
           </div>

@@ -223,7 +223,7 @@ export default function WhitePapers() {
               <br />
               <span className="gold-shimmer">Open Research</span>
             </h1>
-            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
               All of our research is open and freely available. From the founding manifesto to technical architecture documents — knowledge that belongs to the community should be accessible to the community.
             </p>
           </div>

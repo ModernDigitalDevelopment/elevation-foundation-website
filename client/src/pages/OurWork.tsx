@@ -144,7 +144,7 @@ export default function OurWork() {
               <br />
               <span className="gold-shimmer">Next Economy</span>
             </h1>
-            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
               We do not build products. We build infrastructure — the foundational systems that communities need to govern themselves, own their energy, and access financial tools that have always been out of reach.
             </p>
           </div>

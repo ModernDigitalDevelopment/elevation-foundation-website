@@ -86,3 +86,18 @@
 - [x] Insert new WeSolar blog post (ID 17) 
 - [x] Fix empty titles for IDs 3 and 15 (Five-Layer Architecture + Part IV)
 - [x] Author name: all posts attributed to Cornelius Lawrence
+
+## Navigation & UI Improvements
+- [x] Rewrite Navigation.tsx to hamburger menu on ALL screen sizes (desktop + mobile)
+- [x] Animated dropdown with grid layout, outside-click close, body scroll lock
+
+## EasyA Kickstart Hackathon — $TRNS Transparently Token
+- [x] Launch $TRNS token on Solana via EasyA Kickstart (mint: EotDwLsi6j4NbWDGyvM95NMpyDM5K7vjYqVa67ijMXCx)
+- [x] Day 1 X post published on @SolarKitties
+- [x] Phil's reply email sent
+- [x] Add $TRNS Transparently Token section to Our Work page with gold accent styling and EasyA Kickstart link
+- [ ] Post Day 2 X post on @SolarKitties (due April 30, 2026)
+- [ ] Post in EasyA Discord (discord.com/invite/easya)
+- [ ] Post Day 3 X post on @SolarKitties (due May 1, 2026)
+- [ ] Post Day 4 X post on @SolarKitties (due May 2, 2026)
+- [ ] Post Day 5 X post on @SolarKitties (due May 2, 2026)

@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
-import { ArrowRight, Github, ExternalLink } from "lucide-react";
+import { ArrowRight, Github, ExternalLink, Zap } from "lucide-react";
 
 const PHILOSOPHY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
 const TRANSPARENCY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/transparency-bg-dRYH2beMpwTLwnFHzDaK7x.png";
@@ -223,6 +223,87 @@ export default function OurWork() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── $TRNS HACKATHON FEATURE ──────────────────────────── */}
+      <section className="py-20 bg-[oklch(0.14_0.05_265)]">
+        <div className="container">
+          <div className="relative overflow-hidden rounded-sm border border-gold/40 bg-[oklch(0.16_0.05_265)] p-8 md:p-12">
+            {/* Gold glow background */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal/5 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="font-mono-data text-xs px-3 py-1 rounded-sm border text-gold bg-gold/10 border-gold/30 uppercase tracking-wider">
+                    Live on Solana
+                  </span>
+                  <span className="font-mono-data text-xs px-3 py-1 rounded-sm border text-teal bg-teal/10 border-teal/30 uppercase tracking-wider">
+                    EasyA Kickstart
+                  </span>
+                </div>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                  $TRNS —{" "}
+                  <span className="gold-shimmer">Transparently Token</span>
+                </h2>
+                <p className="font-body text-white/70 leading-relaxed mb-4">
+                  The Transparently token ($TRNS) is now live on Solana as part of the{" "}
+                  <strong className="text-white">EasyA Kickstart Hackathon</strong>. $TRNS is the
+                  governance and utility token for the Transparently DApp — enabling on-chain
+                  voting, transparency scoring, and community-driven accountability for
+                  organizations worldwide.
+                </p>
+                <p className="font-body text-white/60 text-sm leading-relaxed mb-6">
+                  Launched April 29, 2026. Mint address:{" "}
+                  <code className="font-mono-data text-gold/80 text-xs break-all">
+                    EotDwLsi6j4NbWDGyvM95NMpyDM5K7vjYqVa67ijMXCx
+                  </code>
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="https://kickstart.easya.io/token/EotDwLsi6j4NbWDGyvM95NMpyDM5K7vjYqVa67ijMXCx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.4)] group"
+                  >
+                    <Zap size={15} />
+                    View $TRNS on EasyA Kickstart
+                    <ExternalLink size={13} className="opacity-60" />
+                  </a>
+                  <a
+                    href="https://github.com/ModernDigitalDevelopment/transparently"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white font-body font-medium rounded-sm hover:border-gold/50 hover:text-gold transition-all duration-200"
+                  >
+                    <Github size={15} />
+                    View Source Code
+                  </a>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="font-mono-data text-xs text-gold/60 uppercase tracking-wider mb-3">
+                  Token Details
+                </div>
+                {[
+                  { label: "Token Symbol", value: "$TRNS", highlight: true },
+                  { label: "Network", value: "Solana", highlight: false },
+                  { label: "Hackathon", value: "EasyA Kickstart 2026", highlight: false },
+                  { label: "Use Case", value: "Governance + Transparency Scoring", highlight: false },
+                  { label: "Contracts", value: "TransparentlyCore, TRANSToken, VERIFYToken, IMPACTToken", highlight: false },
+                  { label: "Status", value: "Live — Judging May 2, 2026", highlight: true },
+                ].map(({ label, value, highlight }) => (
+                  <div key={label} className="flex items-start justify-between gap-4 py-2 border-b border-white/10">
+                    <span className="font-mono-data text-xs text-white/40 uppercase tracking-wider flex-shrink-0">{label}</span>
+                    <span className={`font-body text-sm text-right ${highlight ? "text-gold font-semibold" : "text-white/70"}`}>{value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

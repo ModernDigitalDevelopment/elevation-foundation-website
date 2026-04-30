@@ -190,7 +190,7 @@ export default function SotilitarianismPage() {
         {/* Decorative grid */}
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "linear-gradient(oklch(0.72 0.12 75) 1px, transparent 1px), linear-gradient(90deg, oklch(0.72 0.12 75) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="container relative z-10">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 section-label mb-6 border border-gold/30 px-3 py-1 rounded-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
               Economic Philosophy · Blockchain Governance · Capitalism 2.0
@@ -206,7 +206,7 @@ export default function SotilitarianismPage() {
             <p className="font-body text-lg text-white/70 leading-relaxed max-w-2xl mb-10">
               Sotilitarianism is an economic philosophy that aligns capitalist incentives with social good through tokenized transparency, AI-powered verification, and participatory governance. It is the framework behind the Elevation Foundation's work — and a proposal for what comes after extractive capitalism.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/blog/sotilitarian-capitalism-part-1-new-economic-operating-system"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.5)] group"

@@ -216,7 +216,7 @@ export default function WhitePapers() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.10_0.05_265)] to-navy" />
         <div className="container relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <div className="section-label mb-4">Research & Documents</div>
             <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-6">
               White Papers &

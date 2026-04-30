@@ -283,6 +283,46 @@ export default function Philosophy() {
         </div>
       </section>
 
+      {/* --- TOKENIZED TRANSPARENCY ---------------------------- */}
+      <section id="tokenized-transparency" className="py-20 bg-navy border-t border-white/10">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="section-label mb-4">SST Mechanism</div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+              Tokenized Transparency
+              <br />
+              <span className="text-gold italic">Efficiency as Collateral</span>
+            </h2>
+            <p className="font-body text-white/70 text-lg leading-relaxed mb-8">
+              Every stablecoin you have ever used is a warehouse receipt — a token that represents something already stored. Dollars, treasuries, crypto collateral. The token stores value. It does not create it.
+            </p>
+            <p className="font-body text-white/70 text-lg leading-relaxed mb-8">
+              <strong className="text-gold">The SST (SotilityStableToken) is different.</strong> It is minted against the measurable efficiency surplus generated when an organization integrates Sotility Trust Tech and smart contracts into its operations. When transparency produces a provable productivity gain — reduced administrative overhead, eliminated fraud, compressed governance cycles — that delta becomes the mint basis for new stable tokens.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
+              {[
+                { title: "Inverted Access", desc: "Under collateral-backed systems, you need wealth to create money. Under SST, you need demonstrated organizational improvement. A community clinic that eliminates $40K in overhead can mint $40K in SST — no collateral required.", color: "text-gold", border: "border-gold/30" },
+                { title: "Anti-Inflationary by Design", desc: "SST supply can only grow when real-world efficiency is proven. No speculative minting, no fractional reserve multiplier. Every token in circulation represents a verified unit of economic improvement.", color: "text-teal", border: "border-teal/30" },
+                { title: "Self-Reinforcing Flywheel", desc: "Organizations that adopt Sotility Trust Tech are financially rewarded with SST. More adoption → more minting → more ecosystem value → more incentive to adopt. Transparency becomes economically mandatory.", color: "text-crimson", border: "border-crimson/30" },
+                { title: "Auditable Money Supply", desc: "Every SST in circulation has a corresponding on-chain efficiency proof with IPFS-pinned documentation. The entire money supply is transparent by construction — not as a feature, but as a structural requirement.", color: "text-white/80", border: "border-white/20" },
+              ].map(({ title, desc, color, border }) => (
+                <div key={title} className={`p-6 bg-[oklch(0.16_0.05_265)] border ${border} rounded-sm`}>
+                  <h4 className={`font-body font-semibold mb-2 ${color}`}>{title}</h4>
+                  <p className="font-body text-sm text-white/60 leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/blog/tokenized-transparency-efficiency-yield-sst-mint-mechanism"
+              className="inline-flex items-center gap-2 text-gold font-body font-medium hover:gap-3 transition-all duration-200 group"
+            >
+              Read the full technical breakdown
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* --- READ THE FULL WORK ------------------------------- */}
       <section className="py-20 bg-[oklch(0.12_0.05_265)] border-t border-white/10">
         <div className="container">

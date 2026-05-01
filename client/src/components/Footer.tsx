@@ -20,7 +20,7 @@ export default function Footer() {
             <p className="text-white/50 text-sm font-body leading-relaxed mb-4">
               A 501(c)(3) nonprofit building transparent, community-governed systems for economic empowerment.
             </p>
-            <div className="font-mono-data text-xs text-gold/60">EIN: 88-XXXXXXX</div>
+            <div className="font-mono-data text-xs text-gold/60">EIN: 92-1042348</div>
           </div>
 
           {/* Mission */}
@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-mono-data text-xs text-white/30">
-            © {new Date().getFullYear()} The Elevation Foundation. All rights reserved. 501(c)(3) Nonprofit.
+            © {new Date().getFullYear()} The Elevation Foundation. All rights reserved. 501(c)(3) Nonprofit · EIN: 92-1042348
           </p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((item) => (

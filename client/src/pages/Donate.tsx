@@ -227,7 +227,7 @@ export default function Donate() {
               </button>
 
               <p className="font-body text-xs text-white/35 mt-3 text-center">
-                Secure payment via Stripe. Tax receipt provided by email. EIN: 88-XXXXXXX
+                Secure payment via Stripe. Tax receipt provided by email. EIN: 92-1042348
               </p>
 
               {/* Test card hint */}
@@ -258,7 +258,7 @@ export default function Donate() {
                 <p className="font-body text-sm text-white/65 leading-relaxed mb-3">
                   The Elevation Foundation is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent permitted by law. You will receive an official donation receipt via email.
                 </p>
-                <div className="font-mono-data text-xs text-gold/60">EIN: 88-XXXXXXX (pending)</div>
+                <div className="font-mono-data text-xs text-gold/60">EIN: 92-1042348</div>
               </div>
             </div>
           </div>

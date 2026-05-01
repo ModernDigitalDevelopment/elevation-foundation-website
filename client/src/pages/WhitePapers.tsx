@@ -30,6 +30,18 @@ const documents = [
   },
   {
     category: "philosophy",
+    icon: Zap,
+    title: "Tokenized Transparency: The SST Mint Mechanism",
+    subtitle: "Efficiency as Collateral — A New Monetary Primitive",
+    description: "The first formal specification of the SST mint mechanism — a stablecoin collateralized not by stored wealth, but by the measurable efficiency surplus generated when organizations integrate Sotility Trust Tech. Defines the four-stage mint process, anti-inflation properties, the adoption flywheel, and investment pathways. Submitted to Frontiers in Blockchain, April 2026.",
+    pages: "18 pages",
+    year: "2026",
+    tags: ["SST Stablecoin", "Tokenized Transparency", "Efficiency Collateral", "Monetary Design", "Sotility Trust Tech"],
+    url: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663269003011/qvPqixTMWDbIDCZd.pdf",
+    featured: true,
+  },
+  {
+    category: "philosophy",
     icon: Shield,
     title: "Sotility Whitepaper",
     subtitle: "The Token Economy & Governance Architecture",

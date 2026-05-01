@@ -127,8 +127,37 @@ export default function Philosophy() {
         </div>
       </section>
 
+      {/* --- IN-PAGE NAV ---------------------------------------- */}
+      <nav className="sticky top-0 z-40 bg-[oklch(0.10_0.05_265/0.95)] backdrop-blur border-b border-white/10">
+        <div className="container">
+          <div className="flex items-center gap-1 overflow-x-auto py-3" style={{ scrollbarWidth: 'none' }}>
+            {[
+              { label: "Overview", href: "#overview" },
+              { label: "Core Principles", href: "#principles" },
+              { label: "Token Economy", href: "#token-economy" },
+              { label: "Governance", href: "#governance" },
+              { label: "Tokenized Transparency", href: "#tokenized-transparency" },
+              { label: "Read the Work", href: "#read-the-work" },
+            ].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.querySelector(item.href);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="flex-shrink-0 px-4 py-1.5 font-mono-data text-xs tracking-wider uppercase text-white/50 hover:text-gold hover:bg-white/5 rounded-sm transition-colors duration-150 whitespace-nowrap"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* --- DEFINITION ----------------------------------------- */}
-      <section className="py-20 bg-navy">
+      <section id="overview" className="py-20 bg-navy">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="border-l-2 border-gold pl-8 mb-12">
@@ -172,7 +201,7 @@ export default function Philosophy() {
       </section>
 
       {/* --- PRINCIPLES ----------------------------------------- */}
-      <section className="py-20 bg-[oklch(0.14_0.05_265)]">
+      <section id="principles" className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
           <div className="section-label mb-4">Core Principles</div>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-14">
@@ -250,9 +279,9 @@ export default function Philosophy() {
       </section>
 
       {/* --- GOVERNANCE MODEL ----------------------------------- */}
-      <section className="py-20 bg-[oklch(0.14_0.05_265)]">
+      <section id="governance" className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="section-label mb-4">Governance Model</div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-8">
               How Decisions Are Made
@@ -287,7 +316,7 @@ export default function Philosophy() {
       <section id="tokenized-transparency" className="py-20 bg-navy border-t border-white/10">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <div className="section-label mb-4">SST Mechanism</div>
+            <div className="section-label mb-4">Tokenized Transparency</div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
               Tokenized Transparency
               <br />

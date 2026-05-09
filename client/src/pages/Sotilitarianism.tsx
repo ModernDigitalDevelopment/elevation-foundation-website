@@ -10,8 +10,6 @@ import Footer from "@/components/Footer";
 import { ArrowRight, BookOpen, FileText, ExternalLink, ChevronRight, Zap, Shield, Globe, Users } from "lucide-react";
 
 const GITHUB_REPO = "https://github.com/ModernDigitalDevelopment/sotilitarianism";
-const SOTILITARIANISM_LOGO = "/manus-storage/sotilitarianism-logo_2d2c1557.png";
-const SOTILITY_ICON = "/manus-storage/sotility-icon_94760a53.png";
 
 const jsonLd = [
   {
@@ -196,14 +194,6 @@ export default function SotilitarianismPage() {
             <div className="inline-flex items-center gap-2 section-label mb-6 border border-gold/30 px-3 py-1 rounded-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
               Economic Philosophy · Blockchain Governance · Capitalism 2.0
-            </div>
-            {/* Sotilitarianism logo */}
-            <div className="flex justify-center mb-6">
-              <img
-                src={SOTILITARIANISM_LOGO}
-                alt="Sotilitarianism"
-                className="h-12 md:h-16 w-auto object-contain"
-              />
             </div>
             <h1 className="font-display text-6xl md:text-8xl font-black text-white leading-[0.95] mb-6">
               <span className="gold-shimmer">Sotili</span>

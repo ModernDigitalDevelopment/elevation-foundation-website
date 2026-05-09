@@ -14,11 +14,6 @@ const HERO_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
 const TOKEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/token-economy-Lg7aNHvZZDFY3tPRPfZhDn.png";
 
-// Project logos (original)
-const TRANSPARENTLY_LOGO = "/manus-storage/transparently-logo_848c456c.png";
-const WESOLAR_LOGO = "/manus-storage/wesolar-logo_4fa4c9b5.png";
-const SOTILITY_LOGO = "/manus-storage/sotility-logo_19c1758e.png";
-
 const stats = [
   { value: "501(c)(3)", label: "Tax-Exempt Nonprofit" },
   { value: "20+", label: "Smart Contracts Written" },
@@ -31,7 +26,6 @@ const projects = [
     id: "transparently",
     label: "Governance DApp",
     icon: Vote,
-    logo: TRANSPARENTLY_LOGO,
     title: "Transparently",
     desc: "An on-chain governance platform where every vote, every decision, and every dollar is recorded immutably on the blockchain. Organizations earn transparency scores. Communities earn rewards for participation. No more black boxes.",
     color: "text-gold",
@@ -43,7 +37,6 @@ const projects = [
     id: "wesolar",
     label: "Renewable Energy",
     icon: Sun,
-    logo: WESOLAR_LOGO,
     title: "WeSolar",
     desc: "A decentralized peer-to-peer solar financing platform. Residents co-own solar infrastructure, earn tokenized energy credits, and vote on expansion — all governed by smart contracts on the IOTA Tangle. Putting the We in Web3 Energy.",
     color: "text-teal",
@@ -55,7 +48,6 @@ const projects = [
     id: "elevation-engine",
     label: "DeFi Protocol",
     icon: TrendingUp,
-    logo: SOTILITY_LOGO,
     title: "Elevation Engine",
     desc: "An autonomous DeFi protocol generating yield through AI-managed flash loans and arbitrage strategies. Profits flow directly back to the community treasury via the SotilityTreasuryRouter — no middlemen, no opacity.",
     color: "text-crimson",
@@ -129,11 +121,11 @@ export default function Home() {
           role="img"
           aria-label="Abstract sacred geometry representing the Elevation Foundation's vision"
         />
-        <div className="absolute inset-0 bg-[oklch(0.10_0.05_265/0.75)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.10_0.05_265/0.92)] via-[oklch(0.10_0.05_265/0.70)] to-[oklch(0.10_0.05_265/0.30)]" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[oklch(0.12_0.05_265)] to-transparent" />
 
         <div className="container relative z-10 pt-24 pb-20">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl">
             <div className="section-label mb-6 animate-fade-up">
               501(c)(3) Nonprofit · Blockchain Governance · Community Finance
             </div>
@@ -144,10 +136,10 @@ export default function Home() {
               <br />
               <span className="text-white/70 italic">It Is Built.</span>
             </h1>
-            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-2xl mx-auto animate-fade-up-delay-2">
+            <p className="font-body text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-2xl animate-fade-up-delay-2">
               The Elevation Foundation builds transparent, community-governed financial systems using blockchain technology — putting economic power where it belongs: in the hands of the people. Profit for the People.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-delay-3">
               <Link
                 href="/our-work"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.5)] group"
@@ -266,14 +258,6 @@ export default function Home() {
                   <div className="flex items-center gap-3 mb-4">
                     <Icon size={18} className={project.color} />
                     <div className={`section-label ${project.color}`}>{project.label}</div>
-                  </div>
-                  {/* Project logo */}
-                  <div className="mb-3">
-                    <img
-                      src={project.logo}
-                      alt={project.title + " logo"}
-                      className="h-8 w-auto object-contain"
-                    />
                   </div>
                   <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-gold transition-colors">
                     {project.title}

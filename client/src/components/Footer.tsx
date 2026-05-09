@@ -5,38 +5,19 @@
 import { Link } from "wouter";
 import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 import NewsletterForm from "@/components/NewsletterForm";
-import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Footer() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
-  const footerBg = isDark
-    ? "bg-[oklch(0.10_0.05_265)] border-t border-white/10"
-    : "bg-[oklch(0.93_0.008_75)] border-t border-black/10";
-
-  const textMuted = isDark ? "text-white/50" : "text-[oklch(0.40_0.03_265)]";
-  const textLink = isDark ? "text-white/60 hover:text-gold" : "text-[oklch(0.30_0.04_265)] hover:text-[oklch(0.50_0.12_75)]";
-  const borderColor = isDark ? "border-white/10" : "border-black/10";
-  const bottomText = isDark ? "text-white/30" : "text-[oklch(0.45_0.03_265)]";
-  const socialBtn = isDark
-    ? "border-white/20 text-white/50 hover:text-gold hover:border-gold/40"
-    : "border-black/15 text-[oklch(0.40_0.03_265)] hover:text-[oklch(0.50_0.12_75)] hover:border-[oklch(0.50_0.12_75/0.4)]";
-
   return (
-    <footer className={`${footerBg} pt-16 pb-8`}>
+    <footer className="bg-[oklch(0.10_0.05_265)] border-t border-white/10 pt-16 pb-8">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4">
-              <img
-                src="/manus-storage/elevation-foundation-logo_41f0c646.png"
-                alt="Elevation Foundation"
-                className="h-12 w-auto object-contain"
-              />
+              <div className="font-display text-xl font-bold text-white">Elevation</div>
+              <div className="font-mono-data text-[10px] tracking-[0.25em] uppercase text-gold">Foundation</div>
             </div>
-            <p className={`${textMuted} text-sm font-body leading-relaxed mb-4`}>
+            <p className="text-white/50 text-sm font-body leading-relaxed mb-4">
               A 501(c)(3) nonprofit building transparent, community-governed systems for economic empowerment.
             </p>
             <div className="font-mono-data text-xs text-gold/60">EIN: 92-1042348</div>
@@ -55,7 +36,7 @@ export default function Footer() {
                 { href: "/about/founder", label: "Founder" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={`${textLink} text-sm font-body transition-colors`}>
+                  <Link href={link.href} className="text-white/60 hover:text-gold text-sm font-body transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -74,7 +55,7 @@ export default function Footer() {
                 { href: "/our-work#sogood", label: "SoGood Platform" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={`${textLink} text-sm font-body transition-colors`}>
+                  <Link href={link.href} className="text-white/60 hover:text-gold text-sm font-body transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -93,7 +74,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-1.5 ${textLink} text-sm font-body transition-colors`}
+                    className="inline-flex items-center gap-1.5 text-white/60 hover:text-gold text-sm font-body transition-colors"
                   >
                     <Github size={11} className="opacity-60" />
                     {link.label}
@@ -113,7 +94,7 @@ export default function Footer() {
                 { href: "/blog", label: "Blog & Updates" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={`${textLink} text-sm font-body transition-colors`}>
+                  <Link href={link.href} className="text-white/60 hover:text-gold text-sm font-body transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -124,7 +105,7 @@ export default function Footer() {
                 { icon: Github, href: "https://github.com/ModernDigitalDevelopment", label: "GitHub" },
                 { icon: Twitter, href: "#", label: "Twitter" },
                 { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:cornelius.j.sinclair@gmail.com", label: "Email" },
+                { icon: Mail, href: "mailto:info@elevationfoundation.org", label: "Email" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -132,7 +113,7 @@ export default function Footer() {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
-                  className={`w-8 h-8 rounded-sm border flex items-center justify-center transition-all duration-200 ${socialBtn}`}
+                  className="w-8 h-8 rounded-sm border border-white/20 flex items-center justify-center text-white/50 hover:text-gold hover:border-gold/40 transition-all duration-200"
                 >
                   <Icon size={14} />
                 </a>
@@ -142,11 +123,11 @@ export default function Footer() {
         </div>
 
         {/* Newsletter inline strip */}
-        <div className={`border-t ${borderColor} pt-10 pb-8 mb-2`}>
+        <div className="border-t border-white/10 pt-10 pb-8 mb-2">
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <div className="flex-shrink-0">
-              <div className={`font-display text-lg font-bold mb-1 ${isDark ? "text-white" : "text-[oklch(0.15_0.05_265)]"}`}>Stay Updated</div>
-              <p className={`font-body ${textMuted} text-sm max-w-xs`}>
+              <div className="font-display text-lg font-bold text-white mb-1">Stay Updated</div>
+              <p className="font-body text-white/50 text-sm max-w-xs">
                 Capitalism 2.0 insights, governance updates, and ecosystem news.
               </p>
             </div>
@@ -157,13 +138,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className={`border-t ${borderColor} pt-6 flex flex-col md:flex-row items-center justify-between gap-4`}>
-          <p className={`font-mono-data text-xs ${bottomText}`}>
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="font-mono-data text-xs text-white/30">
             © {new Date().getFullYear()} The Elevation Foundation. All rights reserved. 501(c)(3) Nonprofit · EIN: 92-1042348
           </p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((item) => (
-              <a key={item} href="#" className={`font-mono-data text-xs ${bottomText} hover:text-gold/60 transition-colors`}>
+              <a key={item} href="#" className="font-mono-data text-xs text-white/30 hover:text-gold/60 transition-colors">
                 {item}
               </a>
             ))}

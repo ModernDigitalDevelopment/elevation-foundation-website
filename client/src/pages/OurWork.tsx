@@ -11,6 +11,14 @@ import { ArrowRight, Github, ExternalLink, Zap } from "lucide-react";
 const PHILOSOPHY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
 const TRANSPARENCY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/transparency-bg-dRYH2beMpwTLwnFHzDaK7x.png";
 
+// Project logos from CDN
+const TRANSPARENTLY_LOGO = "/manus-storage/transparently-logo_848c456c.png";
+const TRANSPARENTLY_ICON = "/manus-storage/transparently-icon_5ddf17a1.png";
+const WESOLAR_LOGO = "/manus-storage/wesolar-logo_4fa4c9b5.png";
+const WESOLAR_ICON = "/manus-storage/wesolar-icon_7a078cf9.png";
+const SOTILITY_LOGO = "/manus-storage/sotility-logo_19c1758e.png";
+const SOTILITY_ICON = "/manus-storage/sotility-icon_94760a53.png";
+
 const projects = [
   {
     id: "transparently",
@@ -19,6 +27,8 @@ const projects = [
     label: "Governance DApp",
     labelColor: "text-gold",
     title: "Transparently",
+    logo: TRANSPARENTLY_LOGO,
+    logoIcon: TRANSPARENTLY_ICON,
     subtitle: "On-Chain Governance & Transparency Scoring for Organizations",
     desc: "Transparently is a decentralized application that brings radical transparency to organizational governance. Organizations register, submit financial disclosures, and earn Transparency Scores. Every proposal, every vote, every treasury disbursement is recorded on the blockchain — permanently, publicly, and without the possibility of alteration.",
     longDesc: "Traditional nonprofits and organizations operate with minimal financial transparency. Boards make decisions behind closed doors. Funds are allocated without community input. Audits happen annually, if at all. Transparently changes this by making governance the default mode of operation. Organizations earn Transparency Scores based on verified disclosures. Community members earn SUG tokens for participation. The SoGoodDAOFactory deploys governance contracts for any organization that wants to govern itself on-chain.",
@@ -45,6 +55,8 @@ const projects = [
     label: "Renewable Energy",
     labelColor: "text-teal",
     title: "WeSolar",
+    logo: WESOLAR_LOGO,
+    logoIcon: WESOLAR_ICON,
     subtitle: "Decentralized Peer-to-Peer Solar Financing on IOTA Tangle",
     desc: "WeSolar is a decentralized peer-to-peer solar financing platform built on the IOTA Tangle. Residents co-own solar infrastructure through fractional NFT ownership, earn WeSolarCredits for energy generation, and vote on expansion — all governed by smart contracts. Putting the We in Web3 Energy.",
     longDesc: "Energy poverty is a systemic issue in low-income communities. Utility companies charge the highest rates to those who can least afford them, while solar energy remains inaccessible due to high upfront costs. WeSolar solves this through the WeSolarCrowdfund contract (fractional ownership), WeSolarToken (energy credit trading), and WeSolarGovernance (community voting on expansion). The IOTA Tangle provides feeless microtransactions for energy credit settlement, making sub-cent transactions economically viable.",
@@ -71,6 +83,8 @@ const projects = [
     label: "DeFi Protocol",
     labelColor: "text-crimson",
     title: "Elevation Engine",
+    logo: SOTILITY_LOGO,
+    logoIcon: SOTILITY_ICON,
     subtitle: "AI-Managed Autonomous DeFi Yield for the Community Treasury",
     desc: "The Elevation Engine is an autonomous DeFi protocol that generates yield through AI-managed flash loans, arbitrage strategies, and liquidity provision across multiple protocols. All profits flow through the SotilityTreasuryRouter directly to the community — no management fees, no intermediaries, no opacity.",
     longDesc: "Traditional nonprofits depend entirely on donor generosity. The Elevation Engine changes this equation by creating a self-sustaining revenue stream that operates 24/7 without human intervention. Python-based AI agents scan for arbitrage opportunities across DEXs, execute flash loans via Aave and Uniswap, and deposit profits into the SotilityTreasuryRouter which distributes them: 40% to SOT dividend holders, 40% to SST reserves, 20% to SUG community campaigns.",
@@ -97,6 +111,8 @@ const projects = [
     label: "Social Platform",
     labelColor: "text-white/70",
     title: "SoGood Platform",
+    logo: SOTILITY_LOGO,
+    logoIcon: SOTILITY_ICON,
     subtitle: "Earn Tokens for Verified Social Good Contributions",
     desc: "SoGood is the social layer of the Elevation ecosystem — a platform where verified community contributions earn SUG tokens. Volunteer hours, community organizing, mentorship, and civic participation are tracked, verified, and rewarded with real economic value. Social action becomes economic yield.",
     longDesc: "SoGood bridges the gap between social impact and economic reward. The SoGoodDAOFactory allows any community organization to deploy its own governance structure on-chain. Contributions are verified through a community attestation system, preventing gaming while rewarding genuine participation. SUG tokens earned on SoGood carry governance weight in the broader Elevation ecosystem — making social capital into real capital.",
@@ -182,6 +198,14 @@ export default function OurWork() {
                 {/* Content */}
                 <div className={i % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}>
                   <div className={`section-label ${project.labelColor} mb-3`}>{project.label}</div>
+                  {/* Project Logo */}
+                  <div className="mb-4">
+                    <img
+                      src={project.logo}
+                      alt={project.title + " logo"}
+                      className="h-10 w-auto object-contain brightness-0 invert opacity-90"
+                    />
+                  </div>
                   <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">
                     {project.title}
                   </h2>

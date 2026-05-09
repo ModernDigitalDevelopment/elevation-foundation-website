@@ -64,14 +64,13 @@ export default function Navigation() {
     >
       <div className="container">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Wordmark */}
-          <Link href="/" className="flex flex-col leading-none group">
-            <span className="font-display text-lg md:text-xl font-bold text-white tracking-tight group-hover:text-gold transition-colors duration-200">
-              Elevation
-            </span>
-            <span className="font-mono-data text-[10px] tracking-[0.25em] uppercase text-gold opacity-80">
-              Foundation
-            </span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center group">
+            <img
+              src="/manus-storage/elevation-foundation-logo_41f0c646.png"
+              alt="Elevation Foundation"
+              className="h-10 md:h-12 w-auto object-contain brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+            />
           </Link>
 
           {/* Right side: Donate + Hamburger */}

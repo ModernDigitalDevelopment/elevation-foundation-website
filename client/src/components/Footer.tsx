@@ -14,8 +14,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4">
-              <div className="font-display text-xl font-bold text-white">Elevation</div>
-              <div className="font-mono-data text-[10px] tracking-[0.25em] uppercase text-gold">Foundation</div>
+              <img
+                src="/manus-storage/elevation-foundation-logo_41f0c646.png"
+                alt="Elevation Foundation"
+                className="h-12 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-white/50 text-sm font-body leading-relaxed mb-4">
               A 501(c)(3) nonprofit building transparent, community-governed systems for economic empowerment.
@@ -105,7 +108,7 @@ export default function Footer() {
                 { icon: Github, href: "https://github.com/ModernDigitalDevelopment", label: "GitHub" },
                 { icon: Twitter, href: "#", label: "Twitter" },
                 { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:info@elevationfoundation.org", label: "Email" },
+                { icon: Mail, href: "mailto:cornelius.j.sinclair@gmail.com", label: "Email" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

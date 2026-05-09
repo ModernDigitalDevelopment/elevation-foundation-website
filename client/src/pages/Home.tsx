@@ -14,10 +14,10 @@ const HERO_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
 const TOKEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/token-economy-Lg7aNHvZZDFY3tPRPfZhDn.png";
 
-// Project logos
-const TRANSPARENTLY_LOGO = "/manus-storage/transparently-logo_848c456c.png";
-const WESOLAR_LOGO = "/manus-storage/wesolar-logo_4fa4c9b5.png";
-const SOTILITY_LOGO = "/manus-storage/sotility-logo_19c1758e.png";
+// Project logos (dark-bg versions: transparent background, white text)
+const TRANSPARENTLY_LOGO = "/manus-storage/transparently-logo_1b09e0f8.png";
+const WESOLAR_LOGO = "/manus-storage/wesolar-logo_01609d9c.png";
+const SOTILITY_LOGO = "/manus-storage/sotility-logo_0aea5c36.png";
 
 const stats = [
   { value: "501(c)(3)", label: "Tax-Exempt Nonprofit" },
@@ -272,7 +272,7 @@ export default function Home() {
                     <img
                       src={project.logo}
                       alt={project.title + " logo"}
-                      className="h-8 w-auto object-contain brightness-0 invert opacity-80"
+                      className="h-8 w-auto object-contain opacity-90"
                     />
                   </div>
                   <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-gold transition-colors">

@@ -15,9 +15,9 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="mb-4">
               <img
-                src="/manus-storage/elevation-foundation-logo_41f0c646.png"
+                src="/manus-storage/elevation-foundation-logo_cc51d8f8.png"
                 alt="Elevation Foundation"
-                className="h-12 w-auto object-contain brightness-0 invert"
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="text-white/50 text-sm font-body leading-relaxed mb-4">

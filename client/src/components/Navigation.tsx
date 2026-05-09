@@ -67,9 +67,9 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <img
-              src="/manus-storage/elevation-foundation-logo_41f0c646.png"
+              src="/manus-storage/elevation-foundation-logo_cc51d8f8.png"
               alt="Elevation Foundation"
-              className="h-10 md:h-12 w-auto object-contain brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+              className="h-10 md:h-12 w-auto object-contain"
             />
           </Link>
 

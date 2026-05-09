@@ -272,7 +272,7 @@ export default function Home() {
                     <img
                       src={project.logo}
                       alt={project.title + " logo"}
-                      className="h-8 w-auto object-contain opacity-90"
+                      className="h-24 w-auto object-contain opacity-90"
                     />
                   </div>
                   <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-gold transition-colors">

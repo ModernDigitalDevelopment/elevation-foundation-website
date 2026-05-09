@@ -203,7 +203,7 @@ export default function OurWork() {
                     <img
                       src={project.logo}
                       alt={project.title + " logo"}
-                      className="h-10 w-auto object-contain opacity-90"
+                      className="h-28 w-auto object-contain opacity-90"
                     />
                   </div>
                   <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">

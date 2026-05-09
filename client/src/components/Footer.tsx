@@ -17,7 +17,7 @@ export default function Footer() {
               <img
                 src="/manus-storage/elevation-foundation-logo_cc51d8f8.png"
                 alt="Elevation Foundation"
-                className="h-12 w-auto object-contain"
+                className="h-36 w-auto object-contain"
               />
             </div>
             <p className="text-white/50 text-sm font-body leading-relaxed mb-4">

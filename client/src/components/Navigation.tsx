@@ -69,7 +69,7 @@ export default function Navigation() {
             <img
               src="/manus-storage/elevation-foundation-logo_cc51d8f8.png"
               alt="Elevation Foundation"
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-28 md:h-36 w-auto object-contain"
             />
           </Link>
 

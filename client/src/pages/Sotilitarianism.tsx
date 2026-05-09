@@ -202,7 +202,7 @@ export default function SotilitarianismPage() {
               <img
                 src={SOTILITARIANISM_LOGO}
                 alt="Sotilitarianism"
-                className="h-12 md:h-16 w-auto object-contain"
+                className="h-36 md:h-48 w-auto object-contain"
               />
             </div>
             <h1 className="font-display text-6xl md:text-8xl font-black text-white leading-[0.95] mb-6">

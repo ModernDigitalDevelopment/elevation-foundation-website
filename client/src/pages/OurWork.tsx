@@ -11,13 +11,13 @@ import { ArrowRight, Github, ExternalLink, Zap } from "lucide-react";
 const PHILOSOPHY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
 const TRANSPARENCY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/transparency-bg-dRYH2beMpwTLwnFHzDaK7x.png";
 
-// Project logos (dark-bg versions: transparent background, white text)
-const TRANSPARENTLY_LOGO = "/manus-storage/transparently-logo_1b09e0f8.png";
-const TRANSPARENTLY_ICON = "/manus-storage/transparently-icon_ad52bdbf.png";
-const WESOLAR_LOGO = "/manus-storage/wesolar-logo_01609d9c.png";
-const WESOLAR_ICON = "/manus-storage/wesolar-icon_36fc1fde.png";
-const SOTILITY_LOGO = "/manus-storage/sotility-logo_0aea5c36.png";
-const SOTILITY_ICON = "/manus-storage/sotility-icon_ac328d0a.png";
+// Project logos (original)
+const TRANSPARENTLY_LOGO = "/manus-storage/transparently-logo_848c456c.png";
+const TRANSPARENTLY_ICON = "/manus-storage/transparently-icon_5ddf17a1.png";
+const WESOLAR_LOGO = "/manus-storage/wesolar-logo_4fa4c9b5.png";
+const WESOLAR_ICON = "/manus-storage/wesolar-icon_7a078cf9.png";
+const SOTILITY_LOGO = "/manus-storage/sotility-logo_19c1758e.png";
+const SOTILITY_ICON = "/manus-storage/sotility-icon_94760a53.png";
 
 const projects = [
   {
@@ -203,7 +203,7 @@ export default function OurWork() {
                     <img
                       src={project.logo}
                       alt={project.title + " logo"}
-                      className="h-28 w-auto object-contain opacity-90"
+                      className="h-10 w-auto object-contain"
                     />
                   </div>
                   <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">

@@ -10,8 +10,8 @@ import Footer from "@/components/Footer";
 import { ArrowRight, BookOpen, FileText, ExternalLink, ChevronRight, Zap, Shield, Globe, Users } from "lucide-react";
 
 const GITHUB_REPO = "https://github.com/ModernDigitalDevelopment/sotilitarianism";
-const SOTILITARIANISM_LOGO = "/manus-storage/sotilitarianism-logo_fde61643.png";
-const SOTILITY_ICON = "/manus-storage/sotility-icon_ac328d0a.png";
+const SOTILITARIANISM_LOGO = "/manus-storage/sotilitarianism-logo_2d2c1557.png";
+const SOTILITY_ICON = "/manus-storage/sotility-icon_94760a53.png";
 
 const jsonLd = [
   {
@@ -202,7 +202,7 @@ export default function SotilitarianismPage() {
               <img
                 src={SOTILITARIANISM_LOGO}
                 alt="Sotilitarianism"
-                className="h-36 md:h-48 w-auto object-contain"
+                className="h-12 md:h-16 w-auto object-contain"
               />
             </div>
             <h1 className="font-display text-6xl md:text-8xl font-black text-white leading-[0.95] mb-6">

@@ -98,6 +98,83 @@
   --sidebar-ring: oklch(0.72 0.12 75);
 }
 
+/* ─── LIGHT MODE OVERRIDES ─────────────────────────────────── */
+/* When NOT .dark, override the navy-based variables to a warm cream palette */
+:root:not(.dark) {
+  --background: oklch(0.97 0.008 75);
+  --foreground: oklch(0.15 0.05 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.05 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.05 265);
+  --primary: oklch(0.58 0.12 75);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.92 0.01 75);
+  --secondary-foreground: oklch(0.20 0.05 265);
+  --muted: oklch(0.93 0.008 75);
+  --muted-foreground: oklch(0.45 0.03 265);
+  --accent: oklch(0.92 0.01 75);
+  --accent-foreground: oklch(0.20 0.05 265);
+  --border: oklch(0 0 0 / 12%);
+  --input: oklch(0 0 0 / 8%);
+  --ring: oklch(0.58 0.12 75);
+  --sidebar: oklch(0.95 0.008 75);
+  --sidebar-foreground: oklch(0.15 0.05 265);
+  --sidebar-primary: oklch(0.58 0.12 75);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.92 0.01 75);
+  --sidebar-accent-foreground: oklch(0.20 0.05 265);
+  --sidebar-border: oklch(0 0 0 / 12%);
+  --sidebar-ring: oklch(0.58 0.12 75);
+}
+
+/* Light mode overrides for hardcoded brand utility classes */
+:root:not(.dark) .bg-navy {
+  background-color: oklch(0.97 0.008 75);
+}
+:root:not(.dark) .bg-navy-light {
+  background-color: oklch(0.93 0.008 75);
+}
+:root:not(.dark) .bg-navy-mid {
+  background-color: oklch(0.90 0.01 75);
+}
+:root:not(.dark) .text-white {
+  color: oklch(0.15 0.05 265);
+}
+:root:not(.dark) .text-white\/70 {
+  color: oklch(0.30 0.04 265);
+}
+:root:not(.dark) .text-white\/60 {
+  color: oklch(0.35 0.04 265);
+}
+:root:not(.dark) .text-white\/55 {
+  color: oklch(0.38 0.04 265);
+}
+:root:not(.dark) .text-white\/50 {
+  color: oklch(0.42 0.03 265);
+}
+:root:not(.dark) .text-white\/75 {
+  color: oklch(0.28 0.04 265);
+}
+:root:not(.dark) .text-white\/80 {
+  color: oklch(0.25 0.04 265);
+}
+:root:not(.dark) .border-white\/10 {
+  border-color: oklch(0 0 0 / 10%);
+}
+:root:not(.dark) .border-white\/20 {
+  border-color: oklch(0 0 0 / 18%);
+}
+:root:not(.dark) .border-white\/30 {
+  border-color: oklch(0 0 0 / 25%);
+}
+:root:not(.dark) .nav-link {
+  color: oklch(0.25 0.05 265);
+}
+:root:not(.dark) .nav-link:hover {
+  color: oklch(0.50 0.12 75);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -5,7 +5,8 @@
  */
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const navLinks = [
   { href: "/our-story", label: "Our Story" },
@@ -24,6 +25,7 @@ export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
   const menuRef = useRef<HTMLDivElement>(null);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -53,12 +55,16 @@ export default function Navigation() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  const isDark = theme === "dark";
+
   return (
     <nav
       ref={menuRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || menuOpen
-          ? "bg-[oklch(0.12_0.05_265/0.97)] backdrop-blur-md border-b border-white/10"
+          ? isDark
+            ? "bg-[oklch(0.12_0.05_265/0.97)] backdrop-blur-md border-b border-white/10"
+            : "bg-[oklch(0.97_0.008_75/0.97)] backdrop-blur-md border-b border-black/10 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -67,14 +73,29 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <img
-              src="/manus-storage/elevation-foundation-logo_cc51d8f8.png"
+              src="/manus-storage/elevation-foundation-logo_41f0c646.png"
               alt="Elevation Foundation"
-              className="h-28 md:h-36 w-auto object-contain"
+              className="h-10 md:h-12 w-auto object-contain"
             />
           </Link>
 
-          {/* Right side: Donate + Hamburger */}
-          <div className="flex items-center gap-3">
+          {/* Right side: Theme toggle + Donate + Hamburger */}
+          <div className="flex items-center gap-2">
+            {/* Theme toggle */}
+            {toggleTheme && (
+              <button
+                onClick={toggleTheme}
+                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+                className={`p-2 rounded-sm transition-all duration-200 focus:outline-none ${
+                  isDark
+                    ? "text-white/70 hover:text-gold hover:bg-white/5"
+                    : "text-[oklch(0.25_0.05_265)] hover:text-[oklch(0.50_0.12_75)] hover:bg-black/5"
+                }`}
+              >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+            )}
+
             <Link
               href="/donate"
               className="px-4 py-2 text-sm font-semibold font-body bg-gold text-[oklch(0.12_0.05_265)] rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_20px_oklch(0.72_0.12_75/0.4)]"
@@ -82,7 +103,11 @@ export default function Navigation() {
               Donate
             </Link>
             <button
-              className="text-white p-2 hover:text-gold transition-colors duration-200 focus:outline-none"
+              className={`p-2 transition-colors duration-200 focus:outline-none ${
+                isDark
+                  ? "text-white hover:text-gold"
+                  : "text-[oklch(0.15_0.05_265)] hover:text-[oklch(0.50_0.12_75)]"
+              }`}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
@@ -99,7 +124,7 @@ export default function Navigation() {
           menuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-[oklch(0.12_0.05_265/0.98)] border-t border-white/10">
+        <div className={`border-t ${isDark ? "bg-[oklch(0.12_0.05_265/0.98)] border-white/10" : "bg-[oklch(0.97_0.008_75/0.98)] border-black/10"}`}>
           <div className="container py-6">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
               {navLinks.map((link) => (
@@ -109,7 +134,9 @@ export default function Navigation() {
                   className={`font-body text-base py-3 px-4 rounded-sm transition-all duration-200 group flex items-center gap-2 ${
                     location === link.href
                       ? "text-gold bg-gold/10"
-                      : "text-white/75 hover:text-gold hover:bg-white/5"
+                      : isDark
+                        ? "text-white/75 hover:text-gold hover:bg-white/5"
+                        : "text-[oklch(0.25_0.05_265)] hover:text-[oklch(0.50_0.12_75)] hover:bg-black/5"
                   }`}
                 >
                   <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors duration-200 flex-shrink-0" />
@@ -117,8 +144,8 @@ export default function Navigation() {
                 </Link>
               ))}
             </div>
-            <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-              <span className="font-mono-data text-xs text-white/30 uppercase tracking-wider">
+            <div className={`mt-4 pt-4 border-t flex items-center justify-between ${isDark ? "border-white/10" : "border-black/10"}`}>
+              <span className={`font-mono-data text-xs uppercase tracking-wider ${isDark ? "text-white/30" : "text-[oklch(0.45_0.03_265)]"}`}>
                 501(c)(3) · Blockchain Governance · Community Finance
               </span>
               <Link

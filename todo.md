@@ -101,3 +101,11 @@
 - [ ] Post Day 3 X post on @SolarKitties (due May 1, 2026)
 - [ ] Post Day 4 X post on @SolarKitties (due May 2, 2026)
 - [ ] Post Day 5 X post on @SolarKitties (due May 2, 2026)
+
+## Blog Polish & Features (May 2026)
+- [ ] Center homepage hero title, subtitle, buttons, and eyebrow label
+- [ ] Add featured boolean column to blog_posts DB table
+- [ ] Pin Sotilitarian Manifesto as featured post via DB
+- [ ] Wire featured boolean to Blog.tsx list page
+- [ ] Add series navigator to Sotilitarian Capitalism blog posts
+- [ ] Add social share buttons to every blog post

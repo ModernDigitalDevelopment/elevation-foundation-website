@@ -45,6 +45,8 @@ export default function Blog() {
     offset: 0,
   });
 
+  const { data: featuredPost } = trpc.blog.featured.useQuery();
+
   const { data: dbCategories } = trpc.blog.categories.useQuery();
 
   const staticCategories = ["All", "Philosophy", "Technology", "Governance", "Community", "DeFi"];
@@ -53,8 +55,10 @@ export default function Blog() {
     : staticCategories;
 
   const posts = postsData?.posts ?? [];
-  const featuredPost = posts[0];
-  const regularPosts = activeCategory === "All" ? posts.slice(1) : posts;
+  // Exclude the featured post from the regular grid to avoid duplication
+  const regularPosts = activeCategory === "All"
+    ? posts.filter(p => !featuredPost || p.id !== featuredPost.id)
+    : posts;
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();

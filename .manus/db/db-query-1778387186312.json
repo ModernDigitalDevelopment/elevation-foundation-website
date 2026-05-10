@@ -1,0 +1,90 @@
+{
+  "query": "SELECT id, slug, title FROM blog_posts WHERE title LIKE '%Manifesto%' OR slug LIKE '%manifesto%' OR title LIKE '%Sotilitarian%' ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, slug, title FROM blog_posts WHERE title LIKE '%Manifesto%' OR slug LIKE '%manifesto%' OR title LIKE '%Sotilitarian%' ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "sotilitarianism-the-complete-vision-a-new-economic-operating-system",
+      "title": "Sotilitarianism: The Complete Vision — A New Economic Operating System"
+    },
+    {
+      "id": "2",
+      "slug": "sotilitarian-economic-framework-dual-lever-model",
+      "title": "The Sotilitarian Economic Framework: Beyond Supply-Side and Demand-Side"
+    },
+    {
+      "id": "3",
+      "slug": "the-five-layer-technical-architecture-of-sotilitarianism",
+      "title": "The Five-Layer Technical Architecture of Sotilitarianism"
+    },
+    {
+      "id": "6",
+      "slug": "the-sotilitarian-revolt-why-the-system-isnt-broken-its-working-as-designed",
+      "title": "The Sotilitarian Revolt: Why the System Isn\\'t Broken — It\\'s Working as Designed"
+    },
+    {
+      "id": "7",
+      "slug": "the-sotilitarian-economic-framework-tokenizing-social-value",
+      "title": "The Sotilitarian Economic Framework: Tokenizing Social Value"
+    },
+    {
+      "id": "12",
+      "slug": "sotilitarian-capitalism-part-i-the-new-economic-operating-system",
+      "title": "Sotilitarian Capitalism, Part I: The New Economic Operating System"
+    },
+    {
+      "id": "13",
+      "slug": "sotilitarian-capitalism-continuous-consent-political-framework",
+      "title": "Sotilitarian Capitalism, Part II: Continuous Consent and the Political Framework"
+    },
+    {
+      "id": "14",
+      "slug": "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture",
+      "title": "Sotilitarian Capitalism, Part III: The Five-Layer Technical Architecture"
+    },
+    {
+      "id": "15",
+      "slug": "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect",
+      "title": "Sotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect"
+    },
+    {
+      "id": "16",
+      "slug": "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate",
+      "title": "Sotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate"
+    },
+    {
+      "id": "90003",
+      "slug": "the-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation",
+      "title": "The Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation"
+    },
+    {
+      "id": "90004",
+      "slug": "sotilitarian-capitalism",
+      "title": "Sotilitarian Capitalism"
+    },
+    {
+      "id": "90005",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "title": "Sotilitarian Capitalism: Part II — The Economics"
+    },
+    {
+      "id": "90006",
+      "slug": "sotilitarian-capitalism-part-iii-the-politics",
+      "title": "Sotilitarian Capitalism: Part III — The Politics"
+    },
+    {
+      "id": "90007",
+      "slug": "sotilitarian-capitalism-part-iv-the-technology",
+      "title": "Sotilitarian Capitalism: Part IV — The Technology"
+    },
+    {
+      "id": "90008",
+      "slug": "the-sotilitarian-revolt",
+      "title": "The Sotilitarian Revolt"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\n1\tsotilitarianism-the-complete-vision-a-new-economic-operating-system\tSotilitarianism: The Complete Vision — A New Economic Operating System\n2\tsotilitarian-economic-framework-dual-lever-model\tThe Sotilitarian Economic Framework: Beyond Supply-Side and Demand-Side\n3\tthe-five-layer-technical-architecture-of-sotilitarianism\tThe Five-Layer Technical Architecture of Sotilitarianism\n6\tthe-sotilitarian-revolt-why-the-system-isnt-broken-its-working-as-designed\tThe Sotilitarian Revolt: Why the System Isn\\'t Broken — It\\'s Working as Designed\n7\tthe-sotilitarian-economic-framework-tokenizing-social-value\tThe Sotilitarian Economic Framework: Tokenizing Social Value\n12\tsotilitarian-capitalism-part-i-the-new-economic-operating-system\tSotilitarian Capitalism, Part I: The New Economic Operating System\n13\tsotilitarian-capitalism-continuous-consent-political-framework\tSotilitarian Capitalism, Part II: Continuous Consent and the Political Framework\n14\tsotilitarian-capitalism-part-iii-the-five-layer-technical-architecture\tSotilitarian Capitalism, Part III: The Five-Layer Technical Architecture\n15\tsotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect\tSotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect\n16\tsotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate\tSotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate\n90003\tthe-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation\tThe Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation\n90004\tsotilitarian-capitalism\tSotilitarian Capitalism\n90005\tsotilitarian-capitalism-part-ii-the-economics\tSotilitarian Capitalism: Part II — The Economics\n90006\tsotilitarian-capitalism-part-iii-the-politics\tSotilitarian Capitalism: Part III — The Politics\n90007\tsotilitarian-capitalism-part-iv-the-technology\tSotilitarian Capitalism: Part IV — The Technology\n90008\tthe-sotilitarian-revolt\tThe Sotilitarian Revolt\n",
+  "stderr": "",
+  "execution_time_ms": 261
+}

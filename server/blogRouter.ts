@@ -9,6 +9,7 @@ import {
   createPost,
   deletePost,
   getCategories,
+  getFeaturedPost,
   getPostBySlug,
   getPostById,
   listAllPosts,
@@ -41,6 +42,11 @@ export const blogRouter = router({
     .query(async ({ input }) => {
       return listPublishedPosts(input);
     }),
+
+  /** Public: get the pinned featured post */
+  featured: publicProcedure.query(async () => {
+    return getFeaturedPost();
+  }),
 
   /** Public: get a single published post by slug */
   bySlug: publicProcedure

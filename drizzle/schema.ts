@@ -42,6 +42,8 @@ export const blogPosts = mysqlTable("blog_posts", {
   coverImage: text("coverImage"),
   /** Whether the post is publicly visible */
   published: boolean("published").notNull().default(false),
+  /** Whether this post is pinned as the featured article on the blog index */
+  featured: boolean("featured").notNull().default(false),
   /** When the post was first published (set on first publish) */
   publishedAt: timestamp("publishedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),

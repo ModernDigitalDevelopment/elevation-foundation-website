@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import { Link, useParams } from "wouter";
 import {
   ArrowLeft,
+  ArrowRight,
   Calendar,
   Clock,
   User,
@@ -17,6 +18,7 @@ import {
   AlertCircle,
   Copy,
   Check,
+  Share2,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Streamdown } from "streamdown";
@@ -35,6 +37,119 @@ function estimateReadTime(content: string): string {
   const words = content.split(/\s+/).length;
   const minutes = Math.max(1, Math.round(words / 200));
   return `${minutes} min read`;
+}
+
+// ─── SERIES DEFINITION ──────────────────────────────────────────────────────
+const SOTILITARIAN_CAPITALISM_SERIES = [
+  {
+    part: 1,
+    title: "The New Economic Operating System",
+    slug: "sotilitarian-capitalism-part-i-the-new-economic-operating-system",
+  },
+  {
+    part: 2,
+    title: "Continuous Consent and the Political Framework",
+    slug: "sotilitarian-capitalism-continuous-consent-political-framework",
+  },
+  {
+    part: 3,
+    title: "The Five-Layer Technical Architecture",
+    slug: "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture",
+  },
+  {
+    part: 4,
+    title: "Implementation Strategy — The Trojan Horse Effect",
+    slug: "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect",
+  },
+  {
+    part: 5,
+    title: "The Future of Economics — Beyond the Binary Debate",
+    slug: "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate",
+  },
+];
+
+function SeriesNavigator({ currentSlug }: { currentSlug: string }) {
+  const currentIndex = SOTILITARIAN_CAPITALISM_SERIES.findIndex(p => p.slug === currentSlug);
+  if (currentIndex === -1) return null;
+
+  const current = SOTILITARIAN_CAPITALISM_SERIES[currentIndex];
+  const prev = currentIndex > 0 ? SOTILITARIAN_CAPITALISM_SERIES[currentIndex - 1] : null;
+  const next = currentIndex < SOTILITARIAN_CAPITALISM_SERIES.length - 1
+    ? SOTILITARIAN_CAPITALISM_SERIES[currentIndex + 1]
+    : null;
+
+  return (
+    <div className="mt-12 pt-8 border-t border-gold/20">
+      <div className="flex items-center gap-2 mb-5">
+        <div className="w-6 h-px bg-gold/50" />
+        <span className="font-mono-data text-xs text-gold/70 uppercase tracking-wider">
+          Sotilitarian Capitalism · Part {current.part} of {SOTILITARIAN_CAPITALISM_SERIES.length}
+        </span>
+        <div className="flex-1 h-px bg-gold/20" />
+      </div>
+
+      {/* All parts mini-list */}
+      <div className="grid gap-1.5 mb-6">
+        {SOTILITARIAN_CAPITALISM_SERIES.map((part) => (
+          <div
+            key={part.slug}
+            className={`flex items-center gap-3 px-3 py-2 rounded-sm text-sm ${
+              part.slug === currentSlug
+                ? "bg-gold/10 border border-gold/25"
+                : "border border-transparent hover:border-white/10"
+            }`}
+          >
+            <span className={`font-mono-data text-xs w-5 flex-shrink-0 ${
+              part.slug === currentSlug ? "text-gold" : "text-white/30"
+            }`}>
+              {part.part}
+            </span>
+            {part.slug === currentSlug ? (
+              <span className="font-body text-gold/90 font-medium">{part.title}</span>
+            ) : (
+              <Link
+                href={`/blog/${part.slug}`}
+                className="font-body text-white/55 hover:text-gold transition-colors"
+              >
+                {part.title}
+              </Link>
+            )}
+            {part.slug === currentSlug && (
+              <span className="ml-auto font-mono-data text-[10px] text-gold/50 uppercase">You are here</span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Prev / Next arrows */}
+      <div className="flex gap-4">
+        {prev ? (
+          <Link
+            href={`/blog/${prev.slug}`}
+            className="flex-1 flex items-center gap-3 p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm hover:border-gold/30 hover:shadow-[0_4px_20px_oklch(0.05_0.05_265/0.4)] transition-all duration-200 group"
+          >
+            <ArrowLeft size={16} className="text-white/40 group-hover:text-gold group-hover:-translate-x-0.5 transition-all flex-shrink-0" />
+            <div className="min-w-0">
+              <div className="font-mono-data text-[10px] text-white/35 uppercase mb-0.5">Previous · Part {prev.part}</div>
+              <div className="font-body text-sm text-white/70 group-hover:text-gold transition-colors truncate">{prev.title}</div>
+            </div>
+          </Link>
+        ) : <div className="flex-1" />}
+        {next ? (
+          <Link
+            href={`/blog/${next.slug}`}
+            className="flex-1 flex items-center justify-end gap-3 p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm hover:border-gold/30 hover:shadow-[0_4px_20px_oklch(0.05_0.05_265/0.4)] transition-all duration-200 group text-right"
+          >
+            <div className="min-w-0">
+              <div className="font-mono-data text-[10px] text-white/35 uppercase mb-0.5">Next · Part {next.part}</div>
+              <div className="font-body text-sm text-white/70 group-hover:text-gold transition-colors truncate">{next.title}</div>
+            </div>
+            <ArrowRight size={16} className="text-white/40 group-hover:text-gold group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          </Link>
+        ) : <div className="flex-1" />}
+      </div>
+    </div>
+  );
 }
 
 // Reading progress bar
@@ -153,40 +268,46 @@ function ShareButtons({ url, title, excerpt }: ShareButtonsProps) {
   };
 
   return (
-    <div className="mt-12 pt-8 border-t border-white/10">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-        <span className="font-mono-data text-xs text-white/40 uppercase tracking-wider flex-shrink-0">
-          Share this article
-        </span>
-        <div className="flex flex-wrap items-center gap-2">
-          {shareLinks.map(({ label, icon, href, color, onClick }) => (
-            <a
-              key={label}
-              href={onClick ? undefined : href}
-              target={onClick ? undefined : "_blank"}
-              rel="noopener noreferrer"
-              onClick={onClick}
-              title={label}
-              className={`inline-flex items-center gap-1.5 px-3 py-2 border border-white/15 text-white/50 font-body text-xs rounded-sm transition-all duration-200 cursor-pointer ${color}`}
-            >
-              {icon}
-              <span className="hidden sm:inline">{label}</span>
-            </a>
-          ))}
-
-          {/* Copy link button */}
-          <button
-            onClick={handleCopy}
-            title="Copy link"
-            className="inline-flex items-center gap-1.5 px-3 py-2 border border-white/15 text-white/50 hover:text-gold hover:border-gold/40 font-body text-xs rounded-sm transition-all duration-200"
-          >
-            {copied ? <Check size={14} className="text-gold" /> : <Copy size={14} />}
-            <span className="hidden sm:inline">{copied ? "Copied!" : "Copy link"}</span>
-          </button>
-        </div>
+    <div className="mt-12 pt-10 border-t border-white/10">
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-5">
+        <Share2 size={15} className="text-gold/70" />
+        <span className="font-display text-base font-bold text-white">Spread the Word</span>
+        <div className="flex-1 h-px bg-white/10" />
       </div>
+      <p className="font-body text-sm text-white/50 mb-5">
+        If this article resonated with you, share it — every share helps build the movement.
+      </p>
+
+      <div className="flex flex-wrap gap-2">
+        {shareLinks.map(({ label, icon, href, color, onClick }) => (
+          <a
+            key={label}
+            href={onClick ? undefined : href}
+            target={onClick ? undefined : "_blank"}
+            rel="noopener noreferrer"
+            onClick={onClick}
+            title={label}
+            className={`inline-flex items-center gap-2 px-4 py-2.5 border border-white/15 bg-[oklch(0.16_0.05_265)] text-white/55 font-body text-sm rounded-sm transition-all duration-200 cursor-pointer hover:bg-[oklch(0.18_0.05_265)] ${color}`}
+          >
+            {icon}
+            <span>{label}</span>
+          </a>
+        ))}
+
+        {/* Copy link button */}
+        <button
+          onClick={handleCopy}
+          title="Copy link"
+          className="inline-flex items-center gap-2 px-4 py-2.5 border border-white/15 bg-[oklch(0.16_0.05_265)] text-white/55 hover:text-gold hover:border-gold/40 font-body text-sm rounded-sm transition-all duration-200"
+        >
+          {copied ? <Check size={14} className="text-gold" /> : <Copy size={14} />}
+          <span>{copied ? "Copied!" : "Copy Link"}</span>
+        </button>
+      </div>
+
       {copied && (
-        <p className="mt-2 font-body text-xs text-gold/70">
+        <p className="mt-3 font-body text-xs text-gold/70">
           Link copied — paste it anywhere, including your Instagram story or bio.
         </p>
       )}
@@ -426,6 +547,9 @@ export default function BlogPost() {
               </div>
             </div>
           )}
+
+          {/* Series Navigator (only shows for Sotilitarian Capitalism series) */}
+          <SeriesNavigator currentSlug={slug} />
 
           {/* Related Articles */}
           <RelatedArticles currentSlug={slug} tags={tags} />

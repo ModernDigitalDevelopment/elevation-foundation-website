@@ -230,6 +230,31 @@ export async function listSubscribers(opts?: { limit?: number; offset?: number }
   return { subscribers, total: Number(countResult[0]?.count ?? 0) };
 }
 
+/** Get the pinned featured post (featured = true). Falls back to newest post. */
+export async function getFeaturedPost(): Promise<BlogPost | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  // Try explicitly featured post first
+  const featured = await db
+    .select()
+    .from(blogPosts)
+    .where(and(eq(blogPosts.published, true), eq(blogPosts.featured, true)))
+    .limit(1);
+
+  if (featured.length > 0) return featured[0];
+
+  // Fallback: newest published post
+  const newest = await db
+    .select()
+    .from(blogPosts)
+    .where(eq(blogPosts.published, true))
+    .orderBy(desc(blogPosts.publishedAt))
+    .limit(1);
+
+  return newest[0];
+}
+
 /** Get distinct categories from published posts. */
 export async function getCategories(): Promise<string[]> {
   const db = await getDb();

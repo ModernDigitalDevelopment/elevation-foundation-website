@@ -1,7 +1,7 @@
 /*
  * ELEVATION RISING — Individual Blog Post Page
- * Vetta-inspired editorial style: warm cream background, large serif title,
- * gold-bordered abstract callout, clean TOC, professional body typography.
+ * Dark navy site background, lifted white article card,
+ * large serif title, gold-bordered callouts, professional body typography.
  */
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
@@ -57,7 +57,7 @@ function ReadingProgress() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-0.5 bg-[oklch(0.88_0.04_75/0.3)]">
+    <div className="fixed top-0 left-0 right-0 z-50 h-0.5 bg-white/10">
       <div
         className="h-full bg-[oklch(0.72_0.12_75)] transition-all duration-100 ease-out"
         style={{ width: `${progress}%` }}
@@ -113,9 +113,9 @@ function ShareButtons({ url, title, excerpt }: ShareButtonsProps) {
   };
 
   return (
-    <div className="mt-12 pt-8 border-t border-[oklch(0.72_0.12_75/0.25)]">
+    <div className="mt-12 pt-8 border-t border-white/15">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-        <span className="flex items-center gap-2 font-mono-data text-xs text-[oklch(0.45_0.05_265)] uppercase tracking-wider flex-shrink-0">
+        <span className="flex items-center gap-2 font-mono-data text-xs text-white/50 uppercase tracking-wider flex-shrink-0">
           <Share2 size={12} />
           Share this article
         </span>
@@ -127,7 +127,7 @@ function ShareButtons({ url, title, excerpt }: ShareButtonsProps) {
               target="_blank"
               rel="noopener noreferrer"
               title={label}
-              className="inline-flex items-center gap-1.5 px-3 py-2 border border-[oklch(0.72_0.12_75/0.3)] text-[oklch(0.45_0.05_265)] hover:text-[oklch(0.25_0.05_265)] hover:border-[oklch(0.72_0.12_75/0.6)] hover:bg-[oklch(0.72_0.12_75/0.08)] font-body text-xs rounded-sm transition-all duration-200 cursor-pointer bg-white"
+              className="inline-flex items-center gap-1.5 px-3 py-2 border border-white/20 text-white/60 hover:text-white hover:border-gold/50 hover:bg-gold/10 font-body text-xs rounded-sm transition-all duration-200 cursor-pointer"
             >
               {icon}
               <span className="hidden sm:inline">{label}</span>
@@ -136,7 +136,7 @@ function ShareButtons({ url, title, excerpt }: ShareButtonsProps) {
           <button
             onClick={handleCopy}
             title="Copy link"
-            className="inline-flex items-center gap-1.5 px-3 py-2 border border-[oklch(0.72_0.12_75/0.3)] text-[oklch(0.45_0.05_265)] hover:text-[oklch(0.25_0.05_265)] hover:border-[oklch(0.72_0.12_75/0.6)] hover:bg-[oklch(0.72_0.12_75/0.08)] font-body text-xs rounded-sm transition-all duration-200 bg-white"
+            className="inline-flex items-center gap-1.5 px-3 py-2 border border-white/20 text-white/60 hover:text-white hover:border-gold/50 hover:bg-gold/10 font-body text-xs rounded-sm transition-all duration-200"
           >
             {copied ? <Check size={14} className="text-[oklch(0.55_0.15_145)]" /> : <Copy size={14} />}
             <span className="hidden sm:inline">{copied ? "Copied!" : "Copy link"}</span>
@@ -162,25 +162,25 @@ function RelatedArticles({ currentSlug, tags }: { currentSlug: string; tags: str
   if (!related.length) return null;
 
   return (
-    <div className="mt-16 pt-12 border-t border-[oklch(0.72_0.12_75/0.25)]">
+    <div className="mt-16 pt-12 border-t border-white/15">
       <div className="flex items-center gap-3 mb-8">
-        <div className="w-8 h-px bg-[oklch(0.72_0.12_75)]" />
-        <span className="font-mono-data text-xs text-[oklch(0.72_0.12_75)] uppercase tracking-widest">Continue Reading</span>
-        <div className="flex-1 h-px bg-[oklch(0.72_0.12_75/0.25)]" />
+        <div className="w-8 h-px bg-gold" />
+        <span className="font-mono-data text-xs text-gold/70 uppercase tracking-widest">Continue Reading</span>
+        <div className="flex-1 h-px bg-white/10" />
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         {related.map((p) => (
           <Link
             key={p.slug}
             href={`/blog/${p.slug}`}
-            className="block bg-white border border-[oklch(0.88_0.04_75/0.5)] p-6 rounded-sm hover:border-[oklch(0.72_0.12_75/0.5)] hover:shadow-md transition-all duration-200 group"
+            className="block bg-white rounded-sm shadow-[0_4px_20px_oklch(0.05_0.05_265/0.4)] p-6 hover:shadow-[0_6px_30px_oklch(0.05_0.05_265/0.6)] hover:-translate-y-0.5 transition-all duration-200 group"
           >
-            <div className="font-mono-data text-[10px] text-[oklch(0.72_0.12_75)] uppercase tracking-wider mb-2">{p.category}</div>
-            <h4 className="font-display text-base font-bold text-[oklch(0.18_0.05_265)] leading-snug group-hover:text-[oklch(0.55_0.12_75)] transition-colors line-clamp-3">
+            <div className="font-mono-data text-[10px] text-[oklch(0.55_0.10_75)] uppercase tracking-wider mb-2">{p.category}</div>
+            <h4 className="font-display text-base font-bold text-[oklch(0.12_0.05_265)] leading-snug group-hover:text-[oklch(0.45_0.10_75)] transition-colors line-clamp-3">
               {p.title}
             </h4>
             {p.excerpt && (
-              <p className="font-body text-xs text-[oklch(0.45_0.05_265)] mt-2 line-clamp-2 leading-relaxed">{p.excerpt}</p>
+              <p className="font-body text-xs text-[oklch(0.40_0.05_265)] mt-2 line-clamp-2 leading-relaxed">{p.excerpt}</p>
             )}
           </Link>
         ))}
@@ -201,10 +201,10 @@ export default function BlogPost() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[oklch(0.97_0.02_75)] text-[oklch(0.18_0.05_265)] flex flex-col">
+      <div className="min-h-screen bg-navy text-white flex flex-col">
         <Navigation />
         <div className="flex-1 flex items-center justify-center">
-          <Loader2 size={40} className="animate-spin text-[oklch(0.72_0.12_75)]" />
+          <Loader2 size={40} className="animate-spin text-gold/60" />
         </div>
         <Footer />
       </div>
@@ -213,18 +213,18 @@ export default function BlogPost() {
 
   if (error || !post) {
     return (
-      <div className="min-h-screen bg-[oklch(0.97_0.02_75)] text-[oklch(0.18_0.05_265)] flex flex-col">
+      <div className="min-h-screen bg-navy text-white flex flex-col">
         <Navigation />
         <div className="flex-1 flex items-center justify-center px-4">
           <div className="text-center max-w-md">
-            <AlertCircle size={48} className="text-red-500 mx-auto mb-4" />
-            <h1 className="font-display text-3xl font-bold text-[oklch(0.18_0.05_265)] mb-3">Article Not Found</h1>
-            <p className="font-body text-[oklch(0.45_0.05_265)] mb-8">
+            <AlertCircle size={48} className="text-red-400 mx-auto mb-4" />
+            <h1 className="font-display text-3xl font-bold text-white mb-3">Article Not Found</h1>
+            <p className="font-body text-white/60 mb-8">
               This article may have been moved or is no longer available.
             </p>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[oklch(0.72_0.12_75)] text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-[oklch(0.65_0.12_75)] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all"
             >
               <ArrowLeft size={16} />
               Back to Blog
@@ -242,7 +242,7 @@ export default function BlogPost() {
   const words = wordCount(post.content ?? "");
 
   return (
-    <div className="min-h-screen bg-[oklch(0.97_0.02_75)] text-[oklch(0.18_0.05_265)]">
+    <div className="min-h-screen bg-navy text-white">
       <ReadingProgress />
       <SEOHead
         title={`${post.title} | The Elevation Foundation`}
@@ -271,13 +271,12 @@ export default function BlogPost() {
           <div className="flex items-center gap-3 mb-8">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-[oklch(0.55_0.05_265)] hover:text-[oklch(0.72_0.12_75)] font-body text-sm transition-colors group"
+              className="inline-flex items-center gap-2 text-white/50 hover:text-gold font-body text-sm transition-colors group"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
               Blog
-            </Link>
-            <span className="text-[oklch(0.72_0.12_75/0.4)]">/</span>
-            <span className="font-mono-data text-xs text-[oklch(0.72_0.12_75)] uppercase tracking-widest">
+            </Link>            <span className="text-gold/40">/</span>
+            <span className="font-mono-data text-xs text-gold uppercase tracking-widest">
               {post.category}
             </span>
           </div>
@@ -291,34 +290,34 @@ export default function BlogPost() {
           </div>
 
           {/* Title */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-[oklch(0.12_0.05_265)] leading-[1.05] mb-6">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.05] mb-6">
             {post.title}
           </h1>
 
           {/* Excerpt / deck */}
           {post.excerpt && (
-            <p className="font-body text-xl text-[oklch(0.40_0.05_265)] leading-relaxed mb-8 max-w-2xl">
+            <p className="font-body text-xl text-white/65 leading-relaxed mb-8 max-w-2xl">
               {post.excerpt}
             </p>
           )}
 
           {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-5 pb-8 border-b border-[oklch(0.72_0.12_75/0.25)]">
-            <span className="flex items-center gap-2 font-body text-sm text-[oklch(0.45_0.05_265)]">
-              <User size={13} className="text-[oklch(0.72_0.12_75)]" />
+          <div className="flex flex-wrap items-center gap-5 pb-8 border-b border-white/15">
+            <span className="flex items-center gap-2 font-body text-sm text-white/60">
+              <User size={13} className="text-gold" />
               {post.author}
             </span>
             {post.publishedAt && (
-              <span className="flex items-center gap-2 font-mono-data text-xs text-[oklch(0.55_0.05_265)]">
-                <Calendar size={12} className="text-[oklch(0.72_0.12_75)]" />
+              <span className="flex items-center gap-2 font-mono-data text-xs text-white/50">
+                <Calendar size={12} className="text-gold" />
                 {formatDate(post.publishedAt)}
               </span>
             )}
-            <span className="flex items-center gap-2 font-mono-data text-xs text-[oklch(0.55_0.05_265)]">
-              <Clock size={12} className="text-[oklch(0.72_0.12_75)]" />
+            <span className="flex items-center gap-2 font-mono-data text-xs text-white/50">
+              <Clock size={12} className="text-gold" />
               {readTime}
             </span>
-            <span className="font-mono-data text-xs text-[oklch(0.65_0.05_265)]">
+            <span className="font-mono-data text-xs text-white/35">
               {words}
             </span>
           </div>
@@ -329,7 +328,7 @@ export default function BlogPost() {
               {tags.map((tag: string) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 font-mono-data text-[10px] text-[oklch(0.55_0.05_265)] border border-[oklch(0.72_0.12_75/0.3)] rounded-sm uppercase tracking-wider hover:border-[oklch(0.72_0.12_75/0.6)] hover:text-[oklch(0.72_0.12_75)] transition-colors cursor-default"
+                  className="px-3 py-1 font-mono-data text-[10px] text-white/50 border border-white/20 rounded-sm uppercase tracking-wider hover:border-gold/50 hover:text-gold transition-colors cursor-default"
                 >
                   {tag}
                 </span>
@@ -344,7 +343,7 @@ export default function BlogPost() {
         <div className="max-w-3xl mx-auto px-6" ref={articleRef}>
 
           {/* Lifted white article card */}
-          <div className="bg-white rounded-sm shadow-[0_4px_40px_oklch(0.45_0.05_265/0.10)] border border-[oklch(0.88_0.04_75/0.5)] px-8 md:px-14 py-12 md:py-16">
+          <div className="bg-white rounded-sm shadow-[0_8px_60px_oklch(0.05_0.05_265/0.7)] px-8 md:px-14 py-12 md:py-16">
             <div
               className="
                 prose prose-lg max-w-none
@@ -369,7 +368,7 @@ export default function BlogPost() {
                 /* Blockquotes — gold left border callout */
                 prose-blockquote:not-italic
                 prose-blockquote:border-l-4 prose-blockquote:border-[oklch(0.72_0.12_75)]
-                prose-blockquote:bg-[oklch(0.97_0.03_75)]
+                prose-blockquote:bg-[oklch(0.97_0.03_75/0.8)]
                 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-sm
                 prose-blockquote:text-[oklch(0.30_0.05_265)] prose-blockquote:font-body
                 prose-blockquote:my-8
@@ -415,7 +414,7 @@ export default function BlogPost() {
             <div className="mt-16">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-[oklch(0.55_0.12_75)] font-body font-medium hover:gap-3 transition-all group"
+                className="inline-flex items-center gap-2 text-gold/70 font-body font-medium hover:text-gold hover:gap-3 transition-all group"
               >
                 <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
                 Back to all articles

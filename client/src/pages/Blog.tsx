@@ -1,7 +1,7 @@
 /*
  * ELEVATION RISING — Blog Page
- * Vetta-inspired editorial style: warm cream background, lifted white cards,
- * gold category badges, professional serif typography.
+ * Dark navy site background with lifted white article cards,
+ * Playfair Display typography, and gold category badges.
  */
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
@@ -12,13 +12,15 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 
+const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
+
 const CATEGORY_ACCENT: Record<string, { dot: string; badge: string }> = {
-  Philosophy:  { dot: "bg-[oklch(0.72_0.12_75)]",  badge: "text-[oklch(0.50_0.10_75)]  border-[oklch(0.72_0.12_75/0.4)]  bg-[oklch(0.97_0.03_75)]" },
-  Technology:  { dot: "bg-[oklch(0.55_0.15_195)]", badge: "text-[oklch(0.40_0.12_195)] border-[oklch(0.55_0.15_195/0.4)] bg-[oklch(0.96_0.03_195)]" },
-  Governance:  { dot: "bg-[oklch(0.72_0.12_75)]",  badge: "text-[oklch(0.50_0.10_75)]  border-[oklch(0.72_0.12_75/0.4)]  bg-[oklch(0.97_0.03_75)]" },
-  Community:   { dot: "bg-[oklch(0.55_0.15_195)]", badge: "text-[oklch(0.40_0.12_195)] border-[oklch(0.55_0.15_195/0.4)] bg-[oklch(0.96_0.03_195)]" },
-  DeFi:        { dot: "bg-[oklch(0.55_0.20_25)]",  badge: "text-[oklch(0.40_0.18_25)]  border-[oklch(0.55_0.20_25/0.4)]  bg-[oklch(0.97_0.02_25)]" },
-  General:     { dot: "bg-[oklch(0.65_0.05_265)]", badge: "text-[oklch(0.45_0.05_265)] border-[oklch(0.65_0.05_265/0.4)] bg-[oklch(0.96_0.01_265)]" },
+  Philosophy:  { dot: "bg-[oklch(0.72_0.12_75)]",  badge: "text-[oklch(0.72_0.12_75)]  border-[oklch(0.72_0.12_75/0.35)]  bg-[oklch(0.72_0.12_75/0.08)]" },
+  Technology:  { dot: "bg-[oklch(0.55_0.15_195)]", badge: "text-[oklch(0.55_0.15_195)] border-[oklch(0.55_0.15_195/0.35)] bg-[oklch(0.55_0.15_195/0.08)]" },
+  Governance:  { dot: "bg-[oklch(0.72_0.12_75)]",  badge: "text-[oklch(0.72_0.12_75)]  border-[oklch(0.72_0.12_75/0.35)]  bg-[oklch(0.72_0.12_75/0.08)]" },
+  Community:   { dot: "bg-[oklch(0.55_0.15_195)]", badge: "text-[oklch(0.55_0.15_195)] border-[oklch(0.55_0.15_195/0.35)] bg-[oklch(0.55_0.15_195/0.08)]" },
+  DeFi:        { dot: "bg-[oklch(0.55_0.20_25)]",  badge: "text-[oklch(0.65_0.18_25)]  border-[oklch(0.55_0.20_25/0.35)]  bg-[oklch(0.55_0.20_25/0.08)]" },
+  General:     { dot: "bg-white/40",               badge: "text-white/60              border-white/20                    bg-white/5" },
 };
 
 function getCategoryAccent(cat: string) {
@@ -52,7 +54,7 @@ export default function Blog() {
   const regularPosts = activeCategory === "All" ? posts.slice(1) : posts;
 
   return (
-    <div className="min-h-screen bg-[oklch(0.97_0.02_75)] text-[oklch(0.18_0.05_265)]">
+    <div className="min-h-screen bg-navy text-white">
       <SEOHead
         title="Blog and Updates | The Elevation Foundation"
         description="Thought leadership on Sotilitarianism, blockchain governance, DeFi, community solar, and economic empowerment. Articles, white papers, and community updates from the Elevation Foundation."
@@ -61,22 +63,23 @@ export default function Blog() {
       />
       <Navigation />
 
-      {/* ── PAGE HEADER ─────────────────────────────────────────── */}
-      <section className="pt-32 pb-16 border-b border-[oklch(0.72_0.12_75/0.2)]">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-px bg-[oklch(0.72_0.12_75)]" />
-                <span className="font-mono-data text-xs text-[oklch(0.72_0.12_75)] uppercase tracking-widest font-semibold">
-                  The Elevation Foundation
-                </span>
-              </div>
-              <h1 className="font-display text-5xl md:text-6xl font-black text-[oklch(0.12_0.05_265)] leading-[1.05] mb-5">
-                Dispatches from<br />
-                <span className="text-[oklch(0.55_0.12_75)]">the Movement</span>
+      {/* ── HERO ─────────────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: `url(${HERO_IMG})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/60 to-navy" />
+        <div className="container relative z-10">
+          <div className="flex items-start justify-between gap-4">
+            <div className="max-w-3xl text-center">
+              <div className="section-label mb-4">Blog & Updates</div>
+              <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+                Dispatches from
+                <br />
+                <span className="gold-shimmer">the Movement</span>
               </h1>
-              <p className="font-body text-lg text-[oklch(0.40_0.05_265)] leading-relaxed max-w-2xl">
+              <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
                 Philosophy, technology, governance, and community updates from the Elevation Foundation.
                 We write in public because we think in public.
               </p>
@@ -84,7 +87,7 @@ export default function Blog() {
             {isAdmin && (
               <Link
                 href="/admin/blog"
-                className="flex-shrink-0 mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-[oklch(0.72_0.12_75/0.1)] border border-[oklch(0.72_0.12_75/0.4)] text-[oklch(0.50_0.10_75)] font-body text-sm font-medium rounded-sm hover:bg-[oklch(0.72_0.12_75/0.2)] transition-colors"
+                className="flex-shrink-0 mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-gold/10 border border-gold/30 text-gold font-body text-sm font-medium rounded-sm hover:bg-gold/20 transition-colors"
               >
                 <PenLine size={14} />
                 Manage Posts
@@ -96,14 +99,14 @@ export default function Blog() {
 
       {/* ── FEATURED POST ───────────────────────────────────────── */}
       {activeCategory === "All" && featuredPost && !isLoading && (
-        <section className="py-16 border-b border-[oklch(0.72_0.12_75/0.15)]">
-          <div className="max-w-5xl mx-auto px-6">
+        <section className="py-16 bg-navy">
+          <div className="container">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-8 h-px bg-[oklch(0.72_0.12_75)]" />
-              <span className="font-mono-data text-xs text-[oklch(0.72_0.12_75)] uppercase tracking-widest">Featured Article</span>
+              <div className="w-8 h-px bg-gold" />
+              <span className="font-mono-data text-xs text-gold/70 uppercase tracking-widest">Featured Article</span>
             </div>
             <Link href={`/blog/${featuredPost.slug}`}>
-              <div className="bg-white border border-[oklch(0.88_0.04_75/0.6)] rounded-sm shadow-[0_4px_40px_oklch(0.45_0.05_265/0.08)] hover:shadow-[0_8px_50px_oklch(0.45_0.05_265/0.14)] transition-all duration-300 cursor-pointer overflow-hidden group">
+              <div className="bg-white rounded-sm shadow-[0_8px_50px_oklch(0.05_0.05_265/0.6)] hover:shadow-[0_12px_60px_oklch(0.05_0.05_265/0.8)] transition-all duration-300 cursor-pointer overflow-hidden group">
                 <div className="grid md:grid-cols-5 gap-0">
                   {featuredPost.coverImage && (
                     <div className="md:col-span-2 aspect-[4/3] md:aspect-auto overflow-hidden">
@@ -121,24 +124,24 @@ export default function Blog() {
                         {featuredPost.category}
                       </span>
                     </div>
-                    <h2 className="font-display text-2xl md:text-3xl font-bold text-[oklch(0.12_0.05_265)] mb-4 leading-tight group-hover:text-[oklch(0.50_0.10_75)] transition-colors">
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-[oklch(0.12_0.05_265)] mb-4 leading-tight group-hover:text-[oklch(0.45_0.10_75)] transition-colors">
                       {featuredPost.title}
                     </h2>
                     <p className="font-body text-[oklch(0.40_0.05_265)] leading-relaxed mb-6 line-clamp-3">{featuredPost.excerpt}</p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-5">
-                        <span className="flex items-center gap-1.5 font-mono-data text-xs text-[oklch(0.55_0.05_265)]">
-                          <Calendar size={12} className="text-[oklch(0.72_0.12_75)]" />
+                        <span className="flex items-center gap-1.5 font-mono-data text-xs text-[oklch(0.50_0.05_265)]">
+                          <Calendar size={12} className="text-[oklch(0.55_0.10_75)]" />
                           {formatDate(featuredPost.publishedAt)}
                         </span>
                         {featuredPost.readTime && (
-                          <span className="flex items-center gap-1.5 font-mono-data text-xs text-[oklch(0.55_0.05_265)]">
-                            <Clock size={12} className="text-[oklch(0.72_0.12_75)]" />
+                          <span className="flex items-center gap-1.5 font-mono-data text-xs text-[oklch(0.50_0.05_265)]">
+                            <Clock size={12} className="text-[oklch(0.55_0.10_75)]" />
                             {featuredPost.readTime}
                           </span>
                         )}
                       </div>
-                      <span className="inline-flex items-center gap-2 text-[oklch(0.55_0.12_75)] font-body font-medium text-sm group-hover:gap-3 transition-all">
+                      <span className="inline-flex items-center gap-2 text-[oklch(0.45_0.10_75)] font-body font-semibold text-sm group-hover:gap-3 transition-all">
                         Read Article <ArrowRight size={13} />
                       </span>
                     </div>
@@ -151,8 +154,8 @@ export default function Blog() {
       )}
 
       {/* ── CATEGORY FILTER ─────────────────────────────────────── */}
-      <div className="sticky top-16 md:top-20 z-30 bg-[oklch(0.97_0.02_75)] border-b border-[oklch(0.72_0.12_75/0.15)] shadow-[0_2px_12px_oklch(0.45_0.05_265/0.06)]">
-        <div className="max-w-5xl mx-auto px-6 py-4">
+      <div className="sticky top-16 md:top-20 z-30 bg-[oklch(0.14_0.05_265)] border-y border-white/10">
+        <div className="container py-4">
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
             {dynamicCategories.map((cat) => (
               <button
@@ -160,8 +163,8 @@ export default function Blog() {
                 onClick={() => setActiveCategory(cat)}
                 className={`flex-shrink-0 px-4 py-2 font-body text-sm rounded-sm border transition-all duration-200 ${
                   activeCategory === cat
-                    ? "bg-[oklch(0.72_0.12_75)] text-white border-[oklch(0.72_0.12_75)] font-semibold shadow-sm"
-                    : "border-[oklch(0.72_0.12_75/0.3)] text-[oklch(0.45_0.05_265)] hover:border-[oklch(0.72_0.12_75/0.6)] hover:text-[oklch(0.50_0.10_75)] bg-white"
+                    ? "bg-gold text-[oklch(0.12_0.05_265)] border-gold font-semibold"
+                    : "border-white/20 text-white/60 hover:border-gold/40 hover:text-gold"
                 }`}
               >
                 {cat}
@@ -171,21 +174,21 @@ export default function Blog() {
         </div>
       </div>
 
-      {/* ── POSTS GRID ──────────────────────────────────────────── */}
-      <section className="py-20">
-        <div className="max-w-5xl mx-auto px-6">
+      {/* ── POSTS GRID ───────────────────────────────────────────── */}
+      <section className="py-20 bg-navy">
+        <div className="container">
           {isLoading ? (
             <div className="flex items-center justify-center py-24">
-              <Loader2 size={32} className="animate-spin text-[oklch(0.72_0.12_75/0.5)]" />
+              <Loader2 size={32} className="animate-spin text-gold/50" />
             </div>
           ) : posts.length === 0 ? (
             <div className="text-center py-24">
-              <BookOpen size={48} className="text-[oklch(0.72_0.12_75/0.4)] mx-auto mb-4" />
-              <p className="font-body text-[oklch(0.55_0.05_265)] text-lg mb-4">No posts published yet.</p>
+              <BookOpen size={48} className="text-gold/30 mx-auto mb-4" />
+              <p className="font-body text-white/40 text-lg mb-4">No posts published yet.</p>
               {isAdmin && (
                 <Link
                   href="/admin/blog"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[oklch(0.72_0.12_75)] text-white font-semibold font-body rounded-sm hover:bg-[oklch(0.65_0.12_75)] transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all"
                 >
                   <PenLine size={16} />
                   Write the First Post
@@ -198,7 +201,7 @@ export default function Blog() {
                 const accent = getCategoryAccent(post.category);
                 return (
                   <Link key={post.id} href={`/blog/${post.slug}`}>
-                    <article className="flex flex-col bg-white border border-[oklch(0.88_0.04_75/0.6)] rounded-sm shadow-[0_2px_16px_oklch(0.45_0.05_265/0.07)] hover:shadow-[0_6px_30px_oklch(0.45_0.05_265/0.12)] hover:border-[oklch(0.72_0.12_75/0.4)] transition-all duration-300 group h-full cursor-pointer overflow-hidden">
+                    <article className="flex flex-col bg-white rounded-sm shadow-[0_4px_30px_oklch(0.05_0.05_265/0.5)] hover:shadow-[0_8px_50px_oklch(0.05_0.05_265/0.7)] hover:-translate-y-1 transition-all duration-300 group h-full cursor-pointer overflow-hidden">
                       {post.coverImage && (
                         <div className="aspect-[16/9] overflow-hidden">
                           <img
@@ -218,30 +221,30 @@ export default function Blog() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="font-display text-lg font-bold text-[oklch(0.12_0.05_265)] mb-3 leading-snug group-hover:text-[oklch(0.50_0.10_75)] transition-colors flex-1 line-clamp-3">
+                        <h3 className="font-display text-lg font-bold text-[oklch(0.12_0.05_265)] mb-3 leading-snug group-hover:text-[oklch(0.45_0.10_75)] transition-colors flex-1 line-clamp-3">
                           {post.title}
                         </h3>
 
                         {/* Excerpt */}
-                        <p className="font-body text-sm text-[oklch(0.45_0.05_265)] leading-relaxed mb-5 line-clamp-2">
+                        <p className="font-body text-sm text-[oklch(0.40_0.05_265)] leading-relaxed mb-5 line-clamp-2">
                           {post.excerpt}
                         </p>
 
                         {/* Meta row */}
-                        <div className="flex items-center justify-between mt-auto pt-4 border-t border-[oklch(0.88_0.04_75/0.5)]">
+                        <div className="flex items-center justify-between mt-auto pt-4 border-t border-[oklch(0.88_0.04_265/0.3)]">
                           <div className="flex items-center gap-3">
-                            <span className="flex items-center gap-1 font-mono-data text-[10px] text-[oklch(0.55_0.05_265)]">
-                              <Calendar size={10} className="text-[oklch(0.72_0.12_75)]" />
+                            <span className="flex items-center gap-1 font-mono-data text-[10px] text-[oklch(0.50_0.05_265)]">
+                              <Calendar size={10} className="text-[oklch(0.55_0.10_75)]" />
                               {formatDate(post.publishedAt)}
                             </span>
                             {post.readTime && (
-                              <span className="flex items-center gap-1 font-mono-data text-[10px] text-[oklch(0.55_0.05_265)]">
-                                <Clock size={10} className="text-[oklch(0.72_0.12_75)]" />
+                              <span className="flex items-center gap-1 font-mono-data text-[10px] text-[oklch(0.50_0.05_265)]">
+                                <Clock size={10} className="text-[oklch(0.55_0.10_75)]" />
                                 {post.readTime}
                               </span>
                             )}
                           </div>
-                          <ArrowRight size={14} className="text-[oklch(0.72_0.12_75/0.4)] group-hover:text-[oklch(0.55_0.12_75)] group-hover:translate-x-1 transition-all" />
+                          <ArrowRight size={14} className="text-[oklch(0.55_0.10_75/0.5)] group-hover:text-[oklch(0.45_0.10_75)] group-hover:translate-x-1 transition-all" />
                         </div>
                       </div>
                     </article>
@@ -253,27 +256,25 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* ── NEWSLETTER ──────────────────────────────────────────── */}
-      <section className="py-20 border-t border-[oklch(0.72_0.12_75/0.2)]">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="w-8 h-px bg-[oklch(0.72_0.12_75)]" />
-            <span className="font-mono-data text-xs text-[oklch(0.72_0.12_75)] uppercase tracking-widest">Stay Updated</span>
-            <div className="w-8 h-px bg-[oklch(0.72_0.12_75)]" />
+      {/* ── NEWSLETTER ───────────────────────────────────────────── */}
+      <section className="py-20 bg-[oklch(0.14_0.05_265)]">
+        <div className="container">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="section-label mb-4">Stay Updated</div>
+            <h2 className="font-display text-3xl font-bold text-white mb-4">
+              Subscribe to the Movement
+            </h2>
+            <p className="font-body text-white/65 leading-relaxed mb-8">
+              Get the latest updates on our projects, governance proposals, and philosophy directly in your inbox. No spam. Unsubscribe anytime.
+            </p>
+            <Link
+              href="/wesolar"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 shadow-sm hover:shadow-md"
+            >
+              Join the Waitlist
+              <ArrowRight size={15} />
+            </Link>
           </div>
-          <h2 className="font-display text-3xl font-bold text-[oklch(0.12_0.05_265)] mb-4">
-            Subscribe to the Movement
-          </h2>
-          <p className="font-body text-[oklch(0.45_0.05_265)] leading-relaxed mb-8">
-            Get the latest updates on our projects, governance proposals, and philosophy directly in your inbox. No spam. Unsubscribe anytime.
-          </p>
-          <Link
-            href="/wesolar"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[oklch(0.72_0.12_75)] text-white font-semibold font-body rounded-sm hover:bg-[oklch(0.65_0.12_75)] transition-all duration-200 shadow-sm hover:shadow-md"
-          >
-            Join the Waitlist
-            <ArrowRight size={15} />
-          </Link>
         </div>
       </section>
 

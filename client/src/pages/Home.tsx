@@ -270,15 +270,12 @@ export default function Home() {
                       Learn more <ArrowRight size={13} />
                     </span>
                     {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-white/40 hover:text-gold text-xs font-mono-data transition-colors"
-                        onClick={(e) => e.stopPropagation()}
+                      <span
+                        className="inline-flex items-center gap-1 text-white/40 hover:text-gold text-xs font-mono-data transition-colors cursor-pointer"
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(project.github, '_blank', 'noopener,noreferrer'); }}
                       >
                         <Github size={14} /> Source
-                      </a>
+                      </span>
                     )}
                   </div>
                 </Link>

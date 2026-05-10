@@ -210,7 +210,7 @@ export default function OurWork() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex gap-4">
+                  <div className="flex flex-wrap gap-4">
                     <a
                       href={project.github}
                       target="_blank"
@@ -219,6 +219,24 @@ export default function OurWork() {
                     >
                       <Github size={14} /> View on GitHub
                     </a>
+                    {project.id === "transparently" && (
+                      <a
+                        href="https://github.com/ModernDigitalDevelopment/transparently/tree/main/packages/contracts"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-white/50 hover:text-gold font-body text-sm font-medium transition-colors"
+                      >
+                        <ExternalLink size={14} /> Explore 20 Contracts
+                      </a>
+                    )}
+                    {project.id === "wesolar" && (
+                      <a
+                        href="/wesolar"
+                        className="inline-flex items-center gap-2 text-white/50 hover:text-teal font-body text-sm font-medium transition-colors"
+                      >
+                        <ArrowRight size={14} /> Join Waitlist
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -332,6 +350,72 @@ export default function OurWork() {
                 <div className="font-body text-xs text-white/50">{desc}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- KLARITY -------------------------------------------- */}
+      <section className="py-20 bg-navy">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-14 items-center">
+            <div>
+              <div className="section-label mb-4 text-teal">Identity Infrastructure</div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                Powered by{" "}
+                <span className="text-teal">Klarity</span>
+              </h2>
+              <p className="font-body text-white/70 leading-relaxed mb-4">
+                Klarity is the identity layer of the Sotility Protocol — a zero-knowledge identity system that enables verified participation without exposing personal data. Every Transparently governance vote, every WeSolar energy credit, and every SoGood contribution is anchored to a Klarity-verified identity.
+              </p>
+              <p className="font-body text-white/60 text-sm leading-relaxed mb-6">
+                Klarity uses zk-SNARKs to prove identity attributes (age, residency, humanity) without revealing the underlying data. The <code className="font-mono-data text-teal/80 text-xs">SotilityZKIdentity</code> and <code className="font-mono-data text-teal/80 text-xs">SotilityProofOfPersonhood</code> contracts form the backbone of Sybil resistance across the entire ecosystem — preventing double-voting, double-spending, and bot manipulation.
+              </p>
+              <div className="space-y-3 mb-6">
+                {[
+                  { label: "SotilityProfileRegistry", desc: "On-chain identity profiles with verified attributes" },
+                  { label: "SotilityProofOfPersonhood", desc: "Sybil-resistant humanity verification" },
+                  { label: "SotilityZKIdentity", desc: "Zero-knowledge attribute proofs" },
+                  { label: "SotilityCrossChainIdentity", desc: "Identity portability across EVM chains" },
+                ].map(({ label, desc }) => (
+                  <div key={label} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 bg-teal" />
+                    <div>
+                      <span className="font-mono-data text-xs text-teal/80">{label}</span>
+                      <span className="font-body text-xs text-white/50 ml-2">— {desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="https://github.com/ModernDigitalDevelopment/sotilitarianism/tree/main/smart-contracts/contracts"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-teal font-body text-sm font-medium hover:opacity-80 transition-opacity"
+              >
+                <Github size={14} /> View Klarity Contracts on GitHub
+              </a>
+            </div>
+            <div className="space-y-4">
+              <div className="p-6 bg-[oklch(0.14_0.05_265)] border border-teal/30 rounded-sm">
+                <div className="font-mono-data text-xs text-teal/60 uppercase tracking-wider mb-3">How It Works</div>
+                <div className="space-y-4">
+                  {[
+                    { step: "01", title: "Identity Registration", desc: "User registers with Klarity, submitting a zero-knowledge proof of their identity attributes (age, residency, humanity)." },
+                    { step: "02", title: "Proof Generation", desc: "SotilityZKIdentity generates a cryptographic proof that can be verified on-chain without revealing personal data." },
+                    { step: "03", title: "Verified Participation", desc: "Every governance vote, energy credit, and contribution is anchored to a verified Klarity identity — Sybil-resistant by design." },
+                    { step: "04", title: "Cross-Chain Portability", desc: "SotilityCrossChainIdentity allows the same verified identity to work across Ethereum, Polygon, Celo, and any EVM chain." },
+                  ].map(({ step, title, desc }) => (
+                    <div key={step} className="flex gap-4">
+                      <div className="font-mono-data text-xs text-teal/40 flex-shrink-0 mt-0.5">{step}</div>
+                      <div>
+                        <div className="font-body text-sm font-semibold text-white mb-1">{title}</div>
+                        <div className="font-body text-xs text-white/50 leading-relaxed">{desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -236,19 +236,45 @@ export default function Transparency() {
           <h2 className="font-display text-3xl font-bold text-white mb-8">
             Annual Reports & Audits
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
             {[
-              { year: "2025", title: "Founding Year Report", status: "Pending — Q4 2025", desc: "First annual report covering foundation establishment, initial fundraising, and technology development milestones." },
-              { year: "Smart Contract Audit", title: "Security Audit", status: "Pending — Pre-Mainnet", desc: "Independent third-party security audit of all Solidity smart contracts before mainnet deployment." },
-              { year: "IRS Form 990", title: "Tax Filing", status: "Pending — Annual", desc: "All IRS Form 990 filings will be published in full on this page as required by 501(c)(3) law." },
-            ].map(({ year, title, status, desc }) => (
-              <div key={year} className="p-6 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm">
+              { year: "2024–2025", title: "Founding Year Report", status: "Published — May 2025", desc: "Year 1 impact report covering Foundation establishment, 501(c)(3) approval, 20 smart contracts written, WeSolar and Transparently development milestones, and the three-token economy design.", link: "https://github.com/ModernDigitalDevelopment/elevation-foundation/blob/main/annual-reports/2024-2025-annual-report.md", linkLabel: "Read Full Report →" },
+              { year: "Smart Contract Audit", title: "Security Audit", status: "Pending — Pre-Mainnet", desc: "Independent third-party security audit of all 20 Solidity smart contracts before mainnet deployment. Audit firm selection in progress.", link: null, linkLabel: null },
+              { year: "IRS Form 990", title: "Tax Filing", status: "Pending — Annual", desc: "All IRS Form 990 filings will be published in full on this page as required by 501(c)(3) law. First filing due after first full fiscal year.", link: null, linkLabel: null },
+            ].map(({ year, title, status, desc, link, linkLabel }) => (
+              <div key={year} className="p-6 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm flex flex-col">
                 <div className="font-mono-data text-xs text-gold/60 uppercase tracking-wider mb-2">{year}</div>
                 <h3 className="font-display text-lg font-bold text-white mb-2">{title}</h3>
-                <div className="font-mono-data text-xs text-white/40 mb-3">{status}</div>
-                <p className="font-body text-sm text-white/60 leading-relaxed">{desc}</p>
+                <div className={`font-mono-data text-xs mb-3 ${status.startsWith('Published') ? 'text-teal' : 'text-white/40'}`}>{status}</div>
+                <p className="font-body text-sm text-white/60 leading-relaxed flex-1">{desc}</p>
+                {link && (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-gold font-body text-sm font-medium mt-4 hover:opacity-80 transition-opacity"
+                  >
+                    {linkLabel}
+                  </a>
+                )}
               </div>
             ))}
+          </div>
+          <div className="p-6 bg-[oklch(0.14_0.05_265)] border border-gold/20 rounded-sm">
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { label: "Contracts Written", value: "20", sub: "Solidity smart contracts" },
+                { label: "Projects Active", value: "4", sub: "Transparently, WeSolar, Elevation Engine, SoGood" },
+                { label: "Legal Status", value: "501(c)(3)", sub: "Tax-exempt nonprofit" },
+                { label: "GitHub Repos", value: "4", sub: "All open source" },
+              ].map(({ label, value, sub }) => (
+                <div key={label} className="text-center">
+                  <div className="font-display text-3xl font-bold text-gold mb-1">{value}</div>
+                  <div className="font-body text-xs text-white/50 uppercase tracking-wider mb-0.5">{label}</div>
+                  <div className="font-body text-xs text-white/35">{sub}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

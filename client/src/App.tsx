@@ -18,6 +18,8 @@ import BlogPost from "./pages/BlogPost";
 import AdminBlog from "./pages/AdminBlog";
 import AboutFounder from "./pages/AboutFounder";
 import SotilitarianismPage from "./pages/Sotilitarianism";
+import WeSolar from "./pages/WeSolar";
+import ForFunders from "./pages/ForFunders";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -36,6 +38,8 @@ function Router() {
       <Route path="/white-papers" component={WhitePapers} />
       <Route path="/about/founder" component={AboutFounder} />
       <Route path="/sotilitarianism" component={SotilitarianismPage} />
+      <Route path="/wesolar" component={WeSolar} />
+      <Route path="/for-funders" component={ForFunders} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

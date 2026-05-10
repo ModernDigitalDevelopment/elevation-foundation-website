@@ -12,9 +12,11 @@ const navLinks = [
   { href: "/philosophy", label: "Philosophy" },
   { href: "/sotilitarianism", label: "Sotilitarianism" },
   { href: "/our-work", label: "Our Work" },
+  { href: "/wesolar", label: "WeSolar" },
   { href: "/transparency", label: "Transparency" },
   { href: "/blog", label: "Blog" },
   { href: "/white-papers", label: "Research" },
+  { href: "/for-funders", label: "For Funders" },
   { href: "/get-involved", label: "Get Involved" },
   { href: "/about/founder", label: "About" },
 ];

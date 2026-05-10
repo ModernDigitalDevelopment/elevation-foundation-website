@@ -7,9 +7,22 @@ import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
-import { ArrowRight, BookOpen, FileText, ExternalLink, ChevronRight, Zap, Shield, Globe, Users } from "lucide-react";
+import { ArrowRight, BookOpen, FileText, ExternalLink, ChevronRight, Zap, Shield, Globe, Users, Code2, Download, Gavel } from "lucide-react";
 
 const GITHUB_REPO = "https://github.com/ModernDigitalDevelopment/sotilitarianism";
+const GITHUB_CONTRACTS = "https://github.com/ModernDigitalDevelopment/sotilitarianism/tree/main/smart-contracts/contracts";
+const GITHUB_DEPLOYMENT = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/smart-contracts/DEPLOYMENT.md";
+const GITHUB_RELEASE = "https://github.com/ModernDigitalDevelopment/sotilitarianism/releases/tag/v1.0.0";
+const GITHUB_ESP = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/grant-applications/ethereum-foundation-esp.md";
+const GITHUB_PITCH = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/pitch-deck/sotility-pitch-deck.pdf";
+
+const protocolContracts = [
+  { layer: "Token Layer", contracts: ["SotilityOwnershipToken (SOT)", "SotilityStableToken (SST)", "SoGoodUtilityGovernance (SUG)"], color: "text-gold", border: "border-gold/30", bg: "bg-gold/5" },
+  { layer: "Identity Layer (Klarity)", contracts: ["SotilityProfileRegistry", "SotilityProofOfPersonhood", "SotilityZKIdentity", "SotilityCrossChainIdentity"], color: "text-teal", border: "border-teal/30", bg: "bg-teal/5" },
+  { layer: "Governance Layer", contracts: ["SotilityVeToken", "SoGoodFeed", "SotilityBadgeNFT"], color: "text-white/80", border: "border-white/20", bg: "bg-white/5" },
+  { layer: "Financial Layer (Elevation Engine)", contracts: ["SotilityTreasuryRouter", "SotilityYieldEngine", "SotilityVaultFactory", "SotilityLiquidStaking", "SotilityExchange", "SotilityInsurance"], color: "text-crimson", border: "border-crimson/30", bg: "bg-crimson/5" },
+  { layer: "Infrastructure Layer", contracts: ["AIOracleManager", "MultiOracleAggregator", "SotilityBridgeAdapter", "SotilityEmergencyShutdown"], color: "text-white/60", border: "border-white/15", bg: "bg-white/3" },
+];
 
 const jsonLd = [
   {
@@ -353,6 +366,135 @@ export default function SotilitarianismPage() {
               Read the full source on GitHub
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* --- PROTOCOL & SMART CONTRACTS ----------------------- */}
+      <section className="py-24 bg-[oklch(0.12_0.05_265)] border-t border-white/10">
+        <div className="container">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+            <div>
+              <div className="section-label mb-4">The Protocol</div>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-white">
+                20 Smart Contracts.<br />
+                <span className="text-gold">Five Protocol Layers.</span>
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={GITHUB_RELEASE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body text-sm rounded-sm hover:bg-gold-light transition-all"
+              >
+                <Download size={14} />
+                v1.0.0 Release
+              </a>
+              <a
+                href={GITHUB_PITCH}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/30 text-white font-body text-sm rounded-sm hover:border-gold/50 hover:text-gold transition-all"
+              >
+                <FileText size={14} />
+                Pitch Deck PDF
+              </a>
+              <a
+                href={GITHUB_DEPLOYMENT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/70 font-body text-sm rounded-sm hover:border-gold/40 hover:text-gold transition-all"
+              >
+                <Code2 size={14} />
+                Deployment Guide
+              </a>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {protocolContracts.map((layer) => (
+              <div key={layer.layer} className={`p-5 border ${layer.border} ${layer.bg} rounded-sm`}>
+                <div className={`font-mono-data text-xs uppercase tracking-wider ${layer.color} mb-3`}>{layer.layer}</div>
+                <ul className="space-y-1.5">
+                  {layer.contracts.map((c) => (
+                    <li key={c} className="flex items-center gap-2">
+                      <span className={`w-1 h-1 rounded-full flex-shrink-0 bg-current ${layer.color}`} />
+                      <span className="font-mono-data text-xs text-white/70">{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <a
+              href={GITHUB_CONTRACTS}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gold font-body font-medium hover:gap-3 transition-all duration-200 group"
+            >
+              Browse all 20 contracts on GitHub
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOR FUNDERS --------------------------------------- */}
+      <section className="py-24 bg-navy">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="section-label mb-4">Funding & Grants</div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+              For Funders &<br />
+              <span className="text-gold">Grant Programs</span>
+            </h2>
+            <p className="font-body text-white/65 text-lg leading-relaxed mb-10">
+              The Elevation Foundation is a 501(c)(3) nonprofit (EIN: 92-1042348) actively seeking grant funding to deploy the Sotility Protocol, publish academic research on the efficiency-backed stablecoin mechanism, and expand community governance infrastructure.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
+              {[
+                { icon: Gavel, title: "Ethereum Foundation ESP", amount: "$75,000", status: "Application Ready", desc: "Academic/research grant for formal publication of the efficiency-backed stablecoin mechanism and Base Mainnet deployment of all 20 contracts.", link: GITHUB_ESP, linkLabel: "View Application Draft", color: "text-gold", border: "border-gold/30", bg: "bg-gold/5" },
+                { icon: Globe, title: "Gitcoin DeSci Round", amount: "Community Match", status: "Application Ready", desc: "Quadratic funding for open-source DeSci research. Every unique donor increases the matching multiplier — even $1 counts.", link: "https://explorer.gitcoin.co", linkLabel: "View Gitcoin", color: "text-teal", border: "border-teal/30", bg: "bg-teal/5" },
+                { icon: Shield, title: "Celo Climate Collective", amount: "$25K–$100K", status: "Via WeSolar", desc: "Climate finance grant for the WeSolar tokenized community solar project, built on the Sotility Protocol infrastructure.", link: "https://celo.org/climate", linkLabel: "View Program", color: "text-crimson", border: "border-crimson/30", bg: "bg-crimson/5" },
+                { icon: FileText, title: "Ford / Mozilla / Knight", amount: "$25K–$100K+", status: "Planned", desc: "Foundation grants for digital equity, open-source public goods, and community financial infrastructure. For Funders page in development.", link: "/our-story", linkLabel: "Our Story", color: "text-white/70", border: "border-white/20", bg: "bg-white/5" },
+              ].map(({ icon: Icon, title, amount, status, desc, link, linkLabel, color, border, bg }) => (
+                <div key={title} className={`p-6 border ${border} ${bg} rounded-sm`}>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className={`flex items-center gap-2 font-mono-data text-xs uppercase tracking-wider ${color}`}>
+                      <Icon size={13} />
+                      {title}
+                    </div>
+                    <span className="font-mono-data text-xs text-white/40 border border-white/15 px-2 py-0.5 rounded-sm">{status}</span>
+                  </div>
+                  <div className={`font-display text-2xl font-bold ${color} mb-2`}>{amount}</div>
+                  <p className="font-body text-sm text-white/60 leading-relaxed mb-4">{desc}</p>
+                  <a
+                    href={link}
+                    target={link.startsWith('http') ? '_blank' : undefined}
+                    rel={link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className={`inline-flex items-center gap-1.5 text-sm font-body ${color} hover:opacity-80 transition-opacity`}
+                  >
+                    {linkLabel} <ExternalLink size={12} />
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <div className="p-6 bg-[oklch(0.16_0.05_265)] border border-gold/20 rounded-sm text-center">
+              <p className="font-body text-white/70 text-sm mb-3">
+                The Elevation Foundation is a 501(c)(3) tax-exempt nonprofit. EIN: 92-1042348. All grant funds are used exclusively for open-source protocol development, academic research, and community benefit.
+              </p>
+              <a
+                href="mailto:contact@elevationfoundation.org"
+                className="inline-flex items-center gap-2 text-gold font-body text-sm font-medium hover:opacity-80 transition-opacity"
+              >
+                contact@elevationfoundation.org <ExternalLink size={12} />
+              </a>
+            </div>
           </div>
         </div>
       </section>

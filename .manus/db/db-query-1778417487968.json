@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, slug, title, excerpt FROM blog_posts WHERE slug IN ('sotilitarian-capitalism-continuous-consent-political-framework', 'sotilitarian-capitalism-part-ii-the-economics');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, slug, title, excerpt FROM blog_posts WHERE slug IN ('sotilitarian-capitalism-continuous-consent-political-framework', 'sotilitarian-capitalism-part-ii-the-economics');",
+  "rows": [
+    {
+      "id": "13",
+      "slug": "sotilitarian-capitalism-continuous-consent-political-framework",
+      "title": "Sotilitarian Capitalism, Part II: Continuous Consent and the Political Framework",
+      "excerpt": "The traditional model of representative democracy is failing in the information age, creating a critical disconnect between citizens and governance; Sotilitarian Capitalism offers a revolutionary political framework designed for continuous participation and decentralized power."
+    },
+    {
+      "id": "90005",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "title": "Sotilitarian Capitalism: Part II — The Economics",
+      "excerpt": "Before examining the Sotilitarian alternative in detail, we must understand the structural limitations that have brought traditional capitalism to its current impasse. The twentieth century saw capitalism triumph as the dominant economic system globally. Its ability to create wea…"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\texcerpt\n13\tsotilitarian-capitalism-continuous-consent-political-framework\tSotilitarian Capitalism, Part II: Continuous Consent and the Political Framework\tThe traditional model of representative democracy is failing in the information age, creating a critical disconnect between citizens and governance; Sotilitarian Capitalism offers a revolutionary political framework designed for continuous participation and decentralized power.\n90005\tsotilitarian-capitalism-part-ii-the-economics\tSotilitarian Capitalism: Part II — The Economics\tBefore examining the Sotilitarian alternative in detail, we must understand the structural limitations that have brought traditional capitalism to its current impasse. The twentieth century saw capitalism triumph as the dominant economic system globally. Its ability to create wea…\n",
+  "stderr": "",
+  "execution_time_ms": 260
+}

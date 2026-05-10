@@ -86,6 +86,12 @@ function SeriesNavigator({ currentSlug }: { currentSlug: string }) {
           Sotilitarian Capitalism · Part {current.part} of {SOTILITARIAN_CAPITALISM_SERIES.length}
         </span>
         <div className="flex-1 h-px bg-gold/20" />
+        <Link
+          href="/blog/series/sotilitarian-capitalism"
+          className="font-mono-data text-[10px] text-white/30 hover:text-gold transition-colors uppercase tracking-wider whitespace-nowrap"
+        >
+          Series Hub →
+        </Link>
       </div>
 
       {/* All parts mini-list */}

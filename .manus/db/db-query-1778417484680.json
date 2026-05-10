@@ -1,0 +1,73 @@
+{
+  "query": "SELECT id, slug, title, excerpt, readTime, category, tags FROM blog_posts WHERE slug LIKE 'sotilitarian-capitalism-part%' ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, slug, title, excerpt, readTime, category, tags FROM blog_posts WHERE slug LIKE 'sotilitarian-capitalism-part%' ORDER BY id;",
+  "rows": [
+    {
+      "id": "12",
+      "slug": "sotilitarian-capitalism-part-i-the-new-economic-operating-system",
+      "title": "Sotilitarian Capitalism, Part I: The New Economic Operating System",
+      "excerpt": "The global economic engine is not merely stalling—it is actively failing to deliver justice, concentrating wealth while externalizing societal and environmental costs. Sotilitarianism offers a radical alternative, a new economic operating system built on verified utility, radical transparency, and d",
+      "readTime": "NULL",
+      "category": "Philosophy",
+      "tags": "[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\"]"
+    },
+    {
+      "id": "14",
+      "slug": "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture",
+      "title": "Sotilitarian Capitalism, Part III: The Five-Layer Technical Architecture",
+      "excerpt": "Sotilitarian Capitalism introduces a revolutionary Five-Layer Technical Architecture built on a Trust Kernel Stack, ensuring every economic interaction is transparent, verifiable, and aligned with social utility. This integrated system aims to replace extractive capitalism with a community-focused, ",
+      "readTime": "NULL",
+      "category": "Technology",
+      "tags": "[\"Sotilitarian Capitalism\",\"Blockchain Governance\",\"Community Finance\",\"DeFi\",\"Proof of Utility\",\"Trust Kernel Stack\",\"Decentralized Autonomous Organization\",\"Transparent Economics\",\"Capitalism 2.0\",\"Social Capitalism\",\"Liquid Democracy\",\"AI Verification\"]"
+    },
+    {
+      "id": "15",
+      "slug": "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect",
+      "title": "Sotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect",
+      "excerpt": "The traditional economic system is not merely flawed; it is fundamentally designed to perpetuate inequality and extract value from communities. Sotilitarianism offers a radical alternative, leveraging blockchain to build a new economic order rooted in verified utility and radical transparency, poise",
+      "readTime": "NULL",
+      "category": "Strategy",
+      "tags": "[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\"]"
+    },
+    {
+      "id": "16",
+      "slug": "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate",
+      "title": "Sotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate",
+      "excerpt": "The neoliberal consensus is not just crumbling—it's actively failing humanity, demanding an urgent and radical economic paradigm shift. Sotilitarianism emerges as the definitive third path, transcending the exhausted debates of capitalism and socialism by leveraging blockchain and AI for verified ut",
+      "readTime": "NULL",
+      "category": "Philosophy",
+      "tags": "[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\"]"
+    },
+    {
+      "id": "90005",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "title": "Sotilitarian Capitalism: Part II — The Economics",
+      "excerpt": "Before examining the Sotilitarian alternative in detail, we must understand the structural limitations that have brought traditional capitalism to its current impasse. The twentieth century saw capitalism triumph as the dominant economic system globally. Its ability to create wea…",
+      "readTime": "30 min read",
+      "category": "Philosophy",
+      "tags": "Sotilitarianism,capitalism 2.0,DeFi,community finance,token economy,series"
+    },
+    {
+      "id": "90006",
+      "slug": "sotilitarian-capitalism-part-iii-the-politics",
+      "title": "Sotilitarian Capitalism: Part III — The Politics",
+      "excerpt": "As we look beyond the initial implementation of Sotilitarian systems, the true transformative potential emerges in what might be called \"all-chain atomic composability\"—a blockchain of blockchains where interoperability creates a unified ecosystem of transparent value creation an…",
+      "readTime": "21 min read",
+      "category": "Governance",
+      "tags": "Sotilitarianism,governance,blockchain governance,community sovereignty,series"
+    },
+    {
+      "id": "90007",
+      "slug": "sotilitarian-capitalism-part-iv-the-technology",
+      "title": "Sotilitarian Capitalism: Part IV — The Technology",
+      "excerpt": "The ubiquitous integration of Sotilitarian systems would generate cascading benefits across economic, social, and political domains. These benefits span from micro-level individual impacts to macro-level systemic transformations.",
+      "readTime": "28 min read",
+      "category": "Technology",
+      "tags": "Sotilitarianism,blockchain,smart contracts,Transparently,DeFi,series"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\texcerpt\treadTime\tcategory\ttags\n12\tsotilitarian-capitalism-part-i-the-new-economic-operating-system\tSotilitarian Capitalism, Part I: The New Economic Operating System\tThe global economic engine is not merely stalling—it is actively failing to deliver justice, concentrating wealth while externalizing societal and environmental costs. Sotilitarianism offers a radical alternative, a new economic operating system built on verified utility, radical transparency, and d\tNULL\tPhilosophy\t[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\"]\n14\tsotilitarian-capitalism-part-iii-the-five-layer-technical-architecture\tSotilitarian Capitalism, Part III: The Five-Layer Technical Architecture\tSotilitarian Capitalism introduces a revolutionary Five-Layer Technical Architecture built on a Trust Kernel Stack, ensuring every economic interaction is transparent, verifiable, and aligned with social utility. This integrated system aims to replace extractive capitalism with a community-focused, \tNULL\tTechnology\t[\"Sotilitarian Capitalism\",\"Blockchain Governance\",\"Community Finance\",\"DeFi\",\"Proof of Utility\",\"Trust Kernel Stack\",\"Decentralized Autonomous Organization\",\"Transparent Economics\",\"Capitalism 2.0\",\"Social Capitalism\",\"Liquid Democracy\",\"AI Verification\"]\n15\tsotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect\tSotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect\tThe traditional economic system is not merely flawed; it is fundamentally designed to perpetuate inequality and extract value from communities. Sotilitarianism offers a radical alternative, leveraging blockchain to build a new economic order rooted in verified utility and radical transparency, poise\tNULL\tStrategy\t[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\"]\n16\tsotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate\tSotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate\tThe neoliberal consensus is not just crumbling—it's actively failing humanity, demanding an urgent and radical economic paradigm shift. Sotilitarianism emerges as the definitive third path, transcending the exhausted debates of capitalism and socialism by leveraging blockchain and AI for verified ut\tNULL\tPhilosophy\t[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\"]\n90005\tsotilitarian-capitalism-part-ii-the-economics\tSotilitarian Capitalism: Part II — The Economics\tBefore examining the Sotilitarian alternative in detail, we must understand the structural limitations that have brought traditional capitalism to its current impasse. The twentieth century saw capitalism triumph as the dominant economic system globally. Its ability to create wea…\t30 min read\tPhilosophy\tSotilitarianism,capitalism 2.0,DeFi,community finance,token economy,series\n90006\tsotilitarian-capitalism-part-iii-the-politics\tSotilitarian Capitalism: Part III — The Politics\tAs we look beyond the initial implementation of Sotilitarian systems, the true transformative potential emerges in what might be called \"all-chain atomic composability\"—a blockchain of blockchains where interoperability creates a unified ecosystem of transparent value creation an…\t21 min read\tGovernance\tSotilitarianism,governance,blockchain governance,community sovereignty,series\n90007\tsotilitarian-capitalism-part-iv-the-technology\tSotilitarian Capitalism: Part IV — The Technology\tThe ubiquitous integration of Sotilitarian systems would generate cascading benefits across economic, social, and political domains. These benefits span from micro-level individual impacts to macro-level systemic transformations.\t28 min read\tTechnology\tSotilitarianism,blockchain,smart contracts,Transparently,DeFi,series\n",
+  "stderr": "",
+  "execution_time_ms": 267
+}

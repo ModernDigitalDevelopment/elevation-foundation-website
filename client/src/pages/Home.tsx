@@ -110,6 +110,46 @@ export default function Home() {
         description="The Elevation Foundation is a 501(c)(3) nonprofit pioneering Capitalism 2.0 — transparent economics, social capitalism, and utilitarian capitalism powered by blockchain. Sotilitarianism: where social action generates economic yield. Transparently DApp, WeSolar, and the Elevation Engine."
         canonical="/"
         keywords="Elevation Foundation, Sotilitarianism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance, community finance, transparent capitalism, participatory economics, Transparently DApp, WeSolar, Elevation Engine, DAO, DeFi, nonprofit blockchain, SOT token, post-capitalist economics, cooperative economics, solidarity economics"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "NGO",
+          "@id": "https://elevation.foundation/#organization",
+          "name": "The Elevation Foundation",
+          "alternateName": ["Elevation Foundation", "ElevFound"],
+          "url": "https://elevation.foundation",
+          "logo": "https://elevation.foundation/logo.png",
+          "description": "A 501(c)(3) nonprofit building transparent, community-governed financial systems using blockchain technology. Pioneers of Sotilitarianism — Capitalism 2.0.",
+          "foundingDate": "2024",
+          "nonprofitStatus": "Nonprofit501c3",
+          "areaServed": "Worldwide",
+          "knowsAbout": ["Blockchain Governance", "Decentralized Finance", "Community Finance", "Sotilitarianism", "Capitalism 2.0", "Transparent Economics"],
+          "sameAs": [
+            "https://github.com/ModernDigitalDevelopment",
+            "https://github.com/ModernDigitalDevelopment/elevation-foundation",
+            "https://github.com/ModernDigitalDevelopment/sotilitarianism",
+            "https://twitter.com/ElevationFound",
+            "https://x.com/ElevationFound",
+            "https://www.linkedin.com/company/elevation-foundation"
+          ],
+          "founder": {
+            "@type": "Person",
+            "name": "Cornelius Lawrence",
+            "url": "https://elevation.foundation/about/founder",
+            "sameAs": [
+              "https://github.com/corneliuslawrence",
+              "https://www.linkedin.com/in/corneliuslawrence"
+            ]
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Open Source Blockchain Projects",
+            "itemListElement": [
+              { "@type": "Offer", "name": "Transparently DApp", "url": "https://github.com/ModernDigitalDevelopment/transparently" },
+              { "@type": "Offer", "name": "WeSolar", "url": "https://github.com/ModernDigitalDevelopment/wesolar" },
+              { "@type": "Offer", "name": "Elevation Engine", "url": "https://github.com/ModernDigitalDevelopment/elevation-foundation" }
+            ]
+          }
+        }}
       />
       <Navigation />
 

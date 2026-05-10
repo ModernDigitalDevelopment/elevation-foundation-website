@@ -210,21 +210,21 @@ function RelatedArticles({ currentSlug, tags }: { currentSlug: string; tags: str
   if (!related.length) return null;
 
   return (
-    <div className="mt-16 pt-12 border-t border-white/10">
-      <div className="section-label text-gold mb-6">Continue Reading</div>
-      <div className="grid md:grid-cols-3 gap-6">
+    <div className="mt-12 pt-10 border-t border-white/10">
+      <div className="section-label text-gold mb-5">Continue Reading</div>
+      <div className="grid md:grid-cols-3 gap-4">
         {related.map((p) => (
           <Link
             key={p.slug}
             href={`/blog/${p.slug}`}
-            className="block bg-[oklch(0.16_0.05_265)] border border-white/10 p-5 rounded-sm hover:border-gold/30 transition-all duration-200 group card-lift"
+            className="block bg-[oklch(0.16_0.05_265)] border border-white/10 p-5 rounded-sm transition-all duration-300 group hover:border-gold/35 hover:shadow-[0_6px_28px_oklch(0.05_0.05_265/0.5)] hover:-translate-y-0.5"
           >
             <div className="section-label text-gold/70 text-[10px] mb-2">{p.category}</div>
-            <h4 className="font-display text-base font-bold text-white leading-snug group-hover:text-gold transition-colors line-clamp-3">
+            <h4 className="font-display text-base font-bold text-white leading-snug group-hover:text-gold transition-colors duration-200 line-clamp-3">
               {p.title}
             </h4>
             {p.excerpt && (
-              <p className="font-body text-xs text-white/50 mt-2 line-clamp-2">{p.excerpt}</p>
+              <p className="font-body text-xs text-white/50 mt-2 line-clamp-2 leading-relaxed">{p.excerpt}</p>
             )}
           </Link>
         ))}
@@ -307,7 +307,7 @@ export default function BlogPost() {
       <Navigation />
 
       {/* --- HERO ----------------------------------------------- */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-28 pb-12 overflow-hidden">
         {post.coverImage && (
           <>
             <div
@@ -334,7 +334,7 @@ export default function BlogPost() {
             {post.excerpt}
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 pb-8 border-b border-white/10">
+          <div className="flex flex-wrap items-center gap-5 pb-6 border-b border-white/10">
             <span className="flex items-center gap-2 font-body text-sm text-white/50">
               <User size={14} /> {post.author}
             </span>
@@ -351,7 +351,7 @@ export default function BlogPost() {
       </section>
 
       {/* --- ARTICLE CONTENT ------------------------------------ */}
-      <section className="py-16 bg-navy">
+      <section className="py-12 bg-navy">
         <div className="container max-w-4xl" ref={articleRef}>
           <div
             className="

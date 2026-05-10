@@ -107,11 +107,11 @@ export default function Blog() {
 
       {/* --- FEATURED POST -------------------------------------- */}
       {activeCategory === "All" && featuredPost && !isLoading && (
-        <section className="py-16 bg-navy">
+        <section className="py-12 bg-navy">
           <div className="container">
-            <div className="section-label mb-6">Featured</div>
+            <div className="section-label mb-5">Featured</div>
             <Link href={`/blog/${featuredPost.slug}`}>
-              <div className="grid md:grid-cols-2 gap-10 p-8 bg-[oklch(0.16_0.05_265)] border border-gold/20 rounded-sm card-lift cursor-pointer">
+              <div className="grid md:grid-cols-2 gap-8 p-7 bg-[oklch(0.16_0.05_265)] border border-gold/20 rounded-sm cursor-pointer group transition-all duration-300 hover:border-gold/50 hover:shadow-[0_8px_40px_oklch(0.05_0.05_265/0.6)] hover:-translate-y-1">
                 <div className="aspect-[16/9] bg-[oklch(0.20_0.05_265)] rounded-sm overflow-hidden">
                   <img
                     src={featuredPost.coverImage ?? HERO_IMG}
@@ -121,7 +121,7 @@ export default function Blog() {
                 </div>
                 <div className="flex flex-col justify-center">
                   <div className={`section-label ${getCategoryColor(featuredPost.category)} mb-3`}>{featuredPost.category}</div>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-white group-hover:text-gold mb-4 leading-tight transition-colors duration-200">
                     {featuredPost.title}
                   </h2>
                   <p className="font-body text-white/65 leading-relaxed mb-6">{featuredPost.excerpt}</p>
@@ -146,7 +146,7 @@ export default function Blog() {
       )}
 
       {/* --- CATEGORY FILTER ------------------------------------ */}
-      <section className="py-8 bg-[oklch(0.14_0.05_265)] border-y border-white/10 sticky top-16 md:top-20 z-30">
+      <section className="py-5 bg-[oklch(0.14_0.05_265)] border-y border-white/10 sticky top-16 md:top-20 z-30">
         <div className="container">
           <div className="flex gap-2 overflow-x-auto pb-1">
             {dynamicCategories.map((cat) => (
@@ -167,7 +167,7 @@ export default function Blog() {
       </section>
 
       {/* --- POSTS GRID ----------------------------------------- */}
-      <section className="py-20 bg-navy">
+      <section className="py-14 bg-navy">
         <div className="container">
           {isLoading ? (
             <div className="flex items-center justify-center py-24">
@@ -187,22 +187,22 @@ export default function Blog() {
               )}
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {regularPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`}>
-                  <article className="flex flex-col p-7 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm card-lift group h-full cursor-pointer">
+                  <article className="flex flex-col p-6 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm h-full cursor-pointer transition-all duration-300 group hover:border-gold/30 hover:shadow-[0_6px_32px_oklch(0.05_0.05_265/0.55)] hover:-translate-y-1">
                     {post.coverImage && (
-                      <div className="aspect-[16/9] rounded-sm overflow-hidden mb-5 -mx-1">
-                        <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
+                      <div className="aspect-[16/9] rounded-sm overflow-hidden mb-4 -mx-1">
+                        <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500" />
                       </div>
                     )}
-                    <div className={`section-label ${getCategoryColor(post.category)} mb-3`}>{post.category}</div>
-                    <h3 className="font-display text-xl font-bold text-white mb-3 leading-snug group-hover:text-gold transition-colors flex-1">
+                    <div className={`section-label ${getCategoryColor(post.category)} mb-2`}>{post.category}</div>
+                    <h3 className="font-display text-xl font-bold text-white mb-3 leading-snug group-hover:text-gold transition-colors duration-200 flex-1">
                       {post.title}
                     </h3>
-                    <p className="font-body text-sm text-white/60 leading-relaxed mb-5 line-clamp-3">{post.excerpt}</p>
-                    <div className="flex items-center justify-between mt-auto">
-                      <div className="flex items-center gap-4">
+                    <p className="font-body text-sm text-white/60 leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
+                    <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/8">
+                      <div className="flex items-center gap-3">
                         <span className="flex items-center gap-1.5 font-mono-data text-xs text-white/35">
                           <Calendar size={11} /> {formatDate(post.publishedAt)}
                         </span>
@@ -212,7 +212,7 @@ export default function Blog() {
                           </span>
                         )}
                       </div>
-                      <ArrowRight size={16} className="text-white/30 group-hover:text-gold transition-colors" />
+                      <ArrowRight size={15} className="text-white/25 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200" />
                     </div>
                   </article>
                 </Link>

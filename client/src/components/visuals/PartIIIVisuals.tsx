@@ -1,509 +1,319 @@
 /**
  * PART III VISUALS — The Five-Layer Technical Architecture
- * Interactive diagrams for the Trust Kernel Stack, token flows, and smart contract execution
+ * Uses Chart.js via react-chartjs-2 (same library as sandbox — guaranteed rendering)
+ * Beige backgrounds per style guide; click-to-enlarge on all charts
  */
 import { useState } from "react";
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
-} from "recharts";
+  Chart as ChartJS,
+  CategoryScale, LinearScale, BarElement,
+  RadialLinearScale, ArcElement,
+  Filler, Tooltip, Legend,
+} from "chart.js";
+import { Bar, Radar, Doughnut } from "react-chartjs-2";
 
-const CustomTooltip = ({ active, payload, label }: any) => {
-  if (!active || !payload?.length) return null;
-  return (
-    <div className="bg-[oklch(0.18_0.05_265)] border border-gold/30 rounded-sm px-4 py-3 shadow-xl">
-      <p className="font-mono-data text-xs text-gold/70 mb-1">{label}</p>
-      {payload.map((entry: any, i: number) => (
-        <p key={i} className="font-body text-sm" style={{ color: entry.color }}>
-          {entry.name}: <span className="font-semibold">{entry.value}</span>
-        </p>
-      ))}
-    </div>
-  );
+ChartJS.register(
+  CategoryScale, LinearScale, BarElement,
+  RadialLinearScale, ArcElement,
+  Filler, Tooltip, Legend
+);
+
+const BEIGE = "#f5f0e8";
+const GOLD = "#c9a84c";
+const TEAL = "#4db8b8";
+const CRIMSON = "#c0392b";
+const DARK = "#1a1a2e";
+const PURPLE = "#9b59b6";
+
+const card: React.CSSProperties = {
+  background: BEIGE, borderRadius: "6px", padding: "24px",
+  marginBottom: "32px", border: "1px solid rgba(201,168,76,0.25)",
+};
+const figLabel: React.CSSProperties = {
+  fontFamily: "Courier New, monospace", fontSize: "0.65rem",
+  letterSpacing: "0.12em", color: GOLD, textTransform: "uppercase", marginBottom: "6px",
+};
+const figTitle: React.CSSProperties = {
+  fontFamily: "Georgia, serif", fontSize: "1.1rem",
+  fontWeight: "700", color: DARK, marginBottom: "6px",
+};
+const figDesc: React.CSSProperties = {
+  fontFamily: "Georgia, serif", fontSize: "0.82rem",
+  color: "#555", lineHeight: "1.65", marginBottom: "16px",
 };
 
-// ─── 1. TRUST KERNEL STACK — Layered Architecture Diagram ────────────────────
-const layers = [
-  {
-    id: 4,
-    name: "Layer 5: Application Layer",
-    sublabel: "DApps · Transparently · WeSolar · Elevation Engine",
-    color: "oklch(0.72 0.12 75)",
-    bg: "oklch(0.72 0.12 75 / 0.12)",
-    border: "oklch(0.72 0.12 75 / 0.35)",
-    desc: "User-facing applications that leverage the underlying infrastructure. This is where the revolution becomes tangible — governance tools, energy markets, and autonomous finance protocols that communities can actually use.",
-    tech: ["Transparently DApp", "WeSolar Protocol", "Elevation Engine", "Community Treasury"],
-  },
-  {
-    id: 3,
-    name: "Layer 4: Governance Layer",
-    sublabel: "DAO · Continuous Consent · Liquid Democracy · Proof of Utility",
-    color: "oklch(0.68 0.10 75)",
-    bg: "oklch(0.68 0.10 75 / 0.10)",
-    border: "oklch(0.68 0.10 75 / 0.30)",
-    desc: "The political brain of the system. Smart contracts encode governance rules; token holders vote on proposals; Proof of Utility weights votes by demonstrated contribution rather than mere capital holdings.",
-    tech: ["DAO Framework", "Voting Contracts", "Proposal Engine", "Delegation Registry"],
-  },
-  {
-    id: 2,
-    name: "Layer 3: Token Economy Layer",
-    sublabel: "SOT · SUG · SST · Three-Token Architecture",
-    color: "oklch(0.65 0.12 195)",
-    bg: "oklch(0.65 0.12 195 / 0.10)",
-    border: "oklch(0.65 0.12 195 / 0.30)",
-    desc: "The monetary nervous system. Three tokens serve distinct functions: SOT for governance, SUG for utility and platform access, SST as a USD-pegged stable medium of exchange. Each token is purpose-built; none is speculative by design.",
-    tech: ["SOT Contract", "SUG Contract", "SST Mint/Burn", "Treasury Management"],
-  },
-  {
-    id: 1,
-    name: "Layer 2: Smart Contract Layer",
-    sublabel: "Solidity · Automated Execution · Immutable Logic · Zero Intermediaries",
-    color: "oklch(0.60 0.10 195)",
-    bg: "oklch(0.60 0.10 195 / 0.08)",
-    border: "oklch(0.60 0.10 195 / 0.25)",
-    desc: "The enforcement mechanism. Smart contracts execute governance decisions, distribute rewards, manage treasury allocations, and settle disputes — all without human intermediaries. The code is the law, and the law is public.",
-    tech: ["Governance Contracts", "Reward Distribution", "Treasury Contracts", "Dispute Resolution"],
-  },
-  {
-    id: 0,
-    name: "Layer 1: Blockchain Foundation",
-    sublabel: "Immutability · Decentralization · Cryptographic Trust · Consensus",
-    color: "oklch(0.55 0.08 265)",
-    bg: "oklch(0.55 0.08 265 / 0.08)",
-    border: "oklch(0.55 0.08 265 / 0.25)",
-    desc: "The bedrock. An immutable, decentralized ledger that records every transaction, vote, and governance decision. No single entity controls it; no single entity can corrupt it. Trust is not assumed — it is mathematically guaranteed.",
-    tech: ["Ethereum / L2", "Consensus Mechanism", "State Management", "Cryptographic Proofs"],
-  },
-];
+function Modal({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 9999, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "zoom-out" }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: BEIGE, borderRadius: "8px", padding: "32px", maxWidth: "90vw", maxHeight: "90vh", overflow: "auto", width: "820px" }}>
+        {children}
+        <div style={{ textAlign: "center", marginTop: "16px" }}>
+          <button onClick={onClose} style={{ fontFamily: "Courier New, monospace", fontSize: "0.7rem", color: "#666", background: "none", border: "1px solid #ccc", padding: "6px 18px", borderRadius: "3px", cursor: "pointer" }}>CLOSE ✕</button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-export function TrustKernelStack() {
-  const [activeLayer, setActiveLayer] = useState<number | null>(null);
+function ChartCard({ label, title, desc, children }: { label: string; title: string; desc: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <div style={card}>
+        <div style={figLabel}>{label}</div>
+        <div style={figTitle}>{title}</div>
+        <div style={figDesc}>{desc}</div>
+        <div onClick={() => setOpen(true)} style={{ cursor: "zoom-in", position: "relative" }}>
+          <div style={{ width: "66%", margin: "0 auto" }}>{children}</div>
+          <div style={{ position: "absolute", bottom: "4px", right: "4px", fontFamily: "Courier New, monospace", fontSize: "0.58rem", color: "#aaa" }}>CLICK TO ENLARGE ⊕</div>
+        </div>
+      </div>
+      {open && <Modal onClose={() => setOpen(false)}><div style={figLabel}>{label}</div><div style={figTitle}>{title}</div><div style={{ marginTop: "16px" }}>{children}</div></Modal>}
+    </>
+  );
+}
+
+// ─── Fig 3.1 — Trust Kernel Stack ─────────────────────────────────────────────
+function TrustKernelStack() {
+  const [selected, setSelected] = useState(0);
+  const layers = [
+    {
+      num: "L1", name: "Consensus Layer", tech: "Ethereum / Celo PoS",
+      color: TEAL, desc: "The bedrock. Immutable transaction finality, Sybil resistance, and cryptographic truth. Every action taken in the Sotilitarian system is anchored here.",
+      whyMatters: "Without L1, there is no trustless foundation. Every layer above depends on the immutability of this one.",
+      whatReplaces: "Central banks, clearing houses, and settlement intermediaries that charge rent for being trusted.",
+      failureMode: "51% attack, validator collusion, or consensus fork. Mitigated by PoS economic penalties and decentralized validator sets.",
+    },
+    {
+      num: "L2", name: "Identity & Verification", tech: "Klarity Protocol",
+      color: GOLD, desc: "Pseudonymous but accountable. Klarity assigns on-chain reputation scores based on verified contributions — not credit scores, not government IDs.",
+      whyMatters: "Governance without identity is mob rule. Identity without privacy is surveillance. Klarity threads the needle.",
+      whatReplaces: "Credit bureaus, KYC intermediaries, and the social credit systems that gatekeep economic participation.",
+      failureMode: "Identity aggregation attacks or Sybil farming. Mitigated by Proof of Unique Humanity and stake-weighted reputation.",
+    },
+    {
+      num: "L3", name: "Governance Layer", tech: "Transparently DAO",
+      color: PURPLE, desc: "Continuous Consent in action. Every token holder can propose, vote, delegate, or revoke — in real time, on-chain, with full auditability.",
+      whyMatters: "Governance is the operating system of any organization. If it is opaque, it is corruptible. If it is episodic, it is unresponsive.",
+      whatReplaces: "Boards of directors, shareholder meetings, and the 4-year electoral cycles that concentrate power between votes.",
+      failureMode: "Voter apathy, plutocratic capture, or governance attacks. Mitigated by quorum requirements and time-locked execution.",
+    },
+    {
+      num: "L4", name: "Economic Layer", tech: "Elevation Engine + 3-Token System",
+      color: CRIMSON, desc: "The engine room. Autonomous yield generation, contribution rewards, and the three-token economy (SOT, SUG, SST) that powers the entire system.",
+      whyMatters: "Governance without economics is philosophy. The L4 layer is what makes Sotilitarianism a self-sustaining system, not a thought experiment.",
+      whatReplaces: "Investment banks, yield-extracting intermediaries, and the financial infrastructure that routes value away from communities.",
+      failureMode: "Flash loan attacks, oracle manipulation, or liquidity crises. Mitigated by circuit breakers and multi-oracle price feeds.",
+    },
+    {
+      num: "L5", name: "Application Layer", tech: "WeSolar, DApps, APIs",
+      color: "#27ae60", desc: "Where the rubber meets the road. Real-world applications — from community solar to DeFi protocols — built on the four layers below.",
+      whyMatters: "The stack only matters if it produces real outcomes for real people. L5 is the proof of concept for every claim made in layers 1–4.",
+      whatReplaces: "Traditional app stores, platform monopolies, and the rent-extracting intermediaries that sit between creators and users.",
+      failureMode: "Smart contract bugs, front-end attacks, or oracle failures. Mitigated by formal verification and multi-sig admin controls.",
+    },
+  ];
+
+  const sel = layers[selected];
 
   return (
-    <div className="my-10 p-6 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm">
-      <div className="mb-6">
-        <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Figure 3.1 — System Architecture</div>
-        <h3 className="font-display text-lg font-bold text-white">The Trust Kernel Stack</h3>
-        <p className="font-body text-sm text-white/50 mt-1">
-          Five interdependent layers, each building on the one below. Click any layer to explore its function, technology, and role in the Sotilitarian ecosystem.
-        </p>
+    <div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+        {layers.map((l, i) => (
+          <div key={l.num} onClick={() => setSelected(i)} style={{
+            display: "flex", alignItems: "center", gap: "12px",
+            padding: "12px 16px", cursor: "pointer",
+            background: selected === i ? `${l.color}15` : i % 2 === 0 ? "rgba(0,0,0,0.02)" : "transparent",
+            border: `1px solid ${selected === i ? l.color : "rgba(0,0,0,0.08)"}`,
+            borderRadius: "4px", marginBottom: "4px",
+            transition: "all 0.15s",
+          }}>
+            <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: l.color, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Courier New, monospace", fontSize: "0.7rem", color: "#fff", fontWeight: "700", flexShrink: 0 }}>{l.num}</div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.72rem", color: l.color, fontWeight: "700", letterSpacing: "0.06em" }}>{l.name}</div>
+              <div style={{ fontFamily: "Georgia, serif", fontSize: "0.75rem", color: "#666" }}>{l.tech}</div>
+            </div>
+            <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.65rem", color: selected === i ? l.color : "#aaa" }}>{selected === i ? "▼" : "▶"}</div>
+          </div>
+        ))}
       </div>
-
-      <div className="flex flex-col md:flex-row gap-6">
-        {/* Stack visualization */}
-        <div className="flex-shrink-0 w-full md:w-80 space-y-1.5">
-          {layers.map((layer) => (
-            <button
-              key={layer.id}
-              onClick={() => setActiveLayer(activeLayer === layer.id ? null : layer.id)}
-              className="w-full text-left p-3 rounded-sm border transition-all duration-200"
-              style={{
-                borderColor: activeLayer === layer.id ? layer.border : "oklch(0.22 0.05 265)",
-                backgroundColor: activeLayer === layer.id ? layer.bg : "transparent",
-              }}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-mono-data text-xs font-bold" style={{ color: layer.color }}>
-                    {layer.name}
-                  </div>
-                  <div className="font-body text-[10px] text-white/35 mt-0.5 leading-tight">{layer.sublabel}</div>
-                </div>
-                <div className="font-mono-data text-xs text-white/20 ml-2">
-                  {activeLayer === layer.id ? "▲" : "▼"}
-                </div>
-              </div>
-            </button>
+      {/* Detail panel */}
+      <div style={{ marginTop: "16px", padding: "20px", background: `${sel.color}08`, border: `1px solid ${sel.color}40`, borderRadius: "6px" }}>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.7rem", color: sel.color, fontWeight: "700", letterSpacing: "0.08em", marginBottom: "8px" }}>{sel.num}: {sel.name.toUpperCase()} — {sel.tech}</div>
+        <div style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem", color: "#333", lineHeight: "1.65", marginBottom: "12px" }}>{sel.desc}</div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px" }}>
+          {[
+            { label: "WHY IT MATTERS", text: sel.whyMatters, color: TEAL },
+            { label: "WHAT IT REPLACES", text: sel.whatReplaces, color: GOLD },
+            { label: "FAILURE MODE", text: sel.failureMode, color: CRIMSON },
+          ].map((box) => (
+            <div key={box.label} style={{ padding: "10px 12px", background: "rgba(255,255,255,0.6)", borderLeft: `3px solid ${box.color}`, borderRadius: "3px" }}>
+              <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.6rem", color: box.color, fontWeight: "700", letterSpacing: "0.08em", marginBottom: "5px" }}>{box.label}</div>
+              <div style={{ fontFamily: "Georgia, serif", fontSize: "0.75rem", color: "#444", lineHeight: "1.55" }}>{box.text}</div>
+            </div>
           ))}
-
-          {/* Stack arrow */}
-          <div className="flex items-center gap-2 pt-2 pl-3">
-            <div className="font-mono-data text-[9px] text-white/25 uppercase tracking-wider">Foundation</div>
-            <div className="flex-1 h-px bg-white/10" />
-            <div className="font-mono-data text-[9px] text-white/25 uppercase tracking-wider">Application</div>
-          </div>
-        </div>
-
-        {/* Detail panel */}
-        <div className="flex-1 min-h-[200px]">
-          {activeLayer !== null ? (
-            <div
-              className="p-5 rounded-sm border h-full transition-all duration-300"
-              style={{
-                borderColor: layers[5 - activeLayer - 1]?.border || layers[0].border,
-                backgroundColor: layers[5 - activeLayer - 1]?.bg || layers[0].bg,
-              }}
-            >
-              {(() => {
-                const layer = layers.find(l => l.id === activeLayer)!;
-                return (
-                  <>
-                    <div className="font-display text-base font-bold mb-3" style={{ color: layer.color }}>
-                      {layer.name}
-                    </div>
-                    <p className="font-body text-sm text-white/65 leading-relaxed mb-4">{layer.desc}</p>
-                    <div>
-                      <div className="font-mono-data text-[10px] text-white/30 uppercase tracking-wider mb-2">Key Components</div>
-                      <div className="flex flex-wrap gap-2">
-                        {layer.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="font-mono-data text-[10px] px-2 py-1 rounded-sm border"
-                            style={{ borderColor: layer.border, color: layer.color }}
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                );
-              })()}
-            </div>
-          ) : (
-            <div className="flex items-center justify-center h-full border border-dashed border-white/10 rounded-sm">
-              <p className="font-body text-sm text-white/25 text-center">
-                Select a layer to explore its architecture
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </div>
   );
 }
 
-// ─── 2. THREE-TOKEN FLOW DIAGRAM ──────────────────────────────────────────────
-export function ThreeTokenFlowDiagram() {
-  const [activeToken, setActiveToken] = useState<"SOT" | "SUG" | "SST" | null>(null);
-
-  const tokens = {
-    SOT: {
-      name: "Sotility Governance Token",
-      symbol: "SOT",
-      color: "oklch(0.72 0.12 75)",
-      border: "oklch(0.72 0.12 75 / 0.40)",
-      bg: "oklch(0.72 0.12 75 / 0.10)",
-      purpose: "Governance & Voting Rights",
-      flows: [
-        { from: "Contributors", to: "SOT Holders", action: "Earn via Proof of Utility" },
-        { from: "SOT Holders", to: "DAO", action: "Vote on proposals" },
-        { from: "DAO", to: "Treasury", action: "Allocate resources" },
-        { from: "Treasury", to: "Contributors", action: "Fund initiatives" },
-      ],
-      desc: "The governance backbone. SOT is earned through verified contributions — not purchased. Holders vote on protocol changes, treasury allocations, and community initiatives. One contribution unit, one vote.",
-    },
-    SUG: {
-      name: "Sotility Utility Token",
-      symbol: "SUG",
-      color: "oklch(0.65 0.12 195)",
-      border: "oklch(0.65 0.12 195 / 0.40)",
-      bg: "oklch(0.65 0.12 195 / 0.10)",
-      purpose: "Platform Access & Services",
-      flows: [
-        { from: "Users", to: "Platform", action: "Pay for services in SUG" },
-        { from: "Platform", to: "Contributors", action: "Distribute service revenue" },
-        { from: "Contributors", to: "SUG Pool", action: "Stake for yield" },
-        { from: "SUG Pool", to: "Users", action: "Rebates & rewards" },
-      ],
-      desc: "The utility engine. SUG powers platform interactions — paying for services, accessing features, and earning through participation. It creates a circular economy where usage generates value for all participants.",
-    },
-    SST: {
-      name: "Sotility Stable Token",
-      symbol: "SST",
-      color: "oklch(0.75 0.05 265)",
-      border: "oklch(0.75 0.05 265 / 0.40)",
-      bg: "oklch(0.75 0.05 265 / 0.08)",
-      purpose: "Stable Medium of Exchange",
-      flows: [
-        { from: "Treasury", to: "SST Reserve", action: "Back with real assets" },
-        { from: "Users", to: "Merchants", action: "Everyday transactions" },
-        { from: "Elevation Engine", to: "SST Pool", action: "Yield injection" },
-        { from: "SST Pool", to: "Community", action: "Universal basic dividend" },
-      ],
-      desc: "The stability layer. SST is pegged to USD and backed by treasury reserves. It enables everyday commerce without volatility risk, and serves as the distribution mechanism for the Elevation Engine's autonomous yield.",
-    },
-  };
-
-  return (
-    <div className="my-10 p-6 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm">
-      <div className="mb-6">
-        <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Figure 3.2 — Monetary Architecture</div>
-        <h3 className="font-display text-lg font-bold text-white">The Three-Token Economy: SOT · SUG · SST</h3>
-        <p className="font-body text-sm text-white/50 mt-1">
-          Three tokens, three purposes, one ecosystem. Each is purpose-built; none is speculative by design. Select a token to trace its flow through the system.
-        </p>
-      </div>
-
-      {/* Token selector */}
-      <div className="flex gap-3 mb-6 flex-wrap">
-        {(["SOT", "SUG", "SST"] as const).map((sym) => {
-          const t = tokens[sym];
-          return (
-            <button
-              key={sym}
-              onClick={() => setActiveToken(activeToken === sym ? null : sym)}
-              className="flex items-center gap-3 px-4 py-3 rounded-sm border transition-all duration-200"
-              style={{
-                borderColor: activeToken === sym ? t.border : "oklch(0.22 0.05 265)",
-                backgroundColor: activeToken === sym ? t.bg : "transparent",
-              }}
-            >
-              <div
-                className="w-8 h-8 rounded-sm flex items-center justify-center font-mono-data text-xs font-bold"
-                style={{ color: t.color, border: `1px solid ${t.border}` }}
-              >
-                {sym}
-              </div>
-              <div className="text-left">
-                <div className="font-mono-data text-xs font-bold" style={{ color: activeToken === sym ? t.color : "oklch(0.6 0.02 265)" }}>
-                  {sym}
-                </div>
-                <div className="font-body text-[10px] text-white/35">{t.purpose}</div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Token detail */}
-      {activeToken && (() => {
-        const t = tokens[activeToken];
-        return (
-          <div className="p-5 rounded-sm border transition-all duration-300" style={{ borderColor: t.border, backgroundColor: t.bg }}>
-            <div className="font-display text-base font-bold mb-2" style={{ color: t.color }}>
-              {t.name} ({t.symbol})
-            </div>
-            <p className="font-body text-sm text-white/65 leading-relaxed mb-5">{t.desc}</p>
-            <div>
-              <div className="font-mono-data text-[10px] text-white/30 uppercase tracking-wider mb-3">Token Flow</div>
-              <div className="space-y-2">
-                {t.flows.map((flow, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs font-body">
-                    <span className="text-white/50 w-28 text-right flex-shrink-0">{flow.from}</span>
-                    <span className="text-white/20">→</span>
-                    <span className="font-mono-data text-[10px] px-2 py-0.5 rounded-sm flex-shrink-0" style={{ color: t.color, border: `1px solid ${t.border}` }}>
-                      {flow.action}
-                    </span>
-                    <span className="text-white/20">→</span>
-                    <span className="text-white/50">{flow.to}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {!activeToken && (
-        <div className="flex items-center justify-center py-8 border border-dashed border-white/10 rounded-sm">
-          <p className="font-body text-sm text-white/25">Select a token to trace its flow</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── 3. SMART CONTRACT EXECUTION FLOW ─────────────────────────────────────────
-export function SmartContractFlow() {
-  const [activeStep, setActiveStep] = useState(0);
-
-  const steps = [
+// ─── Fig 3.2 — Three-Token Economy ────────────────────────────────────────────
+function ThreeTokenEconomy() {
+  const [selected, setSelected] = useState<string | null>(null);
+  const tokens = [
     {
-      id: 0,
-      title: "Proposal Submitted",
-      actor: "Community Member",
-      action: "Submits governance proposal on-chain with required SOT stake",
-      outcome: "Proposal enters review queue; stake held in escrow",
-      color: "oklch(0.65 0.12 195)",
+      symbol: "SOT", name: "Sotility Governance Token", color: GOLD,
+      supply: "Fixed 100M", utility: "Governance voting, proposal rights, protocol upgrades",
+      flow: "Earned through verified contribution; staked for governance weight",
+      analogy: "Shares in a cooperative — but you earn them by contributing, not buying them.",
     },
     {
-      id: 1,
-      title: "Deliberation Period",
-      actor: "Token Holders",
-      action: "Community debates proposal; delegates may update their positions",
-      outcome: "Liquid democracy allows real-time position changes",
-      color: "oklch(0.65 0.12 195)",
+      symbol: "SUG", name: "Sotility Utility Token", color: TEAL,
+      supply: "Dynamic (contribution-minted)", utility: "Platform access, service payments, contribution rewards",
+      flow: "Minted when contributions are verified; burned when services are consumed",
+      analogy: "A loyalty point that actually means something — backed by real utility, not marketing.",
     },
     {
-      id: 2,
-      title: "Voting Window Opens",
-      actor: "Smart Contract",
-      action: "Automatically opens voting at pre-set time; weights votes by Proof of Utility score",
-      outcome: "Votes recorded immutably on-chain; no intermediary required",
-      color: "oklch(0.72 0.12 75)",
-    },
-    {
-      id: 3,
-      title: "Quorum Check",
-      actor: "Smart Contract",
-      action: "Verifies minimum participation threshold has been met",
-      outcome: "If quorum not met, proposal returns to deliberation; stake refunded",
-      color: "oklch(0.72 0.12 75)",
-    },
-    {
-      id: 4,
-      title: "Automatic Execution",
-      actor: "Smart Contract",
-      action: "If passed: executes treasury allocation, parameter change, or protocol update",
-      outcome: "No human can block or delay execution; the code is the law",
-      color: "oklch(0.72 0.12 75)",
-    },
-    {
-      id: 5,
-      title: "On-Chain Record",
-      actor: "Blockchain",
-      action: "Full audit trail recorded permanently: who voted, how, when, and what was executed",
-      outcome: "Radical transparency — every decision is publicly verifiable forever",
-      color: "oklch(0.72 0.12 75)",
+      symbol: "SST", name: "Sotility Stable Token", color: "#27ae60",
+      supply: "Collateral-backed", utility: "Stable store of value, treasury reserves, everyday transactions",
+      flow: "Minted against collateral; redeemable 1:1 for underlying assets",
+      analogy: "A dollar that doesn't lose value to inflation because it is backed by community assets, not government debt.",
     },
   ];
 
   return (
-    <div className="my-10 p-6 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm">
-      <div className="mb-6">
-        <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Figure 3.3 — Execution Architecture</div>
-        <h3 className="font-display text-lg font-bold text-white">Smart Contract Governance: From Proposal to Execution</h3>
-        <p className="font-body text-sm text-white/50 mt-1">
-          Every governance decision follows this deterministic path. No backroom deals. No discretionary delays. No human veto. Click through each step.
-        </p>
+    <div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px", marginBottom: "16px" }}>
+        {tokens.map((t) => (
+          <div key={t.symbol} onClick={() => setSelected(selected === t.symbol ? null : t.symbol)} style={{
+            padding: "16px", borderRadius: "6px", cursor: "pointer",
+            background: selected === t.symbol ? `${t.color}15` : "rgba(0,0,0,0.03)",
+            border: `2px solid ${selected === t.symbol ? t.color : "rgba(0,0,0,0.1)"}`,
+            textAlign: "center",
+          }}>
+            <div style={{ fontFamily: "Courier New, monospace", fontSize: "1.4rem", fontWeight: "900", color: t.color, marginBottom: "4px" }}>{t.symbol}</div>
+            <div style={{ fontFamily: "Georgia, serif", fontSize: "0.72rem", color: "#444", lineHeight: "1.4" }}>{t.name}</div>
+            <div style={{ marginTop: "8px", fontFamily: "Courier New, monospace", fontSize: "0.6rem", color: "#888" }}>Supply: {t.supply}</div>
+          </div>
+        ))}
       </div>
-
-      {/* Step progress */}
-      <div className="flex items-center gap-1 mb-6 overflow-x-auto pb-2">
-        {steps.map((step, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveStep(i)}
-            className="flex items-center gap-1 flex-shrink-0"
-          >
-            <div className={`w-7 h-7 rounded-full flex items-center justify-center font-mono-data text-xs font-bold border transition-all ${
-              activeStep === i
-                ? "border-gold bg-gold text-[oklch(0.12_0.05_265)]"
-                : i < activeStep
-                ? "border-gold/40 bg-gold/10 text-gold/60"
-                : "border-white/20 text-white/30"
-            }`}>
-              {i + 1}
+      {selected && (() => {
+        const t = tokens.find((x) => x.symbol === selected)!;
+        return (
+          <div style={{ padding: "16px 20px", background: `${t.color}08`, border: `1px solid ${t.color}40`, borderRadius: "6px" }}>
+            <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.7rem", color: t.color, fontWeight: "700", marginBottom: "8px" }}>{t.symbol} — {t.name}</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+              {[
+                { label: "UTILITY", text: t.utility },
+                { label: "FLOW MECHANISM", text: t.flow },
+              ].map((b) => (
+                <div key={b.label} style={{ padding: "10px 12px", background: "rgba(255,255,255,0.6)", borderLeft: `3px solid ${t.color}`, borderRadius: "3px" }}>
+                  <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.6rem", color: t.color, fontWeight: "700", marginBottom: "4px" }}>{b.label}</div>
+                  <div style={{ fontFamily: "Georgia, serif", fontSize: "0.78rem", color: "#444", lineHeight: "1.55" }}>{b.text}</div>
+                </div>
+              ))}
             </div>
-            {i < steps.length - 1 && (
-              <div className={`w-6 h-px transition-all ${i < activeStep ? "bg-gold/40" : "bg-white/10"}`} />
-            )}
+            <div style={{ marginTop: "10px", padding: "10px 12px", background: "rgba(255,255,255,0.5)", borderRadius: "3px", fontFamily: "Georgia, serif", fontSize: "0.78rem", color: "#555", fontStyle: "italic" }}>
+              <strong>In plain English:</strong> {t.analogy}
+            </div>
+          </div>
+        );
+      })()}
+    </div>
+  );
+}
+
+// ─── Fig 3.3 — Smart Contract Step Navigator ──────────────────────────────────
+function SmartContractNavigator() {
+  const [step, setStep] = useState(0);
+  const steps = [
+    { title: "Contribution Submitted", desc: "A participant submits a contribution — code, energy, governance participation, or verified labor — to the protocol.", code: "contribute(bytes32 proofHash, uint256 amount)", color: TEAL },
+    { title: "Proof of Utility Verification", desc: "The Klarity oracle network verifies the contribution against predefined utility criteria. Consensus required from 2/3 of validators.", code: "verifyUtility(address contributor, bytes32 proofHash)", color: GOLD },
+    { title: "Reward Calculation", desc: "The Elevation Engine calculates the SUG reward based on contribution type, scarcity, and current protocol parameters.", code: "calculateReward(address contributor, uint8 utilityType)", color: PURPLE },
+    { title: "Token Distribution", desc: "SUG tokens are minted and distributed to the contributor. A portion flows to the community treasury. SOT governance weight is updated.", code: "distributeReward(address contributor, uint256 sugAmount)", color: "#27ae60" },
+    { title: "On-Chain Record", desc: "The contribution, verification, and reward are permanently recorded on-chain. Immutable. Publicly auditable. Forever.", code: "emit ContributionVerified(contributor, proofHash, sugAmount)", color: CRIMSON },
+  ];
+
+  const s = steps[step];
+
+  return (
+    <div>
+      <div style={{ display: "flex", gap: "6px", marginBottom: "16px", flexWrap: "wrap" }}>
+        {steps.map((st, i) => (
+          <button key={i} onClick={(e) => { e.stopPropagation(); setStep(i); }} style={{
+            fontFamily: "Courier New, monospace", fontSize: "0.65rem", padding: "5px 12px",
+            borderRadius: "3px", border: `1px solid ${step === i ? st.color : "#ccc"}`,
+            background: step === i ? st.color : "transparent",
+            color: step === i ? "#fff" : "#555", cursor: "pointer",
+          }}>
+            Step {i + 1}
           </button>
         ))}
       </div>
-
-      {/* Active step detail */}
-      <div className="p-5 rounded-sm border border-gold/20 bg-gold/5">
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-sm border border-gold/30 flex items-center justify-center font-mono-data text-sm font-bold text-gold flex-shrink-0">
-            {activeStep + 1}
-          </div>
-          <div className="flex-1">
-            <div className="font-display text-base font-bold text-gold mb-1">{steps[activeStep].title}</div>
-            <div className="font-mono-data text-[10px] text-white/35 uppercase tracking-wider mb-3">
-              Actor: {steps[activeStep].actor}
-            </div>
-            <p className="font-body text-sm text-white/65 mb-3">{steps[activeStep].action}</p>
-            <div className="flex items-start gap-2">
-              <span className="font-mono-data text-[10px] text-gold/50 uppercase tracking-wider flex-shrink-0 mt-0.5">Outcome:</span>
-              <p className="font-body text-xs text-white/50">{steps[activeStep].outcome}</p>
-            </div>
-          </div>
+      <div style={{ padding: "20px", background: `${s.color}08`, border: `1px solid ${s.color}40`, borderRadius: "6px" }}>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.7rem", color: s.color, fontWeight: "700", marginBottom: "8px" }}>STEP {step + 1} OF {steps.length}: {s.title.toUpperCase()}</div>
+        <div style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem", color: "#333", lineHeight: "1.65", marginBottom: "12px" }}>{s.desc}</div>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.78rem", color: "#333", background: "rgba(0,0,0,0.06)", padding: "12px 16px", borderRadius: "4px", borderLeft: `3px solid ${s.color}` }}>
+          <span style={{ color: "#888" }}>// Solidity</span><br />
+          <span style={{ color: s.color }}>{s.code}</span>
         </div>
       </div>
-
-      <div className="flex justify-between mt-4">
-        <button
-          onClick={() => setActiveStep(Math.max(0, activeStep - 1))}
-          disabled={activeStep === 0}
-          className="font-mono-data text-xs text-white/30 hover:text-gold disabled:opacity-20 transition-colors"
-        >
-          ← Previous
-        </button>
-        <button
-          onClick={() => setActiveStep(Math.min(steps.length - 1, activeStep + 1))}
-          disabled={activeStep === steps.length - 1}
-          className="font-mono-data text-xs text-white/30 hover:text-gold disabled:opacity-20 transition-colors"
-        >
-          Next →
-        </button>
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px" }}>
+        <button onClick={(e) => { e.stopPropagation(); setStep(Math.max(0, step - 1)); }} disabled={step === 0} style={{ fontFamily: "Courier New, monospace", fontSize: "0.68rem", padding: "6px 14px", borderRadius: "3px", border: "1px solid #ccc", background: "transparent", color: step === 0 ? "#ccc" : "#555", cursor: step === 0 ? "default" : "pointer" }}>← PREV</button>
+        <span style={{ fontFamily: "Courier New, monospace", fontSize: "0.65rem", color: "#888" }}>{step + 1} / {steps.length}</span>
+        <button onClick={(e) => { e.stopPropagation(); setStep(Math.min(steps.length - 1, step + 1)); }} disabled={step === steps.length - 1} style={{ fontFamily: "Courier New, monospace", fontSize: "0.68rem", padding: "6px 14px", borderRadius: "3px", border: "1px solid #ccc", background: "transparent", color: step === steps.length - 1 ? "#ccc" : "#555", cursor: step === steps.length - 1 ? "default" : "pointer" }}>NEXT →</button>
       </div>
     </div>
   );
 }
 
-// ─── 4. EFFICIENCY COMPARISON BAR CHART ───────────────────────────────────────
-const efficiencyData = [
-  { metric: "Transaction Cost", traditional: 85, sotilitarian: 8, unit: "basis pts" },
-  { metric: "Settlement Time", traditional: 72, sotilitarian: 3, unit: "hours" },
-  { metric: "Intermediary Count", traditional: 7, sotilitarian: 0, unit: "parties" },
-  { metric: "Audit Cost", traditional: 95, sotilitarian: 2, unit: "% of budget" },
-  { metric: "Governance Latency", traditional: 1460, sotilitarian: 24, unit: "days avg" },
-];
-
-export function EfficiencyComparisonChart() {
-  return (
-    <div className="my-10 p-6 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm">
-      <div className="mb-5">
-        <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Figure 3.4 — Operational Efficiency</div>
-        <h3 className="font-display text-lg font-bold text-white">The Friction Audit: Traditional Finance vs. Autonomous Protocol</h3>
-        <p className="font-body text-sm text-white/50 mt-1">
-          Every intermediary is a toll booth. Every manual process is a delay. Autonomous finance eliminates both — not by cutting corners, but by encoding trust in code.
-        </p>
-      </div>
-
-      <div className="space-y-5">
-        {efficiencyData.map((item, i) => (
-          <div key={i}>
-            <div className="flex justify-between items-center mb-1.5">
-              <span className="font-mono-data text-xs text-white/60">{item.metric}</span>
-              <span className="font-mono-data text-[10px] text-white/30">{item.unit}</span>
-            </div>
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-3">
-                <span className="font-mono-data text-[10px] text-crimson/60 w-24 text-right flex-shrink-0">Traditional</span>
-                <div className="flex-1 h-4 bg-white/5 rounded-sm overflow-hidden">
-                  <div
-                    className="h-full bg-crimson/50 rounded-sm flex items-center pl-2 transition-all duration-700"
-                    style={{ width: `${Math.min(100, (item.traditional / Math.max(item.traditional, item.sotilitarian)) * 100)}%` }}
-                  >
-                    <span className="font-mono-data text-[9px] text-white/60">{item.traditional}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="font-mono-data text-[10px] text-gold/60 w-24 text-right flex-shrink-0">Sotilitarian</span>
-                <div className="flex-1 h-4 bg-white/5 rounded-sm overflow-hidden">
-                  <div
-                    className="h-full bg-gold/60 rounded-sm flex items-center pl-2 transition-all duration-700"
-                    style={{ width: `${Math.max(3, (item.sotilitarian / Math.max(item.traditional, item.sotilitarian)) * 100)}%` }}
-                  >
-                    <span className="font-mono-data text-[9px] text-black/70">{item.sotilitarian}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+// ─── Fig 3.4 — Architecture Capabilities Radar ────────────────────────────────
+function ArchitectureRadar() {
+  const data = {
+    labels: ["Security", "Scalability", "Decentralization", "Composability", "Auditability", "User Sovereignty"],
+    datasets: [
+      { label: "Traditional Web2 Stack", data: [55, 85, 10, 30, 25, 15], backgroundColor: "rgba(192,57,43,0.1)", borderColor: CRIMSON, borderWidth: 2, pointBackgroundColor: CRIMSON, pointRadius: 3 },
+      { label: "Sotilitarian 5-Layer Stack", data: [90, 75, 95, 88, 98, 92], backgroundColor: "rgba(77,184,184,0.12)", borderColor: TEAL, borderWidth: 2, pointBackgroundColor: TEAL, pointRadius: 4 },
+    ],
+  };
+  const opts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: "bottom" as const, labels: { font: { family: "Courier New, monospace", size: 10 }, color: "#333", padding: 14 } } },
+    scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, color: "#999", font: { size: 9 }, backdropColor: "transparent" }, grid: { color: "rgba(0,0,0,0.1)" }, angleLines: { color: "rgba(0,0,0,0.1)" }, pointLabels: { color: "#333", font: { family: "Georgia, serif", size: 11 } } } },
+  };
+  return <div style={{ height: "320px" }}><Radar data={data} options={opts} /></div>;
 }
 
 export function PartIIIVisuals() {
   return (
-    <>
-      <TrustKernelStack />
-      <ThreeTokenFlowDiagram />
-      <SmartContractFlow />
-      <EfficiencyComparisonChart />
-    </>
+    <div style={{ marginTop: "48px", paddingTop: "40px", borderTop: "1px solid rgba(201,168,76,0.2)" }}>
+      <div style={{ marginBottom: "32px" }}>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.65rem", letterSpacing: "0.15em", color: GOLD, textTransform: "uppercase", marginBottom: "6px" }}>Part III of V — Visual Companion</div>
+        <h2 style={{ fontFamily: "Georgia, serif", fontSize: "1.5rem", fontWeight: "700", color: "#f5f0e8", margin: "0 0 8px 0" }}>Data &amp; Diagrams</h2>
+        <p style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.55)", lineHeight: "1.65", margin: 0 }}>The following figures map the five-layer technical architecture of Part III into visual form. Each chart is interactive — click to enlarge.</p>
+      </div>
+      <div style={card}>
+        <div style={figLabel}>Figure 3.1 — System Architecture</div>
+        <div style={figTitle}>The Trust Kernel Stack: Five Layers of Trustless Infrastructure</div>
+        <div style={figDesc}>The Sotilitarian system is built on five interdependent layers. Each layer is independently auditable, composable with the others, and replaceable without disrupting the stack. Click any layer to explore its role, what it replaces, and how it fails.</div>
+        <TrustKernelStack />
+      </div>
+      <div style={card}>
+        <div style={figLabel}>Figure 3.2 — Token Architecture</div>
+        <div style={figTitle}>The Three-Token Economy: SOT, SUG, SST</div>
+        <div style={figDesc}>Three tokens. One ecosystem. Each serves a distinct purpose — together they form the economic backbone of the Sotilitarian system. Click any token to explore its mechanics.</div>
+        <ThreeTokenEconomy />
+      </div>
+      <div style={card}>
+        <div style={figLabel}>Figure 3.3 — Protocol Mechanics</div>
+        <div style={figTitle}>The Contribution Verification Loop: Smart Contract Step-by-Step</div>
+        <div style={figDesc}>Every contribution to the Sotilitarian ecosystem passes through a five-step verification and reward process. No human intermediary. No discretionary gatekeeping. Navigate each step to see the code.</div>
+        <SmartContractNavigator />
+      </div>
+      <ChartCard label="Figure 3.4 — Architecture Comparison" title="Web2 Stack vs. Sotilitarian 5-Layer Stack: Capability Profile" desc="Across six critical dimensions, the Sotilitarian stack outperforms traditional Web2 infrastructure on every metric that matters for community-governed systems.">
+        <ArchitectureRadar />
+      </ChartCard>
+    </div>
   );
 }

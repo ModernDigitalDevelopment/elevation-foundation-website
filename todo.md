@@ -112,3 +112,11 @@
 - [x] Build /blog/series/sotilitarian-capitalism series landing page
 - [x] Research backlink strategy via Bing Webmaster Tools and web research
 - [x] Implement discrete backlink integrations across the site
+
+## Visual Integration — Sotilitarian Capitalism Series
+- [ ] Rewrite all 5 visual component files using Chart.js (same library as sandbox) to fix rendering
+- [ ] Update BlogPost.tsx to inject visuals inline within article text at conceptual moments
+- [ ] Apply beige background to all charts per project style guide
+- [ ] Add click-to-enlarge for chart images (2/3 size display with modal)
+- [ ] Export static PNG versions of all charts for SSRN PDF embedding
+- [ ] Verify all visuals render on live site

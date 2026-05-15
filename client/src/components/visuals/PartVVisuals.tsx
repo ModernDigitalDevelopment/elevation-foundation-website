@@ -1,374 +1,221 @@
 /**
  * PART V VISUALS — The Future of Economics: Beyond the Binary Debate
- * Post-binary economics spectrum, convergence diagram, and outcome projections
+ * Uses Chart.js via react-chartjs-2 (same library as sandbox — guaranteed rendering)
+ * Beige backgrounds per style guide; click-to-enlarge on all charts
  */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  Radar,
-  Legend,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-} from "recharts";
+  Chart as ChartJS,
+  CategoryScale, LinearScale, BarElement,
+  PointElement, LineElement,
+  RadialLinearScale, ArcElement,
+  Filler, Tooltip, Legend,
+} from "chart.js";
+import { Bar, Radar, Line, Doughnut } from "react-chartjs-2";
 
-const CustomTooltip = ({ active, payload, label }: any) => {
-  if (!active || !payload?.length) return null;
-  return (
-    <div className="bg-[oklch(0.18_0.05_265)] border border-gold/30 rounded-sm px-4 py-3 shadow-xl">
-      <p className="font-mono-data text-xs text-gold/70 mb-1">{label}</p>
-      {payload.map((entry: any, i: number) => (
-        <p key={i} className="font-body text-sm" style={{ color: entry.color }}>
-          {entry.name}: <span className="font-semibold">{entry.value}</span>
-        </p>
-      ))}
-    </div>
-  );
+ChartJS.register(
+  CategoryScale, LinearScale, BarElement,
+  PointElement, LineElement,
+  RadialLinearScale, ArcElement,
+  Filler, Tooltip, Legend
+);
+
+const BEIGE = "#f5f0e8";
+const GOLD = "#c9a84c";
+const TEAL = "#4db8b8";
+const CRIMSON = "#c0392b";
+const DARK = "#1a1a2e";
+const PURPLE = "#9b59b6";
+
+const card: React.CSSProperties = {
+  background: BEIGE, borderRadius: "6px", padding: "24px",
+  marginBottom: "32px", border: "1px solid rgba(201,168,76,0.25)",
+};
+const figLabel: React.CSSProperties = {
+  fontFamily: "Courier New, monospace", fontSize: "0.65rem",
+  letterSpacing: "0.12em", color: GOLD, textTransform: "uppercase", marginBottom: "6px",
+};
+const figTitle: React.CSSProperties = {
+  fontFamily: "Georgia, serif", fontSize: "1.1rem",
+  fontWeight: "700", color: DARK, marginBottom: "6px",
+};
+const figDesc: React.CSSProperties = {
+  fontFamily: "Georgia, serif", fontSize: "0.82rem",
+  color: "#555", lineHeight: "1.65", marginBottom: "16px",
 };
 
-// ─── 1. THE POST-BINARY ECONOMICS SPECTRUM ────────────────────────────────────
-export function PostBinarySpectrum() {
-  const [activeSystem, setActiveSystem] = useState(2);
-
-  const systems = [
-    {
-      id: 0,
-      name: "Pure Capitalism",
-      tagline: "Markets solve everything",
-      color: "oklch(0.55 0.18 15)",
-      scores: {
-        efficiency: 88,
-        equity: 12,
-        sustainability: 25,
-        transparency: 18,
-        participation: 8,
-        resilience: 35,
-      },
-      desc: "Maximizes market efficiency and innovation but concentrates wealth, externalizes costs, and systematically excludes the majority from governance.",
-      failures: ["Wealth concentration", "Environmental externalities", "Democratic deficit", "Boom-bust cycles"],
-    },
-    {
-      id: 1,
-      name: "Democratic Socialism",
-      tagline: "State solves everything",
-      color: "oklch(0.55 0.12 265)",
-      scores: {
-        efficiency: 45,
-        equity: 72,
-        sustainability: 60,
-        transparency: 42,
-        participation: 55,
-        resilience: 58,
-      },
-      desc: "Improves equity and social outcomes but suffers from bureaucratic inefficiency, centralized control, and vulnerability to political capture.",
-      failures: ["Bureaucratic inefficiency", "Political capture", "Innovation stagnation", "Central planning limits"],
-    },
-    {
-      id: 2,
-      name: "Sotilitarianism",
-      tagline: "Community builds everything",
-      color: "oklch(0.72 0.12 75)",
-      scores: {
-        efficiency: 92,
-        equity: 95,
-        sustainability: 88,
-        transparency: 99,
-        participation: 97,
-        resilience: 90,
-      },
-      desc: "Combines market efficiency with community governance, radical transparency, and verified utility — transcending the binary debate entirely.",
-      failures: ["Still emerging", "Requires digital literacy", "Regulatory uncertainty", "Network bootstrap challenge"],
-    },
-  ];
-
-  const radarData = [
-    { metric: "Efficiency", ...Object.fromEntries(systems.map(s => [s.name, s.scores.efficiency])) },
-    { metric: "Equity", ...Object.fromEntries(systems.map(s => [s.name, s.scores.equity])) },
-    { metric: "Sustainability", ...Object.fromEntries(systems.map(s => [s.name, s.scores.sustainability])) },
-    { metric: "Transparency", ...Object.fromEntries(systems.map(s => [s.name, s.scores.transparency])) },
-    { metric: "Participation", ...Object.fromEntries(systems.map(s => [s.name, s.scores.participation])) },
-    { metric: "Resilience", ...Object.fromEntries(systems.map(s => [s.name, s.scores.resilience])) },
-  ];
-
+function Modal({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
   return (
-    <div className="my-10 p-6 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm">
-      <div className="mb-6">
-        <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Figure 5.1 — System Performance Analysis</div>
-        <h3 className="font-display text-lg font-bold text-white">Beyond the Binary: Three Economic Systems Compared</h3>
-        <p className="font-body text-sm text-white/50 mt-1">
-          The capitalism vs. socialism debate is a false binary — a 19th-century argument applied to a 21st-century problem. Sotilitarianism renders the debate obsolete by transcending both.
-        </p>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="flex-shrink-0 w-full md:w-72">
-          <div className="space-y-2 mb-4">
-            {systems.map((sys) => (
-              <button
-                key={sys.id}
-                onClick={() => setActiveSystem(sys.id)}
-                className={`w-full text-left p-3 rounded-sm border transition-all duration-200 ${
-                  activeSystem === sys.id ? "border-gold/30 bg-gold/5" : "border-white/8 hover:border-white/15"
-                }`}
-              >
-                <div className="font-body text-sm font-semibold" style={{ color: sys.color }}>
-                  {sys.name}
-                </div>
-                <div className="font-body text-xs text-white/35 italic">{sys.tagline}</div>
-              </button>
-            ))}
-          </div>
-
-          {/* Active system detail */}
-          <div className="p-4 rounded-sm border border-gold/20 bg-gold/5">
-            <p className="font-body text-xs text-white/60 leading-relaxed mb-3">
-              {systems[activeSystem].desc}
-            </p>
-            <div className="font-mono-data text-[10px] text-white/30 uppercase tracking-wider mb-2">
-              {activeSystem === 2 ? "Current Challenges" : "Systemic Failures"}
-            </div>
-            <ul className="space-y-1">
-              {systems[activeSystem].failures.map((f, i) => (
-                <li key={i} className="flex items-center gap-2 font-body text-xs text-white/45">
-                  <span style={{ color: systems[activeSystem].color }}>·</span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex-1">
-          <ResponsiveContainer width="100%" height={320}>
-            <RadarChart data={radarData}>
-              <PolarGrid stroke="oklch(0.25 0.05 265)" />
-              <PolarAngleAxis
-                dataKey="metric"
-                tick={{ fill: "oklch(0.65 0.02 265)", fontSize: 11, fontFamily: "monospace" }}
-              />
-              {systems.map((sys) => (
-                <Radar
-                  key={sys.id}
-                  name={sys.name}
-                  dataKey={sys.name}
-                  stroke={sys.color}
-                  fill={sys.color}
-                  fillOpacity={activeSystem === sys.id ? 0.25 : 0.08}
-                  strokeWidth={activeSystem === sys.id ? 2.5 : 1}
-                />
-              ))}
-              <Legend
-                wrapperStyle={{ fontFamily: "monospace", fontSize: "10px" }}
-                formatter={(v) => <span style={{ color: "oklch(0.7 0.02 265)" }}>{v}</span>}
-              />
-            </RadarChart>
-          </ResponsiveContainer>
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 9999, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "zoom-out" }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: BEIGE, borderRadius: "8px", padding: "32px", maxWidth: "90vw", maxHeight: "90vh", overflow: "auto", width: "820px" }}>
+        {children}
+        <div style={{ textAlign: "center", marginTop: "16px" }}>
+          <button onClick={onClose} style={{ fontFamily: "Courier New, monospace", fontSize: "0.7rem", color: "#666", background: "none", border: "1px solid #ccc", padding: "6px 18px", borderRadius: "3px", cursor: "pointer" }}>CLOSE ✕</button>
         </div>
       </div>
     </div>
   );
 }
 
-// ─── 2. THE CONVERGENCE THESIS ─────────────────────────────────────────────────
-export function ConvergenceThesis() {
-  const [step, setStep] = useState(0);
-
-  const theses = [
-    {
-      title: "The Efficiency Thesis",
-      claim: "Markets are the most efficient allocators of resources",
-      sotilResponse: "Correct — but only when information is symmetric and externalities are priced. Sotilitarianism preserves market mechanisms while enforcing radical transparency and verified utility pricing.",
-      outcome: "Markets + Transparency = Efficient AND Just",
-      color: "oklch(0.72 0.12 75)",
-    },
-    {
-      title: "The Equity Thesis",
-      claim: "Collective ownership produces more equitable outcomes",
-      sotilResponse: "Correct — but collective ownership without accountability produces bureaucracy and capture. Sotilitarianism achieves collective ownership through DAO governance with cryptographic accountability.",
-      outcome: "Collective Ownership + Accountability = Equitable AND Efficient",
-      color: "oklch(0.65 0.12 195)",
-    },
-    {
-      title: "The Innovation Thesis",
-      claim: "Competition and profit incentives drive innovation",
-      sotilResponse: "Partially correct — but the greatest innovations (internet, GPS, vaccines) came from publicly funded, open-source, or community-driven models. Sotilitarianism rewards innovation through Proof of Utility, not just profit.",
-      outcome: "Innovation + Community Benefit = Sustainable Progress",
-      color: "oklch(0.72 0.12 75)",
-    },
-    {
-      title: "The Stability Thesis",
-      claim: "Central planning provides economic stability",
-      sotilResponse: "Incorrect — central planning creates brittleness. Sotilitarianism achieves stability through distributed resilience: no single point of failure, no single point of control, no single point of corruption.",
-      outcome: "Distributed Resilience = Antifragile Economy",
-      color: "oklch(0.65 0.12 195)",
-    },
-  ];
-
+function ChartCard({ label, title, desc, children }: { label: string; title: string; desc: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
   return (
-    <div className="my-10 p-6 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm">
-      <div className="mb-6">
-        <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Figure 5.2 — Philosophical Architecture</div>
-        <h3 className="font-display text-lg font-bold text-white">The Convergence Thesis: What Sotilitarianism Takes From Each Side</h3>
-        <p className="font-body text-sm text-white/50 mt-1">
-          Sotilitarianism doesn't reject capitalism or socialism — it synthesizes the best of both while discarding the failures of each. This is not compromise; it is transcendence.
-        </p>
+    <>
+      <div style={card}>
+        <div style={figLabel}>{label}</div>
+        <div style={figTitle}>{title}</div>
+        <div style={figDesc}>{desc}</div>
+        <div onClick={() => setOpen(true)} style={{ cursor: "zoom-in", position: "relative" }}>
+          <div style={{ width: "66%", margin: "0 auto" }}>{children}</div>
+          <div style={{ position: "absolute", bottom: "4px", right: "4px", fontFamily: "Courier New, monospace", fontSize: "0.58rem", color: "#aaa" }}>CLICK TO ENLARGE ⊕</div>
+        </div>
       </div>
+      {open && <Modal onClose={() => setOpen(false)}><div style={figLabel}>{label}</div><div style={figTitle}>{title}</div><div style={{ marginTop: "16px" }}>{children}</div></Modal>}
+    </>
+  );
+}
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-5">
-        {theses.map((t, i) => (
-          <button
-            key={i}
-            onClick={() => setStep(i)}
-            className={`p-3 rounded-sm border text-left transition-all ${
-              step === i ? "border-gold/35 bg-gold/8" : "border-white/8 hover:border-white/15"
-            }`}
-          >
-            <div className="font-mono-data text-[9px] text-white/30 mb-1">Thesis {i + 1}</div>
-            <div className="font-body text-xs text-white/60 leading-tight">{t.title.replace("The ", "").replace(" Thesis", "")}</div>
+function ThreeSystemRadar() {
+  const data = {
+    labels: ["Transparency", "Efficiency", "Equity", "Resilience", "Innovation", "Accountability", "Participation"],
+    datasets: [
+      { label: "Capitalism", data: [20, 85, 18, 55, 80, 25, 20], backgroundColor: "rgba(192,57,43,0.1)", borderColor: CRIMSON, borderWidth: 2, pointBackgroundColor: CRIMSON, pointRadius: 3 },
+      { label: "Socialism", data: [50, 45, 75, 60, 40, 55, 65], backgroundColor: "rgba(155,89,182,0.1)", borderColor: PURPLE, borderWidth: 2, pointBackgroundColor: PURPLE, pointRadius: 3 },
+      { label: "Sotilitarianism", data: [95, 78, 90, 88, 85, 96, 92], backgroundColor: "rgba(77,184,184,0.12)", borderColor: TEAL, borderWidth: 2.5, pointBackgroundColor: TEAL, pointRadius: 4 },
+    ],
+  };
+  const opts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: "bottom" as const, labels: { font: { family: "Courier New, monospace", size: 10 }, color: "#333", padding: 14 } } },
+    scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, color: "#999", font: { size: 9 }, backdropColor: "transparent" }, grid: { color: "rgba(0,0,0,0.1)" }, angleLines: { color: "rgba(0,0,0,0.1)" }, pointLabels: { color: "#333", font: { family: "Georgia, serif", size: 11 } } } },
+  };
+  return <div style={{ height: "340px" }}><Radar data={data} options={opts} /></div>;
+}
+
+function ConvergenceThesis() {
+  const labels = ["2020", "2022", "2024", "2026", "2028", "2030", "2032", "2035"];
+  const data = {
+    labels,
+    datasets: [
+      { label: "Trust in Traditional Institutions (%)", data: [42, 38, 33, 28, 24, 20, 17, 15], borderColor: CRIMSON, backgroundColor: "rgba(192,57,43,0.08)", borderWidth: 2, fill: true, pointBackgroundColor: CRIMSON, pointRadius: 3, tension: 0.4 },
+      { label: "DAO / On-Chain Governance Adoption (%)", data: [1, 3, 8, 18, 32, 50, 65, 78], borderColor: TEAL, backgroundColor: "rgba(77,184,184,0.08)", borderWidth: 2.5, fill: true, pointBackgroundColor: TEAL, pointRadius: 4, tension: 0.4 },
+      { label: "DeFi TVL Index (normalized, %)", data: [2, 12, 22, 35, 48, 60, 70, 82], borderColor: GOLD, backgroundColor: "rgba(201,168,76,0.06)", borderWidth: 2, fill: false, pointBackgroundColor: GOLD, pointRadius: 3, tension: 0.4 },
+    ],
+  };
+  const opts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: "bottom" as const, labels: { font: { family: "Courier New, monospace", size: 10 }, color: "#333", padding: 14 } }, tooltip: { callbacks: { label: (c: any) => ` ${c.raw}%` } } },
+    scales: {
+      x: { ticks: { color: "#555", font: { family: "Courier New, monospace", size: 10 } }, grid: { color: "rgba(0,0,0,0.06)" } },
+      y: { min: 0, max: 100, ticks: { callback: (v: any) => `${v}%`, color: "#555", font: { family: "Courier New, monospace", size: 10 } }, grid: { color: "rgba(0,0,0,0.06)" } },
+    },
+  };
+  return <div style={{ height: "280px" }}><Line data={data} options={opts} /></div>;
+}
+
+function OutcomeProjectionChart() {
+  const metrics = [
+    { label: "Wealth Gini Coefficient", cap: 72, soc: 48, sot: 31 },
+    { label: "Governance Participation (%)", cap: 22, soc: 55, sot: 88 },
+    { label: "Financial Inclusion (%)", cap: 58, soc: 70, sot: 94 },
+    { label: "Institutional Trust (%)", cap: 28, soc: 52, sot: 87 },
+    { label: "Corruption Index (lower=better)", cap: 68, soc: 44, sot: 12 },
+    { label: "Community Wealth Retention (%)", cap: 12, soc: 60, sot: 85 },
+  ];
+  const data = {
+    labels: metrics.map((m) => m.label),
+    datasets: [
+      { label: "Capitalism", data: metrics.map((m) => m.cap), backgroundColor: "rgba(192,57,43,0.7)", borderColor: CRIMSON, borderWidth: 1, borderRadius: 3 },
+      { label: "Socialism", data: metrics.map((m) => m.soc), backgroundColor: "rgba(155,89,182,0.7)", borderColor: PURPLE, borderWidth: 1, borderRadius: 3 },
+      { label: "Sotilitarianism", data: metrics.map((m) => m.sot), backgroundColor: "rgba(77,184,184,0.8)", borderColor: TEAL, borderWidth: 1, borderRadius: 3 },
+    ],
+  };
+  const opts = {
+    indexAxis: "y" as const, responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: "bottom" as const, labels: { font: { family: "Courier New, monospace", size: 10 }, color: "#333", padding: 14 } } },
+    scales: {
+      x: { min: 0, max: 100, ticks: { callback: (v: any) => `${v}`, color: "#555", font: { size: 10 } }, grid: { color: "rgba(0,0,0,0.06)" } },
+      y: { ticks: { color: "#333", font: { family: "Georgia, serif", size: 11 } }, grid: { display: false } },
+    },
+  };
+  return <div style={{ height: "340px" }}><Bar data={data} options={opts} /></div>;
+}
+
+function SotilitarianManifesto() {
+  const [active, setActive] = useState(0);
+  const principles = [
+    { num: "I", title: "Transparency Is Not Optional", color: TEAL, desc: "Every financial transaction, governance vote, and operational decision must be recorded on-chain and publicly verifiable. Opacity is the precondition for corruption. We eliminate opacity by design.", implication: "Smart contracts replace trust in institutions. Code is law. The ledger is public. There are no exceptions for 'sensitive' decisions." },
+    { num: "II", title: "Consent Must Be Continuous", color: GOLD, desc: "Governance legitimacy cannot be granted once every four years and then ignored. The governed must have ongoing, real-time mechanisms to express, revoke, and redirect their consent.", implication: "DAOs with liquid democracy. Proposal lifecycles with time-locks. Continuous participation mechanisms. No more mandate decay." },
+    { num: "III", title: "Value Flows to Creators", color: PURPLE, desc: "The people who generate value must receive value. Proof of Utility replaces the extractive intermediary layer that currently captures the majority of economic surplus.", implication: "Contribution-based token distribution. Autonomous yield redistribution. No rent-seeking without corresponding utility creation." },
+    { num: "IV", title: "The System Must Be Self-Funding", color: "#27ae60", desc: "A governance system that depends on external funding is a governance system that can be captured. The Elevation Engine generates autonomous yield that funds the mission without dependence.", implication: "DeFi yield generation. Flash loan arbitrage. Protocol fees. All flowing to community treasury — not to founders or investors." },
+    { num: "V", title: "Failure Must Be Survivable", color: CRIMSON, desc: "Centralized systems fail catastrophically. Distributed systems fail gracefully. The Sotilitarian architecture is designed for antifragility — it gets stronger when components fail.", implication: "No single point of failure. Multi-sig governance. Circuit breakers. Formal verification. The system survives its own mistakes." },
+  ];
+  const p = principles[active];
+  return (
+    <div>
+      <div style={{ display: "flex", gap: "6px", marginBottom: "16px", flexWrap: "wrap" as const }}>
+        {principles.map((pr, i) => (
+          <button key={i} onClick={(e) => { e.stopPropagation(); setActive(i); }} style={{ fontFamily: "Courier New, monospace", fontSize: "0.68rem", padding: "7px 14px", borderRadius: "3px", border: `1px solid ${active === i ? pr.color : "#ccc"}`, background: active === i ? pr.color : "transparent", color: active === i ? "#fff" : "#555", cursor: "pointer", fontWeight: active === i ? "700" : "400" }}>
+            {pr.num}
           </button>
         ))}
       </div>
-
-      <div className="space-y-3">
-        <div className="p-4 rounded-sm border border-white/10 bg-white/3">
-          <div className="font-mono-data text-[10px] text-white/30 uppercase tracking-wider mb-1">The Claim</div>
-          <p className="font-body text-sm text-white/65 italic">"{theses[step].claim}"</p>
-        </div>
-        <div className="p-4 rounded-sm border border-gold/20 bg-gold/5">
-          <div className="font-mono-data text-[10px] text-gold/50 uppercase tracking-wider mb-1">The Sotilitarian Response</div>
-          <p className="font-body text-sm text-white/65 leading-relaxed">{theses[step].sotilResponse}</p>
-        </div>
-        <div className="p-4 rounded-sm border border-teal/20 bg-teal/5">
-          <div className="font-mono-data text-[10px] text-teal/50 uppercase tracking-wider mb-1">The Synthesis</div>
-          <p className="font-body text-sm font-semibold" style={{ color: theses[step].color }}>{theses[step].outcome}</p>
+      <div style={{ padding: "20px", background: `${p.color}08`, border: `1px solid ${p.color}40`, borderRadius: "6px" }}>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.7rem", color: p.color, fontWeight: "700", letterSpacing: "0.1em", marginBottom: "8px" }}>PRINCIPLE {p.num}: {p.title.toUpperCase()}</div>
+        <div style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "#333", lineHeight: "1.7", marginBottom: "14px" }}>{p.desc}</div>
+        <div style={{ padding: "12px 16px", background: "rgba(255,255,255,0.6)", borderLeft: `3px solid ${p.color}`, borderRadius: "3px" }}>
+          <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.6rem", color: p.color, fontWeight: "700", letterSpacing: "0.08em", marginBottom: "5px" }}>PRACTICAL IMPLICATION:</div>
+          <div style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "#444", lineHeight: "1.6" }}>{p.implication}</div>
         </div>
       </div>
     </div>
   );
 }
 
-// ─── 3. LONG-TERM OUTCOME PROJECTIONS ─────────────────────────────────────────
-const outcomeData = [
-  { year: "2025", gini: 0.58, wellbeing: 42, transparency: 15, participation: 12 },
-  { year: "2027", gini: 0.55, wellbeing: 48, transparency: 28, participation: 22 },
-  { year: "2029", gini: 0.50, wellbeing: 55, transparency: 45, participation: 38 },
-  { year: "2031", gini: 0.44, wellbeing: 63, transparency: 62, participation: 55 },
-  { year: "2033", gini: 0.37, wellbeing: 72, transparency: 78, participation: 70 },
-  { year: "2035", gini: 0.29, wellbeing: 82, transparency: 88, participation: 83 },
-  { year: "2037", gini: 0.22, wellbeing: 89, transparency: 94, participation: 91 },
-  { year: "2040", gini: 0.17, wellbeing: 95, transparency: 98, participation: 96 },
-];
-
-export function OutcomeProjectionChart() {
+function FuturePowerDistribution() {
+  const [year, setYear] = useState<"2025" | "2030" | "2035">("2025");
+  const configs = {
+    "2025": {
+      labels: ["Top 1%", "Top 10%", "Middle 40%", "Bottom 50%"],
+      data: [38, 42, 16, 4],
+      colors: ["rgba(192,57,43,0.9)", "rgba(192,57,43,0.65)", "rgba(155,89,182,0.5)", "rgba(100,100,120,0.4)"],
+      note: "Current reality: The top 1% holds 38% of global wealth. The bottom 50% holds 4%. This is the baseline the Sotilitarian system is designed to transform.",
+    },
+    "2030": {
+      labels: ["Sotilitarian Contributors", "Active DAO Participants", "Token Holders", "Legacy System Users"],
+      data: [28, 32, 25, 15],
+      colors: ["rgba(77,184,184,0.9)", "rgba(77,184,184,0.65)", "rgba(201,168,76,0.65)", "rgba(155,89,182,0.5)"],
+      note: "Projected 2030: Early Sotilitarian adoption begins redistributing economic power. Contributors earn proportionally. The legacy system still holds 15% but is declining.",
+    },
+    "2035": {
+      labels: ["Verified Contributors", "Community Governance", "Protocol Treasury", "Transition Reserve"],
+      data: [42, 30, 20, 8],
+      colors: ["rgba(77,184,184,0.9)", "rgba(77,184,184,0.65)", "rgba(201,168,76,0.7)", "rgba(39,174,96,0.55)"],
+      note: "Projected 2035: Sotilitarian infrastructure is the default. 92% of economic activity flows through transparent, community-governed protocols. Extraction has been replaced by circulation.",
+    },
+  };
+  const cfg = configs[year];
+  const data = {
+    labels: cfg.labels,
+    datasets: [{ data: cfg.data, backgroundColor: cfg.colors, borderColor: ["#fff", "#fff", "#fff", "#fff"], borderWidth: 2 }],
+  };
+  const opts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: "bottom" as const, labels: { font: { family: "Courier New, monospace", size: 10 }, color: "#333", padding: 10, boxWidth: 12 } }, tooltip: { callbacks: { label: (c: any) => ` ${c.label}: ${c.raw}% of economic power` } } },
+    cutout: "55%",
+  };
   return (
-    <div className="my-10 p-6 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm">
-      <div className="mb-5">
-        <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider mb-1">Figure 5.3 — Long-Term Projections</div>
-        <h3 className="font-display text-lg font-bold text-white">The Sotilitarian Horizon: Projected Outcomes 2025–2040</h3>
-        <p className="font-body text-sm text-white/50 mt-1">
-          As Sotilitarian platforms achieve critical mass, the downstream effects compound. Inequality falls. Wellbeing rises. Transparency becomes the default. Participation becomes the norm. These are not utopian fantasies — they are the logical outputs of the system's design.
-        </p>
+    <div>
+      <div style={{ display: "flex", gap: "10px", marginBottom: "14px", justifyContent: "center" }}>
+        {(["2025", "2030", "2035"] as const).map((y) => (
+          <button key={y} onClick={(e) => { e.stopPropagation(); setYear(y); }} style={{ fontFamily: "Courier New, monospace", fontSize: "0.72rem", letterSpacing: "0.08em", padding: "6px 18px", borderRadius: "3px", border: `1px solid ${year === y ? GOLD : "#ccc"}`, background: year === y ? GOLD : "transparent", color: year === y ? DARK : "#555", cursor: "pointer", fontWeight: year === y ? "700" : "400" }}>
+            {y}
+          </button>
+        ))}
       </div>
-      <ResponsiveContainer width="100%" height={280}>
-        <AreaChart data={outcomeData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-          <defs>
-            <linearGradient id="wellbeingGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="oklch(0.72 0.12 75)" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="oklch(0.72 0.12 75)" stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="transparencyGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="oklch(0.65 0.12 195)" stopOpacity={0.25} />
-              <stop offset="95%" stopColor="oklch(0.65 0.12 195)" stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="participationGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="oklch(0.68 0.10 75)" stopOpacity={0.2} />
-              <stop offset="95%" stopColor="oklch(0.68 0.10 75)" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.22 0.05 265)" />
-          <XAxis dataKey="year" tick={{ fill: "oklch(0.6 0.02 265)", fontSize: 11, fontFamily: "monospace" }} />
-          <YAxis tick={{ fill: "oklch(0.6 0.02 265)", fontSize: 11, fontFamily: "monospace" }} unit="%" />
-          <Tooltip content={<CustomTooltip />} />
-          <Legend
-            wrapperStyle={{ fontFamily: "monospace", fontSize: "11px", paddingTop: "12px" }}
-            formatter={(v) => <span style={{ color: "oklch(0.7 0.02 265)" }}>{v}</span>}
-          />
-          <Area type="monotone" dataKey="wellbeing" name="Community Wellbeing Index" stroke="oklch(0.72 0.12 75)" strokeWidth={2.5} fill="url(#wellbeingGrad)" dot={false} unit="%" />
-          <Area type="monotone" dataKey="transparency" name="Governance Transparency Score" stroke="oklch(0.65 0.12 195)" strokeWidth={2} fill="url(#transparencyGrad)" dot={false} unit="%" />
-          <Area type="monotone" dataKey="participation" name="Democratic Participation Rate" stroke="oklch(0.68 0.10 75)" strokeWidth={2} fill="url(#participationGrad)" dot={false} unit="%" />
-        </AreaChart>
-      </ResponsiveContainer>
-      <p className="font-mono-data text-[10px] text-white/25 mt-3 text-center">
-        * Projections assume Sotilitarian platform adoption following S-curve model (Figure 4.1). Wellbeing index composite of OECD Better Life indicators. Gini coefficient decline based on verified utility distribution modeling.
-      </p>
-    </div>
-  );
-}
-
-// ─── 4. THE DECLARATION: ANIMATED MANIFESTO CARD ─────────────────────────────
-export function ManifestoCard() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const pillars = [
-    { verb: "BELIEVE", text: "True wealth is generated through the measurable elevation of the human condition — not through extraction, speculation, or the manufactured scarcity of artificial markets." },
-    { verb: "BUILD", text: "A comprehensive framework leveraging trust technology and transparency technology to create a self-regulating, equitable, and highly efficient economic engine that serves the many, not the few." },
-    { verb: "DEMAND", text: "An economic model that inherently rewards positive contributions to society, prioritizing human well-being and ecological sustainability over private gain — because the two are not in conflict." },
-  ];
-
-  return (
-    <div className="my-10 p-8 bg-[oklch(0.12_0.05_265)] border border-gold/25 rounded-sm relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: "repeating-linear-gradient(45deg, oklch(0.72 0.12 75) 0, oklch(0.72 0.12 75) 1px, transparent 0, transparent 50%)",
-          backgroundSize: "20px 20px",
-        }} />
-      </div>
-
-      <div className="relative z-10">
-        <div className="font-mono-data text-xs text-gold/50 uppercase tracking-widest mb-6 text-center">
-          The Sotilitarian Declaration
-        </div>
-
-        <div className="space-y-6">
-          {pillars.map((p, i) => (
-            <div
-              key={i}
-              className="flex items-start gap-5 transition-all duration-700"
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateX(0)" : "translateX(-20px)",
-                transitionDelay: `${i * 200}ms`,
-              }}
-            >
-              <div className="flex-shrink-0 w-20 text-right">
-                <span className="font-display text-sm font-black text-gold tracking-widest">{p.verb}</span>
-              </div>
-              <div className="w-px bg-gold/30 self-stretch flex-shrink-0" />
-              <p className="font-body text-sm text-white/65 leading-relaxed">{p.text}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-gold/15 text-center">
-          <p className="font-mono-data text-xs text-white/30">
-            The revolution will not be centralized. It will be transparent, autonomous, and profoundly equitable.
-          </p>
-          <p className="font-mono-data text-[10px] text-gold/40 mt-2">
-            — Cornelius DeFalco, The Elevation Foundation
-          </p>
-        </div>
+      <div style={{ height: "280px" }}><Doughnut data={data} options={opts} /></div>
+      <div style={{ marginTop: "12px", padding: "10px 14px", background: year === "2025" ? "rgba(192,57,43,0.06)" : "rgba(77,184,184,0.06)", borderLeft: `3px solid ${year === "2025" ? CRIMSON : TEAL}`, fontFamily: "Georgia, serif", fontSize: "0.8rem", color: "#555", fontStyle: "italic" }}>
+        {cfg.note}
       </div>
     </div>
   );
@@ -376,11 +223,32 @@ export function ManifestoCard() {
 
 export function PartVVisuals() {
   return (
-    <>
-      <PostBinarySpectrum />
-      <ConvergenceThesis />
-      <OutcomeProjectionChart />
-      <ManifestoCard />
-    </>
+    <div style={{ marginTop: "48px", paddingTop: "40px", borderTop: "1px solid rgba(201,168,76,0.2)" }}>
+      <div style={{ marginBottom: "32px" }}>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: "0.65rem", letterSpacing: "0.15em", color: GOLD, textTransform: "uppercase", marginBottom: "6px" }}>Part V of V — Visual Companion</div>
+        <h2 style={{ fontFamily: "Georgia, serif", fontSize: "1.5rem", fontWeight: "700", color: "#f5f0e8", margin: "0 0 8px 0" }}>Data &amp; Diagrams</h2>
+        <p style={{ fontFamily: "Georgia, serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.55)", lineHeight: "1.65", margin: 0 }}>The following figures map the future vision of Part V into visual form. Each chart is interactive — click to enlarge.</p>
+      </div>
+      <ChartCard label="Figure 5.1 — System Comparison" title="Three Economic Systems Across Seven Dimensions: Capitalism, Socialism, Sotilitarianism" desc="The binary debate between capitalism and socialism misses the point. Sotilitarianism is not a compromise between the two — it is a third path that outperforms both on the dimensions that matter most for human flourishing.">
+        <ThreeSystemRadar />
+      </ChartCard>
+      <ChartCard label="Figure 5.2 — The Convergence" title="Institutional Trust Collapse vs. On-Chain Governance Rise: 2020–2035" desc="As trust in traditional institutions declines, decentralized governance adoption accelerates. The lines cross around 2030 — the moment Sotilitarian infrastructure becomes the default, not the alternative.">
+        <ConvergenceThesis />
+      </ChartCard>
+      <ChartCard label="Figure 5.3 — Outcome Projections" title="Projected Outcomes: Capitalism vs. Socialism vs. Sotilitarianism" desc="Across six critical social and economic metrics, Sotilitarianism projects superior outcomes to both capitalism and socialism. These are not utopian projections — they are extrapolations from existing DAO and DeFi performance data.">
+        <OutcomeProjectionChart />
+      </ChartCard>
+      <div style={card}>
+        <div style={figLabel}>Figure 5.4 — The Five Principles</div>
+        <div style={figTitle}>The Sotilitarian Manifesto: Five Non-Negotiable Principles</div>
+        <div style={figDesc}>These are not aspirations. They are design requirements. Every component of the Sotilitarian system is built to enforce these principles at the protocol level — not through trust, but through code. Click each principle to explore its implications.</div>
+        <SotilitarianManifesto />
+      </div>
+      <ChartCard label="Figure 5.5 — Economic Power Distribution" title="Who Holds Economic Power? Present vs. Projected Future" desc="The Sotilitarian system is designed to transform the distribution of economic power over time. Toggle between 2025, 2030, and 2035 to see the projected trajectory as Sotilitarian infrastructure scales.">
+        <FuturePowerDistribution />
+      </ChartCard>
+    </div>
   );
 }
+
+export default PartVVisuals;

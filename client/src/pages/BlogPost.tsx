@@ -3,6 +3,7 @@
  * Reads a single post by slug from the database via tRPC.
  * Renders full markdown content with social share buttons, reading progress bar,
  * and related articles.
+ * Visual components are injected after content based on post slug.
  */
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
@@ -22,7 +23,66 @@ import {
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Streamdown } from "streamdown";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
+
+// ─── LAZY-LOADED VISUAL COMPONENTS ──────────────────────────────────────────
+// Loaded only when the relevant post is being viewed — keeps initial bundle lean
+const PartIVisuals = lazy(() =>
+  import("@/components/visuals/PartIVisuals").then((m) => ({ default: m.PartIVisuals }))
+);
+const PartIIVisuals = lazy(() =>
+  import("@/components/visuals/PartIIVisuals").then((m) => ({ default: m.PartIIVisuals }))
+);
+const PartIIIVisuals = lazy(() =>
+  import("@/components/visuals/PartIIIVisuals").then((m) => ({ default: m.PartIIIVisuals }))
+);
+const PartIVVisuals = lazy(() =>
+  import("@/components/visuals/PartIVVisuals").then((m) => ({ default: m.PartIVVisuals }))
+);
+const PartVVisuals = lazy(() =>
+  import("@/components/visuals/PartVVisuals").then((m) => ({ default: m.PartVVisuals }))
+);
+
+// Map slugs to their visual component
+const SLUG_TO_VISUALS: Record<string, React.ComponentType> = {
+  "sotilitarian-capitalism-part-i-the-new-economic-operating-system": PartIVisuals,
+  "sotilitarian-capitalism-continuous-consent-political-framework": PartIIVisuals,
+  "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture": PartIIIVisuals,
+  "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect": PartIVVisuals,
+  "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate": PartVVisuals,
+};
+
+function VisualsLoadingFallback() {
+  return (
+    <div className="my-10 p-8 bg-[oklch(0.14_0.05_265)] border border-white/10 rounded-sm flex items-center justify-center gap-3">
+      <Loader2 size={18} className="animate-spin text-gold/50" />
+      <span className="font-mono-data text-xs text-white/30">Loading interactive visualizations...</span>
+    </div>
+  );
+}
+
+function PostVisuals({ slug }: { slug: string }) {
+  const VisualsComponent = SLUG_TO_VISUALS[slug];
+  if (!VisualsComponent) return null;
+
+  return (
+    <div className="mt-12 pt-10 border-t border-gold/15">
+      <div className="flex items-center gap-3 mb-8">
+        <div className="w-6 h-px bg-gold/50" />
+        <span className="font-mono-data text-xs text-gold/70 uppercase tracking-wider">
+          Interactive Data Visualizations
+        </span>
+        <div className="flex-1 h-px bg-gold/20" />
+      </div>
+      <p className="font-body text-sm text-white/45 mb-8 italic">
+        The following charts and diagrams are interactive. Click, hover, and explore — the data tells the story that words can only approximate.
+      </p>
+      <Suspense fallback={<VisualsLoadingFallback />}>
+        <VisualsComponent />
+      </Suspense>
+    </div>
+  );
+}
 
 function formatDate(d: Date | string | null | undefined) {
   if (!d) return "";
@@ -224,80 +284,71 @@ interface ShareButtonsProps {
 function ShareButtons({ url, title, excerpt }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // fallback
+    }
+  };
+
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
-  const encodedText = encodeURIComponent(`${title} — ${excerpt}`);
+  const encodedExcerpt = encodeURIComponent(excerpt);
 
   const shareLinks = [
     {
-      label: "X / Twitter",
+      label: "X",
       icon: <XIcon />,
-      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}&via=ElevationFdn`,
-      color: "hover:text-white hover:border-white/40",
+      href: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      color: "hover:border-white/40 hover:text-white",
     },
     {
       label: "LinkedIn",
       icon: <LinkedInIcon />,
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      color: "hover:text-[#0A66C2] hover:border-[#0A66C2]/50",
+      color: "hover:border-[#0A66C2]/60 hover:text-[#0A66C2]",
     },
     {
       label: "Facebook",
       icon: <FacebookIcon />,
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      color: "hover:text-[#1877F2] hover:border-[#1877F2]/50",
+      color: "hover:border-[#1877F2]/60 hover:text-[#1877F2]",
     },
     {
       label: "Reddit",
       icon: <RedditIcon />,
-      href: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
-      color: "hover:text-[#FF4500] hover:border-[#FF4500]/50",
+      href: `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+      color: "hover:border-[#FF4500]/60 hover:text-[#FF4500]",
     },
     {
       label: "Instagram",
       icon: <InstagramIcon />,
       href: `https://www.instagram.com/`,
-      color: "hover:text-[#E1306C] hover:border-[#E1306C]/50",
-      tooltip: "Copy link — paste in your Instagram story or bio",
-      onClick: () => {
-        navigator.clipboard.writeText(url);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-      },
+      color: "hover:border-pink-500/60 hover:text-pink-400",
     },
   ];
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
-
   return (
-    <div className="mt-12 pt-10 border-t border-white/10">
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-5">
-        <Share2 size={15} className="text-gold/70" />
-        <span className="font-display text-base font-bold text-white">Spread the Word</span>
-        <div className="flex-1 h-px bg-white/10" />
+    <div className="mt-10 pt-8 border-t border-white/10">
+      <div className="flex items-center gap-2 mb-4">
+        <Share2 size={14} className="text-gold/60" />
+        <span className="font-mono-data text-xs text-white/40 uppercase tracking-wider">Share this article</span>
       </div>
-      <p className="font-body text-sm text-white/50 mb-5">
-        If this article resonated with you, share it — every share helps build the movement.
-      </p>
-
       <div className="flex flex-wrap gap-2">
-        {shareLinks.map(({ label, icon, href, color, onClick }) => (
+        {shareLinks.map((link) => (
           <a
-            key={label}
-            href={onClick ? undefined : href}
-            target={onClick ? undefined : "_blank"}
+            key={link.label}
+            href={link.href}
+            target="_blank"
             rel="noopener noreferrer"
-            onClick={onClick}
-            title={label}
-            className={`inline-flex items-center gap-2 px-4 py-2.5 border border-white/15 bg-[oklch(0.16_0.05_265)] text-white/55 font-body text-sm rounded-sm transition-all duration-200 cursor-pointer hover:bg-[oklch(0.18_0.05_265)] ${color}`}
+            title={`Share on ${link.label}`}
+            className={`inline-flex items-center gap-2 px-4 py-2.5 border border-white/15 bg-[oklch(0.16_0.05_265)] text-white/55 font-body text-sm rounded-sm transition-all duration-200 ${link.color}`}
           >
-            {icon}
-            <span>{label}</span>
+            {link.icon}
+            <span>{link.label}</span>
           </a>
         ))}
 
@@ -530,6 +581,9 @@ export default function BlogPost() {
           >
             <Streamdown>{post.content}</Streamdown>
           </div>
+
+          {/* ─── INTERACTIVE VISUAL COMPONENTS ─────────────────── */}
+          <PostVisuals slug={slug} />
 
           {/* Social Share Buttons */}
           <ShareButtons

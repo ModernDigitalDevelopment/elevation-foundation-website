@@ -7,7 +7,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, ChevronRight, ExternalLink, GraduationCap, FileText } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronRight, ExternalLink, GraduationCap, FileText, BarChart2, Activity, PieChart, GitBranch, TrendingUp, Layers } from "lucide-react";
 
 const SERIES = [
   {
@@ -99,6 +99,88 @@ const META_PAPER = {
   ssrnUrl: null,
   desc: "A comprehensive meta-paper synthesizing the full five-part series — mapping the intellectual lineage, cross-referencing the technical architecture, and providing a reading guide for researchers, policymakers, and practitioners.",
 };
+
+// ─── Visual preview metadata for each part ───────────────────────────────────
+const VISUAL_PREVIEWS = [
+  {
+    part: 1,
+    slug: "sotilitarian-capitalism-part-i-the-new-economic-operating-system",
+    color: "text-gold",
+    border: "border-gold/30",
+    bg: "bg-gold/5",
+    accent: "bg-gold",
+    chartCount: 5,
+    figures: [
+      { id: "1.1", icon: BarChart2, label: "Capital Routing", desc: "Where does a dollar go? Extractive Capitalism vs. Sotilitarianism — side-by-side bar chart showing ¢ per $1 routed to workers vs. executives." },
+      { id: "1.2", icon: Activity, label: "Five Pillars Radar", desc: "Radar chart: Traditional Capitalism vs. Sotilitarianism across Transparency, Governance, Equity, Participation, and Accountability." },
+      { id: "1.3", icon: Layers, label: "Feature Audit Table", desc: "Side-by-side feature comparison matrix: 10 system properties, two economic models, clear winner column." },
+      { id: "1.4", icon: GitBranch, label: "Utility Feedback Loop", desc: "Animated SVG flow diagram showing the Utility Maximization Feedback Loop (UMFL) — from contribution to verification to governance power to reward." },
+      { id: "1.5", icon: TrendingUp, label: "Dual-Lever Model", desc: "How the SST stability lever and SUG incentive lever interact to keep the Sotilitarian economy self-correcting." },
+    ],
+  },
+  {
+    part: 2,
+    slug: "sotilitarian-capitalism-continuous-consent-political-framework",
+    color: "text-teal",
+    border: "border-teal/30",
+    bg: "bg-teal/5",
+    accent: "bg-teal",
+    chartCount: 5,
+    figures: [
+      { id: "2.1", icon: Activity, label: "Governance Radar", desc: "Radar chart comparing three governance models — traditional democracy, corporate board, and Sotilitarian DAO — across 6 dimensions." },
+      { id: "2.2", icon: TrendingUp, label: "Consent Decay Curve", desc: "Line chart: mandate legitimacy over 4 years. Traditional democracy decays to near-zero. Sotilitarian continuous consent stays flat at maximum." },
+      { id: "2.3", icon: BarChart2, label: "Liquid Democracy Spectrum", desc: "The Liquid Hybrid model scores highest on both participation AND efficiency — the only governance model to achieve both simultaneously." },
+      { id: "2.4", icon: PieChart, label: "Power Distribution", desc: "Toggle between corporate governance (pyramid) and Sotilitarian DAO (circle). Doughnut charts showing who holds governance power." },
+      { id: "2.5", icon: GitBranch, label: "Consent Flow Diagram", desc: "SVG step-through showing how a governance proposal moves from submission through deliberation to on-chain execution in a Sotilitarian DAO." },
+    ],
+  },
+  {
+    part: 3,
+    slug: "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture",
+    color: "text-[oklch(0.65_0.15_200)]",
+    border: "border-[oklch(0.65_0.15_200/0.3)]",
+    bg: "bg-[oklch(0.65_0.15_200/0.05)]",
+    accent: "bg-[oklch(0.65_0.15_200)]",
+    chartCount: 4,
+    figures: [
+      { id: "3.1", icon: Layers, label: "Trust Kernel Stack", desc: "Vertical SVG architecture diagram: five technical layers from Identity Layer (L1) through Autonomous Treasury (L5) — the full Trust Kernel Stack." },
+      { id: "3.2", icon: PieChart, label: "Three-Token Economy", desc: "Doughnut chart: revenue allocation across SOT (40% dividends), SST (40% reserves), SUG (20% community campaigns). Interactive with hover details." },
+      { id: "3.3", icon: GitBranch, label: "Smart Contract Navigator", desc: "Step-by-step interactive diagram: how a smart contract executes from trigger to verification to payout — 6 steps with expandable detail." },
+      { id: "3.4", icon: Activity, label: "Web2 vs. 5-Layer Stack", desc: "Radar chart: traditional Web2 infrastructure vs. Sotilitarian 5-Layer Stack across 6 critical dimensions. The new stack wins on every metric." },
+    ],
+  },
+  {
+    part: 4,
+    slug: "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect",
+    color: "text-crimson",
+    border: "border-crimson/30",
+    bg: "bg-crimson/5",
+    accent: "bg-crimson",
+    chartCount: 4,
+    figures: [
+      { id: "4.1", icon: GitBranch, label: "Trojan Horse Phases", desc: "4-phase implementation roadmap diagram: Infiltrate → Demonstrate → Scale → Replace. Each phase with entry conditions and success metrics." },
+      { id: "4.2", icon: TrendingUp, label: "S-Curve Adoption", desc: "Line chart: Sotilitarian protocol adoption vs. incumbent market share 2024–2035. The inflection point — where new crosses 50% — is when the Trojan Horse opens." },
+      { id: "4.3", icon: BarChart2, label: "Sector Impact Matrix", desc: "Scatter plot: 8 sectors mapped by implementation readiness vs. potential impact. Finance, Energy, and Governance cluster in the high-leverage quadrant." },
+      { id: "4.4", icon: Activity, label: "WeSolar vs. Transparently", desc: "Radar comparison of the two flagship Elevation Foundation projects across 6 implementation dimensions. Different entry strategies, same destination." },
+    ],
+  },
+  {
+    part: 5,
+    slug: "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate",
+    color: "text-gold",
+    border: "border-gold/30",
+    bg: "bg-gold/5",
+    accent: "bg-gold",
+    chartCount: 5,
+    figures: [
+      { id: "5.1", icon: BarChart2, label: "Three Systems Compared", desc: "Bar chart: Capitalism, Socialism, and Sotilitarianism scored across 7 dimensions. Sotilitarianism outperforms both on every metric that matters for human flourishing." },
+      { id: "5.2", icon: TrendingUp, label: "The Convergence", desc: "Dual line chart: institutional trust collapse vs. on-chain governance rise, 2020–2035. The lines cross around 2030 — the moment decentralized governance goes default." },
+      { id: "5.3", icon: Activity, label: "Outcome Projections", desc: "Radar chart: projected social and economic outcomes under Capitalism, Socialism, and Sotilitarianism. Based on extrapolated DAO and DeFi performance data." },
+      { id: "5.4", icon: Layers, label: "Five Principles Diagram", desc: "Visual representation of Sotilitarianism's five core principles and how they interlock into a coherent system — from utility verification to continuous consent." },
+      { id: "5.5", icon: PieChart, label: "Economic Power Distribution", desc: "Toggle between 2025, 2030, and 2035 doughnut charts: who holds economic power as Sotilitarian infrastructure scales. The transformation in three snapshots." },
+    ],
+  },
+];
 
 const THEMES = [
   { label: "Verified Utility", desc: "Economic value tied to measurable social contribution, not speculation." },
@@ -292,6 +374,90 @@ export default function SotilitarianCapitalismSeries() {
           <p className="font-body text-xs text-white/30 text-center">
             All papers authored by Cornelius DeFalco, The Elevation Foundation (EIN 92-1042348). Submitted to SSRN eLibrary — indexed by Google Scholar upon approval.
           </p>
+        </div>
+      </section>
+
+      {/* ─── VISUAL PREVIEWS ──────────────────────────────────── */}
+      <section className="py-20 bg-navy" aria-label="Interactive visual previews">
+        <div className="container">
+          <div className="mb-12">
+            <div className="section-label mb-3">Interactive Figures</div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
+              20+ Charts. <span className="text-gold">Every Argument Visualized.</span>
+            </h2>
+            <p className="font-body text-white/55 mt-3 max-w-2xl">
+              Each part of the series includes interactive Chart.js figures — bar charts, radar plots, live toggles, SVG diagrams — embedded directly in the article. Click any part below to read with the visuals inline.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {VISUAL_PREVIEWS.map((preview) => (
+              <div key={preview.part} className={`border ${preview.border} rounded-sm overflow-hidden`}>
+                {/* Part header */}
+                <div className={`flex items-center justify-between px-6 py-4 ${preview.bg} border-b ${preview.border}`}>
+                  <div className="flex items-center gap-4">
+                    <div className={`w-9 h-9 flex items-center justify-center border ${preview.border} rounded-sm bg-[oklch(0.16_0.05_265)]`}>
+                      <span className={`font-mono-data text-sm font-bold ${preview.color}`}>{preview.part}</span>
+                    </div>
+                    <div>
+                      <div className={`font-mono-data text-[10px] uppercase tracking-widest ${preview.color} mb-0.5`}>Part {preview.part}</div>
+                      <div className="font-display text-base font-bold text-white leading-snug">
+                        {SERIES.find(s => s.part === preview.part)?.title}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hidden md:flex items-center gap-3">
+                    <div className="px-3 py-1 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm">
+                      <span className="font-mono-data text-xs text-white/40">{preview.chartCount} figures</span>
+                    </div>
+                    <Link
+                      href={`/blog/${preview.slug}`}
+                      className={`inline-flex items-center gap-1.5 px-4 py-2 border ${preview.border} ${preview.color} font-body text-xs font-medium rounded-sm hover:${preview.bg} transition-colors`}
+                    >
+                      Read with Visuals
+                      <ArrowRight size={12} />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Figure grid */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/8 bg-[oklch(0.155_0.05_265)]">
+                  {preview.figures.map((fig) => {
+                    const Icon = fig.icon;
+                    return (
+                      <div key={fig.id} className="p-4 hover:bg-[oklch(0.18_0.05_265)] transition-colors group">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Icon size={13} className={`${preview.color} opacity-70`} />
+                          <span className="font-mono-data text-[10px] text-white/30 uppercase tracking-wider">Fig {fig.id}</span>
+                        </div>
+                        <div className={`font-display text-sm font-bold ${preview.color} mb-1.5 group-hover:opacity-100 opacity-85`}>{fig.label}</div>
+                        <p className="font-body text-xs text-white/45 leading-relaxed">{fig.desc}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Mobile CTA */}
+                <div className={`md:hidden px-6 py-3 ${preview.bg} border-t ${preview.border}`}>
+                  <Link
+                    href={`/blog/${preview.slug}`}
+                    className={`inline-flex items-center gap-1.5 text-sm font-body font-medium ${preview.color}`}
+                  >
+                    Read Part {preview.part} with all {preview.chartCount} figures
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Visual tech note */}
+          <div className="mt-8 flex items-start gap-3 p-4 bg-[oklch(0.16_0.05_265)] border border-white/8 rounded-sm">
+            <BarChart2 size={14} className="text-gold/50 mt-0.5 flex-shrink-0" />
+            <p className="font-body text-xs text-white/40 leading-relaxed">
+              All figures are rendered with Chart.js via react-chartjs-2 — the same library used in the interactive SSRN sandbox. Charts support click-to-enlarge. Beige backgrounds match the academic style guide. No external image dependencies.
+            </p>
+          </div>
         </div>
       </section>
 

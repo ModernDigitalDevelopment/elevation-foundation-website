@@ -242,6 +242,49 @@ export default function WhitePapers() {
         </div>
       </section>
 
+      {/* --- SSRN ACADEMIC PAPER -------------------------------- */}
+      <section className="py-14 bg-navy border-b border-white/10">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="section-label mb-3">Peer-Reviewed Research · New · 2026</div>
+            <div className="border border-gold/30 bg-gold/5 rounded-sm p-7 flex flex-col md:flex-row gap-6 items-start">
+              <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gold/10 border border-gold/30 rounded-sm">
+                <ExternalLink size={22} className="text-gold" />
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <span className="font-mono-data text-[10px] uppercase tracking-wider text-gold/70 bg-gold/10 px-2 py-0.5 rounded">SSRN Working Paper</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">Posted May 9, 2026</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">19 Pages</span>
+                </div>
+                <h3 className="font-display text-xl font-bold text-white mb-2">
+                  Sotilitarianism: A Framework for Blockchain-Native Governance and Incentive-Aligned Political Economy
+                </h3>
+                <p className="font-body text-white/55 text-sm mb-1">
+                  <strong className="text-white/75">Author:</strong> Cornelius DeFalco &nbsp;·&nbsp; <strong className="text-white/75">Date:</strong> April 16, 2026
+                </p>
+                <p className="font-body text-white/50 text-sm leading-relaxed mb-4 italic">
+                  "Traditional governance systems face a legitimacy crisis rooted in opacity, exclusion, and misaligned incentives. Sotilitarianism proposes a new socioeconomic philosophy in which transparency is architecturally enforced, community sovereignty is structurally guaranteed..."
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["Sotilitarianism", "Blockchain Governance", "Mechanism Design", "DAOs", "Capitalism 2.0", "Political Economy"].map(t => (
+                    <span key={t} className="font-mono-data text-[10px] px-2 py-0.5 border border-gold/20 text-gold/60 rounded">{t}</span>
+                  ))}
+                </div>
+                <a
+                  href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-body font-semibold text-sm rounded-sm hover:bg-gold-light transition-all"
+                >
+                  Read on SSRN <ExternalLink size={13} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* --- FEATURED DOCUMENTS --------------------------------- */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">
         <div className="container">

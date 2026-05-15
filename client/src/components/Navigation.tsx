@@ -1,31 +1,41 @@
 /*
  * ELEVATION RISING — Navigation Component
- * Hamburger menu on all screen sizes — clean, minimal, no crowding
+ * Desktop: persistent horizontal nav with all links visible
+ * Mobile: hamburger menu with full dropdown grid
  * Dark navy background, gold accent links, Playfair Display wordmark
  */
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
-const navLinks = [
-  { href: "/our-story", label: "Our Story" },
+const primaryLinks = [
   { href: "/philosophy", label: "Philosophy" },
   { href: "/sotilitarianism", label: "Sotilitarianism" },
   { href: "/our-work", label: "Our Work" },
-  { href: "/wesolar", label: "WeSolar" },
-  { href: "/transparency", label: "Transparency" },
   { href: "/blog", label: "Blog" },
+];
+
+const moreLinks = [
+  { href: "/our-story", label: "Our Story" },
+  { href: "/wesolar", label: "WeSolar" },
+  { href: "/token-economy", label: "Token Economy" },
+  { href: "/transparency", label: "Transparency" },
   { href: "/white-papers", label: "Research" },
   { href: "/for-funders", label: "For Funders" },
   { href: "/get-involved", label: "Get Involved" },
   { href: "/about/founder", label: "About" },
+  { href: "/press", label: "Press" },
 ];
+
+const allMobileLinks = [...primaryLinks, ...moreLinks];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [location] = useLocation();
-  const menuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const moreMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -35,39 +45,54 @@ export default function Navigation() {
 
   // Close on route change
   useEffect(() => {
-    setMenuOpen(false);
+    setMobileOpen(false);
+    setMoreOpen(false);
   }, [location]);
 
-  // Close on outside click
+  // Close mobile menu on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target as Node)) {
+        setMobileOpen(false);
       }
     };
-    if (menuOpen) document.addEventListener("mousedown", handleClickOutside);
+    if (mobileOpen) document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [menuOpen]);
+  }, [mobileOpen]);
 
-  // Prevent body scroll when menu is open
+  // Close more dropdown on outside click
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    const handleClickOutside = (e: MouseEvent) => {
+      if (moreMenuRef.current && !moreMenuRef.current.contains(e.target as Node)) {
+        setMoreOpen(false);
+      }
+    };
+    if (moreOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [moreOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+  }, [mobileOpen]);
+
+  const isActive = (href: string) => location === href;
+  const isMoreActive = moreLinks.some(l => location === l.href);
 
   return (
     <nav
-      ref={menuRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || menuOpen
+        isScrolled || mobileOpen
           ? "bg-[oklch(0.12_0.05_265/0.97)] backdrop-blur-md border-b border-white/10"
           : "bg-transparent"
       }`}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-18">
+
           {/* Wordmark */}
-          <Link href="/" className="flex flex-col leading-none group">
+          <Link href="/" className="flex flex-col leading-none group flex-shrink-0">
             <span className="font-display text-lg md:text-xl font-bold text-white tracking-tight group-hover:text-gold transition-colors duration-200">
               Elevation
             </span>
@@ -76,7 +101,65 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* Right side: Donate + Hamburger */}
+          {/* ── DESKTOP NAV ─────────────────────────────────────── */}
+          <div className="hidden lg:flex items-center gap-1">
+            {primaryLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`font-body text-sm px-3.5 py-2 rounded-sm transition-all duration-200 ${
+                  isActive(link.href)
+                    ? "text-gold bg-gold/10"
+                    : "text-white/70 hover:text-gold hover:bg-white/5"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* "More" dropdown */}
+            <div className="relative" ref={moreMenuRef}>
+              <button
+                onClick={() => setMoreOpen(!moreOpen)}
+                className={`flex items-center gap-1 font-body text-sm px-3.5 py-2 rounded-sm transition-all duration-200 ${
+                  isMoreActive
+                    ? "text-gold bg-gold/10"
+                    : "text-white/70 hover:text-gold hover:bg-white/5"
+                }`}
+                aria-expanded={moreOpen}
+                aria-label="More navigation links"
+              >
+                More
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {/* More dropdown panel */}
+              <div
+                className={`absolute top-full right-0 mt-2 w-52 bg-[oklch(0.14_0.05_265/0.98)] backdrop-blur-md border border-white/10 rounded-sm shadow-2xl overflow-hidden transition-all duration-200 ${
+                  moreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
+                }`}
+              >
+                {moreLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`block font-body text-sm px-4 py-2.5 transition-all duration-150 border-b border-white/5 last:border-0 ${
+                      isActive(link.href)
+                        ? "text-gold bg-gold/10"
+                        : "text-white/70 hover:text-gold hover:bg-white/5"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right side: Donate + mobile hamburger */}
           <div className="flex items-center gap-3">
             <Link
               href="/donate"
@@ -84,28 +167,30 @@ export default function Navigation() {
             >
               Donate
             </Link>
+            {/* Mobile-only hamburger */}
             <button
-              className="text-white p-2 hover:text-gold transition-colors duration-200 focus:outline-none"
-              onClick={() => setMenuOpen(!menuOpen)}
+              className="lg:hidden text-white p-2 hover:text-gold transition-colors duration-200 focus:outline-none"
+              onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
-              aria-expanded={menuOpen}
+              aria-expanded={mobileOpen}
             >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Full-width dropdown menu */}
+      {/* ── MOBILE MENU ──────────────────────────────────────────── */}
       <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+        ref={mobileMenuRef}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="bg-[oklch(0.12_0.05_265/0.98)] border-t border-white/10">
           <div className="container py-6">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
-              {navLinks.map((link) => (
+            <div className="grid grid-cols-2 gap-1">
+              {allMobileLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -122,7 +207,7 @@ export default function Navigation() {
             </div>
             <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
               <span className="font-mono-data text-xs text-white/30 uppercase tracking-wider">
-                501(c)(3) · Blockchain Governance · Community Finance
+                501(c)(3) · Blockchain Governance
               </span>
               <Link
                 href="/donate"

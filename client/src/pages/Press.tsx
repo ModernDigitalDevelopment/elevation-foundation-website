@@ -7,7 +7,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { Link } from "wouter";
-import { Download, ExternalLink, FileText, Mail, Github, ArrowRight } from "lucide-react";
+import { Download, ExternalLink, FileText, Mail, Github, ArrowRight, GraduationCap, BookOpen, Quote } from "lucide-react";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-card-v2-TEXKDEWMfEu3SM7dBodn79.png";
 
@@ -18,9 +18,21 @@ const PRESS_ASSETS = [
     type: "text",
   },
   {
+    label: "SSRN Academic Paper",
+    desc: "Sotilitarian Capitalism working paper — SSRN #6678798, 19 pages, May 2026. Free to download and cite.",
+    href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798",
+    type: "external",
+  },
+  {
     label: "White Papers",
     desc: "Sotilitarianism ecosystem overview and technical appendices (PDF).",
     href: "/white-papers",
+    type: "link",
+  },
+  {
+    label: "Token Economy Overview",
+    desc: "Three-token architecture (SOT, SUG, SST), revenue split, and flywheel mechanics.",
+    href: "/token-economy",
     type: "link",
   },
   {
@@ -104,6 +116,120 @@ export default function Press() {
         </div>
       </section>
 
+      {/* ─── SSRN ACADEMIC CITATION ───────────────────────────── */}
+      <section className="py-16 bg-[oklch(0.13_0.05_265)] border-y border-gold/10" aria-label="Academic research citation">
+        <div className="container">
+          <div className="max-w-4xl">
+            {/* Section label */}
+            <div className="flex items-center gap-2 mb-6">
+              <GraduationCap size={14} className="text-gold" />
+              <span className="font-mono-data text-xs text-gold uppercase tracking-widest">Peer-Reviewed Research · SSRN · May 2026</span>
+            </div>
+
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+              Academic Research for <span className="text-gold">Press Reference</span>
+            </h2>
+
+            {/* Primary paper card */}
+            <div className="border border-gold/25 bg-gold/5 rounded-sm p-7 mb-6">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                {/* Citation block */}
+                <div className="flex-1 min-w-0">
+                  <div className="font-mono-data text-[10px] text-gold/60 uppercase tracking-wider mb-3">
+                    Working Paper · SSRN #6678798 · 19 pages
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-white mb-2 leading-snug">
+                    Sotilitarian Capitalism: A Framework for Blockchain-Native Governance and Transparent Economic Systems
+                  </h3>
+                  <p className="font-body text-sm text-white/55 mb-4">
+                    Cornelius DeFalco · The Elevation Foundation · Posted May 9, 2026 · Social Science Research Network
+                  </p>
+
+                  {/* Abstract pullquote */}
+                  <div className="border-l-2 border-gold/40 pl-4 mb-5">
+                    <Quote size={14} className="text-gold/40 mb-2" />
+                    <p className="font-body text-sm text-white/65 italic leading-relaxed">
+                      "This paper introduces Sotilitarian Capitalism, an economic framework that integrates blockchain transparency, verified social utility metrics, and decentralized autonomous governance to create a self-correcting alternative to both extractive capitalism and centrally-planned socialism. The system operates through three interconnected tokens — SOT, SUG, and SST — governed by on-chain consensus and auditable smart contracts."
+                    </p>
+                  </div>
+
+                  {/* Keyword tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {["Sotilitarianism", "Blockchain Governance", "Post-Capitalist Economics", "DeFi", "Token Economy", "Social Utility", "Cornelius DeFalco", "501(c)(3) Nonprofit"].map((tag) => (
+                      <span key={tag} className="font-mono-data text-[10px] px-2 py-1 border border-gold/20 bg-gold/5 rounded text-gold/70 uppercase tracking-wide">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body text-sm rounded-sm hover:bg-gold-light transition-all duration-200"
+                    >
+                      <FileText size={13} />
+                      Read on SSRN
+                      <ExternalLink size={11} />
+                    </a>
+                    <a
+                      href="https://ssrn.com/author=11379928"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 border border-gold/30 text-gold font-body text-sm rounded-sm hover:bg-gold/5 transition-all"
+                    >
+                      <GraduationCap size={13} />
+                      All Papers by Author
+                      <ExternalLink size={11} />
+                    </a>
+                    <a
+                      href="/blog/series/sotilitarian-capitalism"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/60 font-body text-sm rounded-sm hover:border-white/40 hover:text-white transition-all"
+                    >
+                      <BookOpen size={13} />
+                      5-Part Manifesto Series
+                    </a>
+                  </div>
+                </div>
+
+                {/* Citation card */}
+                <div className="md:w-56 flex-shrink-0 p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm">
+                  <div className="font-mono-data text-[10px] text-white/30 uppercase tracking-wider mb-3">Cite This Work</div>
+                  <p className="font-body text-[11px] text-white/55 leading-relaxed italic">
+                    DeFalco, Cornelius. "Sotilitarian Capitalism: A Framework for Blockchain-Native Governance and Transparent Economic Systems." SSRN Working Paper 6678798. The Elevation Foundation, May 2026.
+                  </p>
+                  <div className="mt-3 pt-3 border-t border-white/10">
+                    <div className="flex justify-between items-center">
+                      <span className="font-mono-data text-[10px] text-white/30">Pages</span>
+                      <span className="font-mono-data text-[10px] text-gold/70">19</span>
+                    </div>
+                    <div className="flex justify-between items-center mt-1">
+                      <span className="font-mono-data text-[10px] text-white/30">Filed</span>
+                      <span className="font-mono-data text-[10px] text-gold/70">May 9, 2026</span>
+                    </div>
+                    <div className="flex justify-between items-center mt-1">
+                      <span className="font-mono-data text-[10px] text-white/30">SSRN ID</span>
+                      <span className="font-mono-data text-[10px] text-gold/70">#6678798</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Series working papers note */}
+            <div className="flex items-start gap-3 p-4 bg-[oklch(0.16_0.05_265)] border border-white/8 rounded-sm">
+              <BookOpen size={13} className="text-teal mt-0.5 flex-shrink-0" />
+              <p className="font-body text-xs text-white/50 leading-relaxed">
+                The Sotilitarian Capitalism 5-part series is also published as standalone working papers on SSRN (Parts I–V), indexed by Google Scholar. Part I is live as SSRN #6767899. All papers authored by Cornelius DeFalco, The Elevation Foundation (EIN 92-1042348).{" "}
+                <a href="/blog/series/sotilitarian-capitalism" className="text-gold/70 hover:text-gold transition-colors underline">View full series →</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── BOILERPLATE ──────────────────────────────────────── */}
       <section className="py-16 bg-[oklch(0.14_0.05_265)]" aria-label="Organization boilerplate">
         <div className="container">
@@ -145,6 +271,8 @@ export default function Press() {
               { label: "GitHub", value: "github.com/ModernDigitalDevelopment" },
               { label: "Philosophy", value: "Sotilitarianism (Capitalism 2.0)" },
               { label: "Token", value: "$TRNS (Transparently Token, Solana)" },
+              { label: "SSRN Paper", value: "Abstract #6678798 — May 9, 2026" },
+              { label: "Research", value: "5-Part Sotilitarian Capitalism Series" },
             ].map(({ label, value }) => (
               <div key={label} className="flex items-start gap-4 p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm">
                 <div className="font-mono-data text-xs text-gold/70 uppercase tracking-wider w-32 flex-shrink-0 pt-0.5">{label}</div>

@@ -397,8 +397,69 @@ export default function Philosophy() {
         </div>
       </section>
 
+      {/* --- SSRN ACADEMIC CITATION ----------------------------- */}
+      <section className="py-16 bg-navy border-t border-white/10">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="section-label mb-4">Peer-Reviewed Research</div>
+            <h2 className="font-display text-2xl font-bold text-white mb-8">Published on SSRN</h2>
+            <div className="border border-gold/25 bg-gold/5 rounded-sm p-8 mb-8">
+              <div className="flex flex-col md:flex-row items-start gap-6">
+                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gold/10 border border-gold/30 rounded-sm">
+                  <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-gold" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <div className="font-mono-data text-[10px] uppercase tracking-wider text-gold/60 mb-2">Social Science Research Network · Posted May 9, 2026 · 19 Pages</div>
+                  <h3 className="font-display text-xl font-bold text-white mb-3">
+                    Sotilitarianism: A Framework for Blockchain-Native Governance and Incentive-Aligned Political Economy
+                  </h3>
+                  <p className="font-body text-white/55 text-sm mb-1"><strong className="text-white/75">Author:</strong> Cornelius DeFalco</p>
+                  <p className="font-body text-white/55 text-sm mb-4"><strong className="text-white/75">Keywords:</strong> Sotilitarianism, blockchain governance, mechanism design, decentralized autonomous organizations, commons governance, political economy, tokenomics, participatory democracy, transparent economics, Capitalism 2.0</p>
+                  <blockquote className="border-l-2 border-gold/40 pl-4 mb-5">
+                    <p className="font-body text-white/65 text-sm italic leading-relaxed">
+                      "Traditional governance systems face a legitimacy crisis rooted in opacity, exclusion, and misaligned incentives. Sotilitarianism proposes a new socioeconomic philosophy in which transparency is architecturally enforced, community sovereignty is structurally guaranteed, and individual self-interest is made structurally identical to collective social good — through programmable incentive mechanisms deployed on public blockchains."
+                    </p>
+                  </blockquote>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-body font-semibold text-sm rounded-sm hover:bg-gold-light transition-all duration-200"
+                    >
+                      Read on SSRN
+                      <svg viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5"><path d="M13.5 3h-11A.5.5 0 002 3.5v9a.5.5 0 00.5.5h11a.5.5 0 00.5-.5v-9A.5.5 0 0013.5 3zM2 2a1 1 0 00-1 1v9a1 1 0 001 1h11a1 1 0 001-1V3a1 1 0 00-1-1H2z"/><path d="M10.5 5.5a.5.5 0 010 1H5a.5.5 0 010-1h5.5zm0 2a.5.5 0 010 1H5a.5.5 0 010-1h5.5zm0 2a.5.5 0 010 1H5a.5.5 0 010-1h5.5z"/></svg>
+                    </a>
+                    <Link
+                      href="/white-papers"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/60 font-body text-sm rounded-sm hover:border-gold/40 hover:text-gold transition-all duration-200"
+                    >
+                      All Research Documents
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-3">
+              {[
+                { label: "Cited Scholars", value: "Bentham · Ostrom · Hurwicz · Du Bois · Nakamoto" },
+                { label: "Publication Type", value: "Working Paper · SSRN · Open Access" },
+                { label: "Filed Under", value: "Political Economy · Blockchain · Mechanism Design" },
+              ].map((item) => (
+                <div key={item.label} className="p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm">
+                  <div className="font-mono-data text-[10px] uppercase tracking-wider text-white/30 mb-1">{item.label}</div>
+                  <div className="font-body text-white/60 text-xs leading-relaxed">{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* --- CTA ------------------------------------------------ */}
-      <section className="py-20 bg-navy border-t border-white/10">
+      <section className="py-20 bg-[oklch(0.14_0.05_265)] border-t border-white/10">
         <div className="container text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
             Philosophy Without Action Is Just Words
@@ -406,7 +467,7 @@ export default function Philosophy() {
           <p className="font-body text-white/65 text-lg max-w-xl mx-auto mb-8">
             See how Sotilitarianism is being put into practice through our projects and initiatives.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/our-work"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 group"
@@ -415,10 +476,16 @@ export default function Philosophy() {
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/transparency"
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/30 text-white font-body font-medium rounded-sm hover:border-gold/50 hover:text-gold transition-all duration-200"
+              href="/token-economy"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-gold/40 text-gold font-body font-medium rounded-sm hover:bg-gold/10 transition-all duration-200"
             >
-              View Transparency Dashboard
+              Explore Token Economy
+            </Link>
+            <Link
+              href="/capitalism-2-0"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white/55 font-body font-medium rounded-sm hover:border-white/40 hover:text-white transition-all duration-200"
+            >
+              Capitalism 2.0 →
             </Link>
           </div>
         </div>

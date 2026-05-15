@@ -1,13 +1,13 @@
 /**
  * ELEVATION RISING — Sotilitarian Capitalism Series Landing Page
  * /blog/series/sotilitarian-capitalism
- * Introduces the 5-part arc and links to each part.
+ * Introduces the 5-part arc and links to each part + SSRN academic papers.
  */
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronRight, ExternalLink, GraduationCap, FileText } from "lucide-react";
 
 const SERIES = [
   {
@@ -22,6 +22,9 @@ const SERIES = [
     border: "border-gold/30",
     bg: "bg-gold/5",
     accent: "bg-gold",
+    ssrnId: "6767899",
+    ssrnUrl: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6767899",
+    jelCodes: ["D63", "G28", "H41", "O35", "P16"],
   },
   {
     part: 2,
@@ -35,6 +38,9 @@ const SERIES = [
     border: "border-teal/30",
     bg: "bg-teal/5",
     accent: "bg-teal",
+    ssrnId: null,
+    ssrnUrl: null,
+    jelCodes: ["D72", "D78", "H11", "P16", "K10"],
   },
   {
     part: 3,
@@ -48,6 +54,9 @@ const SERIES = [
     border: "border-[oklch(0.65_0.15_200/0.3)]",
     bg: "bg-[oklch(0.65_0.15_200/0.05)]",
     accent: "bg-[oklch(0.65_0.15_200)]",
+    ssrnId: null,
+    ssrnUrl: null,
+    jelCodes: ["G23", "G28", "L86", "O33", "D85"],
   },
   {
     part: 4,
@@ -61,6 +70,9 @@ const SERIES = [
     border: "border-crimson/30",
     bg: "bg-crimson/5",
     accent: "bg-crimson",
+    ssrnId: null,
+    ssrnUrl: null,
+    jelCodes: ["O35", "O13", "Q42", "D91", "R11"],
   },
   {
     part: 5,
@@ -74,8 +86,19 @@ const SERIES = [
     border: "border-gold/30",
     bg: "bg-gold/5",
     accent: "bg-gold",
+    ssrnId: null,
+    ssrnUrl: null,
+    jelCodes: ["P10", "P16", "B50", "D63", "O43"],
   },
 ];
+
+const META_PAPER = {
+  title: "Sotilitarian Capitalism: A Series Overview",
+  subtitle: "Blockchain-Native Governance and the Architecture of Transparent Markets",
+  ssrnId: null,
+  ssrnUrl: null,
+  desc: "A comprehensive meta-paper synthesizing the full five-part series — mapping the intellectual lineage, cross-referencing the technical architecture, and providing a reading guide for researchers, policymakers, and practitioners.",
+};
 
 const THEMES = [
   { label: "Verified Utility", desc: "Economic value tied to measurable social contribution, not speculation." },
@@ -87,13 +110,15 @@ const THEMES = [
 ];
 
 export default function SotilitarianCapitalismSeries() {
+  const submittedCount = SERIES.filter(p => p.ssrnId).length;
+
   return (
     <div className="min-h-screen bg-navy text-white">
       <SEOHead
         title="Sotilitarian Capitalism: The Complete 5-Part Series | The Elevation Foundation"
-        description="A comprehensive five-part exploration of Sotilitarian Capitalism — the economic philosophy that transcends capitalism and socialism through verified utility, radical transparency, and decentralized governance. Read the full series by Cornelius Lawrence."
+        description="A comprehensive five-part exploration of Sotilitarian Capitalism — the economic philosophy that transcends capitalism and socialism through verified utility, radical transparency, and decentralized governance. Working papers available on SSRN."
         canonical="/blog/series/sotilitarian-capitalism"
-        keywords="Sotilitarian Capitalism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance, community finance, post-capitalist economics, cooperative economics, solidarity economics, Cornelius Lawrence, Elevation Foundation"
+        keywords="Sotilitarian Capitalism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance, community finance, post-capitalist economics, cooperative economics, solidarity economics, Cornelius DeFalco, Elevation Foundation, SSRN working paper"
       />
       <Navigation />
 
@@ -122,7 +147,7 @@ export default function SotilitarianCapitalismSeries() {
             {/* Series badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-gold/30 bg-gold/5 rounded-sm mb-6">
               <BookOpen size={13} className="text-gold" />
-              <span className="font-mono-data text-xs text-gold uppercase tracking-wider">5-Part Series</span>
+              <span className="font-mono-data text-xs text-gold uppercase tracking-wider">5-Part Series · SSRN Working Papers</span>
             </div>
 
             <h1 className="font-display text-4xl md:text-6xl font-black leading-[1.05] mb-6">
@@ -132,10 +157,10 @@ export default function SotilitarianCapitalismSeries() {
             </h1>
 
             <p className="font-body text-lg md:text-xl text-white/70 leading-relaxed mb-4 max-w-2xl">
-              A five-part manifesto by <span className="text-white font-medium">Cornelius Lawrence</span> that dismantles the false binary between capitalism and socialism — and builds a third path from first principles.
+              A five-part manifesto by <span className="text-white font-medium">Cornelius DeFalco</span> that dismantles the false binary between capitalism and socialism — and builds a third path from first principles.
             </p>
             <p className="font-body text-base text-white/55 leading-relaxed mb-10 max-w-2xl">
-              Sotilitarian Capitalism is not a reform of the existing system. It is a replacement — one built on verified utility, radical transparency, continuous consent, and a five-layer technical architecture that makes economic justice enforceable by code.
+              Sotilitarian Capitalism is not a reform of the existing system. It is a replacement — one built on verified utility, radical transparency, continuous consent, and a five-layer technical architecture that makes economic justice enforceable by code. The complete series is published as academic working papers on SSRN and indexed by Google Scholar.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -146,14 +171,127 @@ export default function SotilitarianCapitalismSeries() {
                 Start Reading — Part I
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                href="/philosophy"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/30 text-white font-body font-medium rounded-sm hover:border-gold/50 hover:text-gold transition-all duration-200"
-              >
-                The Philosophy
-              </Link>
+              {SERIES[0].ssrnUrl && (
+                <a
+                  href={SERIES[0].ssrnUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-gold/40 text-gold font-body font-medium rounded-sm hover:bg-gold/5 transition-all duration-200"
+                >
+                  <GraduationCap size={16} />
+                  View on SSRN
+                  <ExternalLink size={13} />
+                </a>
+              )}
+              {!SERIES[0].ssrnUrl && (
+                <Link
+                  href="/philosophy"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/30 text-white font-body font-medium rounded-sm hover:border-gold/50 hover:text-gold transition-all duration-200"
+                >
+                  The Philosophy
+                </Link>
+              )}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ─── ACADEMIC PAPERS SECTION ──────────────────────────── */}
+      <section className="py-20 bg-[oklch(0.13_0.05_265)] border-y border-gold/10" aria-label="Academic papers on SSRN">
+        <div className="container">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 mb-3">
+                <GraduationCap size={14} className="text-gold" />
+                <span className="font-mono-data text-xs text-gold uppercase tracking-wider">Academic Research</span>
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
+                Working Papers on <span className="text-gold">SSRN</span>
+              </h2>
+              <p className="font-body text-white/55 mt-3 max-w-xl">
+                The Sotilitarian Capitalism series is published as peer-discoverable working papers on the Social Science Research Network (SSRN), indexed by Google Scholar. Each part is submitted as a standalone paper for granular academic discoverability.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <div className="px-4 py-3 bg-[oklch(0.16_0.05_265)] border border-gold/20 rounded-sm text-center">
+                <div className="font-display text-2xl font-bold text-gold">{submittedCount}/6</div>
+                <div className="font-mono-data text-xs text-white/40 uppercase tracking-wider mt-0.5">Papers Live</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Papers grid */}
+          <div className="space-y-3 mb-8">
+            {SERIES.map((part) => (
+              <div
+                key={part.part}
+                className={`flex flex-col md:flex-row md:items-center gap-4 p-5 bg-[oklch(0.16_0.05_265)] border ${part.ssrnId ? "border-gold/20" : "border-white/8"} rounded-sm`}
+              >
+                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border border-white/10 rounded-sm bg-[oklch(0.18_0.05_265)]">
+                  <span className={`font-mono-data text-sm font-bold ${part.color}`}>{part.part}</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-body font-medium text-white text-sm leading-snug">{part.fullTitle}</div>
+                  <div className="flex flex-wrap gap-1.5 mt-1.5">
+                    {part.jelCodes.map(code => (
+                      <span key={code} className="font-mono-data text-[10px] px-1.5 py-0.5 bg-white/5 border border-white/10 rounded text-white/40">{code}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex-shrink-0">
+                  {part.ssrnId ? (
+                    <a
+                      href={part.ssrnUrl!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-gold/10 border border-gold/30 text-gold font-body text-xs font-medium rounded-sm hover:bg-gold/20 transition-colors"
+                    >
+                      <FileText size={12} />
+                      SSRN #{part.ssrnId}
+                      <ExternalLink size={10} />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/3 border border-white/10 text-white/30 font-body text-xs rounded-sm">
+                      Under Review
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {/* Meta-paper row */}
+            <div className={`flex flex-col md:flex-row md:items-center gap-4 p-5 bg-[oklch(0.16_0.05_265)] border ${META_PAPER.ssrnId ? "border-gold/20" : "border-white/8"} rounded-sm`}>
+              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border border-white/10 rounded-sm bg-[oklch(0.18_0.05_265)]">
+                <BookOpen size={14} className="text-gold/60" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-body font-medium text-white text-sm leading-snug">{META_PAPER.title}: {META_PAPER.subtitle}</div>
+                <div className="font-body text-xs text-white/40 mt-1">Series overview · All five parts synthesized · Reading guide for researchers</div>
+              </div>
+              <div className="flex-shrink-0">
+                {META_PAPER.ssrnId ? (
+                  <a
+                    href={META_PAPER.ssrnUrl!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-gold/10 border border-gold/30 text-gold font-body text-xs font-medium rounded-sm hover:bg-gold/20 transition-colors"
+                  >
+                    <FileText size={12} />
+                    SSRN #{META_PAPER.ssrnId}
+                    <ExternalLink size={10} />
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/3 border border-white/10 text-white/30 font-body text-xs rounded-sm">
+                    Under Review
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <p className="font-body text-xs text-white/30 text-center">
+            All papers authored by Cornelius DeFalco, The Elevation Foundation (EIN 92-1042348). Submitted to SSRN eLibrary — indexed by Google Scholar upon approval.
+          </p>
         </div>
       </section>
 
@@ -171,7 +309,7 @@ export default function SotilitarianCapitalismSeries() {
           </div>
 
           <div className="space-y-4">
-            {SERIES.map((part, i) => (
+            {SERIES.map((part) => (
               <Link
                 key={part.slug}
                 href={`/blog/${part.slug}`}
@@ -233,9 +371,9 @@ export default function SotilitarianCapitalismSeries() {
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
             <div className="section-label mb-4">About the Author</div>
-            <h2 className="font-display text-2xl font-bold text-white mb-4">Cornelius Lawrence</h2>
+            <h2 className="font-display text-2xl font-bold text-white mb-4">Cornelius DeFalco</h2>
             <p className="font-body text-white/60 leading-relaxed mb-6">
-              Cornelius Lawrence is the founder of The Elevation Foundation, a 501(c)(3) nonprofit building transparent, community-governed financial systems using blockchain technology. His work on Sotilitarianism — a synthesis of social utility, utilitarian ethics, and decentralized governance — represents a decade of research into post-capitalist economic frameworks.
+              Cornelius DeFalco is the founder of The Elevation Foundation, a 501(c)(3) nonprofit building transparent, community-governed financial systems using blockchain technology. His work on Sotilitarianism — a synthesis of social utility, utilitarian ethics, and decentralized governance — represents a decade of research into post-capitalist economic frameworks. The Sotilitarian Capitalism series is published as working papers on SSRN and indexed by Google Scholar.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
@@ -265,15 +403,29 @@ export default function SotilitarianCapitalismSeries() {
               Ready to Begin?
             </h2>
             <p className="font-body text-white/55 mb-8">
-              Start with Part I and follow the arc from economic diagnosis to technical blueprint to implementation strategy.
+              Start with Part I and follow the arc from economic diagnosis to technical blueprint to implementation strategy. Or access the academic working papers directly on SSRN.
             </p>
-            <Link
-              href={`/blog/${SERIES[0].slug}`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.5)] group"
-            >
-              Start with Part I
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href={`/blog/${SERIES[0].slug}`}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_30px_oklch(0.72_0.12_75/0.5)] group"
+              >
+                Start with Part I
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              {SERIES[0].ssrnUrl && (
+                <a
+                  href="https://ssrn.com/author=11379928"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 border border-gold/30 text-gold font-body font-medium rounded-sm hover:bg-gold/5 transition-all duration-200"
+                >
+                  <GraduationCap size={16} />
+                  All Papers on SSRN
+                  <ExternalLink size={13} />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </section>

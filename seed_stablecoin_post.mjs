@@ -4,94 +4,136 @@ import { readFileSync } from "fs";
 
 dotenv.config({ path: "/home/ubuntu/elevation-foundation-website/.env" });
 
-const content = `# The Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It
+const content = `<h2>The Stablecoin Market Is Worth $160 Billion. Almost All of It Is Built on the Same Two Flawed Ideas.</h2>
 
-*By Cornelius Lawrence, Elevation Foundation — May 2026*
+<p>Back the coin with dollars in a bank account — and recreate the centralized trust problem that blockchain was invented to solve. Or back it with crypto collateral and hope the math holds. The second approach has a name: Terra/LUNA. We all know how that ended.</p>
 
----
+<p>The Sotility Stable Token (SST) is neither. It is an <strong>efficiency-backed stablecoin</strong> — a third category that does not yet have a name in the academic literature, but deserves one.</p>
 
-The stablecoin market is worth over $160 billion. And almost all of it is built on the same two ideas: back the coin with dollars in a bank account, or back it with crypto collateral and hope the math holds. The first approach recreates the very centralized trust problem that blockchain was invented to solve. The second has a name: Terra/LUNA. We all know how that ended.
+<div class="my-6 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+<p class="text-amber-900 font-medium m-0"><strong>The Core Claim:</strong> SST is more stable than fiat-backed stablecoins (no custodial risk), more stable than algorithmic stablecoins (no reflexive death spiral), and more capital-efficient than overcollateralized crypto-backed stablecoins (no idle collateral). The stability comes from real economic activity — not a bank account, not a governance token, not locked-up ETH.</p>
+</div>
 
-The Sotility Stable Token (SST) is neither. It is an **efficiency-backed stablecoin** — a third category that does not yet have a name in the academic literature, but deserves one. This post explains the mechanism, why it is structurally more stable than either of the dominant models, and why we believe it represents a meaningful contribution to the field of blockchain economics.
+<h2>What Is Wrong With Every Existing Model</h2>
 
----
+<h3>Fiat-Backed: Stable Until the Bank Fails</h3>
 
-## The Problem With Existing Stablecoin Models
+<p><strong>Fiat-backed stablecoins</strong> (USDC, USDT, BUSD) achieve price stability by holding one dollar in a bank for every token in circulation. This works — until it doesn't. Circle's USDC briefly depegged to $0.87 in March 2023 when $3.3 billion of its reserves were held at Silicon Valley Bank during its collapse. The peg held only because the FDIC intervened.</p>
 
-Before explaining SST, it is worth being precise about what is wrong with the alternatives.
+<p>That is not decentralized stability. That is centralized stability with a government backstop — which means it depends on the same institutions blockchain was designed to route around.</p>
 
-**Fiat-backed stablecoins** (USDC, USDT, BUSD) achieve price stability by holding one dollar in a bank for every token in circulation. This works — until it doesn't. The risk is custodial: the issuer can be debanked, the reserves can be misreported, the issuer can be sanctioned, or the bank holding the reserves can fail. Circle's USDC briefly depegged to $0.87 in March 2023 when $3.3 billion of its reserves were held at Silicon Valley Bank during its collapse. The peg held only because the FDIC intervened. That is not decentralized stability. That is centralized stability with a government backstop.
+<h3>Algorithmic: Designed Into a Death Spiral</h3>
 
-**Algorithmic stablecoins** (UST, FRAX, AMPL) attempt to maintain the peg through supply-and-demand mechanics, often involving a companion governance token as a sponge for volatility. The fundamental problem is that these systems are reflexive: when confidence falls, the mechanism that is supposed to restore the peg accelerates the collapse instead. Terra/LUNA lost $40 billion in market cap in 72 hours in May 2022. The mechanism worked exactly as designed — it just designed itself into a death spiral.
+<p><strong>Algorithmic stablecoins</strong> (UST, FRAX, AMPL) maintain the peg through supply-and-demand mechanics, often involving a companion governance token as a sponge for volatility. The fundamental problem is reflexivity: when confidence falls, the mechanism designed to restore the peg accelerates the collapse instead.</p>
 
-**Overcollateralized crypto-backed stablecoins** (DAI, LUSD) are more robust but capital-inefficient. To mint $1 of DAI, you must lock $1.50 or more of ETH. This works as long as ETH does not crash faster than the system can liquidate positions. During the March 2020 COVID crash, MakerDAO's liquidation system failed under load and DAI briefly traded at $1.12 — a significant depeg in the opposite direction.
+<p>Terra/LUNA lost $40 billion in market cap in 72 hours in May 2022. The mechanism worked exactly as designed. It just designed itself into a death spiral.</p>
 
-The pattern across all three models is the same: **stability is borrowed from somewhere else.** From a bank. From a governance token. From overcollateralized crypto. SST borrows stability from something more durable: verified economic activity.
+<h3>Overcollateralized: Robust but Wasteful</h3>
 
----
+<p><strong>Overcollateralized crypto-backed stablecoins</strong> (DAI, LUSD) are more robust but capital-inefficient. To mint $1 of DAI, you must lock $1.50 or more of ETH. This works as long as ETH does not crash faster than the liquidation system can respond. During the March 2020 COVID crash, MakerDAO's liquidation system failed under load and DAI briefly traded at $1.12 — a significant depeg in the wrong direction.</p>
 
-## The SST Mechanism: Efficiency-Backed Stability
+<p>The pattern across all three models: <strong>stability is borrowed from somewhere else</strong>. From a bank. From a governance token. From overcollateralized crypto. SST borrows stability from something more durable: verified economic activity.</p>
 
-The Sotility Stable Token is minted against **verified business revenue** — specifically, the revenue generated by businesses operating within the Sotility ecosystem that have passed Klarity's identity and compliance verification layer.
+<h2>The SST Mechanism: How Efficiency-Backed Stability Works</h2>
 
-The mechanism works as follows:
+<h3>Step 1 — Revenue Verification</h3>
 
-**Step 1 — Revenue Verification.** A business operating on the Sotility platform submits revenue data to the Klarity oracle network. Klarity's AI audit agents cross-reference on-chain transaction records, off-chain financial data, and third-party verification sources to produce a **Verified Revenue Score (VRS)** — a cryptographically signed attestation of the business's trailing 90-day revenue.
+<p>A business operating on the Sotility platform submits revenue data to the Klarity oracle network. Klarity's AI audit agents cross-reference on-chain transaction records, off-chain financial data, and third-party verification sources to produce a <strong>Verified Revenue Score (VRS)</strong> — a cryptographically signed attestation of the business's trailing 90-day revenue.</p>
 
-**Step 2 — Collateral Calculation.** The SST minting contract accepts the VRS as collateral input. The collateralization ratio is dynamic: a business with a high VRS and long operating history can mint SST at a 1:1 ratio against its verified monthly revenue. A newer business with a shorter track record mints at a more conservative ratio (e.g., 1:0.7). This is analogous to how a bank calculates a line of credit — except the calculation is on-chain, transparent, and not subject to loan officer discretion.
+<h3>Step 2 — Collateral Calculation</h3>
 
-**Step 3 — Peg Maintenance.** The SST peg is maintained through a two-sided arbitrage mechanism. If SST trades above $1.00, the minting contract allows eligible businesses to mint new SST against their VRS and sell it at a profit, increasing supply and pushing the price back down. If SST trades below $1.00, a buyback mechanism funded by the Elevation Engine's yield purchases SST from the open market and burns it, reducing supply and pushing the price back up.
+<p>The SST minting contract accepts the VRS as collateral input. The collateralization ratio is dynamic: a business with a high VRS and long operating history can mint SST at 1:1 against its verified monthly revenue. A newer business with a shorter track record mints at a more conservative ratio (e.g., 1:0.7). This is analogous to how a bank calculates a line of credit — except the calculation is on-chain, transparent, and not subject to loan officer discretion.</p>
 
-**Step 4 — Reserve Buffer.** A portion of every transaction fee collected across the Sotility ecosystem flows into the SST Reserve Pool — a multi-sig treasury that serves as a last-resort backstop. Unlike algorithmic stablecoins, this reserve is denominated in USDC and ETH, not in the protocol's own governance token.
+<h3>Step 3 — Peg Maintenance</h3>
 
----
+<p>The SST peg is maintained through a two-sided arbitrage mechanism. If SST trades above $1.00, the minting contract allows eligible businesses to mint new SST against their VRS and sell it at a profit — increasing supply and pushing the price back down. If SST trades below $1.00, a buyback mechanism funded by the Elevation Engine's yield purchases SST from the open market and burns it — reducing supply and pushing the price back up.</p>
 
-## Why "Efficiency-Backed" Is the Right Term
+<h3>Step 4 — Reserve Buffer</h3>
 
-The term we are proposing — **efficiency-backed** — refers to the fact that SST's collateral is not a passive asset (a dollar sitting in a bank, ETH sitting in a vault) but an active economic output: the efficiency gains generated by transparent, automated, community-governed business operations.
+<p>A portion of every transaction fee collected across the Sotility ecosystem flows into the SST Reserve Pool — a multi-sig treasury that serves as a last-resort backstop. Unlike algorithmic stablecoins, this reserve is denominated in USDC and ETH, not in the protocol's own governance token.</p>
 
-When a cooperative eliminates a financial intermediary by using a Sotility smart contract, it captures a margin that previously went to the intermediary. When a community solar project uses WeSolar's tokenized financing instead of a bank loan, it pays a lower interest rate and keeps more revenue. These efficiency gains are real, recurring, and verifiable. They are the economic foundation of SST's value.
+<h2>The Model Comparison</h2>
 
-| Model | Collateral Type | Stability Source | Key Risk |
-|---|---|---|---|
-| Fiat-backed (USDC) | USD in bank | Custodial trust | Debanking, reserve misreporting |
-| Algorithmic (UST) | Governance token | Reflexive arbitrage | Death spiral |
-| Crypto-backed (DAI) | ETH/WBTC | Overcollateralization | Liquidation cascade |
-| **Efficiency-backed (SST)** | **Verified business revenue** | **Real economic activity** | **Revenue verification accuracy** |
+<div class="overflow-x-auto my-8">
+<table class="w-full text-sm border-collapse">
+<thead>
+<tr class="bg-amber-50">
+<th class="text-left p-3 font-semibold border border-amber-200">Model</th>
+<th class="text-left p-3 font-semibold border border-amber-200">Collateral</th>
+<th class="text-left p-3 font-semibold border border-amber-200">Stability Source</th>
+<th class="text-left p-3 font-semibold border border-amber-200">Key Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="hover:bg-amber-50">
+<td class="p-3 border border-amber-100">Fiat-backed (USDC)</td>
+<td class="p-3 border border-amber-100">USD in bank</td>
+<td class="p-3 border border-amber-100">Custodial trust</td>
+<td class="p-3 border border-amber-100">Debanking, reserve misreporting</td>
+</tr>
+<tr class="hover:bg-amber-50">
+<td class="p-3 border border-amber-100">Algorithmic (UST)</td>
+<td class="p-3 border border-amber-100">Governance token</td>
+<td class="p-3 border border-amber-100">Reflexive arbitrage</td>
+<td class="p-3 border border-amber-100">Death spiral</td>
+</tr>
+<tr class="hover:bg-amber-50">
+<td class="p-3 border border-amber-100">Crypto-backed (DAI)</td>
+<td class="p-3 border border-amber-100">ETH/WBTC</td>
+<td class="p-3 border border-amber-100">Overcollateralization</td>
+<td class="p-3 border border-amber-100">Liquidation cascade</td>
+</tr>
+<tr class="hover:bg-amber-50 font-semibold">
+<td class="p-3 border border-amber-100">Efficiency-backed (SST)</td>
+<td class="p-3 border border-amber-100">Verified business revenue</td>
+<td class="p-3 border border-amber-100">Real economic activity</td>
+<td class="p-3 border border-amber-100">Oracle verification accuracy</td>
+</tr>
+</tbody>
+</table>
+</div>
 
-The key risk for SST is the accuracy of the Klarity verification layer. This is why Klarity's multi-oracle architecture requires consensus across multiple independent verification agents before any VRS is accepted as collateral. No single oracle can corrupt the system.
+<h2>Why "Efficiency-Backed" Is the Right Term</h2>
 
----
+<p>SST's collateral is not a passive asset sitting in a vault. It is an active economic output: the efficiency gains generated by transparent, automated, community-governed business operations.</p>
 
-## The Academic Contribution
+<p>When a cooperative eliminates a financial intermediary by using a Sotility smart contract, it captures the margin that previously went to the intermediary. When a community solar project uses WeSolar's tokenized financing instead of a bank loan, it pays a lower interest rate and keeps more revenue. These efficiency gains are real, recurring, and verifiable. They are the economic foundation of SST's value.</p>
 
-We are preparing a formal paper on the SST mechanism for submission to the *Journal of Financial Economics* and the *Review of Financial Studies*. The paper's central claim is that **efficiency-backed stablecoins represent a Pareto improvement over existing models** under a specific set of conditions:
+<p>The key risk for SST is the accuracy of the Klarity verification layer. This is why Klarity's multi-oracle architecture requires consensus across multiple independent verification agents before any VRS is accepted as collateral. No single oracle can corrupt the system.</p>
 
-1. The underlying economy generates sufficient verified revenue to support the desired token supply.
-2. The oracle network is sufficiently decentralized to resist collusion.
-3. The reserve buffer is sized appropriately relative to the maximum plausible demand shock.
+<h2>The Academic Contribution</h2>
 
-Under these conditions, SST is more stable than fiat-backed stablecoins (no custodial risk), more stable than algorithmic stablecoins (no reflexive death spiral), and more capital-efficient than overcollateralized crypto-backed stablecoins (no idle collateral).
+<p>We are preparing a formal paper on the SST mechanism for submission to the <em>Journal of Financial Economics</em> and the <em>Review of Financial Studies</em>. The central claim: <strong>efficiency-backed stablecoins represent a Pareto improvement over existing models</strong> under three conditions:</p>
 
----
+<ul>
+<li><strong>Sufficient verified revenue:</strong> The underlying economy generates enough verified revenue to support the desired token supply</li>
+<li><strong>Decentralized oracle network:</strong> The oracle network is sufficiently decentralized to resist collusion</li>
+<li><strong>Appropriately sized reserves:</strong> The reserve buffer is sized relative to the maximum plausible demand shock</li>
+</ul>
 
-## What This Means for Our Grant Applications
+<p>Under these conditions, SST is more stable than fiat-backed, more stable than algorithmic, and more capital-efficient than overcollateralized crypto-backed stablecoins.</p>
 
-The Ethereum Foundation's Ecosystem Support Program (ESP) funds academic research that advances the state of knowledge in blockchain economics. Our [grant application](https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/grant-applications/ethereum-foundation-esp.md) requests $75,000 to fund formal academic publication of the efficiency-backed stablecoin mechanism, deployment of all 20 Sotility Protocol contracts to Base Mainnet, and a public security audit.
+<h2>What This Means for Our Grant Applications</h2>
 
-The full smart contract source code is available at [github.com/ModernDigitalDevelopment/sotilitarianism](https://github.com/ModernDigitalDevelopment/sotilitarianism) under the MIT license.
+<p>The Ethereum Foundation's Ecosystem Support Program (ESP) funds academic research that advances the state of knowledge in blockchain economics. Our <a href="https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/grant-applications/ethereum-foundation-esp.md" target="_blank" rel="noopener noreferrer">grant application</a> requests $75,000 to fund:</p>
 
----
+<ul>
+<li><strong>Formal academic publication</strong> of the efficiency-backed stablecoin mechanism</li>
+<li><strong>Mainnet deployment</strong> of all 20 Sotility Protocol contracts to Base Mainnet</li>
+<li><strong>Public security audit</strong> by an independent third-party firm</li>
+</ul>
 
-## Conclusion
+<p>The full smart contract source code is available at <a href="https://github.com/ModernDigitalDevelopment/sotilitarianism" target="_blank" rel="noopener noreferrer">github.com/ModernDigitalDevelopment/sotilitarianism</a> under the MIT license.</p>
 
-The stablecoin problem is not solved. Fiat-backed stablecoins are stable but centralized. Algorithmic stablecoins are decentralized but fragile. Overcollateralized stablecoins are robust but inefficient. The efficiency-backed model is our attempt at a fourth path — one grounded in real economic activity rather than financial engineering.
+<h2>The Bottom Line</h2>
 
-We are not claiming SST is perfect. We are claiming it is structurally different in ways that matter, and that those differences deserve rigorous academic examination. The work is open-source. The contracts are live on GitHub. The grant application is public. We invite scrutiny.
+<p>The stablecoin problem is not solved. Fiat-backed stablecoins are stable but centralized. Algorithmic stablecoins are decentralized but fragile. Overcollateralized stablecoins are robust but inefficient.</p>
 
----
+<p>The efficiency-backed model is our attempt at a fourth path — one grounded in real economic activity rather than financial engineering. We are not claiming SST is perfect. We are claiming it is structurally different in ways that matter, and that those differences deserve rigorous academic examination.</p>
 
-*Cornelius Lawrence is the founder of the Elevation Foundation, a 501(c)(3) nonprofit (EIN: 92-1042348) building open-source blockchain infrastructure for community-governed finance.*`;
+<p>The work is open-source. The contracts are on GitHub. The grant application is public. We invite scrutiny.</p>
+
+<p><em>Cornelius Lawrence is the founder of the Elevation Foundation, a 501(c)(3) nonprofit (EIN: 92-1042348) building open-source blockchain infrastructure for community-governed finance.</em></p>`;
 
 const conn = await createConnection(process.env.DATABASE_URL);
 

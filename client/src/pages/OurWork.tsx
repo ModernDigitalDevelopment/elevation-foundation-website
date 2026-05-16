@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
-import { ArrowRight, Github, ExternalLink, Zap } from "lucide-react";
+import { ArrowRight, Github, ExternalLink, Zap, Coins, BookOpen } from "lucide-react";
 
 const PHILOSOPHY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
 const TRANSPARENCY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/transparency-bg-dRYH2beMpwTLwnFHzDaK7x.png";
@@ -237,10 +237,65 @@ export default function OurWork() {
                         <ArrowRight size={14} /> Join Waitlist
                       </a>
                     )}
+                    {project.id === "elevation-engine" && (
+                      <Link
+                        href="/token-economy"
+                        className="inline-flex items-center gap-2 text-white/50 hover:text-gold font-body text-sm font-medium transition-colors"
+                      >
+                        <Coins size={14} /> Token Economy →
+                      </Link>
+                    )}
+                    {project.id === "sogood" && (
+                      <Link
+                        href="/capitalism-2-0"
+                        className="inline-flex items-center gap-2 text-white/50 hover:text-gold font-body text-sm font-medium transition-colors"
+                      >
+                        <BookOpen size={14} /> Capitalism 2.0 →
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- ECOSYSTEM CROSS-LINKS -------------------------------- */}
+      <section className="py-10 bg-[oklch(0.13_0.05_265)] border-y border-gold/10">
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <div className="font-mono-data text-xs text-gold/60 uppercase tracking-widest mb-1">Understand the System</div>
+              <p className="font-body text-white/70 text-sm">
+                These projects are the <em className="text-white">infrastructure layer</em> of a broader economic philosophy.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/token-economy"
+                className="inline-flex items-center gap-2 px-4 py-2.5 border border-gold/30 bg-gold/5 text-gold font-body text-sm font-medium rounded-sm hover:bg-gold/10 transition-all"
+              >
+                <Coins size={13} />
+                Token Economy (SOT / SUG / SST)
+                <ArrowRight size={12} />
+              </Link>
+              <Link
+                href="/capitalism-2-0"
+                className="inline-flex items-center gap-2 px-4 py-2.5 border border-white/20 text-white/60 font-body text-sm font-medium rounded-sm hover:border-gold/30 hover:text-gold transition-all"
+              >
+                <BookOpen size={13} />
+                Capitalism 2.0 — The Philosophy
+                <ArrowRight size={12} />
+              </Link>
+              <Link
+                href="/sotilitarianism"
+                className="inline-flex items-center gap-2 px-4 py-2.5 border border-white/20 text-white/60 font-body text-sm font-medium rounded-sm hover:border-gold/30 hover:text-gold transition-all"
+              >
+                Sotilitarianism
+                <ArrowRight size={12} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -484,6 +539,12 @@ export default function OurWork() {
             >
               Get Involved
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/token-economy"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-gold/30 text-gold font-body font-medium rounded-sm hover:bg-gold/5 transition-all duration-200"
+            >
+              <Coins size={15} /> Token Economy
             </Link>
             <Link
               href="/transparency"

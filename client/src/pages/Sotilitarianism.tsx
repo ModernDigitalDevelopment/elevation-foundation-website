@@ -552,6 +552,62 @@ export default function SotilitarianismPage() {
         </div>
       </section>
 
+      {/* --- SSRN CITATION ------------------------------------- */}
+      <section className="py-16 bg-[oklch(0.14_0.05_265)] border-t border-white/10">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="section-label mb-4">Academic Research</div>
+            <h2 className="font-display text-3xl font-bold text-white mb-8">Published on SSRN</h2>
+            <div className="border border-gold/25 bg-gold/5 rounded-sm p-7 mb-6">
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gold/10 border border-gold/30 rounded-sm">
+                  <FileText size={20} className="text-gold" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-mono-data text-[10px] uppercase tracking-wider text-gold/60 mb-2">SSRN Working Paper · April 16, 2026 · 19 Pages · Open Access</div>
+                  <h3 className="font-display text-xl font-bold text-white mb-2">
+                    Sotilitarianism: A Framework for Blockchain-Native Governance and Incentive-Aligned Political Economy
+                  </h3>
+                  <p className="font-body text-white/50 text-sm mb-3">Cornelius DeFalco · Social Science Research Network</p>
+                  <blockquote className="border-l-2 border-gold/40 pl-4 mb-4">
+                    <p className="font-body text-white/65 text-sm italic leading-relaxed">
+                      "Sotilitarianism proposes a new socioeconomic philosophy in which transparency is architecturally enforced, community sovereignty is structurally guaranteed, and individual self-interest is made structurally identical to collective social good — through programmable incentive mechanisms deployed on public blockchains."
+                    </p>
+                  </blockquote>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {["Mechanism Design", "DAOs", "Commons Governance", "Political Economy", "Tokenomics", "Capitalism 2.0"].map(t => (
+                      <span key={t} className="font-mono-data text-[10px] px-2 py-0.5 border border-gold/20 text-gold/55 rounded">{t}</span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-body font-semibold text-sm rounded-sm hover:bg-gold-light transition-all"
+                    >
+                      Read on SSRN <ExternalLink size={12} />
+                    </a>
+                    <Link
+                      href="/white-papers"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/55 font-body text-sm rounded-sm hover:border-gold/40 hover:text-gold transition-all"
+                    >
+                      All Research Documents
+                    </Link>
+                    <Link
+                      href="/capitalism-2-0"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/15 text-white/45 font-body text-sm rounded-sm hover:border-gold/30 hover:text-gold transition-all"
+                    >
+                      Capitalism 2.0 →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* --- CTA ------------------------------------------------ */}
       <section className="py-20 bg-[oklch(0.12_0.05_265)] border-t border-white/10">
         <div className="container text-center">
@@ -576,6 +632,12 @@ export default function SotilitarianismPage() {
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/30 text-white font-body font-medium rounded-sm hover:border-gold/50 hover:text-gold transition-all duration-200"
             >
               Download Research
+            </Link>
+            <Link
+              href="/token-economy"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-gold/30 text-gold font-body font-medium rounded-sm hover:bg-gold/10 transition-all duration-200"
+            >
+              Token Economy
             </Link>
             <Link
               href="/get-involved"

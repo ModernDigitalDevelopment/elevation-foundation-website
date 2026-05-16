@@ -311,4 +311,114 @@
     transform: translateY(-4px);
     box-shadow: 0 20px 40px oklch(0 0 0 / 0.4), 0 0 30px oklch(0.72 0.12 75 / 0.1);
   }
+
+  /* ── Web3 Gen Z Enhancement Layer ─────────────────────────────── */
+
+  /* Stronger glow variants */
+  .glow-gold-strong {
+    box-shadow: 0 0 30px oklch(0.72 0.12 75 / 0.45), 0 0 80px oklch(0.72 0.12 75 / 0.15);
+  }
+  .glow-teal-strong {
+    box-shadow: 0 0 30px oklch(0.78 0.14 180 / 0.45), 0 0 80px oklch(0.78 0.14 180 / 0.15);
+  }
+
+  /* Pulse animation for live indicators */
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  .animate-pulse {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* Scanline effect overlay (optional usage) */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      oklch(0 0 0 / 0.03) 2px,
+      oklch(0 0 0 / 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Text gradient — teal to gold */
+  .gradient-teal-gold {
+    background: linear-gradient(135deg, oklch(0.78 0.14 180) 0%, oklch(0.72 0.12 75) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Crisp top border accent */
+  .border-accent-top {
+    border-top: 1px solid oklch(0.72 0.12 75 / 0.25);
+  }
+
+  /* Hero scale-in */
+  @keyframes scaleIn {
+    from { transform: scale(1.08); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .animate-scale-in {
+    animation: scaleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Hover border-glow for cards */
+  .hover-border-gold {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-border-gold:hover {
+    border-color: oklch(0.72 0.12 75 / 0.5);
+    box-shadow: 0 0 20px oklch(0.72 0.12 75 / 0.1);
+  }
+
+  /* Typewriter cursor */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .cursor-blink::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: oklch(0.72 0.12 75);
+    margin-left: 2px;
+  }
+
+  /* Text reveal from mask */
+  @keyframes revealMask {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0% 0 0); }
+  }
+  .animate-reveal {
+    animation: revealMask 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  /* Backdrop blur utility for glass cards */
+  .glass-card {
+    background: oklch(0.15 0.05 265 / 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  /* Shimmer loading skeleton */
+  @keyframes skeletonShimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      oklch(0.16 0.05 265) 25%,
+      oklch(0.20 0.05 265) 50%,
+      oklch(0.16 0.05 265) 75%
+    );
+    background-size: 800px 100%;
+    animation: skeletonShimmer 1.5s infinite linear;
+  }
 }

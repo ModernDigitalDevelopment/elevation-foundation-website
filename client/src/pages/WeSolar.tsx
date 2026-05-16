@@ -10,6 +10,94 @@ import SEOHead from "@/components/SEOHead";
 import { trpc } from "@/lib/trpc";
 import { ArrowRight, Sun, Zap, Users, Vote, ExternalLink, Github, CheckCircle2, Leaf, Globe, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
+
+// ─── Energy Adoption Chart ───────────────────────────────────────────────────
+const YEARS = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"];
+
+const adoptionChartData = {
+  labels: YEARS,
+  datasets: [
+    {
+      label: "Community Solar Adoption (% of eligible households)",
+      data: [2, 3, 5, 8, 13, 20, 30, 43, 57, 70, 81],
+      borderColor: "#4db8b8",
+      backgroundColor: "rgba(77,184,184,0.12)",
+      fill: true,
+      tension: 0.45,
+      pointRadius: 4,
+      pointBackgroundColor: "#4db8b8",
+      borderWidth: 2.5,
+    },
+    {
+      label: "Incumbent Utility Market Share (%)",
+      data: [94, 92, 90, 87, 83, 77, 70, 62, 52, 41, 30],
+      borderColor: "#c0392b",
+      backgroundColor: "rgba(192,57,43,0.08)",
+      fill: true,
+      tension: 0.45,
+      pointRadius: 4,
+      pointBackgroundColor: "#c0392b",
+      borderWidth: 2.5,
+      borderDash: [6, 3],
+    },
+  ],
+};
+
+const adoptionChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  interaction: { mode: "index" as const, intersect: false },
+  plugins: {
+    legend: {
+      display: true,
+      position: "top" as const,
+      labels: {
+        font: { family: "Courier New, monospace", size: 10 },
+        color: "#555",
+        padding: 16,
+        boxWidth: 12,
+      },
+    },
+    tooltip: {
+      backgroundColor: "#1a1a2e",
+      titleFont: { family: "Georgia, serif", size: 12 },
+      bodyFont: { family: "Courier New, monospace", size: 11 },
+      padding: 10,
+      callbacks: {
+        label: (ctx: any) => ` ${ctx.dataset.label}: ${ctx.raw}%`,
+      },
+    },
+  },
+  scales: {
+    x: {
+      grid: { color: "rgba(0,0,0,0.06)" },
+      ticks: { font: { family: "Courier New, monospace", size: 10 }, color: "#666" },
+    },
+    y: {
+      min: 0,
+      max: 100,
+      grid: { color: "rgba(0,0,0,0.06)" },
+      ticks: {
+        font: { family: "Courier New, monospace", size: 10 },
+        color: "#666",
+        callback: (v: any) => `${v}%`,
+      },
+    },
+  },
+};
 
 const contracts = [
   {
@@ -207,6 +295,94 @@ export default function WeSolar() {
                 <div key={item.label} className="flex items-center justify-between p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm">
                   <span className="font-body text-sm text-white/60">{item.label}</span>
                   <span className={`font-display text-2xl font-bold ${item.color}`}>{item.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ENERGY ADOPTION CHART ────────────────────────────── */}
+      <section className="py-20 bg-[oklch(0.14_0.05_265)]" aria-label="Community solar adoption chart">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            {/* Section label */}
+            <div className="mb-8 text-center">
+              <div className="section-label mb-3">The Inflection Point</div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-3">
+                Community Solar Is at the <span className="text-teal">S-Curve Knee</span>
+              </h2>
+              <p className="font-body text-white/55 max-w-xl mx-auto">
+                The technology adoption S-curve shows community solar crossing the 50% threshold around 2028 — the same moment incumbent utilities lose majority market share. WeSolar is built to capture that inflection.
+              </p>
+            </div>
+
+            {/* Chart card — beige background per article style guide */}
+            <div style={{
+              background: "#f5f0e8",
+              borderRadius: "6px",
+              padding: "28px 28px 20px",
+              border: "1px solid rgba(201,168,76,0.25)",
+              marginBottom: "16px",
+            }}>
+              <div style={{
+                fontFamily: "Courier New, monospace",
+                fontSize: "0.65rem",
+                letterSpacing: "0.12em",
+                color: "#c9a84c",
+                textTransform: "uppercase" as const,
+                marginBottom: "4px",
+              }}>
+                Figure — Energy Market Adoption Dynamics
+              </div>
+              <div style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "1.05rem",
+                fontWeight: "700",
+                color: "#1a1a2e",
+                marginBottom: "4px",
+              }}>
+                Community Solar Adoption vs. Incumbent Utility Market Share: 2020–2030
+              </div>
+              <div style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "0.82rem",
+                color: "#555",
+                lineHeight: "1.65",
+                marginBottom: "20px",
+              }}>
+                Adoption follows a classic S-curve. The crossover point (~2028) is where community solar protocols like WeSolar become the default infrastructure — not the alternative. Based on NREL community solar growth data and DOE market projections.
+              </div>
+              <div style={{ height: "320px", position: "relative" }}>
+                <Line data={adoptionChartData} options={adoptionChartOptions} />
+              </div>
+              <div style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "12px",
+                paddingTop: "10px",
+                borderTop: "1px solid rgba(201,168,76,0.2)",
+              }}>
+                <span style={{ fontFamily: "Courier New, monospace", fontSize: "0.65rem", color: "#888" }}>
+                  Sources: NREL, DOE Solar Energy Technologies Office, Lawrence Berkeley National Lab
+                </span>
+                <span style={{ fontFamily: "Courier New, monospace", fontSize: "0.65rem", color: "#c9a84c" }}>
+                  WeSolar — The Elevation Foundation
+                </span>
+              </div>
+            </div>
+
+            {/* Three callout stats below the chart */}
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { value: "2028", label: "Projected crossover year", color: "text-teal" },
+                { value: "+180%", label: "Community solar growth 2023–2028", color: "text-gold" },
+                { value: "31M", label: "US households in energy poverty", color: "text-crimson" },
+              ].map(({ value, label, color }) => (
+                <div key={label} className="p-4 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm text-center">
+                  <div className={`font-display text-2xl font-bold ${color} mb-1`}>{value}</div>
+                  <div className="font-mono-data text-[10px] text-white/40 uppercase tracking-wide leading-snug">{label}</div>
                 </div>
               ))}
             </div>

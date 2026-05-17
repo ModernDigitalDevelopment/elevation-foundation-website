@@ -4,6 +4,8 @@ import { lazy, Suspense } from "react";
 import { Redirect, Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { PageSkeleton } from "./components/PageSkeleton";
+import { PageWrapper } from "./components/PageWrapper";
 
 // Eagerly loaded — tiny, always needed
 import NotFound from "@/pages/NotFound";
@@ -30,18 +32,10 @@ const TokenEconomy = lazy(() => import("./pages/TokenEconomy"));
 const Capitalism2 = lazy(() => import("./pages/Capitalism2"));
 const ForFunders = lazy(() => import("./pages/ForFunders"));
 
-// Minimal page-level loading fallback — matches dark navy background
-function PageLoader() {
-  return (
-    <div className="min-h-screen bg-[oklch(0.12_0.05_265)] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-[oklch(0.72_0.12_75)] border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
-}
-
 function Router() {
   return (
-    <Suspense fallback={<PageLoader />}>
+    <Suspense fallback={<PageSkeleton />}>
+      <PageWrapper>
       <Switch>
         {/* Core pages */}
         <Route path="/" component={Home} />
@@ -86,6 +80,7 @@ function Router() {
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>
+      </PageWrapper>
     </Suspense>
   );
 }

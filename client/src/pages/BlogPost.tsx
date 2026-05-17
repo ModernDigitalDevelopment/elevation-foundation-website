@@ -480,7 +480,7 @@ export default function BlogPost() {
   const isSotilitarianSeries = Object.keys(SLUG_TO_VISUALS).includes(slug ?? "");
 
   return (
-    <div className="min-h-screen" style={{ background: "#f5f5f2" }}>
+    <div className="min-h-screen bg-navy">
       <ReadingProgress />
       <StickyShareBar url={postUrl} title={post.title} excerpt={post.excerpt ?? ""} />
       <SEOHead
@@ -501,14 +501,13 @@ export default function BlogPost() {
       <Navigation />
 
       {/* ── OFF-WHITE WRAPPER ──────────────────────────────────────── */}
-      <div style={{ background: "#f5f5f2", paddingTop: "80px", paddingBottom: "48px" }}>
+      <div className="bg-navy" style={{ paddingTop: "80px", paddingBottom: "64px" }}>
         <div style={{ width: "100%", maxWidth: "720px", margin: "0 auto", padding: "0 16px" }}>
 
           {/* Back link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-800 text-sm mb-6 transition-colors group"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+            className="inline-flex items-center gap-2 text-white/50 hover:text-gold text-sm mb-6 transition-colors group font-body"
           >
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
             Back to Blog

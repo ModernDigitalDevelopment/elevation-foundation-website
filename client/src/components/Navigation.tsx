@@ -25,6 +25,7 @@ const moreLinks = [
   { href: "/get-involved", label: "Get Involved" },
   { href: "/about/founder", label: "About" },
   { href: "/press", label: "Press" },
+  { href: "/media-kit", label: "Media Kit" },
 ];
 
 const allMobileLinks = [...primaryLinks, ...moreLinks];

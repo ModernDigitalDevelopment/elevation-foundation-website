@@ -142,3 +142,13 @@
 - [ ] Set up welcome email automation in Mailchimp (requires Mailchimp dashboard — manual step)
 - [x] Add subscriber count display to admin panel (listSubscribers procedure available)
 - [x] Add unsubscribe handling (Mailchimp manages unsubscribes automatically)
+
+## Mailchimp Welcome Automation & Newsletter CTAs (May 17, 2026)
+
+- [ ] Set up Mailchimp welcome automation via API (welcome email for new subscribers)
+- [ ] Add newsletter subscription form to bottom of each Sotilitarian Capitalism article
+- [ ] Add subtle above-the-fold newsletter CTA on homepage, blog, philosophy, and token-economy pages
+- [ ] Build sticky social sharing button component (LinkedIn, Twitter/X, Facebook, Instagram, TikTok)
+- [ ] Add sticky social sharing buttons to all blog posts
+- [ ] Create /media-kit page with brand assets, og:images, logos, and downloadable resources
+- [ ] Add /media-kit to sitemap.xml and navigation

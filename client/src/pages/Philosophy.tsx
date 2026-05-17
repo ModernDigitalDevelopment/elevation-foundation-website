@@ -3,6 +3,7 @@
  * Sotilitarianism, three-token economy, governance model
  */
 import Navigation from "@/components/Navigation";
+import NewsletterBanner from "@/components/NewsletterBanner";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
@@ -106,6 +107,7 @@ export default function Philosophy() {
         keywords="Sotilitarianism, sotilitarian capitalism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance philosophy, post-capitalist economics, participatory economics, cooperative economics, solidarity economics, SOT token, SUG utility token, SST stablecoin, social utility, community governance, DeFi philosophy, economic transparency, social good finance, impact investing"
       />
       <Navigation />
+      <NewsletterBanner />
 
       {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">

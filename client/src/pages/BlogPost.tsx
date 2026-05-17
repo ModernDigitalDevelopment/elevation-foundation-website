@@ -8,6 +8,8 @@
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
+import StickyShareBar from "@/components/StickyShareBar";
+import ArticleNewsletterCTA from "@/components/ArticleNewsletterCTA";
 import { Link, useParams } from "wouter";
 import {
   ArrowLeft,
@@ -462,9 +464,14 @@ export default function BlogPost() {
   const postUrl = `https://elevation.foundation/blog/${post.slug}`;
   const readTime = post.readTime || estimateReadTime(post.content ?? "");
 
+  // Check if this is a Sotilitarian Capitalism series post
+  const isSotilitarianSeries = Object.keys(SLUG_TO_VISUALS).includes(slug ?? "");
+
   return (
     <div className="min-h-screen bg-navy text-white">
       <ReadingProgress />
+      {/* Sticky share bar — visible on xl screens while reading */}
+      <StickyShareBar url={postUrl} title={post.title} excerpt={post.excerpt ?? ""} />
       <SEOHead
         title={`${post.title} | The Elevation Foundation`}
         description={post.excerpt}
@@ -608,6 +615,14 @@ export default function BlogPost() {
                 ))}
               </div>
             </div>
+          )}
+
+          {/* Newsletter CTA — shown for Sotilitarian Capitalism series articles */}
+          {isSotilitarianSeries && (
+            <ArticleNewsletterCTA
+              headline="Stay Ahead of the Economic Revolution"
+              subtext="Join thousands of readers exploring blockchain governance, token economics, and the future of transparent finance. New research delivered to your inbox."
+            />
           )}
 
           {/* Series Navigator (only shows for Sotilitarian Capitalism series) */}

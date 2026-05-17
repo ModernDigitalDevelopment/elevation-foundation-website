@@ -6,6 +6,7 @@
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
+import NewsletterBanner from "@/components/NewsletterBanner";
 import { Link } from "wouter";
 import { ArrowRight, Calendar, Clock, Loader2, PenLine } from "lucide-react";
 import { useState } from "react";
@@ -75,6 +76,7 @@ export default function Blog() {
         keywords="Sotilitarianism blog, capitalism 2.0 articles, social capitalism essays, utilitarian capitalism, transparent economics blog, trust tech, transparency tech, blockchain governance articles, DeFi community finance, WeSolar news, Transparently updates, nonprofit blockchain news, post-capitalist economics"
       />
       <Navigation />
+      <NewsletterBanner />
 
       {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">

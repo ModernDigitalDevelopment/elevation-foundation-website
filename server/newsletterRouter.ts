@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { listSubscribers, subscribeEmail } from "./db";
-import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { deleteSubscriber, getAdminStats, listSubscribers, subscribeEmail } from "./db";
+import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 
 export const newsletterRouter = router({
   /**
@@ -32,17 +32,32 @@ export const newsletterRouter = router({
   /**
    * Admin: list all subscribers (paginated).
    */
-  listSubscribers: protectedProcedure
+  listSubscribers: adminProcedure
     .input(
       z.object({
         limit: z.number().int().min(1).max(500).optional(),
         offset: z.number().int().min(0).optional(),
       }).optional()
     )
-    .query(async ({ ctx, input }) => {
-      if (ctx.user.role !== "admin") {
-        throw new TRPCError({ code: "FORBIDDEN", message: "Admin access required" });
-      }
+    .query(async ({ input }) => {
       return listSubscribers({ limit: input?.limit, offset: input?.offset });
+    }),
+
+  /**
+   * Admin: delete a subscriber by ID.
+   */
+  deleteSubscriber: adminProcedure
+    .input(z.object({ id: z.number().int().positive() }))
+    .mutation(async ({ input }) => {
+      await deleteSubscriber(input.id);
+      return { success: true };
+    }),
+
+  /**
+   * Admin: get site-wide stats (posts + subscribers).
+   */
+  getAdminStats: adminProcedure
+    .query(async () => {
+      return getAdminStats();
     }),
 });

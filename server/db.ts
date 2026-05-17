@@ -260,6 +260,43 @@ export async function listSubscribers(opts?: { limit?: number; offset?: number }
   return { subscribers, total: Number(countResult[0]?.count ?? 0) };
 }
 
+/** Delete a newsletter subscriber by ID (admin). */
+export async function deleteSubscriber(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db.delete(newsletterSubscribers).where(eq(newsletterSubscribers.id, id));
+}
+
+/** Get high-level admin stats: post counts, subscriber count. */
+export async function getAdminStats(): Promise<{
+  totalPosts: number;
+  publishedPosts: number;
+  draftPosts: number;
+  totalSubscribers: number;
+  recentSubscribers: number;
+}> {
+  const db = await getDb();
+  if (!db) return { totalPosts: 0, publishedPosts: 0, draftPosts: 0, totalSubscribers: 0, recentSubscribers: 0 };
+  const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+  const [totalPostsRes, publishedPostsRes, totalSubsRes, recentSubsRes] = await Promise.all([
+    db.select({ count: sql<number>`count(*)` }).from(blogPosts),
+    db.select({ count: sql<number>`count(*)` }).from(blogPosts).where(eq(blogPosts.published, true)),
+    db.select({ count: sql<number>`count(*)` }).from(newsletterSubscribers),
+    db.select({ count: sql<number>`count(*)` }).from(newsletterSubscribers).where(
+      sql`${newsletterSubscribers.createdAt} >= ${thirtyDaysAgo}`
+    ),
+  ]);
+  const total = Number(totalPostsRes[0]?.count ?? 0);
+  const published = Number(publishedPostsRes[0]?.count ?? 0);
+  return {
+    totalPosts: total,
+    publishedPosts: published,
+    draftPosts: total - published,
+    totalSubscribers: Number(totalSubsRes[0]?.count ?? 0),
+    recentSubscribers: Number(recentSubsRes[0]?.count ?? 0),
+  };
+}
+
 /** Get the pinned featured post (featured = true). Falls back to newest post. */
 export async function getFeaturedPost(): Promise<BlogPost | undefined> {
   const db = await getDb();

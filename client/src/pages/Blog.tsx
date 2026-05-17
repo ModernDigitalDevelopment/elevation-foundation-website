@@ -1,42 +1,43 @@
 /*
  * ELEVATION RISING — Blog Page
- * Database-backed CMS via tRPC. Falls back gracefully when DB is empty.
- * Categories are dynamic from the DB + static fallback list.
+ * Redesigned to match the raised card article aesthetic:
+ * - Dark navy outer background (matches footer)
+ * - White raised cards on off-white (#f5f5f2) inner area
+ * - Georgia serif typography for titles
+ * - Black text on light backgrounds
  */
 import Navigation from "@/components/Navigation";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import NewsletterBanner from "@/components/NewsletterBanner";
 import { Link } from "wouter";
-import { ArrowRight, Calendar, Clock, Loader2, PenLine } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Loader2, PenLine, BookOpen } from "lucide-react";
 import { useState } from "react";
-import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
-
 const CATEGORY_COLORS: Record<string, string> = {
-  Philosophy: "text-gold",
-  Technology: "text-teal",
-  Governance: "text-gold",
-  Community: "text-teal",
-  DeFi: "text-crimson",
-  General: "text-white/70",
+  Philosophy: "#b8860b",
+  Technology: "#0d9488",
+  Governance: "#b8860b",
+  Community: "#0d9488",
+  DeFi: "#dc2626",
+  Research: "#7c3aed",
+  Newsletter: "#2563eb",
+  General: "#6b7280",
 };
 
 function getCategoryColor(cat: string) {
-  return CATEGORY_COLORS[cat] ?? "text-white/70";
+  return CATEGORY_COLORS[cat] ?? "#6b7280";
 }
 
 function formatDate(d: Date | string | null | undefined) {
   if (!d) return "";
-  return new Date(d).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  return new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 }
 
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [email, setEmail] = useState("");
   const { user } = useAuth();
   const isAdmin = user?.role === "admin";
 
@@ -47,28 +48,20 @@ export default function Blog() {
   });
 
   const { data: featuredPost } = trpc.blog.featured.useQuery();
-
   const { data: dbCategories } = trpc.blog.categories.useQuery();
 
-  const staticCategories = ["All", "Philosophy", "Technology", "Governance", "Community", "DeFi"];
+  const staticCategories = ["All", "Philosophy", "Technology", "Governance", "Community", "DeFi", "Research"];
   const dynamicCategories = dbCategories && dbCategories.length > 0
     ? ["All", ...dbCategories]
     : staticCategories;
 
   const posts = postsData?.posts ?? [];
-  // Exclude the featured post from the regular grid to avoid duplication
   const regularPosts = activeCategory === "All"
     ? posts.filter(p => !featuredPost || p.id !== featuredPost.id)
     : posts;
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Subscribed! You will receive updates from the Elevation Foundation.");
-    setEmail("");
-  };
-
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div className="min-h-screen bg-navy">
       <SEOHead
         title="Blog and Updates | The Elevation Foundation"
         description="Thought leadership on Sotilitarianism, blockchain governance, DeFi, community solar, and economic empowerment. Articles, white papers, and community updates from the Elevation Foundation."
@@ -78,114 +71,134 @@ export default function Blog() {
       <Navigation />
       <NewsletterBanner />
 
-      {/* --- HERO ----------------------------------------------- */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url(${HERO_IMG})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/60 to-navy" />
-        <div className="container relative z-10">
+      {/* ── HERO (dark navy, keeps site chrome consistent) ──────── */}
+      <section className="pt-32 pb-12 bg-navy">
+        <div className="container">
           <div className="flex items-start justify-between gap-4">
-            <div className="max-w-3xl text-center">
-              <div className="section-label mb-4">Blog & Updates</div>
-              <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+            <div className="max-w-2xl">
+              <div className="section-label mb-4">Blog &amp; Updates</div>
+              <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-4">
                 Dispatches from
                 <br />
                 <span className="gold-shimmer">the Movement</span>
               </h1>
-              <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
+              <p className="font-body text-lg text-white/65 leading-relaxed">
                 Philosophy, technology, governance, and community updates from the Elevation Foundation. We write in public because we think in public.
               </p>
             </div>
             {isAdmin && (
               <Link
-                href="/admin/blog"
+                href="/admin"
                 className="flex-shrink-0 mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-gold/10 border border-gold/30 text-gold font-body text-sm font-medium rounded-sm hover:bg-gold/20 transition-colors"
               >
                 <PenLine size={14} />
-                Manage Posts
+                Admin Panel
               </Link>
             )}
           </div>
         </div>
       </section>
 
-      {/* --- FEATURED POST -------------------------------------- */}
-      {activeCategory === "All" && featuredPost && !isLoading && (
-        <section className="py-12 bg-navy">
-          <div className="container">
-            <div className="section-label mb-5">Featured</div>
+      {/* ── OFF-WHITE CONTENT AREA ──────────────────────────────── */}
+      <div style={{ background: "#f5f5f2" }}>
+
+        {/* ── CATEGORY FILTER ───────────────────────────────────── */}
+        <div className="sticky top-16 md:top-20 z-30 border-b" style={{ background: "#f5f5f2", borderColor: "#e5e0d8" }}>
+          <div className="container py-4">
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {dynamicCategories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className="flex-shrink-0 px-4 py-2 font-body text-sm rounded-full border transition-all duration-200"
+                  style={activeCategory === cat
+                    ? { background: "#111827", color: "#ffffff", borderColor: "#111827", fontWeight: 600 }
+                    : { background: "transparent", color: "#6b7280", borderColor: "#d1cdc7" }
+                  }
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── FEATURED POST ─────────────────────────────────────── */}
+        {activeCategory === "All" && featuredPost && !isLoading && (
+          <div className="container pt-10 pb-4">
+            <p className="font-body text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "#9ca3af" }}>Featured</p>
             <Link href={`/blog/${featuredPost.slug}`}>
-              <div className="grid md:grid-cols-2 gap-8 p-7 bg-[oklch(0.16_0.05_265)] border border-gold/20 rounded-sm cursor-pointer group transition-all duration-300 hover:border-gold/50 hover:shadow-[0_8px_40px_oklch(0.05_0.05_265/0.6)] hover:-translate-y-1">
-                <div className="aspect-[16/9] bg-[oklch(0.20_0.05_265)] rounded-sm overflow-hidden">
-                  <img
-                    src={featuredPost.coverImage ?? HERO_IMG}
-                    alt={featuredPost.title}
-                    className="w-full h-full object-cover opacity-60"
-                  />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <div className={`section-label ${getCategoryColor(featuredPost.category)} mb-3`}>{featuredPost.category}</div>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-white group-hover:text-gold mb-4 leading-tight transition-colors duration-200">
-                    {featuredPost.title}
-                  </h2>
-                  <p className="font-body text-white/65 leading-relaxed mb-6">{featuredPost.excerpt}</p>
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="flex items-center gap-1.5 font-mono-data text-xs text-white/40">
-                      <Calendar size={12} /> {formatDate(featuredPost.publishedAt)}
+              <div
+                className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  background: "#ffffff",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)",
+                }}
+              >
+                <div className="grid md:grid-cols-2">
+                  {featuredPost.coverImage && (
+                    <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
+                      <img
+                        src={featuredPost.coverImage}
+                        alt={featuredPost.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+                  <div className="p-8 md:p-10 flex flex-col justify-center">
+                    <p
+                      className="font-body text-xs font-bold tracking-widest uppercase mb-3"
+                      style={{ color: getCategoryColor(featuredPost.category) }}
+                    >
+                      {featuredPost.category}
+                    </p>
+                    <h2
+                      className="font-bold leading-tight mb-4"
+                      style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "1.6rem", color: "#111827" }}
+                    >
+                      {featuredPost.title}
+                    </h2>
+                    <p className="font-body leading-relaxed mb-6" style={{ color: "#4b5563", fontSize: "0.95rem" }}>
+                      {featuredPost.excerpt}
+                    </p>
+                    <div className="flex items-center gap-4 mb-6">
+                      {featuredPost.publishedAt && (
+                        <span className="flex items-center gap-1.5 font-body text-xs" style={{ color: "#9ca3af" }}>
+                          <Calendar size={12} /> {formatDate(featuredPost.publishedAt)}
+                        </span>
+                      )}
+                      {featuredPost.readTime && (
+                        <span className="flex items-center gap-1.5 font-body text-xs" style={{ color: "#9ca3af" }}>
+                          <Clock size={12} /> {featuredPost.readTime}
+                        </span>
+                      )}
+                    </div>
+                    <span className="inline-flex items-center gap-2 font-body font-semibold text-sm" style={{ color: "#b8860b" }}>
+                      Read Full Article <ArrowRight size={14} />
                     </span>
-                    {featuredPost.readTime && (
-                      <span className="flex items-center gap-1.5 font-mono-data text-xs text-white/40">
-                        <Clock size={12} /> {featuredPost.readTime}
-                      </span>
-                    )}
                   </div>
-                  <span className="inline-flex items-center gap-2 text-gold font-body font-medium group w-fit">
-                    Read Full Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
                 </div>
               </div>
             </Link>
           </div>
-        </section>
-      )}
+        )}
 
-      {/* --- CATEGORY FILTER ------------------------------------ */}
-      <section className="py-5 bg-[oklch(0.14_0.05_265)] border-y border-white/10 sticky top-16 md:top-20 z-30">
-        <div className="container">
-          <div className="flex gap-2 overflow-x-auto pb-1">
-            {dynamicCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 px-4 py-2 font-body text-sm rounded-sm border transition-all duration-200 ${
-                  activeCategory === cat
-                    ? "bg-gold text-[oklch(0.12_0.05_265)] border-gold font-semibold"
-                    : "border-white/20 text-white/60 hover:border-gold/40 hover:text-gold"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- POSTS GRID ----------------------------------------- */}
-      <section className="py-14 bg-navy">
-        <div className="container">
+        {/* ── POSTS GRID ────────────────────────────────────────── */}
+        <div className="container py-10 pb-16">
           {isLoading ? (
             <div className="flex items-center justify-center py-24">
-              <Loader2 size={32} className="animate-spin text-gold/50" />
+              <Loader2 size={32} className="animate-spin" style={{ color: "#b8860b" }} />
             </div>
-          ) : posts.length === 0 ? (
+          ) : regularPosts.length === 0 ? (
             <div className="text-center py-24">
-              <p className="font-body text-white/40 text-lg mb-4">No posts published yet.</p>
+              <BookOpen size={48} className="mx-auto mb-4" style={{ color: "#d1cdc7" }} />
+              <p className="font-body text-lg mb-2" style={{ color: "#9ca3af" }}>No posts in this category yet.</p>
+              <p className="font-body text-sm" style={{ color: "#c4bfb8" }}>Check back soon or browse another category.</p>
               {isAdmin && (
                 <Link
-                  href="/admin/blog"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all"
+                  href="/admin"
+                  className="mt-6 inline-flex items-center gap-2 px-6 py-3 font-semibold font-body rounded-full transition-all"
+                  style={{ background: "#111827", color: "#ffffff" }}
                 >
                   <PenLine size={16} />
                   Write the First Post
@@ -193,32 +206,75 @@ export default function Blog() {
               )}
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {regularPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`}>
-                  <article className="flex flex-col p-6 bg-[oklch(0.16_0.05_265)] border border-white/10 rounded-sm h-full cursor-pointer transition-all duration-300 group hover:border-gold/30 hover:shadow-[0_6px_32px_oklch(0.05_0.05_265/0.55)] hover:-translate-y-1">
-                    {post.coverImage && (
-                      <div className="aspect-[16/9] rounded-sm overflow-hidden mb-4 -mx-1">
-                        <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500" />
+                  <article
+                    className="flex flex-col h-full rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 group"
+                    style={{
+                      background: "#ffffff",
+                      boxShadow: "0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05)",
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.07)")}
+                    onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05)")}
+                  >
+                    {post.coverImage ? (
+                      <div className="aspect-[16/9] overflow-hidden">
+                        <img
+                          src={post.coverImage}
+                          alt={post.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className="aspect-[16/9] flex items-center justify-center"
+                        style={{ background: "#f0ece4" }}
+                      >
+                        <BookOpen size={32} style={{ color: "#d1cdc7" }} />
                       </div>
                     )}
-                    <div className={`section-label ${getCategoryColor(post.category)} mb-2`}>{post.category}</div>
-                    <h3 className="font-display text-xl font-bold text-white mb-3 leading-snug group-hover:text-gold transition-colors duration-200 flex-1">
-                      {post.title}
-                    </h3>
-                    <p className="font-body text-sm text-white/60 leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
-                    <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/8">
-                      <div className="flex items-center gap-3">
-                        <span className="flex items-center gap-1.5 font-mono-data text-xs text-white/35">
-                          <Calendar size={11} /> {formatDate(post.publishedAt)}
-                        </span>
-                        {post.readTime && (
-                          <span className="flex items-center gap-1.5 font-mono-data text-xs text-white/35">
-                            <Clock size={11} /> {post.readTime}
-                          </span>
-                        )}
+                    <div className="flex flex-col flex-1 p-6">
+                      <p
+                        className="font-body text-xs font-bold tracking-widest uppercase mb-2"
+                        style={{ color: getCategoryColor(post.category) }}
+                      >
+                        {post.category}
+                      </p>
+                      <h3
+                        className="font-bold leading-snug mb-3 flex-1"
+                        style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "1.1rem", color: "#111827" }}
+                      >
+                        {post.title}
+                      </h3>
+                      <p
+                        className="font-body text-sm leading-relaxed mb-4 line-clamp-2"
+                        style={{ color: "#6b7280" }}
+                      >
+                        {post.excerpt}
+                      </p>
+                      <div
+                        className="flex items-center justify-between pt-4 mt-auto"
+                        style={{ borderTop: "1px solid #f0ece4" }}
+                      >
+                        <div className="flex items-center gap-3">
+                          {post.publishedAt && (
+                            <span className="flex items-center gap-1 font-body text-xs" style={{ color: "#9ca3af" }}>
+                              <Calendar size={11} /> {formatDate(post.publishedAt)}
+                            </span>
+                          )}
+                          {post.readTime && (
+                            <span className="flex items-center gap-1 font-body text-xs" style={{ color: "#9ca3af" }}>
+                              <Clock size={11} /> {post.readTime}
+                            </span>
+                          )}
+                        </div>
+                        <ArrowRight
+                          size={15}
+                          className="transition-all duration-200 group-hover:translate-x-1"
+                          style={{ color: "#d1cdc7" }}
+                        />
                       </div>
-                      <ArrowRight size={15} className="text-white/25 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200" />
                     </div>
                   </article>
                 </Link>
@@ -226,38 +282,34 @@ export default function Blog() {
             </div>
           )}
         </div>
-      </section>
 
-      {/* --- NEWSLETTER ----------------------------------------- */}
-      <section className="py-20 bg-[oklch(0.14_0.05_265)]">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="section-label mb-4">Stay Updated</div>
-            <h2 className="font-display text-3xl font-bold text-white mb-4">
-              Subscribe to the Movement
-            </h2>
-            <p className="font-body text-white/65 leading-relaxed mb-8">
-              Get the latest updates on our projects, governance proposals, and philosophy directly in your inbox. No spam. Unsubscribe anytime.
-            </p>
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-3 bg-[oklch(0.16_0.05_265)] border border-white/20 rounded-sm text-white font-body placeholder:text-white/30 focus:border-gold/50 focus:outline-none transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-gold text-[oklch(0.12_0.05_265)] font-semibold font-body rounded-sm hover:bg-gold-light transition-all duration-200 whitespace-nowrap"
+        {/* ── NEWSLETTER CTA ────────────────────────────────────── */}
+        <div style={{ background: "#111827" }}>
+          <div className="container py-16">
+            <div className="max-w-2xl mx-auto text-center">
+              <p className="font-body text-xs font-bold tracking-widest uppercase mb-4" style={{ color: "#b8860b" }}>Stay Updated</p>
+              <h2
+                className="font-bold mb-4"
+                style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "2rem", color: "#ffffff" }}
               >
-                Subscribe
-              </button>
-            </form>
+                Subscribe to the Movement
+              </h2>
+              <p className="font-body leading-relaxed mb-8" style={{ color: "#9ca3af" }}>
+                Get the latest updates on our projects, governance proposals, and philosophy directly in your inbox. No spam. Unsubscribe anytime.
+              </p>
+              <Link
+                href="/newsletter"
+                className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold font-body rounded-full transition-all duration-200 hover:opacity-90"
+                style={{ background: "#b8860b", color: "#ffffff" }}
+              >
+                View Newsletter Archive
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+
+      </div>{/* end off-white wrapper */}
 
       <Footer />
     </div>

@@ -25,6 +25,7 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const SotilitarianCapitalismSeries = lazy(() => import("./pages/SotilitarianCapitalismSeries"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+const Admin = lazy(() => import("./pages/Admin"));
 const WhitePapers = lazy(() => import("./pages/WhitePapers"));
 const AboutFounder = lazy(() => import("./pages/AboutFounder"));
 const Press = lazy(() => import("./pages/Press"));
@@ -53,6 +54,7 @@ function Router() {
         <Route path="/blog" component={Blog} />
         <Route path="/blog/series/sotilitarian-capitalism" component={SotilitarianCapitalismSeries} />
         <Route path="/blog/:slug" component={BlogPost} />
+        <Route path="/admin" component={Admin} />
         <Route path="/admin/blog" component={AdminBlog} />
         <Route path="/white-papers" component={WhitePapers} />
         <Route path="/about/founder" component={AboutFounder} />

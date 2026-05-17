@@ -6,7 +6,8 @@
  */
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Settings } from "lucide-react";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 const primaryLinks = [
   { href: "/philosophy", label: "Philosophy" },
@@ -79,6 +80,8 @@ export default function Navigation() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const { user } = useAuth();
+  const isAdmin = user?.role === "admin";
   const isActive = (href: string) => location === href;
   const isMoreActive = moreLinks.some(l => location === l.href);
 
@@ -163,6 +166,15 @@ export default function Navigation() {
 
           {/* Right side: Donate + mobile hamburger */}
           <div className="flex items-center gap-3">
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold font-body text-white/60 hover:text-gold border border-white/20 hover:border-gold/40 rounded-sm transition-all duration-200"
+              >
+                <Settings size={12} />
+                Admin
+              </Link>
+            )}
             <Link
               href="/donate"
               className="px-4 py-2 text-sm font-semibold font-body bg-gold text-[oklch(0.12_0.05_265)] rounded-sm hover:bg-gold-light transition-all duration-200 hover:shadow-[0_0_20px_oklch(0.72_0.12_75/0.4)]"

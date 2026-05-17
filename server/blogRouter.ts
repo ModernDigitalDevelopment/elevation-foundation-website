@@ -29,6 +29,7 @@ const postInput = z.object({
   author: z.string().max(256).default("The Elevation Foundation"),
   coverImage: z.string().url().optional().or(z.literal("")),
   published: z.boolean().default(false),
+  featured: z.boolean().default(false),
 });
 
 export const blogRouter = router({

@@ -159,3 +159,12 @@
 - [x] Create /newsletter archive page with issue list, subscribe sidebar, and topics cloud
 - [x] Add Newsletter link to navigation (More dropdown) and footer (Connect section)
 - [x] Add /newsletter route to App.tsx
+
+## Admin Panel & Blog Redesign (May 2026)
+- [x] Redesign Blog list page to off-white card grid matching article page
+- [x] Build /admin panel with Dashboard, Posts, and Subscribers tabs
+- [x] Add deleteSubscriber DB helper and adminProcedure endpoint
+- [x] Add getAdminStats DB helper and adminProcedure endpoint
+- [x] Add featured field to postInput schema in blogRouter
+- [x] Add Admin link to Navigation (visible only to admin users)
+- [x] Add /admin route to App.tsx

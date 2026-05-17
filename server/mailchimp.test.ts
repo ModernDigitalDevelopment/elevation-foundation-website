@@ -4,7 +4,7 @@
  */
 import { describe, it, expect } from "vitest";
 
-const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY ?? "52300d1b241840f8c42e25c35227f337-us6";
+const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY ?? "2759b2c1b6295f6853fe8f035ef8cf3e-us6";
 const MAILCHIMP_LIST_ID = process.env.MAILCHIMP_LIST_ID ?? "8f41419667";
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX ?? "us6";
 

@@ -1,0 +1,112 @@
+{
+  "query": "SELECT id, slug, title, excerpt FROM blog_posts WHERE slug LIKE '%sotilitarian%' OR slug LIKE '%capitalism%' OR title LIKE '%Sotilitarian%' OR title LIKE '%Part I%' OR title LIKE '%Part II%' OR title LIKE '%Part III%' OR title LIKE '%Part IV%' OR title LIKE '%Part V%' ORDER BY id ASC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, slug, title, excerpt FROM blog_posts WHERE slug LIKE '%sotilitarian%' OR slug LIKE '%capitalism%' OR title LIKE '%Sotilitarian%' OR title LIKE '%Part I%' OR title LIKE '%Part II%' OR title LIKE '%Part III%' OR title LIKE '%Part IV%' OR title LIKE '%Part V%' ORDER BY id ASC LIMIT 20;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "sotilitarianism-the-complete-vision-a-new-economic-operating-system",
+      "title": "Sotilitarianism: The Complete Vision — A New Economic Operating System",
+      "excerpt": "The global capitalist system is failing, prioritizing profit over people and driving unprecedented economic disparity and environmental collapse. Sotilitarianism offers a revolutionary economic operating system, leveraging verified utility, radical transparency, and decentralized trust to re-align i"
+    },
+    {
+      "id": "2",
+      "slug": "sotilitarian-economic-framework-dual-lever-model",
+      "title": "The Sotilitarian Economic Framework: Beyond Supply-Side and Demand-Side",
+      "excerpt": "The limitations of conventional economic paradigms have become starkly apparent, leading to persistent economic instability, widening inequality, and a pervasive crisis of trust. Sotilitarianism introduces a revolutionary Dual-Lever Economic Model, transcending these limitations to foster a self-rei"
+    },
+    {
+      "id": "3",
+      "slug": "the-five-layer-technical-architecture-of-sotilitarianism",
+      "title": "The Five-Layer Technical Architecture of Sotilitarianism",
+      "excerpt": "In a world where traditional economic systems perpetuate inequality and environmental degradation, Sotilitarianism offers a radical blueprint: a five-layer technical architecture designed to replace extractive capitalism with a system built on verified utility, radical transparency, and decentralize"
+    },
+    {
+      "id": "6",
+      "slug": "the-sotilitarian-revolt-why-the-system-isnt-broken-its-working-as-designed",
+      "title": "The Sotilitarian Revolt: Why the System Isn\\'t Broken — It\\'s Working as Designed",
+      "excerpt": "The prevailing economic system isn't broken; it's working precisely as designed for extraction. This manifesto introduces Sotilitarianism as a constructive alternative, a revolt not of protest but of building a new economic order based on verified utility, radical transparency, and decentralized tru"
+    },
+    {
+      "id": "7",
+      "slug": "the-sotilitarian-economic-framework-tokenizing-social-value",
+      "title": "The Sotilitarian Economic Framework: Tokenizing Social Value",
+      "excerpt": "Extractive capitalism is failing humanity, perpetuating systemic inequalities and environmental degradation by prioritizing profit over genuine societal well-being. The Sotilitarian Economic Framework offers a revolutionary alternative, leveraging blockchain to build a transparent, decentralized sys"
+    },
+    {
+      "id": "12",
+      "slug": "sotilitarian-capitalism-part-i-the-new-economic-operating-system",
+      "title": "Sotilitarian Capitalism, Part I: The New Economic Operating System",
+      "excerpt": "The global economic engine is not merely stalling—it is actively failing to deliver justice, concentrating wealth while externalizing societal and environmental costs. Sotilitarianism offers a radical alternative, a new economic operating system built on verified utility, radical transparency, and d"
+    },
+    {
+      "id": "13",
+      "slug": "sotilitarian-capitalism-continuous-consent-political-framework",
+      "title": "Sotilitarian Capitalism, Part II: Continuous Consent and the Political Framework",
+      "excerpt": "The traditional model of representative democracy is failing in the information age, creating a critical disconnect between citizens and governance; Sotilitarian Capitalism offers a revolutionary political framework designed for continuous participation and decentralized power."
+    },
+    {
+      "id": "14",
+      "slug": "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture",
+      "title": "Sotilitarian Capitalism, Part III: The Five-Layer Technical Architecture",
+      "excerpt": "Sotilitarian Capitalism introduces a revolutionary Five-Layer Technical Architecture built on a Trust Kernel Stack, ensuring every economic interaction is transparent, verifiable, and aligned with social utility. This integrated system aims to replace extractive capitalism with a community-focused, "
+    },
+    {
+      "id": "15",
+      "slug": "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect",
+      "title": "Sotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect",
+      "excerpt": "The traditional economic system is not merely flawed; it is fundamentally designed to perpetuate inequality and extract value from communities. Sotilitarianism offers a radical alternative, leveraging blockchain to build a new economic order rooted in verified utility and radical transparency, poise"
+    },
+    {
+      "id": "16",
+      "slug": "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate",
+      "title": "Sotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate",
+      "excerpt": "The neoliberal consensus is not just crumbling—it's actively failing humanity, demanding an urgent and radical economic paradigm shift. Sotilitarianism emerges as the definitive third path, transcending the exhausted debates of capitalism and socialism by leveraging blockchain and AI for verified ut"
+    },
+    {
+      "id": "60001",
+      "slug": "sotilitarianism-public-launch-new-economic-operating-system",
+      "title": "We Are Building the New Economic Operating System — And It Is Already Running",
+      "excerpt": "The Elevation Foundation today publicly launches Sotilitarianism — a governance philosophy backed by 20 open-source smart contracts, a peer-reviewed academic paper, and a live DApp. The core innovation: a stablecoin minted from efficiency, not collateral."
+    },
+    {
+      "id": "90003",
+      "slug": "the-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation",
+      "title": "The Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation",
+      "excerpt": "> To use transparency, incentive loops, and AI to redirect capitalism toward collective good — autonomously and at scale."
+    },
+    {
+      "id": "90004",
+      "slug": "sotilitarian-capitalism",
+      "title": "Sotilitarian Capitalism",
+      "excerpt": "- **Chapter 1:** Introduction: The Sotilitarian Vision"
+    },
+    {
+      "id": "90005",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "title": "Sotilitarian Capitalism: Part II — The Economics",
+      "excerpt": "Before examining the Sotilitarian alternative in detail, we must understand the structural limitations that have brought traditional capitalism to its current impasse. The twentieth century saw capitalism triumph as the dominant economic system globally. Its ability to create wea…"
+    },
+    {
+      "id": "90006",
+      "slug": "sotilitarian-capitalism-part-iii-the-politics",
+      "title": "Sotilitarian Capitalism: Part III — The Politics",
+      "excerpt": "As we look beyond the initial implementation of Sotilitarian systems, the true transformative potential emerges in what might be called \"all-chain atomic composability\"—a blockchain of blockchains where interoperability creates a unified ecosystem of transparent value creation an…"
+    },
+    {
+      "id": "90007",
+      "slug": "sotilitarian-capitalism-part-iv-the-technology",
+      "title": "Sotilitarian Capitalism: Part IV — The Technology",
+      "excerpt": "The ubiquitous integration of Sotilitarian systems would generate cascading benefits across economic, social, and political domains. These benefits span from micro-level individual impacts to macro-level systemic transformations."
+    },
+    {
+      "id": "90008",
+      "slug": "the-sotilitarian-revolt",
+      "title": "The Sotilitarian Revolt",
+      "excerpt": "📖 Table of Contents"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\texcerpt\n1\tsotilitarianism-the-complete-vision-a-new-economic-operating-system\tSotilitarianism: The Complete Vision — A New Economic Operating System\tThe global capitalist system is failing, prioritizing profit over people and driving unprecedented economic disparity and environmental collapse. Sotilitarianism offers a revolutionary economic operating system, leveraging verified utility, radical transparency, and decentralized trust to re-align i\n2\tsotilitarian-economic-framework-dual-lever-model\tThe Sotilitarian Economic Framework: Beyond Supply-Side and Demand-Side\tThe limitations of conventional economic paradigms have become starkly apparent, leading to persistent economic instability, widening inequality, and a pervasive crisis of trust. Sotilitarianism introduces a revolutionary Dual-Lever Economic Model, transcending these limitations to foster a self-rei\n3\tthe-five-layer-technical-architecture-of-sotilitarianism\tThe Five-Layer Technical Architecture of Sotilitarianism\tIn a world where traditional economic systems perpetuate inequality and environmental degradation, Sotilitarianism offers a radical blueprint: a five-layer technical architecture designed to replace extractive capitalism with a system built on verified utility, radical transparency, and decentralize\n6\tthe-sotilitarian-revolt-why-the-system-isnt-broken-its-working-as-designed\tThe Sotilitarian Revolt: Why the System Isn\\'t Broken — It\\'s Working as Designed\tThe prevailing economic system isn't broken; it's working precisely as designed for extraction. This manifesto introduces Sotilitarianism as a constructive alternative, a revolt not of protest but of building a new economic order based on verified utility, radical transparency, and decentralized tru\n7\tthe-sotilitarian-economic-framework-tokenizing-social-value\tThe Sotilitarian Economic Framework: Tokenizing Social Value\tExtractive capitalism is failing humanity, perpetuating systemic inequalities and environmental degradation by prioritizing profit over genuine societal well-being. The Sotilitarian Economic Framework offers a revolutionary alternative, leveraging blockchain to build a transparent, decentralized sys\n12\tsotilitarian-capitalism-part-i-the-new-economic-operating-system\tSotilitarian Capitalism, Part I: The New Economic Operating System\tThe global economic engine is not merely stalling—it is actively failing to deliver justice, concentrating wealth while externalizing societal and environmental costs. Sotilitarianism offers a radical alternative, a new economic operating system built on verified utility, radical transparency, and d\n13\tsotilitarian-capitalism-continuous-consent-political-framework\tSotilitarian Capitalism, Part II: Continuous Consent and the Political Framework\tThe traditional model of representative democracy is failing in the information age, creating a critical disconnect between citizens and governance; Sotilitarian Capitalism offers a revolutionary political framework designed for continuous participation and decentralized power.\n14\tsotilitarian-capitalism-part-iii-the-five-layer-technical-architecture\tSotilitarian Capitalism, Part III: The Five-Layer Technical Architecture\tSotilitarian Capitalism introduces a revolutionary Five-Layer Technical Architecture built on a Trust Kernel Stack, ensuring every economic interaction is transparent, verifiable, and aligned with social utility. This integrated system aims to replace extractive capitalism with a community-focused, \n15\tsotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect\tSotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect\tThe traditional economic system is not merely flawed; it is fundamentally designed to perpetuate inequality and extract value from communities. Sotilitarianism offers a radical alternative, leveraging blockchain to build a new economic order rooted in verified utility and radical transparency, poise\n16\tsotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate\tSotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate\tThe neoliberal consensus is not just crumbling—it's actively failing humanity, demanding an urgent and radical economic paradigm shift. Sotilitarianism emerges as the definitive third path, transcending the exhausted debates of capitalism and socialism by leveraging blockchain and AI for verified ut\n60001\tsotilitarianism-public-launch-new-economic-operating-system\tWe Are Building the New Economic Operating System — And It Is Already Running\tThe Elevation Foundation today publicly launches Sotilitarianism — a governance philosophy backed by 20 open-source smart contracts, a peer-reviewed academic paper, and a live DApp. The core innovation: a stablecoin minted from efficiency, not collateral.\n90003\tthe-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation\tThe Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation\t> To use transparency, incentive loops, and AI to redirect capitalism toward collective good — autonomously and at scale.\n90004\tsotilitarian-capitalism\tSotilitarian Capitalism\t- **Chapter 1:** Introduction: The Sotilitarian Vision\n90005\tsotilitarian-capitalism-part-ii-the-economics\tSotilitarian Capitalism: Part II — The Economics\tBefore examining the Sotilitarian alternative in detail, we must understand the structural limitations that have brought traditional capitalism to its current impasse. The twentieth century saw capitalism triumph as the dominant economic system globally. Its ability to create wea…\n90006\tsotilitarian-capitalism-part-iii-the-politics\tSotilitarian Capitalism: Part III — The Politics\tAs we look beyond the initial implementation of Sotilitarian systems, the true transformative potential emerges in what might be called \"all-chain atomic composability\"—a blockchain of blockchains where interoperability creates a unified ecosystem of transparent value creation an…\n90007\tsotilitarian-capitalism-part-iv-the-technology\tSotilitarian Capitalism: Part IV — The Technology\tThe ubiquitous integration of Sotilitarian systems would generate cascading benefits across economic, social, and political domains. These benefits span from micro-level individual impacts to macro-level systemic transformations.\n90008\tthe-sotilitarian-revolt\tThe Sotilitarian Revolt\t📖 Table of Contents\n",
+  "stderr": "",
+  "execution_time_ms": 264
+}

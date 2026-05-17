@@ -1,0 +1,8 @@
+{
+  "query": "SELECT slug, title, excerpt, cover_image FROM blog_posts WHERE slug LIKE '%sotilitarian%' OR slug LIKE '%capitalism%' OR title LIKE '%Sotilitarian%' OR title LIKE '%Part %' ORDER BY id ASC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT slug, title, excerpt, cover_image FROM blog_posts WHERE slug LIKE '%sotilitarian%' OR slug LIKE '%capitalism%' OR title LIKE '%Sotilitarian%' OR title LIKE '%Part %' ORDER BY id ASC LIMIT 20;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'cover_image' in 'field list'"
+  ]
+}

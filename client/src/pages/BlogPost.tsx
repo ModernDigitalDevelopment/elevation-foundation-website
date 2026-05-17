@@ -469,6 +469,8 @@ export default function BlogPost() {
         title={`${post.title} | The Elevation Foundation`}
         description={post.excerpt}
         canonical={`/blog/${post.slug}`}
+        ogImage={post.coverImage || undefined}
+        ogType="article"
         keywords={[
           ...tags,
           "capitalism 2.0",

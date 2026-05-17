@@ -16,7 +16,7 @@ interface SEOHeadProps {
 }
 
 const DEFAULT_OG_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-card-v2-TEXKDEWMfEu3SM7dBodn79.png";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-card-global-v2-AWyWGaADLwUDKd5VRWVKcB.png";
 const SITE_NAME = "The Elevation Foundation";
 const BASE_URL = "https://elevation.foundation";
 

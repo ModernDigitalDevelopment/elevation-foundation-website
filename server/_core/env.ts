@@ -7,4 +7,7 @@ export const ENV = {
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
+  mailchimpApiKey: process.env.MAILCHIMP_API_KEY ?? "",
+  mailchimpListId: process.env.MAILCHIMP_LIST_ID ?? "",
+  mailchimpServerPrefix: process.env.MAILCHIMP_SERVER_PREFIX ?? "us6",
 };

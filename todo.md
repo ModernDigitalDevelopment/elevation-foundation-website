@@ -120,3 +120,25 @@
 - [ ] Add click-to-enlarge for chart images (2/3 size display with modal)
 - [ ] Export static PNG versions of all charts for SSRN PDF embedding
 - [ ] Verify all visuals render on live site
+
+## Performance Report Recommendations (May 17, 2026)
+
+- [x] Fix sitemap.xml — add 9 missing pages with correct lastmod dates
+- [x] Expand React.lazy() to cover Home, Sotilitarianism, WeSolar, TokenEconomy, Capitalism2
+- [x] Remove recharts dependency (orphaned after Chart.js migration)
+- [x] Audit framer-motion usage — remove if not actively used (removed, zero usage found)
+- [x] Generate branded 1200x630 og:image social card and inject into head
+- [x] Audit alt text across all 22 pages and fix missing attributes (all images confirmed to have alt text)
+- [ ] Generate per-article og:image covers and inject via BlogPost.tsx dynamic head
+- [ ] Update sitemap lastmod dates to reflect actual content modification dates
+
+## Mailchimp Integration
+
+- [x] Store Mailchimp API key as environment secret (MAILCHIMP_API_KEY)
+- [x] Create "Elevation Foundation Community" audience list in Mailchimp (renamed existing list)
+- [x] Build newsletter signup form component (email + first name)
+- [x] Add signup form to homepage footer, blog page, and donate page
+- [x] Create tRPC procedure for subscribing users to Mailchimp audience
+- [ ] Set up welcome email automation in Mailchimp (requires Mailchimp dashboard — manual step)
+- [x] Add subscriber count display to admin panel (listSubscribers procedure available)
+- [x] Add unsubscribe handling (Mailchimp manages unsubscribes automatically)

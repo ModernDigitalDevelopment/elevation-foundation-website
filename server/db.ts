@@ -1,7 +1,7 @@
 import { and, desc, eq, like, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { BlogPost, InsertBlogPost, InsertUser, NewsletterSubscriber, blogPosts, newsletterSubscribers, users } from "../drizzle/schema";
-import { ENV } from './_core/env';
+import { ENV } from "./_core/env";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -211,6 +211,36 @@ export async function subscribeEmail(email: string, firstName?: string, source?:
     source: source ?? "website",
     confirmed: true,
   });
+
+  // Sync to Mailchimp in background (non-blocking — don't fail the signup if Mailchimp is down)
+  if (ENV.mailchimpApiKey && ENV.mailchimpListId) {
+    const mcBody = JSON.stringify({
+      email_address: normalised,
+      status: "subscribed",
+      merge_fields: firstName?.trim() ? { FNAME: firstName.trim() } : {},
+    });
+    fetch(
+      `https://${ENV.mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${ENV.mailchimpListId}/members`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Basic ${Buffer.from(`anystring:${ENV.mailchimpApiKey}`).toString("base64")}`,
+        },
+        body: mcBody,
+      }
+    )
+      .then(async (r) => {
+        if (!r.ok) {
+          const err = await r.json().catch(() => ({}));
+          // 400 with title "Member Exists" is fine — already in Mailchimp
+          if ((err as { title?: string }).title !== "Member Exists") {
+            console.warn("[Mailchimp] Sync warning:", (err as { detail?: string }).detail ?? r.status);
+          }
+        }
+      })
+      .catch((e) => console.warn("[Mailchimp] Sync error:", e));
+  }
 
   return { alreadySubscribed: false };
 }

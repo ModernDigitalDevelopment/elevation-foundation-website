@@ -26,6 +26,7 @@ const moreLinks = [
   { href: "/about/founder", label: "About" },
   { href: "/press", label: "Press" },
   { href: "/media-kit", label: "Media Kit" },
+  { href: "/newsletter", label: "Newsletter" },
 ];
 
 const allMobileLinks = [...primaryLinks, ...moreLinks];

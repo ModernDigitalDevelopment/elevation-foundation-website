@@ -93,6 +93,7 @@ export default function Footer() {
                 { href: "/donate", label: "Donate" },
                 { href: "/blog", label: "Blog & Updates" },
                 { href: "/press", label: "Press & Media" },
+                { href: "/newsletter", label: "Newsletter Archive" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-white/60 hover:text-gold text-sm font-body transition-colors">

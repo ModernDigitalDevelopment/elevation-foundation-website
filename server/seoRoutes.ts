@@ -26,6 +26,13 @@ const STATIC_ROUTES: Array<{ path: string; changefreq: string; priority: string;
   { path: "/get-involved",      changefreq: "monthly", priority: "0.75" },
   { path: "/donate",            changefreq: "monthly", priority: "0.7"  },
   { path: "/about/founder",     changefreq: "monthly", priority: "0.7"  },
+  { path: "/newsletter",         changefreq: "weekly",  priority: "0.75" },
+  { path: "/token-economy",      changefreq: "monthly", priority: "0.7"  },
+  { path: "/capitalism-2-0",     changefreq: "monthly", priority: "0.7"  },
+  { path: "/for-funders",        changefreq: "monthly", priority: "0.65" },
+  { path: "/media-kit",          changefreq: "monthly", priority: "0.6"  },
+  { path: "/press",              changefreq: "monthly", priority: "0.65" },
+  { path: "/wesolar",            changefreq: "monthly", priority: "0.75" },
 ];
 
 function escapeXml(str: string): string {

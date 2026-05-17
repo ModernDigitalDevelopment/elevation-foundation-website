@@ -24,13 +24,13 @@ describe("Mailchimp Integration", () => {
       { headers: { Authorization: authHeader } }
     );
     if (res.status === 401) {
-      console.warn("\u26a0\ufe0f  Mailchimp API key is invalid or revoked in test env \u2014 skipping");
+      console.warn("⚠️  Mailchimp API key is invalid or revoked in test env — skipping");
       return;
     }
     expect(res.status).toBe(200);
     const data = await res.json() as { account_name?: string };
     expect(data.account_name).toBeTruthy();
-  });
+  }, 15000);
 
   it.skipIf(!hasKey)("should fetch the Elevation Foundation Community audience list", async () => {
     const res = await fetch(

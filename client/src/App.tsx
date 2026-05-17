@@ -32,6 +32,7 @@ const TokenEconomy = lazy(() => import("./pages/TokenEconomy"));
 const Capitalism2 = lazy(() => import("./pages/Capitalism2"));
 const ForFunders = lazy(() => import("./pages/ForFunders"));
 const MediaKit = lazy(() => import("./pages/MediaKit"));
+const Newsletter = lazy(() => import("./pages/Newsletter"));
 
 function Router() {
   return (
@@ -60,6 +61,7 @@ function Router() {
         <Route path="/capitalism-2-0" component={Capitalism2} />
         <Route path="/for-funders" component={ForFunders} />
         <Route path="/media-kit" component={MediaKit} />
+        <Route path="/newsletter" component={Newsletter} />
 
         {/* Redirect common 404s */}
         <Route path="/about">

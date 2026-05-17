@@ -152,3 +152,10 @@
 - [ ] Add sticky social sharing buttons to all blog posts
 - [ ] Create /media-kit page with brand assets, og:images, logos, and downloadable resources
 - [ ] Add /media-kit to sitemap.xml and navigation
+
+## Newsletter Archive & Image Fixes (May 17, 2026)
+- [x] Fix IntersectionObserver threshold (0.15 → 0.05) so mission/community sections animate in correctly
+- [x] Add rootMargin to IntersectionObserver to pre-trigger animations before element is fully in view
+- [x] Create /newsletter archive page with issue list, subscribe sidebar, and topics cloud
+- [x] Add Newsletter link to navigation (More dropdown) and footer (Connect section)
+- [x] Add /newsletter route to App.tsx

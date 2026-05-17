@@ -244,7 +244,7 @@ function ParticleField() {
 }
 
 // ─── Intersection observer for scroll-triggered animations ──────────────────
-function useFadeIn(threshold = 0.15) {
+function useFadeIn(threshold = 0.05) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -252,7 +252,7 @@ function useFadeIn(threshold = 0.15) {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
+      { threshold, rootMargin: "0px 0px -50px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();

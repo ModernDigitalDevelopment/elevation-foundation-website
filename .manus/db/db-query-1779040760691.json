@@ -1,0 +1,73 @@
+{
+  "query": "SELECT id, title, slug, category, CASE WHEN coverImage IS NULL OR coverImage = '' THEN 'MISSING' ELSE 'HAS_IMAGE' END as img_status FROM blog_posts WHERE id > 17 ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, title, slug, category, CASE WHEN coverImage IS NULL OR coverImage = '' THEN 'MISSING' ELSE 'HAS_IMAGE' END as img_status FROM blog_posts WHERE id > 17 ORDER BY id;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Tokenized Transparency: How Efficiency Becomes Money",
+      "slug": "tokenized-transparency-efficiency-yield-sst-mint-mechanism",
+      "category": "Philosophy",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "60001",
+      "title": "We Are Building the New Economic Operating System — And It Is Already Running",
+      "slug": "sotilitarianism-public-launch-new-economic-operating-system",
+      "category": "Announcement",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "90001",
+      "title": "The Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It",
+      "slug": "efficiency-backed-stablecoin-sst-mechanism-explained",
+      "category": "Research",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "90003",
+      "title": "The Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation",
+      "slug": "the-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation",
+      "category": "Philosophy",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "90004",
+      "title": "Sotilitarian Capitalism",
+      "slug": "sotilitarian-capitalism",
+      "category": "Philosophy",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "90005",
+      "title": "Sotilitarian Capitalism: Part II — The Economics",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "category": "Philosophy",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "90006",
+      "title": "Sotilitarian Capitalism: Part III — The Politics",
+      "slug": "sotilitarian-capitalism-part-iii-the-politics",
+      "category": "Governance",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "90007",
+      "title": "Sotilitarian Capitalism: Part IV — The Technology",
+      "slug": "sotilitarian-capitalism-part-iv-the-technology",
+      "category": "Technology",
+      "img_status": "MISSING"
+    },
+    {
+      "id": "90008",
+      "title": "The Sotilitarian Revolt",
+      "slug": "the-sotilitarian-revolt",
+      "category": "Philosophy",
+      "img_status": "MISSING"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tcategory\timg_status\n30001\tTokenized Transparency: How Efficiency Becomes Money\ttokenized-transparency-efficiency-yield-sst-mint-mechanism\tPhilosophy\tMISSING\n60001\tWe Are Building the New Economic Operating System — And It Is Already Running\tsotilitarianism-public-launch-new-economic-operating-system\tAnnouncement\tMISSING\n90001\tThe Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It\tefficiency-backed-stablecoin-sst-mechanism-explained\tResearch\tMISSING\n90003\tThe Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation\tthe-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation\tPhilosophy\tMISSING\n90004\tSotilitarian Capitalism\tsotilitarian-capitalism\tPhilosophy\tMISSING\n90005\tSotilitarian Capitalism: Part II — The Economics\tsotilitarian-capitalism-part-ii-the-economics\tPhilosophy\tMISSING\n90006\tSotilitarian Capitalism: Part III — The Politics\tsotilitarian-capitalism-part-iii-the-politics\tGovernance\tMISSING\n90007\tSotilitarian Capitalism: Part IV — The Technology\tsotilitarian-capitalism-part-iv-the-technology\tTechnology\tMISSING\n90008\tThe Sotilitarian Revolt\tthe-sotilitarian-revolt\tPhilosophy\tMISSING\n",
+  "stderr": "",
+  "execution_time_ms": 266
+}

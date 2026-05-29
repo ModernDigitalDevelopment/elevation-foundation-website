@@ -1,0 +1,64 @@
+{
+  "query": "SELECT id, slug, title, coverImage FROM blog_posts WHERE id > 17 ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, slug, title, coverImage FROM blog_posts WHERE id > 17 ORDER BY id;",
+  "rows": [
+    {
+      "id": "30001",
+      "slug": "tokenized-transparency-efficiency-yield-sst-mint-mechanism",
+      "title": "Tokenized Transparency: How Efficiency Becomes Money",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "60001",
+      "slug": "sotilitarianism-public-launch-new-economic-operating-system",
+      "title": "We Are Building the New Economic Operating System — And It Is Already Running",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90001",
+      "slug": "efficiency-backed-stablecoin-sst-mechanism-explained",
+      "title": "The Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90003",
+      "slug": "the-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation",
+      "title": "The Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90004",
+      "slug": "sotilitarian-capitalism",
+      "title": "Sotilitarian Capitalism",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90005",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "title": "Sotilitarian Capitalism: Part II — The Economics",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90006",
+      "slug": "sotilitarian-capitalism-part-iii-the-politics",
+      "title": "Sotilitarian Capitalism: Part III — The Politics",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90007",
+      "slug": "sotilitarian-capitalism-part-iv-the-technology",
+      "title": "Sotilitarian Capitalism: Part IV — The Technology",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90008",
+      "slug": "the-sotilitarian-revolt",
+      "title": "The Sotilitarian Revolt",
+      "coverImage": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\tcoverImage\n30001\ttokenized-transparency-efficiency-yield-sst-mint-mechanism\tTokenized Transparency: How Efficiency Becomes Money\tNULL\n60001\tsotilitarianism-public-launch-new-economic-operating-system\tWe Are Building the New Economic Operating System — And It Is Already Running\tNULL\n90001\tefficiency-backed-stablecoin-sst-mechanism-explained\tThe Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It\tNULL\n90003\tthe-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation\tThe Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation\tNULL\n90004\tsotilitarian-capitalism\tSotilitarian Capitalism\tNULL\n90005\tsotilitarian-capitalism-part-ii-the-economics\tSotilitarian Capitalism: Part II — The Economics\tNULL\n90006\tsotilitarian-capitalism-part-iii-the-politics\tSotilitarian Capitalism: Part III — The Politics\tNULL\n90007\tsotilitarian-capitalism-part-iv-the-technology\tSotilitarian Capitalism: Part IV — The Technology\tNULL\n90008\tthe-sotilitarian-revolt\tThe Sotilitarian Revolt\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 269
+}

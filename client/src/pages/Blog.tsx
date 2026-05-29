@@ -99,11 +99,11 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* ── OFF-WHITE CONTENT AREA ──────────────────────────────── */}
-      <div style={{ background: "#f5f5f2" }}>
+      {/* ── DARK NAVY CONTENT AREA ──────────────────────────────── */}
+      <div className="bg-navy">
 
         {/* ── CATEGORY FILTER ───────────────────────────────────── */}
-        <div className="sticky top-16 md:top-20 z-30 border-b" style={{ background: "#f5f5f2", borderColor: "#e5e0d8" }}>
+        <div className="sticky top-16 md:top-20 z-30 border-b border-white/10 bg-[oklch(0.12_0.05_265/0.97)] backdrop-blur-md">
           <div className="container py-4">
             <div className="flex gap-2 overflow-x-auto pb-1">
               {dynamicCategories.map((cat) => (
@@ -112,8 +112,8 @@ export default function Blog() {
                   onClick={() => setActiveCategory(cat)}
                   className="flex-shrink-0 px-4 py-2 font-body text-sm rounded-full border transition-all duration-200"
                   style={activeCategory === cat
-                    ? { background: "#111827", color: "#ffffff", borderColor: "#111827", fontWeight: 600 }
-                    : { background: "transparent", color: "#6b7280", borderColor: "#d1cdc7" }
+                    ? { background: "oklch(0.72 0.12 75)", color: "oklch(0.12 0.05 265)", borderColor: "oklch(0.72 0.12 75)", fontWeight: 600 }
+                    : { background: "transparent", color: "rgba(255,255,255,0.55)", borderColor: "rgba(255,255,255,0.15)" }
                   }
                 >
                   {cat}
@@ -126,7 +126,7 @@ export default function Blog() {
         {/* ── FEATURED POST ─────────────────────────────────────── */}
         {activeCategory === "All" && featuredPost && !isLoading && (
           <div className="container pt-10 pb-4">
-            <p className="font-body text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "#9ca3af" }}>Featured</p>
+            <p className="font-body text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "oklch(0.72 0.12 75)" }}>Featured</p>
             <Link href={`/blog/${featuredPost.slug}`}>
               <div
                 className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1"
@@ -284,7 +284,7 @@ export default function Blog() {
         </div>
 
         {/* ── NEWSLETTER CTA ────────────────────────────────────── */}
-        <div style={{ background: "#111827" }}>
+        <div className="border-t border-white/10">
           <div className="container py-16">
             <div className="max-w-2xl mx-auto text-center">
               <p className="font-body text-xs font-bold tracking-widest uppercase mb-4" style={{ color: "#b8860b" }}>Stay Updated</p>
@@ -294,7 +294,7 @@ export default function Blog() {
               >
                 Subscribe to the Movement
               </h2>
-              <p className="font-body leading-relaxed mb-8" style={{ color: "#9ca3af" }}>
+              <p className="font-body leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.6)" }}>
                 Get the latest updates on our projects, governance proposals, and philosophy directly in your inbox. No spam. Unsubscribe anytime.
               </p>
               <Link

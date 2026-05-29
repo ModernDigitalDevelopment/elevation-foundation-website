@@ -1,0 +1,142 @@
+{
+  "query": "SELECT id, slug, title, coverImage FROM blog_posts ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, slug, title, coverImage FROM blog_posts ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "sotilitarianism-the-complete-vision-a-new-economic-operating-system",
+      "title": "Sotilitarianism: The Complete Vision — A New Economic Operating System",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "2",
+      "slug": "sotilitarian-economic-framework-dual-lever-model",
+      "title": "The Sotilitarian Economic Framework: Beyond Supply-Side and Demand-Side",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "3",
+      "slug": "the-five-layer-technical-architecture-of-sotilitarianism",
+      "title": "The Five-Layer Technical Architecture of Sotilitarianism",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "4",
+      "slug": "smart-contracts-as-social-infrastructure-the-sotility-contract-suite",
+      "title": "Smart Contracts as Social Infrastructure: The Sotility Contract Suite",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "6",
+      "slug": "the-sotilitarian-revolt-why-the-system-isnt-broken-its-working-as-designed",
+      "title": "The Sotilitarian Revolt: Why the System Isn\\'t Broken — It\\'s Working as Designed",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "7",
+      "slug": "the-sotilitarian-economic-framework-tokenizing-social-value",
+      "title": "The Sotilitarian Economic Framework: Tokenizing Social Value",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "11",
+      "slug": "transparently-blockchain-governance-dapp-democracy-legible",
+      "title": "Transparently: The Blockchain Governance DApp That Makes Democracy Legible",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "12",
+      "slug": "sotilitarian-capitalism-part-i-the-new-economic-operating-system",
+      "title": "Sotilitarian Capitalism, Part I: The New Economic Operating System",
+      "coverImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-1-iDPqrgM39bqDBeACvptKBV.png"
+    },
+    {
+      "id": "13",
+      "slug": "sotilitarian-capitalism-continuous-consent-political-framework",
+      "title": "Sotilitarian Capitalism, Part II: Continuous Consent and the Political Framework",
+      "coverImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-2-azQmSst3ZfqgkxX9jCQ5Cv.png"
+    },
+    {
+      "id": "14",
+      "slug": "sotilitarian-capitalism-part-iii-the-five-layer-technical-architecture",
+      "title": "Sotilitarian Capitalism, Part III: The Five-Layer Technical Architecture",
+      "coverImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-3-mMV44N47jmxXmLLHpxJCzY.png"
+    },
+    {
+      "id": "15",
+      "slug": "sotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect",
+      "title": "Sotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect",
+      "coverImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-4-AFxBm3jZzmNA3thDrkVKLq.png"
+    },
+    {
+      "id": "16",
+      "slug": "sotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate",
+      "title": "Sotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate",
+      "coverImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-5-cgreTM2tsohbiAgNSUaAgw.png"
+    },
+    {
+      "id": "17",
+      "slug": "wesolar-decentralized-solar-energy-for-communities-that-were-left-behind",
+      "title": "WeSolar: Decentralized Solar Energy for Communities That Were Left Behind",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "30001",
+      "slug": "tokenized-transparency-efficiency-yield-sst-mint-mechanism",
+      "title": "Tokenized Transparency: How Efficiency Becomes Money",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "60001",
+      "slug": "sotilitarianism-public-launch-new-economic-operating-system",
+      "title": "We Are Building the New Economic Operating System — And It Is Already Running",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90001",
+      "slug": "efficiency-backed-stablecoin-sst-mechanism-explained",
+      "title": "The Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90003",
+      "slug": "the-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation",
+      "title": "The Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90004",
+      "slug": "sotilitarian-capitalism",
+      "title": "Sotilitarian Capitalism",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90005",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "title": "Sotilitarian Capitalism: Part II — The Economics",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90006",
+      "slug": "sotilitarian-capitalism-part-iii-the-politics",
+      "title": "Sotilitarian Capitalism: Part III — The Politics",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90007",
+      "slug": "sotilitarian-capitalism-part-iv-the-technology",
+      "title": "Sotilitarian Capitalism: Part IV — The Technology",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "90008",
+      "slug": "the-sotilitarian-revolt",
+      "title": "The Sotilitarian Revolt",
+      "coverImage": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\tcoverImage\n1\tsotilitarianism-the-complete-vision-a-new-economic-operating-system\tSotilitarianism: The Complete Vision — A New Economic Operating System\tNULL\n2\tsotilitarian-economic-framework-dual-lever-model\tThe Sotilitarian Economic Framework: Beyond Supply-Side and Demand-Side\tNULL\n3\tthe-five-layer-technical-architecture-of-sotilitarianism\tThe Five-Layer Technical Architecture of Sotilitarianism\tNULL\n4\tsmart-contracts-as-social-infrastructure-the-sotility-contract-suite\tSmart Contracts as Social Infrastructure: The Sotility Contract Suite\tNULL\n6\tthe-sotilitarian-revolt-why-the-system-isnt-broken-its-working-as-designed\tThe Sotilitarian Revolt: Why the System Isn\\'t Broken — It\\'s Working as Designed\tNULL\n7\tthe-sotilitarian-economic-framework-tokenizing-social-value\tThe Sotilitarian Economic Framework: Tokenizing Social Value\tNULL\n11\ttransparently-blockchain-governance-dapp-democracy-legible\tTransparently: The Blockchain Governance DApp That Makes Democracy Legible\tNULL\n12\tsotilitarian-capitalism-part-i-the-new-economic-operating-system\tSotilitarian Capitalism, Part I: The New Economic Operating System\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-1-iDPqrgM39bqDBeACvptKBV.png\n13\tsotilitarian-capitalism-continuous-consent-political-framework\tSotilitarian Capitalism, Part II: Continuous Consent and the Political Framework\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-2-azQmSst3ZfqgkxX9jCQ5Cv.png\n14\tsotilitarian-capitalism-part-iii-the-five-layer-technical-architecture\tSotilitarian Capitalism, Part III: The Five-Layer Technical Architecture\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-3-mMV44N47jmxXmLLHpxJCzY.png\n15\tsotilitarian-capitalism-part-4-implementation-strategy-trojan-horse-effect\tSotilitarian Capitalism, Part IV: Implementation Strategy — The Trojan Horse Effect\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-4-AFxBm3jZzmNA3thDrkVKLq.png\n16\tsotilitarian-capitalism-part-v-future-of-economics-beyond-binary-debate\tSotilitarian Capitalism, Part V: The Future of Economics — Beyond the Binary Debate\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/og-sotilitarian-part-5-cgreTM2tsohbiAgNSUaAgw.png\n17\twesolar-decentralized-solar-energy-for-communities-that-were-left-behind\tWeSolar: Decentralized Solar Energy for Communities That Were Left Behind\tNULL\n30001\ttokenized-transparency-efficiency-yield-sst-mint-mechanism\tTokenized Transparency: How Efficiency Becomes Money\tNULL\n60001\tsotilitarianism-public-launch-new-economic-operating-system\tWe Are Building the New Economic Operating System — And It Is Already Running\tNULL\n90001\tefficiency-backed-stablecoin-sst-mechanism-explained\tThe Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It\tNULL\n90003\tthe-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation\tThe Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation\tNULL\n90004\tsotilitarian-capitalism\tSotilitarian Capitalism\tNULL\n90005\tsotilitarian-capitalism-part-ii-the-economics\tSotilitarian Capitalism: Part II — The Economics\tNULL\n90006\tsotilitarian-capitalism-part-iii-the-politics\tSotilitarian Capitalism: Part III — The Politics\tNULL\n90007\tsotilitarian-capitalism-part-iv-the-technology\tSotilitarian Capitalism: Part IV — The Technology\tNULL\n90008\tthe-sotilitarian-revolt\tThe Sotilitarian Revolt\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 285
+}

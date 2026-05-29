@@ -1,0 +1,80 @@
+{
+  "query": "SELECT id, title, slug, category, tags FROM blog_posts WHERE (coverImage IS NULL OR coverImage = '') AND published = 1 AND id > 11 ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BUNDYZXMzaF4ZE.1891734027c4 --database bsTCA4Lcv6kDbDVEJYib7X --execute SELECT id, title, slug, category, tags FROM blog_posts WHERE (coverImage IS NULL OR coverImage = '') AND published = 1 AND id > 11 ORDER BY id;",
+  "rows": [
+    {
+      "id": "17",
+      "title": "WeSolar: Decentralized Solar Energy for Communities That Were Left Behind",
+      "slug": "wesolar-decentralized-solar-energy-for-communities-that-were-left-behind",
+      "category": "General",
+      "tags": "[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\",\"WeSolar\",\"WeSol Token\",\"VeChain\",\"IOTA\",\"DePIN\",\"AI-driven smart contracts\",\"energy optimization\",\"community solar\"]"
+    },
+    {
+      "id": "30001",
+      "title": "Tokenized Transparency: How Efficiency Becomes Money",
+      "slug": "tokenized-transparency-efficiency-yield-sst-mint-mechanism",
+      "category": "Philosophy",
+      "tags": "tokenized transparency,SST,stable token,trust tech,smart contracts,efficiency yield,Sotilitarianism,monetary theory"
+    },
+    {
+      "id": "60001",
+      "title": "We Are Building the New Economic Operating System — And It Is Already Running",
+      "slug": "sotilitarianism-public-launch-new-economic-operating-system",
+      "category": "Announcement",
+      "tags": "[\"Sotilitarianism\",\"Press Release\",\"Blockchain\",\"Governance\",\"SST\",\"Transparently\",\"Launch\"]"
+    },
+    {
+      "id": "90001",
+      "title": "The Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It",
+      "slug": "efficiency-backed-stablecoin-sst-mechanism-explained",
+      "category": "Research",
+      "tags": "Sotilitarianism,Stablecoin,DeFi,Blockchain Economics,SST,Klarity,Ethereum Foundation ESP"
+    },
+    {
+      "id": "90003",
+      "title": "The Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation",
+      "slug": "the-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation",
+      "category": "Philosophy",
+      "tags": "Sotilitarianism,manifesto,capitalism 2.0,social capitalism,utilitarian capitalism,transparent economics"
+    },
+    {
+      "id": "90004",
+      "title": "Sotilitarian Capitalism",
+      "slug": "sotilitarian-capitalism",
+      "category": "Philosophy",
+      "tags": "Sotilitarianism,capitalism 2.0,social capitalism,utilitarian capitalism,transparent economics,series"
+    },
+    {
+      "id": "90005",
+      "title": "Sotilitarian Capitalism: Part II — The Economics",
+      "slug": "sotilitarian-capitalism-part-ii-the-economics",
+      "category": "Philosophy",
+      "tags": "Sotilitarianism,capitalism 2.0,DeFi,community finance,token economy,series"
+    },
+    {
+      "id": "90006",
+      "title": "Sotilitarian Capitalism: Part III — The Politics",
+      "slug": "sotilitarian-capitalism-part-iii-the-politics",
+      "category": "Governance",
+      "tags": "Sotilitarianism,governance,blockchain governance,community sovereignty,series"
+    },
+    {
+      "id": "90007",
+      "title": "Sotilitarian Capitalism: Part IV — The Technology",
+      "slug": "sotilitarian-capitalism-part-iv-the-technology",
+      "category": "Technology",
+      "tags": "Sotilitarianism,blockchain,smart contracts,Transparently,DeFi,series"
+    },
+    {
+      "id": "90008",
+      "title": "The Sotilitarian Revolt",
+      "slug": "the-sotilitarian-revolt",
+      "category": "Philosophy",
+      "tags": "Sotilitarianism,revolt,capitalism 2.0,social capitalism,economic empowerment,transparency tech"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tcategory\ttags\n17\tWeSolar: Decentralized Solar Energy for Communities That Were Left Behind\twesolar-decentralized-solar-energy-for-communities-that-were-left-behind\tGeneral\t[\"capitalism 2.0\",\"social capitalism\",\"utilitarian capitalism\",\"transparent economics\",\"trust tech\",\"transparency tech\",\"sotilitarian capitalism\",\"participatory economics\",\"cooperative economics\",\"solidarity economics\",\"blockchain governance\",\"community finance\",\"DeFi\",\"decentralized autonomous organization\",\"DAO\",\"proof of utility\",\"liquid democracy\",\"WeSolar\",\"WeSol Token\",\"VeChain\",\"IOTA\",\"DePIN\",\"AI-driven smart contracts\",\"energy optimization\",\"community solar\"]\n30001\tTokenized Transparency: How Efficiency Becomes Money\ttokenized-transparency-efficiency-yield-sst-mint-mechanism\tPhilosophy\ttokenized transparency,SST,stable token,trust tech,smart contracts,efficiency yield,Sotilitarianism,monetary theory\n60001\tWe Are Building the New Economic Operating System — And It Is Already Running\tsotilitarianism-public-launch-new-economic-operating-system\tAnnouncement\t[\"Sotilitarianism\",\"Press Release\",\"Blockchain\",\"Governance\",\"SST\",\"Transparently\",\"Launch\"]\n90001\tThe Efficiency-Backed Stablecoin: Why SST Is Different From Every Stablecoin That Came Before It\tefficiency-backed-stablecoin-sst-mechanism-explained\tResearch\tSotilitarianism,Stablecoin,DeFi,Blockchain Economics,SST,Klarity,Ethereum Foundation ESP\n90003\tThe Sotilitarian Manifesto: A Comprehensive Framework for Decentralized Economic Transformation\tthe-sotilitarian-manifesto-a-comprehensive-framework-for-decentralized-economic-transformation\tPhilosophy\tSotilitarianism,manifesto,capitalism 2.0,social capitalism,utilitarian capitalism,transparent economics\n90004\tSotilitarian Capitalism\tsotilitarian-capitalism\tPhilosophy\tSotilitarianism,capitalism 2.0,social capitalism,utilitarian capitalism,transparent economics,series\n90005\tSotilitarian Capitalism: Part II — The Economics\tsotilitarian-capitalism-part-ii-the-economics\tPhilosophy\tSotilitarianism,capitalism 2.0,DeFi,community finance,token economy,series\n90006\tSotilitarian Capitalism: Part III — The Politics\tsotilitarian-capitalism-part-iii-the-politics\tGovernance\tSotilitarianism,governance,blockchain governance,community sovereignty,series\n90007\tSotilitarian Capitalism: Part IV — The Technology\tsotilitarian-capitalism-part-iv-the-technology\tTechnology\tSotilitarianism,blockchain,smart contracts,Transparently,DeFi,series\n90008\tThe Sotilitarian Revolt\tthe-sotilitarian-revolt\tPhilosophy\tSotilitarianism,revolt,capitalism 2.0,social capitalism,economic empowerment,transparency tech\n",
+  "stderr": "",
+  "execution_time_ms": 260
+}

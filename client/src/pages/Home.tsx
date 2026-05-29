@@ -27,8 +27,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const SSRN_URL = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798";
 const HERO_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663269003011/GZvjNIQjEGBIFXsV.png";
-const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/community-bg-RdFx47xnXRjkf2fcLDsprJ.png";
-const TOKEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/token-economy-Lg7aNHvZZDFY3tPRPfZhDn.png";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 const stats = [
@@ -689,32 +687,39 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Image panel */}
-            <div className="relative">
-              <div className="relative rounded-sm overflow-hidden aspect-[4/3]">
-                <img
-                  src={COMMUNITY_IMG}
-                  alt="Community members collaborating around a shared governance platform"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-                {/* Vignette overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-                {/* Side accent line */}
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gold/50 to-transparent" />
+            {/* Data panel — replaces image */}
+            <div className="space-y-4">
+              {/* Blockquote */}
+              <div className="relative bg-[oklch(0.14_0.05_265)] border border-gold/25 p-7 rounded-sm overflow-hidden">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-gold via-gold/50 to-transparent" />
+                <p className="font-display text-xl font-bold text-white leading-snug mb-3 pl-4">
+                  "The system was not built for us. So we are building our own."
+                </p>
+                <p className="font-mono-data text-[11px] uppercase tracking-widest text-gold/60 pl-4">— Cornelius Lawrence, Founder</p>
               </div>
 
-              {/* Floating philosophy badge */}
-              <div className="absolute -bottom-5 -left-5 bg-[oklch(0.13_0.05_265)] border border-gold/35 p-5 rounded-sm glow-gold max-w-[220px]">
-                <div className="font-mono-data text-[10px] text-gold/60 uppercase tracking-widest mb-1.5">Core Philosophy</div>
-                <div className="font-display text-xl font-bold text-white mb-1">Sotilitarianism</div>
-                <div className="font-body text-xs text-white/55 leading-relaxed">Make blockchain invisible. Make impact inevitable.</div>
-              </div>
-
-              {/* Stat overlay — top right */}
-              <div className="absolute -top-4 -right-4 bg-[oklch(0.14_0.05_265)] border border-teal/30 px-4 py-3 rounded-sm">
-                <div className="font-mono-data text-[10px] text-teal/60 uppercase tracking-widest mb-0.5">Live On-Chain</div>
-                <div className="font-display text-2xl font-bold text-teal">20+</div>
-                <div className="font-mono-data text-[10px] text-white/40">Smart Contracts</div>
+              {/* Stat grid */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-[oklch(0.14_0.05_265)] border border-teal/25 p-5 rounded-sm">
+                  <div className="font-mono-data text-[10px] text-teal/60 uppercase tracking-widest mb-1.5">Live On-Chain</div>
+                  <div className="font-display text-3xl font-bold text-teal mb-1">20+</div>
+                  <div className="font-body text-xs text-white/45">Smart contracts deployed across three flagship projects</div>
+                </div>
+                <div className="bg-[oklch(0.14_0.05_265)] border border-gold/25 p-5 rounded-sm">
+                  <div className="font-mono-data text-[10px] text-gold/60 uppercase tracking-widest mb-1.5">Legal Status</div>
+                  <div className="font-display text-3xl font-bold text-gold mb-1">501(c)(3)</div>
+                  <div className="font-body text-xs text-white/45">Tax-exempt nonprofit · Wyoming DUNA framework</div>
+                </div>
+                <div className="bg-[oklch(0.14_0.05_265)] border border-white/12 p-5 rounded-sm">
+                  <div className="font-mono-data text-[10px] text-white/40 uppercase tracking-widest mb-1.5">Philosophy</div>
+                  <div className="font-display text-xl font-bold text-white mb-1">Sotilitarianism</div>
+                  <div className="font-body text-xs text-white/45">Make blockchain invisible. Make impact inevitable.</div>
+                </div>
+                <div className="bg-[oklch(0.14_0.05_265)] border border-crimson/25 p-5 rounded-sm">
+                  <div className="font-mono-data text-[10px] text-crimson/60 uppercase tracking-widest mb-1.5">Token Economy</div>
+                  <div className="font-display text-3xl font-bold text-crimson mb-1">3</div>
+                  <div className="font-body text-xs text-white/45">Interlocking tokens: SOT · SUG · SST</div>
+                </div>
               </div>
             </div>
           </div>
@@ -844,22 +849,63 @@ export default function Home() {
             ref={tokenFade.ref}
             className={`grid md:grid-cols-2 gap-16 lg:gap-20 items-center transition-all duration-1000 ${tokenFade.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            {/* Image */}
-            <div className="relative">
-              <div className="relative">
-                <img
-                  src={TOKEN_IMG}
-                  alt="Three-token economy diagram: SOT ownership token, SUG utility token, SST stablecoin"
-                  className="w-full rounded-sm"
-                />
-                {/* Frame overlay */}
-                <div className="absolute inset-0 rounded-sm border border-gold/10 pointer-events-none" />
+            {/* Token visual breakdown — replaces image */}
+            <div className="space-y-4">
+              {/* Revenue split visual */}
+              <div className="bg-[oklch(0.14_0.05_265)] border border-gold/20 p-6 rounded-sm">
+                <div className="font-mono-data text-[10px] uppercase tracking-widest text-white/35 mb-4">Protocol Revenue Distribution</div>
+                <div className="space-y-3">
+                  <div>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <span className="font-mono-data text-xs text-gold">SOT — Dividends</span>
+                      <span className="font-mono-data text-xs font-bold text-gold">40%</span>
+                    </div>
+                    <div className="h-2 bg-[oklch(0.10_0.05_265)] rounded-full overflow-hidden">
+                      <div className="h-full bg-gold rounded-full" style={{ width: "40%" }} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <span className="font-mono-data text-xs text-white/60">SST — Reserves</span>
+                      <span className="font-mono-data text-xs font-bold text-white/60">40%</span>
+                    </div>
+                    <div className="h-2 bg-[oklch(0.10_0.05_265)] rounded-full overflow-hidden">
+                      <div className="h-full bg-white/40 rounded-full" style={{ width: "40%" }} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <span className="font-mono-data text-xs text-teal">SUG — Community</span>
+                      <span className="font-mono-data text-xs font-bold text-teal">20%</span>
+                    </div>
+                    <div className="h-2 bg-[oklch(0.10_0.05_265)] rounded-full overflow-hidden">
+                      <div className="h-full bg-teal rounded-full" style={{ width: "20%" }} />
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-5 pt-4 border-t border-white/8 flex items-center justify-between">
+                  <span className="font-mono-data text-[10px] text-white/30 uppercase tracking-widest">Total Split</span>
+                  <span className="font-display text-xl font-bold text-gold">40 / 40 / 20</span>
+                </div>
               </div>
-              {/* Floating metric */}
-              <div className="absolute -bottom-4 -right-4 bg-[oklch(0.14_0.05_265)] border border-gold/30 px-5 py-4 rounded-sm glow-gold">
-                <div className="font-mono-data text-[10px] text-gold/60 uppercase tracking-widest mb-1">Revenue Split</div>
-                <div className="font-display text-2xl font-bold text-gold">40/40/20</div>
-                <div className="font-mono-data text-[10px] text-white/40">SOT · SST · SUG</div>
+
+              {/* Key metrics */}
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-[oklch(0.14_0.05_265)] border border-gold/20 p-4 rounded-sm text-center">
+                  <div className="font-mono-data text-[9px] text-gold/50 uppercase tracking-widest mb-2">SOT</div>
+                  <div className="font-display text-lg font-bold text-gold">1B</div>
+                  <div className="font-mono-data text-[9px] text-white/30 mt-1">Total Supply</div>
+                </div>
+                <div className="bg-[oklch(0.14_0.05_265)] border border-white/12 p-4 rounded-sm text-center">
+                  <div className="font-mono-data text-[9px] text-white/40 uppercase tracking-widest mb-2">SST</div>
+                  <div className="font-display text-lg font-bold text-white">1:1</div>
+                  <div className="font-mono-data text-[9px] text-white/30 mt-1">USD Peg</div>
+                </div>
+                <div className="bg-[oklch(0.14_0.05_265)] border border-teal/20 p-4 rounded-sm text-center">
+                  <div className="font-mono-data text-[9px] text-teal/50 uppercase tracking-widest mb-2">SUG</div>
+                  <div className="font-display text-lg font-bold text-teal">Earned</div>
+                  <div className="font-mono-data text-[9px] text-white/30 mt-1">Not Bought</div>
+                </div>
               </div>
             </div>
 

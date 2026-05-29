@@ -8,8 +8,7 @@ import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { ArrowRight, Github, ExternalLink, Zap, Coins, BookOpen } from "lucide-react";
 
-const PHILOSOPHY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
-const TRANSPARENCY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/transparency-bg-dRYH2beMpwTLwnFHzDaK7x.png";
+const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/philosophy-bg-dHdJJ35AQ4VkFJvPmeZBLw.png";
 
 const projects = [
   {
@@ -34,7 +33,6 @@ const projects = [
     ],
     tech: ["Solidity", "React", "Ethereum", "IPFS", "The Graph", "SoGoodDAOFactory"],
     github: "https://github.com/ModernDigitalDevelopment/transparently",
-    image: TRANSPARENCY_IMG,
     borderColor: "border-gold/30",
     accentColor: "text-gold",
   },
@@ -60,7 +58,6 @@ const projects = [
     ],
     tech: ["Solidity", "IOTA Tangle", "React", "IoT Integration", "Chainlink", "IPFS"],
     github: "https://github.com/ModernDigitalDevelopment/wesolar",
-    image: PHILOSOPHY_IMG,
     borderColor: "border-teal/30",
     accentColor: "text-teal",
   },
@@ -86,7 +83,6 @@ const projects = [
     ],
     tech: ["Python", "Solidity", "Web3.py", "Aave", "Uniswap", "Compound", "The Graph"],
     github: "https://github.com/ModernDigitalDevelopment/elevation-foundation",
-    image: TRANSPARENCY_IMG,
     borderColor: "border-crimson/30",
     accentColor: "text-crimson",
   },
@@ -112,7 +108,6 @@ const projects = [
     ],
     tech: ["React", "Solidity", "IPFS", "The Graph", "SoGoodDAOFactory"],
     github: "https://github.com/ModernDigitalDevelopment/elevation-foundation",
-    image: PHILOSOPHY_IMG,
     borderColor: "border-white/20",
     accentColor: "text-white/70",
   },
@@ -133,7 +128,7 @@ export default function OurWork() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url(${PHILOSOPHY_IMG})` }}
+          style={{ backgroundImage: `url(${HERO_BG})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/60 to-navy" />
         <div className="container relative z-10">
@@ -154,60 +149,27 @@ export default function OurWork() {
       {/* --- PROJECTS ------------------------------------------- */}
       <section className="py-20 bg-navy">
         <div className="container">
-          <div className="space-y-20">
-            {projects.map((project, i) => (
+          <div className="space-y-16">
+            {projects.map((project) => (
               <div
                 key={project.id}
                 id={project.id}
-                className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:grid-flow-dense" : ""}`}
+                className={`grid md:grid-cols-5 gap-10 items-start border-t ${project.borderColor} pt-10`}
               >
-                {/* Image */}
-                <div className={`relative ${i % 2 === 1 ? "md:col-start-2" : ""}`}>
-                  <div className={`relative rounded-sm overflow-hidden aspect-[16/10] border ${project.borderColor}`}>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
-                    {/* Status badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className={`font-mono-data text-xs px-3 py-1 rounded-sm border ${project.statusColor}`}>
-                        {project.status}
-                      </span>
-                    </div>
+                {/* Left: header + description */}
+                <div className="md:col-span-3">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className={`font-mono-data text-xs px-3 py-1 rounded-sm border ${project.statusColor}`}>
+                      {project.status}
+                    </span>
+                    <div className={`section-label ${project.labelColor}`}>{project.label}</div>
                   </div>
-                </div>
-
-                {/* Content */}
-                <div className={i % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}>
-                  <div className={`section-label ${project.labelColor} mb-3`}>{project.label}</div>
                   <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">
                     {project.title}
                   </h2>
-                  <p className="font-body text-white/50 text-sm mb-4">{project.subtitle}</p>
+                  <p className="font-body text-white/50 text-sm mb-5">{project.subtitle}</p>
                   <p className="font-body text-white/70 leading-relaxed mb-4">{project.desc}</p>
-                  <p className="font-body text-white/60 text-sm leading-relaxed mb-6">{project.longDesc}</p>
-
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-2 mb-6">
-                    {project.features.map((feature) => (
-                      <div key={feature} className="flex items-start gap-2">
-                        <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 ${project.accentColor}`}
-                          style={{ background: "currentColor" }} />
-                        <span className="font-body text-xs text-white/60">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((t) => (
-                      <span key={t} className="font-mono-data text-xs px-2 py-1 bg-white/5 border border-white/10 rounded-sm text-white/50">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="font-body text-white/55 text-sm leading-relaxed mb-6">{project.longDesc}</p>
 
                   {/* Links */}
                   <div className="flex flex-wrap gap-4">
@@ -253,6 +215,35 @@ export default function OurWork() {
                         <BookOpen size={14} /> Capitalism 2.0 →
                       </Link>
                     )}
+                  </div>
+                </div>
+
+                {/* Right: features + tech */}
+                <div className="md:col-span-2 space-y-5">
+                  {/* Features list */}
+                  <div className={`bg-[oklch(0.14_0.05_265)] border ${project.borderColor} rounded-sm p-5`}>
+                    <div className="font-mono-data text-[10px] uppercase tracking-widest text-white/30 mb-4">Key Features</div>
+                    <div className="space-y-2">
+                      {project.features.map((feature) => (
+                        <div key={feature} className="flex items-start gap-2">
+                          <div className={`w-1 h-1 rounded-full flex-shrink-0 mt-1.5 ${project.accentColor}`}
+                            style={{ background: "currentColor" }} />
+                          <span className="font-body text-xs text-white/60 leading-relaxed">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tech stack */}
+                  <div className="bg-[oklch(0.14_0.05_265)] border border-white/8 rounded-sm p-5">
+                    <div className="font-mono-data text-[10px] uppercase tracking-widest text-white/30 mb-3">Tech Stack</div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((t) => (
+                        <span key={t} className="font-mono-data text-xs px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm text-white/55">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -9,6 +9,8 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
+  PointElement,
+  LineElement,
   RadialLinearScale,
   Filler,
   Tooltip,
@@ -18,6 +20,7 @@ import { Bar, Radar } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale, LinearScale, BarElement,
+  PointElement, LineElement,
   RadialLinearScale, Filler, Tooltip, Legend
 );
 

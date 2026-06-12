@@ -7,6 +7,7 @@ import { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale, LinearScale, BarElement,
+  PointElement, LineElement,
   RadialLinearScale, ArcElement,
   Filler, Tooltip, Legend,
 } from "chart.js";
@@ -14,6 +15,7 @@ import { Bar, Radar, Doughnut } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale, LinearScale, BarElement,
+  PointElement, LineElement,
   RadialLinearScale, ArcElement,
   Filler, Tooltip, Legend
 );

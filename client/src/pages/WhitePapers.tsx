@@ -242,37 +242,39 @@ export default function WhitePapers() {
         </div>
       </section>
 
-      {/* --- SSRN ACADEMIC PAPER -------------------------------- */}
+      {/* --- SSRN ACADEMIC PAPERS -------------------------------- */}
       <section className="py-14 bg-navy border-b border-white/10">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <div className="section-label mb-3">Peer-Reviewed Research · New · 2026</div>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="section-label mb-3">Peer-Reviewed Research · SSRN Working Papers · 2026</div>
+
+            {/* Paper 1: Toppling Tyranny — newest */}
             <div className="border border-gold/30 bg-gold/5 rounded-sm p-7 flex flex-col md:flex-row gap-6 items-start">
               <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gold/10 border border-gold/30 rounded-sm">
                 <ExternalLink size={22} className="text-gold" />
               </div>
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-3 mb-2">
-                  <span className="font-mono-data text-[10px] uppercase tracking-wider text-gold/70 bg-gold/10 px-2 py-0.5 rounded">SSRN Working Paper</span>
-                  <span className="font-mono-data text-[10px] text-white/35 uppercase">Posted May 9, 2026</span>
-                  <span className="font-mono-data text-[10px] text-white/35 uppercase">19 Pages</span>
+                  <span className="font-mono-data text-[10px] uppercase tracking-wider text-gold/70 bg-gold/10 px-2 py-0.5 rounded">SSRN Working Paper · New</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">Posted August 2026</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">22 Pages · 6 Original Figures</span>
                 </div>
                 <h3 className="font-display text-xl font-bold text-white mb-2">
-                  Sotilitarianism: A Framework for Blockchain-Native Governance and Incentive-Aligned Political Economy
+                  Toppling Tyranny via Tokenized Transparency: How Blockchain Governance Dismantles Extractive Power Structures and Redistributes Economic Sovereignty
                 </h3>
                 <p className="font-body text-white/55 text-sm mb-1">
-                  <strong className="text-white/75">Author:</strong> Cornelius DeFalco &nbsp;·&nbsp; <strong className="text-white/75">Date:</strong> April 16, 2026
+                  <strong className="text-white/75">Author:</strong> Cornelius DeFalco &nbsp;·&nbsp; <strong className="text-white/75">Abstract ID:</strong> 7199298
                 </p>
                 <p className="font-body text-white/50 text-sm leading-relaxed mb-4 italic">
-                  "Traditional governance systems face a legitimacy crisis rooted in opacity, exclusion, and misaligned incentives. Sotilitarianism proposes a new socioeconomic philosophy in which transparency is architecturally enforced, community sovereignty is structurally guaranteed..."
+                  "Contemporary tyranny operates not through force, but through informational asymmetry — opacity that enables regulatory capture, monetary exclusion, and self-reinforcing wealth concentration. This paper presents a formal model of the Tyranny Threshold, defines the Transparency-Accountability Gap across institutional sectors, and demonstrates how Sotilitarianism's five-layer architecture provides a mathematically grounded mechanism for dismantling extractive power structures through on-chain governance, efficiency-backed monetary primitives, and autonomous treasury redistribution."
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {["Sotilitarianism", "Blockchain Governance", "Mechanism Design", "DAOs", "Capitalism 2.0", "Political Economy"].map(t => (
+                  {["Sotilitarianism", "Blockchain Governance", "Wealth Inequality", "Transparency", "Political Economy", "SST Stablecoin", "DeFi"].map(t => (
                     <span key={t} className="font-mono-data text-[10px] px-2 py-0.5 border border-gold/20 text-gold/60 rounded">{t}</span>
                   ))}
                 </div>
                 <a
-                  href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798"
+                  href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7199298"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-body font-semibold text-sm rounded-sm hover:bg-gold-light transition-all"
@@ -281,6 +283,103 @@ export default function WhitePapers() {
                 </a>
               </div>
             </div>
+
+            {/* Paper 2: Sotilitarianism */}
+            <div className="border border-white/15 bg-white/3 rounded-sm p-7 flex flex-col md:flex-row gap-6 items-start">
+              <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-white/5 border border-white/15 rounded-sm">
+                <BookOpen size={22} className="text-white/60" />
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <span className="font-mono-data text-[10px] uppercase tracking-wider text-white/50 bg-white/5 px-2 py-0.5 rounded">SSRN Working Paper</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">Posted April 2026</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">19 Pages</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">18 Views · 8 Downloads</span>
+                </div>
+                <h3 className="font-display text-xl font-bold text-white mb-2">
+                  Sotilitarianism: A Framework for Blockchain-Native Governance and Incentive-Aligned Political Economy
+                </h3>
+                <p className="font-body text-white/55 text-sm mb-1">
+                  <strong className="text-white/75">Author:</strong> Cornelius DeFalco &nbsp;·&nbsp; <strong className="text-white/75">Abstract ID:</strong> 6678798
+                </p>
+                <p className="font-body text-white/50 text-sm leading-relaxed mb-4 italic">
+                  "Traditional governance systems face a legitimacy crisis rooted in opacity, exclusion, and misaligned incentives. Sotilitarianism proposes a new socioeconomic philosophy in which transparency is architecturally enforced, community sovereignty is structurally guaranteed, and incentives are aligned with measurable public benefit through a 25-contract smart contract suite deployed across five architectural layers."
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["Sotilitarianism", "Blockchain Governance", "Mechanism Design", "DAOs", "Capitalism 2.0", "Political Economy"].map(t => (
+                    <span key={t} className="font-mono-data text-[10px] px-2 py-0.5 border border-white/15 text-white/40 rounded">{t}</span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6678798"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/70 font-body font-semibold text-sm rounded-sm hover:border-gold/40 hover:text-gold transition-all"
+                  >
+                    Read on SSRN <ExternalLink size={13} />
+                  </a>
+                  <a
+                    href="https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/sotility-whitepaper_24f46455.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/70 font-body font-semibold text-sm rounded-sm hover:border-gold/40 hover:text-gold transition-all"
+                  >
+                    <Download size={13} /> Download PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Paper 3: Tokenized Transparency */}
+            <div className="border border-white/15 bg-white/3 rounded-sm p-7 flex flex-col md:flex-row gap-6 items-start">
+              <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-white/5 border border-white/15 rounded-sm">
+                <Zap size={22} className="text-teal" />
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <span className="font-mono-data text-[10px] uppercase tracking-wider text-teal/70 bg-teal/10 px-2 py-0.5 rounded">SSRN Working Paper · Distributed</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">Posted July 2026</span>
+                  <span className="font-mono-data text-[10px] text-white/35 uppercase">18 Pages</span>
+                  <span className="font-mono-data text-[10px] text-teal/50 uppercase">47 Views · 24 Downloads</span>
+                </div>
+                <h3 className="font-display text-xl font-bold text-white mb-2">
+                  Tokenized Transparency: How Efficiency Becomes Money
+                </h3>
+                <p className="font-body text-white/55 text-sm mb-1">
+                  <strong className="text-white/75">Author:</strong> Cornelius DeFalco &nbsp;·&nbsp; <strong className="text-white/75">Abstract ID:</strong> 7083579
+                </p>
+                <p className="font-body text-white/50 text-sm leading-relaxed mb-4 italic">
+                  "The first formal specification of the SST mint mechanism — a stablecoin collateralized not by stored wealth, but by the measurable efficiency surplus generated when organizations integrate Sotility Trust Tech. Defines the four-stage mint process, anti-inflation properties, the adoption flywheel, and investment pathways."
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["SST Stablecoin", "Tokenized Transparency", "Efficiency Collateral", "Monetary Design", "Sotility Trust Tech"].map(t => (
+                    <span key={t} className="font-mono-data text-[10px] px-2 py-0.5 border border-teal/20 text-teal/50 rounded">{t}</span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7083579"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-teal/20 border border-teal/30 text-teal font-body font-semibold text-sm rounded-sm hover:bg-teal/30 transition-all"
+                  >
+                    Read on SSRN <ExternalLink size={13} />
+                  </a>
+                  <a
+                    href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663269003011/qvPqixTMWDbIDCZd.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-teal/20 text-teal/70 font-body font-semibold text-sm rounded-sm hover:border-teal/40 hover:text-teal transition-all"
+                  >
+                    <Download size={13} /> Download PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

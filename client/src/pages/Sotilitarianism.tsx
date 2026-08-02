@@ -14,7 +14,7 @@ const GITHUB_CONTRACTS = "https://github.com/ModernDigitalDevelopment/sotilitari
 const GITHUB_DEPLOYMENT = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/smart-contracts/DEPLOYMENT.md";
 const GITHUB_RELEASE = "https://github.com/ModernDigitalDevelopment/sotilitarianism/releases/tag/v1.0.0";
 const GITHUB_ESP = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/grant-applications/ethereum-foundation-esp.md";
-const GITHUB_PITCH = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/pitch-deck/sotility-pitch-deck.pdf";
+const GITHUB_PITCH = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/sotility-pitch-deck_70bc5712.pdf";
 
 const protocolContracts = [
   { layer: "Token Layer", contracts: ["SotilityOwnershipToken (SOT)", "SotilityStableToken (SST)", "SoGoodUtilityGovernance (SUG)"], color: "text-gold", border: "border-gold/30", bg: "bg-gold/5" },

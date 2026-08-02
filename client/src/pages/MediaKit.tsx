@@ -12,7 +12,14 @@ import { toast } from "sonner";
 
 // ─── ASSET DEFINITIONS ──────────────────────────────────────────────────────
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/EF44_3886167a.png";
+// Primary logo (black wordmark — for light backgrounds)
+const LOGO_URL_LIGHT = "/manus-storage/sotility-logo-black_d38d7d66.png";
+// Icon variant (S mark with teal — works on both light and dark)
+const LOGO_URL_ICON = "/manus-storage/sotility-icon_015e73ab.png";
+// Sotilitarianism wordmark
+const LOGO_URL_WORDMARK = "/manus-storage/sotilitarianism-wordmark_05eabc4a.png";
+// Keep backward compat alias
+const LOGO_URL = LOGO_URL_LIGHT;
 
 const OG_IMAGES = [
   {
@@ -215,14 +222,14 @@ export default function MediaKit() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Primary logo on dark */}
+            {/* Primary logo on dark — use icon variant which has teal accent visible on dark */}
             <div className="bg-[oklch(0.10_0.05_265)] border border-white/10 rounded-sm p-8 flex flex-col items-center gap-6">
-              <img src={LOGO_URL} alt="Elevation Foundation logo" className="w-24 h-24 object-contain" />
+              <img src={LOGO_URL_ICON} alt="Sotility icon mark" className="w-24 h-24 object-contain" />
               <div className="text-center">
                 <div className="font-mono-data text-xs text-white/40 mb-2">Primary — Dark Background</div>
                 <div className="flex items-center gap-2 justify-center">
                   <a
-                    href={LOGO_URL}
+                    href={LOGO_URL_ICON}
                     download
                     target="_blank"
                     rel="noopener noreferrer"
@@ -231,19 +238,19 @@ export default function MediaKit() {
                     <Download size={11} />
                     PNG
                   </a>
-                  <CopyButton value={LOGO_URL} label="URL" />
+                  <CopyButton value={LOGO_URL_ICON} label="URL" />
                 </div>
               </div>
             </div>
 
             {/* Logo on white */}
             <div className="bg-white border border-white/10 rounded-sm p-8 flex flex-col items-center gap-6">
-              <img src={LOGO_URL} alt="Elevation Foundation logo on white" className="w-24 h-24 object-contain" />
+              <img src={LOGO_URL_LIGHT} alt="Sotility wordmark on white" className="w-40 h-24 object-contain" />
               <div className="text-center">
-                <div className="font-mono-data text-xs text-black/40 mb-2">On Light Background</div>
+                <div className="font-mono-data text-xs text-black/40 mb-2">Wordmark — Light Background</div>
                 <div className="flex items-center gap-2 justify-center">
                   <a
-                    href={LOGO_URL}
+                    href={LOGO_URL_LIGHT}
                     download
                     target="_blank"
                     rel="noopener noreferrer"
@@ -252,6 +259,7 @@ export default function MediaKit() {
                     <Download size={11} />
                     PNG
                   </a>
+                  <CopyButton value={LOGO_URL_LIGHT} label="URL" />
                 </div>
               </div>
             </div>

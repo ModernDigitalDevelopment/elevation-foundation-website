@@ -4,6 +4,7 @@
  * with CDN download links and full SEO metadata
  */
 import Navigation from "@/components/Navigation";
+import DocumentShareControls from "@/components/DocumentShareControls";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Download, FileText, BookOpen, Zap, Sun, Shield, Cpu, Github, ExternalLink } from "lucide-react";
@@ -273,14 +274,21 @@ export default function WhitePapers() {
                     <span key={t} className="font-mono-data text-[10px] px-2 py-0.5 border border-gold/20 text-gold/60 rounded">{t}</span>
                   ))}
                 </div>
-                <a
-                  href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7199298"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-body font-semibold text-sm rounded-sm hover:bg-gold-light transition-all"
-                >
-                  Read on SSRN <ExternalLink size={13} />
-                </a>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7199298"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-[oklch(0.12_0.05_265)] font-body font-semibold text-sm rounded-sm hover:bg-gold-light transition-all"
+                  >
+                    Read on SSRN <ExternalLink size={13} />
+                  </a>
+                  <DocumentShareControls
+                    documentUrl="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7199298"
+                    documentTitle="Toppling Tyranny via Tokenized Transparency"
+                    compact
+                  />
+                </div>
               </div>
             </div>
 
@@ -328,6 +336,11 @@ export default function WhitePapers() {
                   >
                     <Download size={13} /> Download PDF
                   </a>
+                  <DocumentShareControls
+                    documentUrl="https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/sotility-whitepaper_24f46455.pdf"
+                    documentTitle="Sotilitarianism: A Framework for Blockchain-Native Governance and Incentive-Aligned Political Economy"
+                    compact
+                  />
                 </div>
               </div>
             </div>
@@ -376,6 +389,11 @@ export default function WhitePapers() {
                   >
                     <Download size={13} /> Download PDF
                   </a>
+                  <DocumentShareControls
+                    documentUrl="https://files.manuscdn.com/user_upload_by_module/session_file/310519663269003011/qvPqixTMWDbIDCZd.pdf"
+                    documentTitle="Tokenized Transparency: How Efficiency Becomes Money"
+                    compact
+                  />
                 </div>
               </div>
             </div>
@@ -417,19 +435,22 @@ export default function WhitePapers() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between pt-3 border-t border-white/10">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/10">
                     <div className="font-mono-data text-xs text-white/40">{doc.pages} · {doc.year}</div>
-                    <a
-                      href={doc.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      download
-                      className={`inline-flex items-center gap-2 px-4 py-2 ${cat.bg} border ${cat.border} ${cat.color} font-body text-sm font-medium rounded-sm hover:opacity-80 transition-opacity`}
-                      aria-label={`Download ${doc.title} PDF`}
-                    >
-                      <Download size={14} />
-                      Download PDF
-                    </a>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a
+                        href={doc.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download
+                        className={`inline-flex items-center gap-2 px-4 py-2 ${cat.bg} border ${cat.border} ${cat.color} font-body text-sm font-medium rounded-sm hover:opacity-80 transition-opacity`}
+                        aria-label={`Download ${doc.title} PDF`}
+                      >
+                        <Download size={14} />
+                        Download PDF
+                      </a>
+                      <DocumentShareControls documentUrl={doc.url} documentTitle={doc.title} compact />
+                    </div>
                   </div>
                 </article>
               );

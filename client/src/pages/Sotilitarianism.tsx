@@ -5,6 +5,7 @@
  */
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
+import DocumentShareControls from "@/components/DocumentShareControls";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { ArrowRight, BookOpen, FileText, ExternalLink, ChevronRight, Zap, Shield, Globe, Users, Code2, Download, Gavel } from "lucide-react";
@@ -14,7 +15,8 @@ const GITHUB_CONTRACTS = "https://github.com/ModernDigitalDevelopment/sotilitari
 const GITHUB_DEPLOYMENT = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/smart-contracts/DEPLOYMENT.md";
 const GITHUB_RELEASE = "https://github.com/ModernDigitalDevelopment/sotilitarianism/releases/tag/v1.0.0";
 const GITHUB_ESP = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/grant-applications/ethereum-foundation-esp.md";
-const GITHUB_PITCH = "https://d2xsxph8kpxj0f.cloudfront.net/310519663269003011/bsTCA4Lcv6kDbDVEJYib7X/sotility-pitch-deck_70bc5712.pdf";
+const PITCH_DECK_URL = "/manus-storage/sotility-pitch-deck_6eaff90a.pdf";
+const PITCH_DECK_PREVIEW_URL = "/manus-storage/sotility-pitch-deck-preview-thumbnail_86be8f8e.webp";
 
 const protocolContracts = [
   { layer: "Token Layer", contracts: ["SotilityOwnershipToken (SOT)", "SotilityStableToken (SST)", "SoGoodUtilityGovernance (SUG)"], color: "text-gold", border: "border-gold/30", bg: "bg-gold/5" },
@@ -392,15 +394,6 @@ export default function SotilitarianismPage() {
                 v1.0.0 Release
               </a>
               <a
-                href={GITHUB_PITCH}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/30 text-white font-body text-sm rounded-sm hover:border-gold/50 hover:text-gold transition-all"
-              >
-                <FileText size={14} />
-                Pitch Deck PDF
-              </a>
-              <a
                 href={GITHUB_DEPLOYMENT}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -411,6 +404,62 @@ export default function SotilitarianismPage() {
               </a>
             </div>
           </div>
+
+          {/* --- PITCH DECK PREVIEW -------------------------------- */}
+          <article className="mb-12 grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] overflow-hidden rounded-sm border border-gold/25 bg-[oklch(0.14_0.05_265)] shadow-[0_18px_45px_oklch(0.06_0.04_265/0.28)]">
+            <a
+              href={PITCH_DECK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block min-h-64 overflow-hidden bg-[oklch(0.10_0.05_265)]"
+              aria-label="Open the Sotility pitch deck PDF"
+            >
+              <img
+                src={PITCH_DECK_PREVIEW_URL}
+                alt="First-page preview of the Sotility pitch deck"
+                className="absolute inset-0 h-full w-full object-cover object-top opacity-80 transition duration-500 group-hover:scale-[1.02] group-hover:opacity-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.05_265/0.92)] via-[oklch(0.08_0.05_265/0.20)] to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
+                <div>
+                  <div className="font-mono-data text-[10px] uppercase tracking-[0.18em] text-gold/85">Investor overview</div>
+                  <div className="mt-1 font-display text-xl font-bold text-white">Sotility Pitch Deck</div>
+                </div>
+                <FileText size={22} className="flex-shrink-0 text-gold" />
+              </div>
+            </a>
+            <div className="flex flex-col justify-center p-7 md:p-9">
+              <div className="section-label mb-3">Presentation</div>
+              <h3 className="font-display text-2xl font-bold leading-tight text-white">
+                A concise view of the <span className="text-gold">Sotility opportunity.</span>
+              </h3>
+              <p className="mt-4 font-body text-sm leading-relaxed text-white/60">
+                Explore the problem, protocol, token model, revenue flywheel, roadmap, and funding case behind the Foundation’s transparent-economics infrastructure.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <a
+                  href={PITCH_DECK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center gap-2 bg-gold px-4 py-2.5 font-body text-sm font-semibold text-[oklch(0.12_0.05_265)] rounded-sm transition-all hover:bg-gold-light"
+                >
+                  <Download size={14} />
+                  Download Pitch Deck
+                </a>
+                <a
+                  href={PITCH_DECK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 font-body text-sm font-medium text-white/75 rounded-sm transition-all hover:border-white/40 hover:text-white"
+                >
+                  <ExternalLink size={14} />
+                  View PDF
+                </a>
+                <DocumentShareControls documentUrl={PITCH_DECK_URL} documentTitle="Sotility Pitch Deck" compact />
+              </div>
+            </div>
+          </article>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
             {protocolContracts.map((layer) => (

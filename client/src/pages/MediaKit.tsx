@@ -4,6 +4,7 @@
  * and downloadable resources for press and partners.
  */
 import Navigation from "@/components/Navigation";
+import DocumentShareControls from "@/components/DocumentShareControls";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Download, Copy, Check, ExternalLink, Palette, Type, Image, FileText } from "lucide-react";
@@ -18,9 +19,6 @@ const LOGO_URL_LIGHT = "/manus-storage/sotility-logo-black_d38d7d66.png";
 const LOGO_URL_ICON = "/manus-storage/sotility-icon_015e73ab.png";
 // Sotilitarianism wordmark
 const LOGO_URL_WORDMARK = "/manus-storage/sotilitarianism-wordmark_05eabc4a.png";
-// Keep backward compat alias
-const LOGO_URL = LOGO_URL_LIGHT;
-
 const OG_IMAGES = [
   {
     title: "Global Site Card",
@@ -221,7 +219,7 @@ export default function MediaKit() {
             <div className="flex-1 h-px bg-white/10 ml-2" />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {/* Primary logo on dark — use icon variant which has teal accent visible on dark */}
             <div className="bg-[oklch(0.10_0.05_265)] border border-white/10 rounded-sm p-8 flex flex-col items-center gap-6">
               <img src={LOGO_URL_ICON} alt="Sotility icon mark" className="w-24 h-24 object-contain" />
@@ -236,7 +234,7 @@ export default function MediaKit() {
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gold/10 border border-gold/25 text-gold font-body text-xs font-medium rounded-sm hover:bg-gold/20 transition-all"
                   >
                     <Download size={11} />
-                    PNG
+                    Download High-Res PNG
                   </a>
                   <CopyButton value={LOGO_URL_ICON} label="URL" />
                 </div>
@@ -257,9 +255,30 @@ export default function MediaKit() {
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy/10 border border-navy/25 text-navy font-body text-xs font-medium rounded-sm hover:bg-navy/20 transition-all"
                   >
                     <Download size={11} />
-                    PNG
+                    Download High-Res PNG
                   </a>
                   <CopyButton value={LOGO_URL_LIGHT} label="URL" />
+                </div>
+              </div>
+            </div>
+
+            {/* Sotilitarianism wordmark on white */}
+            <div className="bg-white border border-white/10 rounded-sm p-8 flex flex-col items-center gap-6">
+              <img src={LOGO_URL_WORDMARK} alt="Sotilitarianism wordmark on white" className="w-44 h-24 object-contain" />
+              <div className="text-center">
+                <div className="font-mono-data text-xs text-black/40 mb-2">Sotilitarianism — Light Background</div>
+                <div className="flex items-center gap-2 justify-center">
+                  <a
+                    href={LOGO_URL_WORDMARK}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy/10 border border-navy/25 text-navy font-body text-xs font-medium rounded-sm hover:bg-navy/20 transition-all"
+                  >
+                    <Download size={11} />
+                    Download High-Res PNG
+                  </a>
+                  <CopyButton value={LOGO_URL_WORDMARK} label="URL" />
                 </div>
               </div>
             </div>
@@ -449,6 +468,7 @@ export default function MediaKit() {
                     <ExternalLink size={11} />
                     View
                   </a>
+                  <DocumentShareControls documentUrl={paper.url} documentTitle={paper.title} compact />
                 </div>
               </div>
             ))}

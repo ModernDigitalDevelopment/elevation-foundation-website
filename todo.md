@@ -168,3 +168,11 @@
 - [x] Add featured field to postInput schema in blogRouter
 - [x] Add Admin link to Navigation (visible only to admin users)
 - [x] Add /admin route to App.tsx
+
+## Media Kit and Sotilitarianism Document Enhancements (August 2026)
+- [x] Add direct high-resolution download buttons beneath each Media Kit logo asset
+- [x] Add lightweight pitch-deck PDF preview thumbnail to the Sotilitarianism page
+- [x] Add accessible social-sharing controls beside pitch-deck and whitepaper document links
+- [x] Verify the updated Media Kit and Sotilitarianism pages, then create a publish-ready checkpoint
+- [x] Generate an optimized pitch-deck thumbnail asset and update the preview card
+- [x] Save a post-enhancement checkpoint after final page verification

@@ -16,6 +16,7 @@ const GITHUB_DEPLOYMENT = "https://github.com/ModernDigitalDevelopment/sotilitar
 const GITHUB_RELEASE = "https://github.com/ModernDigitalDevelopment/sotilitarianism/releases/tag/v1.0.0";
 const GITHUB_ESP = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/grant-applications/ethereum-foundation-esp.md";
 const PITCH_DECK_URL = "/manus-storage/sotility-pitch-deck_6eaff90a.pdf";
+const PITCH_DECK_SHARE_URL = "https://elevation.foundation/manus-storage/sotility-pitch-deck_6eaff90a.pdf";
 const PITCH_DECK_PREVIEW_URL = "/manus-storage/sotility-pitch-deck-preview-thumbnail_86be8f8e.webp";
 
 const protocolContracts = [
@@ -456,7 +457,7 @@ export default function SotilitarianismPage() {
                   <ExternalLink size={14} />
                   View PDF
                 </a>
-                <DocumentShareControls documentUrl={PITCH_DECK_URL} documentTitle="Sotility Pitch Deck" compact />
+                <DocumentShareControls documentUrl={PITCH_DECK_SHARE_URL} documentTitle="Sotility Pitch Deck" compact />
               </div>
             </div>
           </article>

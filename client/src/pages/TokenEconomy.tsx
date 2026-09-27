@@ -208,7 +208,6 @@ export default function TokenEconomy() {
         keywords="SOT token, SUG token, SST stablecoin, Sotilitarian tokenomics, three-token economy, blockchain governance tokens, community dividends, social utility token, DeFi stablecoin, Elevation Foundation, Sotilitarianism"
       />
       <Navigation />
-      <NewsletterBanner />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
@@ -249,6 +248,8 @@ export default function TokenEconomy() {
           </div>
         </div>
       </section>
+
+      <NewsletterBanner />
 
       {/* Revenue Distribution Visual */}
       <section className="py-20 bg-[oklch(0.14_0.05_265)]">

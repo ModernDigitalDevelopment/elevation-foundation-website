@@ -107,7 +107,6 @@ export default function Philosophy() {
         keywords="Sotilitarianism, sotilitarian capitalism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance philosophy, post-capitalist economics, participatory economics, cooperative economics, solidarity economics, SOT token, SUG utility token, SST stablecoin, social utility, community governance, DeFi philosophy, economic transparency, social good finance, impact investing"
       />
       <Navigation />
-      <NewsletterBanner />
 
       {/* --- HERO ----------------------------------------------- */}
       <section className="relative pt-32 pb-20 overflow-hidden">
@@ -119,7 +118,7 @@ export default function Philosophy() {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div className="section-label mb-4">The Philosophy</div>
-            <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+            <h1 className="font-display text-6xl md:text-8xl font-black text-white leading-[0.95] mb-8">
               Sotilitarianism
             </h1>
             <p className="font-body text-xl text-white/70 leading-relaxed max-w-2xl mx-auto">
@@ -128,6 +127,8 @@ export default function Philosophy() {
           </div>
         </div>
       </section>
+
+      <NewsletterBanner />
 
       {/* --- IN-PAGE NAV ---------------------------------------- */}
       <nav className="sticky top-0 z-40 bg-[oklch(0.10_0.05_265/0.95)] backdrop-blur border-b border-white/10">

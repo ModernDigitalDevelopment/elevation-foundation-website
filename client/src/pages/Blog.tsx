@@ -69,7 +69,6 @@ export default function Blog() {
         keywords="Sotilitarianism blog, capitalism 2.0 articles, social capitalism essays, utilitarian capitalism, transparent economics blog, trust tech, transparency tech, blockchain governance articles, DeFi community finance, WeSolar news, Transparently updates, nonprofit blockchain news, post-capitalist economics"
       />
       <Navigation />
-      <NewsletterBanner />
 
       {/* ── HERO (dark navy, keeps site chrome consistent) ──────── */}
       <section className="pt-32 pb-12 bg-navy">
@@ -98,6 +97,8 @@ export default function Blog() {
           </div>
         </div>
       </section>
+
+      <NewsletterBanner />
 
       {/* ── DARK NAVY CONTENT AREA ──────────────────────────────── */}
       <div className="bg-navy">

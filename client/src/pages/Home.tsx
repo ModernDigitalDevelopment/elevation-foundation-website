@@ -465,10 +465,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-navy text-white">
       <SEOHead
-        title="The Elevation Foundation | Capitalism 2.0 · Transparent Economics · Blockchain Governance"
-        description="The Elevation Foundation is a 501(c)(3) nonprofit pioneering Capitalism 2.0 — transparent economics, social capitalism, and utilitarian capitalism powered by blockchain. Sotilitarianism: where social action generates economic yield. Transparently DApp, WeSolar, and the Elevation Engine."
+        title="Elevation Foundation | Tokenized Transparency"
+        description="Elevation Foundation builds tokenized-transparency tools and partner-led pilots that make community programs more accountable, measurable, and trusted."
         canonical="/"
-        keywords="Elevation Foundation, Sotilitarianism, capitalism 2.0, social capitalism, utilitarian capitalism, transparent economics, trust tech, transparency tech, blockchain governance, community finance, transparent capitalism, participatory economics, Transparently DApp, WeSolar, Elevation Engine, DAO, DeFi, nonprofit blockchain, SOT token, post-capitalist economics, cooperative economics, solidarity economics"
+        keywords="Elevation Foundation, tokenized transparency, nonprofit accountability, community solar, blockchain governance, WeSolar"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "NGO",

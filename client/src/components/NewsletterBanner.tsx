@@ -56,7 +56,7 @@ export default function NewsletterBanner() {
   return (
     <div
       className={`
-        w-full bg-[oklch(0.16_0.05_265)] border-b border-gold/15
+        w-full mt-16 md:mt-[4.5rem] bg-[oklch(0.16_0.05_265)] border-b border-gold/15
         transition-all duration-500
         ${visible ? "opacity-100 max-h-24" : "opacity-0 max-h-0 overflow-hidden"}
       `}

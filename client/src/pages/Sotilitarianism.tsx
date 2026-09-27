@@ -15,9 +15,9 @@ const GITHUB_CONTRACTS = "https://github.com/ModernDigitalDevelopment/sotilitari
 const GITHUB_DEPLOYMENT = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/smart-contracts/DEPLOYMENT.md";
 const GITHUB_RELEASE = "https://github.com/ModernDigitalDevelopment/sotilitarianism/releases/tag/v1.0.0";
 const GITHUB_ESP = "https://github.com/ModernDigitalDevelopment/sotilitarianism/blob/main/grant-applications/ethereum-foundation-esp.md";
-const PITCH_DECK_URL = "/manus-storage/sotility-pitch-deck_6eaff90a.pdf";
-const PITCH_DECK_SHARE_URL = "https://elevation.foundation/manus-storage/sotility-pitch-deck_6eaff90a.pdf";
-const PITCH_DECK_PREVIEW_URL = "/manus-storage/sotility-pitch-deck-preview-thumbnail_86be8f8e.webp";
+const PITCH_DECK_URL = "/manus-storage/sotility-pitch-deck-production_d9d6d321.pdf";
+const PITCH_DECK_SHARE_URL = "https://elevation.foundation/manus-storage/sotility-pitch-deck-production_d9d6d321.pdf";
+const PITCH_DECK_PREVIEW_URL = "/manus-storage/sotility-pitch-deck-production-preview_cffb4f30.png";
 
 const protocolContracts = [
   { layer: "Token Layer", contracts: ["SotilityOwnershipToken (SOT)", "SotilityStableToken (SST)", "SoGoodUtilityGovernance (SUG)"], color: "text-gold", border: "border-gold/30", bg: "bg-gold/5" },

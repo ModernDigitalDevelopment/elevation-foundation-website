@@ -134,7 +134,7 @@ export default function OurWork() {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div className="section-label mb-4">Our Work</div>
-            <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+            <h1 className="font-display text-6xl md:text-8xl font-black text-white leading-[0.95] mb-8">
               Tools for the
               <br />
               <span className="gold-shimmer">Next Economy</span>
